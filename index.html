@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta content="Check Back" property="og:title" />
+  <meta content="Prepare to check back later." property="og:description" />
+  <meta content="img/icon.png" property="og:image" />
+  <meta content="#008888" data-react-helmet="true" name="theme-color" />
+  <meta name="color-scheme" content="light only">
+  <title>Check Back</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link id="themeLink" href="themes/themeDark.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" type="image/x-icon" href="img/icon.png">
+</head>
+
+<body>
+  <div id="levelBar">
+    <div id="levelBarBack"></div>
+    <p id="levelBarText">Level <span id="level">1</span></p>
+    <p id="levelBarRankText">(<span id="rank">beginner</span> clicker)</p>
+  </div>
+  <div id="XPBar">
+    <div id="XPBarBack"></div>
+    <p id="XPBarText">XP to next level: <span id="XPToNextlevel">0/0</span></p>
+  </div>
+  <p id="nextUnlockLevel"></p>
+  <button class="button" id="petsTabButton" style="top: 23vh; left: 5vh; display: none" onclick="openClosePetsTab()">Pets</button>
+  <p id="selectedPetText">Current selected pet:<br><span id="selectedPet" style="font-weight: bold">None</span><br><img id="selectedPetImg" src="img/pets/0.png" style="width: 8vh; display: none"><br><br><span id="petRarities"></span></p>
+  
+  <button class="button" id="button1" onclick="clickButton(1)">Gain 1 XP</button>
+  <button class="button" id="button2" onclick="clickButton(2)">Gain 2 XP</button>
+  <button class="button" id="button3" onclick="clickButton(3)">Gain 5 XP</button>
+  <button class="button" id="button4" onclick="clickButton(4)">Gain 10 XP</button>
+  <button class="button" id="button5" onclick="clickButton(5)">Gain 25 XP</button>
+  <button class="button" id="button5" onclick="clickButton(6)">Gain 50 XP</button>
+
+  <button class="button" id="unboxButton1" onclick="unboxPet(1)" onmouseover="displayPetRarities(1)" onmouseout="displayPetRarities(0)">Unbox a random basic pet</button>
+  <button class="button" id="unboxButton2" onclick="unboxPet(2)" onmouseover="displayPetRarities(2)" onmouseout="displayPetRarities(0)">Unbox a random advanced pet</button>
+  <button class="button" id="unboxButton3" onclick="unboxPet(3)" onmouseover="displayPetRarities(3)" onmouseout="displayPetRarities(0)">Unbox a random epic pet</button>
+
+  <div id="themeDiv">
+    <p id="themeText" style="font-size: 1.5vh; margin: 0.3vh">Theme:</p>
+    <button class="themeButton" style="background-color: #c8c0b8; border: 0.3vh solid #444; color: #444" onclick="changeTheme(1)">Light</button>
+    <button class="themeButton" style="background-color: #333; border: 0.3vh solid #bbb; color: #bbb" onclick="changeTheme(2)">Dark</button>
+    <button class="themeButton" style="background-color: black; border: 0.3vh solid #0ff; color: #0ff; display: none" onclick="changeTheme(3)">Neon</button>
+    <button class="themeButton" style="background-color: #496; border: 0.3vh solid #242; color: #242; display: none" onclick="changeTheme(4)">Green</button>
+    <button class="themeButton" style="background-color: #96a; border: 0.3vh solid #424; color: #424; display: none" onclick="changeTheme(5)">Purple</button>
+    <button class="themeButton" style="background-color: #d75; border: 0.3vh solid #422; color: #422; display: none" onclick="changeTheme(6)">Red</button>
+  </div>
+
+  <button class="button" id="dailyRewardButton" onclick="openCloseDailyRewardTab()">Daily reward</button>
+  
+  <p id="versionText">Check Back v0.4.0</p>
+  <button class="settingsButton" style="bottom: 10.5vh" onclick="exportGame()">Export</button>
+  <button class="settingsButton" style="bottom: 8vh" onclick="importGame()">Import</button>
+  <button class="settingsButton" style="bottom: 5.5vh" onclick="save()">Manual save</button>
+  <button class="settingsButton" style="bottom: 3vh; background-color: #d99" onclick="hardReset()">Hard reset</button>
+
+  <div id="dailyRewardDiv">
+    <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Daily reward</p>
+    <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px; width: 50%'>Check back on this tab each day for a special reward!</p>
+    <p id="dailyRewardRarities"></p>
+    <button class="button" id="claimDailyRewardButton" onclick="claimDailyReward()">Claim daily reward</button>
+    <div class="dayBox" style="left: 0; color: #bff" onmouseover="displayDailyRewardRarities(1)" onmouseout="displayDailyRewardRarities(0)"></div>
+    <div class="dayBox" style="left: 15vh; opacity: 0.75" onmouseover="displayDailyRewardRarities(2)" onmouseout="displayDailyRewardRarities(0)"></div>
+    <div class="dayBox" style="left: 30vh; opacity: 0.5" onmouseover="displayDailyRewardRarities(3)" onmouseout="displayDailyRewardRarities(0)"></div>
+    <div class="dayBox" style="left: 45vh; opacity: 0.25" onmouseover="displayDailyRewardRarities(4)" onmouseout="displayDailyRewardRarities(0)"></div>
+    <button class="closeButton" onclick="openCloseDailyRewardTab()">Close</button>
+  </div>
+  
+  <div id="petsDiv">
+    <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Pets</p>
+    <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px'>Click on a pet you've unlocked to select it.</p>
+    <button class="closeButton" onclick="openClosePetsTab()">Close</button>
+    <div id="petsList">
+      <div id="petsListInner"></div>
+    </div>
+    <div id="petInfo"></div>
+  </div>
+  <script src="constants.js"></script>
+  <script src="script.js"></script>
+  <script defer>setAutoSave()</script>
+</body>
+
+</html>

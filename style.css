@@ -1,0 +1,308 @@
+html {
+  height: 100%;
+  width: 100%;
+  font-family: Verdana, sans-serif;
+}
+
+body {
+  transition: background-color 300ms;
+}
+
+img {
+  image-rendering: pixelated;
+}
+
+#levelBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 13vh;
+  background-color: #5cc;
+  transition: background-color 500ms;
+}
+
+#levelBarBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,0.4) 100%);
+}
+
+#levelBarText {
+  text-align: center;
+  color: white;
+  margin: 0;
+  font-size: 6vh;
+  line-height: 8vh;
+}
+
+#levelBarRankText {
+  text-align: center;
+  color: white;
+  margin: 0;
+  font-size: 3vh;
+  line-height: 4vh;
+}
+
+#XPBar {
+  position: absolute;
+  top: 13vh;
+  left: 0;
+  width: 100vw;
+  height: 5vh;
+  background-color: black;
+}
+
+#XPBarBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #0b0;
+  transition: 500ms ease-out;
+}
+
+#XPBarText {
+  text-align: center;
+  color: white;
+  text-shadow: 0.3vh 0.3vh black;
+  margin: 0;
+  font-size: 3.5vh;
+  line-height: 5vh;
+  position: relative;
+  z-index: 2;
+}
+
+#nextUnlockLevel {
+  position: absolute;
+  top: 18.5vh;
+  left: 0.5vh;
+  font-size: 2vh;
+  line-height: 2vh;
+  margin: 0;
+}
+
+#selectedPetText {
+  position: absolute;
+  text-align: right;
+  top: 18.5vh;
+  right: 0.5vh;
+  font-size: 2vh;
+  line-height: 2.5vh;
+  margin: 0;
+  display: none;
+}
+
+.button {
+  position: absolute;
+  left: 50%;
+  height: 4vh;
+  min-width: 4vh;
+  transform: translate(-50%, -50%);
+  padding-left: 1vh;
+  padding-right: 1vh;
+  border-radius: 2vh;
+  font-family: Verdana, sans-serif;
+  font-size: 3vh;
+  line-height: 0;
+  transition: background-color 300ms ease-out, color 300ms ease-out, border 300ms ease-out,;
+  white-space: nowrap;
+}
+
+#button1 {
+  top: 25vh;
+}
+
+#button2 {
+  top: 33vh;
+  display: none;
+}
+
+#button3 {
+  top: 41vh;
+  display: none;
+}
+
+#button4 {
+  top: 49vh;
+  display: none;
+}
+
+#button5 {
+  top: 57vh;
+  display: none;
+}
+
+#button6 {
+  top: 65vh;
+  display: none;
+}
+
+#unboxButton1 {
+  top: 73vh;
+  display: none;
+}
+
+#unboxButton2 {
+  top: 81vh;
+  display: none;
+}
+
+#unboxButton3 {
+  top: 89vh;
+  display: none;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+
+.button:disabled {
+  cursor: default;
+}
+
+#dailyRewardButton {
+  transform: none;
+  bottom: 5.5vh;
+  left: 0.5vh;
+  display: none;
+}
+
+#dailyRewardDiv {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+  width: 60vh;
+  height: 60vh;
+  background-color: #444;
+  display: none;
+  border: 0.8vh outset #555;
+}
+
+#dailyRewardRarities {
+  position: absolute;
+  text-align: right;
+  top: 3vh;
+  right: 0.5vh;
+  font-size: 2vh;
+  line-height: 2.5vh;
+  margin: 0;
+  color: #ccc;
+}
+
+#claimDailyRewardButton {
+  bottom: 16vh;
+  font-size: 2vh;
+}
+
+.dayBox {
+  position: absolute;
+  bottom: 0;
+  width: 13vh;
+  height: 13vh;
+  background-color: #666;
+  border: 1vh outset #777;
+  text-align: center;
+  color: white;
+  font-size: 3vh;
+} 
+
+#petsDiv {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 70%;
+  height: 70%;
+  background-color: #444;
+  display: none;
+  border: 0.8vh outset #555;
+}
+
+.closeButton {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  height: 30px;
+  font-size: 16px;
+  background-color: #ccc;
+  border: 2px solid #222;
+  border-radius: 15px;
+  padding-left: 6px;
+  padding-right: 6px;
+  z-index: 20;
+}
+
+#petsCloseButton:hover {
+  cursor: pointer;
+}
+
+#petsList {
+  position: relative;
+  margin: 0;
+  width: 60%;
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+#petsListInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#petInfo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background-color: #666;
+  background-image: url('img/halftoneDots.png')
+}
+
+
+
+
+
+#themeDiv {
+  position: absolute;
+  bottom: 0.5vh;
+  left: 0.5vh;
+}
+
+.themeButton {
+  height: 2.5vh;
+  font-size: 1.5vh;
+}
+
+#versionText {
+  position: absolute;
+  bottom: 0.5vh;
+  right: 0.5vh;
+  margin: 0;
+  line-height: 2vh;
+  font-size: 2vh;
+}
+
+.settingsButton {
+  position: absolute;
+  right: 0.5vh;
+  height: 2.2vh;
+  font-size: 1.5vh;
+  line-height: 1.5vh;
+  background-color: #bbb;
+  border: 3px solid #666;
+}
+
+.settingsButton:hover {
+  cursor: pointer;
+}
