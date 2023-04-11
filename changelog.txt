@@ -1,11 +1,14 @@
+v0.1.4
+-Buffed all pets (slightly)
+-Fixed a bug
+
 v0.1.3
 -Balancing changes
  -Skeleton and Ghost rare pets are nearly half as rare (they are buffed too)
- -Buffed some pets, others were nerfed
-    -Buffed: Skeleton 8-9, Ghost 8-9
-    -Nerfed: Skeleton 1-7, Ghost 1-7
-    -Balanced:
+ -Adjusted pet stats and rarities
  -Added stats to t4 pets
+ -Level formula is slower (levels are harder to get)
+    -Adjusted unlock levels
 
 v0.1.2
 -Trying to add a new pet (legendary pet)
