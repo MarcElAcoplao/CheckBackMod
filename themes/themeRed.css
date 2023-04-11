@@ -1,0 +1,31 @@
+body {
+  background-color: #422;
+}
+
+.button {
+  background-color: #d75;
+  border: 0.3vh solid #722;
+  color: #fff;
+}
+
+.button:disabled {
+  background-color: #777;
+  border: 0.3vh solid #444;
+  color: #ddd;
+}
+
+#unboxButton1 {
+  border: 0.3vh solid white;
+}
+
+#unboxButton2 {
+  border: 0.3vh solid #aaf;
+}
+
+#unboxButton3 {
+  border: 0.3vh solid #caf;
+}
+
+#nextUnlockLevel, #selectedPetText, #themeText, #versionText {
+  color: #d99;
+}
