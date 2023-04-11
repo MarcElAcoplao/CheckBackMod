@@ -1,4 +1,4 @@
-const unlockLevels = [2,3,4,5,6,8,15,20,30,45,65]
+const unlockLevels = [2,3,4,5,6,8,12,18,25,35,50]
 const levelBarTextures = [50,55,60,65,70,80,90,100,200]
 
 const levelBarColours = [
@@ -86,57 +86,57 @@ const ranks = [
 const pets = [
   //Name, multiplier to Lower button XP, multiplier to higher button XP, divider to XP cooldowns, divider to pet cooldowns
   ["Test", 1, 1, 1, 1], //0
-  ["Green butterfly", 1.05, 1.03, 1, 1], //1
-  ["Green lizard", 1.02, 1.07, 1, 1], //2
-  ["Rat", 1.1, 1.05, 1, 1], //3
-  ["Purple butterfly", 1.16, 1.1, 1.02, 1], //4
-  ["Glowing spider", 1.15, 1.21, 1.04, 1], //5
-  ["Green dragon", 1.45, 1.4, 1.06, 1], //6 (oldpet1.6 around old3.3)
-  ["Snake", 1.12, 1.12, 1.04, 1.02], //7
-  ["Giant firefly", 1.18, 1.16, 1.05, 1.03], //8
-  ["Eldritch eyeball", 1.24, 1.18, 1.04, 1.05], //9
-  ["Gargoyle", 1.22, 1.28, 1, 1.04], //10
-  ["Glowing eyeball", 1.3, 1.24, 1.05, 1.06], //11
-  ["Red butterfly", 1.4, 1.38, 1.09, 1.03], //12
-  ["Blue dragon", 1.8, 1.8, 1.15, 1.1], //13 (oldpet2.7 around new1.3)
-  ["Large tortoise", 1.22, 1.24, 1.02, 1.04], //14
-  ["Mutant tarantula", 1.26, 1.26, 1.08, 1.02], //15
-  ["Living rose", 1.3, 1.35, 1.06, 1.07], //16
-  ["Ice golem", 1.32, 1.4, 1.1, 1.06], //17
-  ["Cat", 1.45, 1.42, 1.12, 1.1], //18
-  ["Vortex monster", 1.46, 1.5, 1.08, 1.15], //19
-  ["Geometrical eyeball", 1.6, 1.6, 1.12, 1.12], //20
-  ["Death scorpion", 1.75, 1.64, 1.16, 1.13], //21
-  ["Red dragon", 2.5, 2.3, 1.2, 1.2], //22 (oldpet3.8 around new1.7 or 2.3)
-  ["Blue butterfly", 1.65, 1.74, 1.18, 1.2], //newpet1.1 (23)
-  ["Shiny rat", 1.65, 1.74, 1.18, 1.2], //newpet1.2 (24)
-  ["Earth snake", 1.65, 1.74, 1.18, 1.2], //newpet1.3 (25)
-  ["Salamander", 1.65, 1.74, 1.18, 1.2], //newpet1.4 (26)
-  ["Dark snake", 1.65, 1.74, 1.18, 1.2], //newpet1.5 (27)
-  ["Lilypad", 1.65, 1.74, 1.18, 1.2], //newpet1.6 [aprox 2.1 stats] (28)
-  ["Spirit", 1.65, 1.74, 1.18, 1.2], //newpet1.7 [aprox 2.5 stats] (29)
-  ["Living mushroom", 1.65, 1.74, 1.18, 1.2], //newpet1.8 [aprox 3.1 stats] (30)
-  ["Purple dragon", 16.5, 16.5, 1.65, 1.65], //newpet1.9 [aprox 3.6 stats] (31)
+  ["Green butterfly", 1.06, 1.04, 1, 1], //1
+  ["Green lizard", 1.03, 1.08, 1, 1], //2
+  ["Rat", 1.12, 1.07, 1, 1], //3
+  ["Purple butterfly", 1.1, 1.15, 1.03, 1], //4
+  ["Glowing spider", 1.17, 1.23, 1.04, 1], //5
+  ["Green dragon", 1.55, 1.5, 1.08, 1.01], //6 (oldpet1.6 around old3.3)
+  ["Snake", 1.15, 1.15, 1.02, 1.02], //7
+  ["Giant firefly", 1.2, 1.18, 1.06, 1.04], //8
+  ["Eldritch eyeball", 1.28, 1.22, 1.05, 1.05], //9
+  ["Gargoyle", 1.3, 1.32, 1, 1.07], //10
+  ["Glowing eyeball", 1.32, 1.28, 1.08, 1.06], //11
+  ["Red butterfly", 1.55, 1.55, 1.08, 1.1], //12
+  ["Blue dragon", 2.3, 2.3, 1.15, 1.14], //13 (oldpet2.7 around new1.3)
+  ["Large tortoise", 1.4, 1.8, 1, 1], //14
+  ["Mutant tarantula", 1.45, 1.5, 1.08, 1.02], //15
+  ["Living rose", 1.55, 1.55, 1.06, 1.05], //16
+  ["Ice golem", 1.7, 1.7, 1.02, 1.02], //17
+  ["Cat", 1.4, 1.4, 1.23, 1.15], //18
+  ["Vortex monster", 1.4, 1.9, 1.08, 1.1], //19
+  ["Geometrical eyeball", 1.8, 1.8, 1.12, 1.12], //20
+  ["Death scorpion", 2, 2, 1.1, 1.13], //21
+  ["Red dragon", 3.4, 3, 1.2, 1.14], //22 (oldpet3.8 around new1.7 or 2.3)
+  ["Blue butterfly", 1.7, 1.7, 1.1, 1.13], //newpet1.1 (23)
+  ["Shiny rat", 1.8, 1.8, 1.2, 1.2], //newpet1.2 (24)
+  ["Earth snake", 2.3, 2.3, 1.15, 1.14], //newpet1.3 (25)
+  ["Salamander", 2.2, 2.2, 1.18, 1.2], //newpet1.4 (26)
+  ["Dark snake", 2, 2, 1.24, 1.21], //newpet1.5 (27)
+  ["Lilypad", 3.3, 3.55, 1.1, 1.1], //newpet1.6 (28)
+  ["Spirit", 4.5, 4.5, 1.2, 1], //newpet1.7 (29)
+  ["Living mushroom", 5, 3.2, 1.25, 1.2], //newpet1.8 (30)
+  ["Purple dragon", 9, 8.6, 1.35, 1.4], //newpet1.9 (31)
 ]
 
 const specialPets = [
   ["Test", 1, 1, 1, 1], //0
-  ["Small skeleton", 1.16, 1.12, 1.03, 1.02], //1
-  ["Skeletal dog", 1.2, 1.18, 1.04, 1.05], //2
-  ["Skeleton", 1.26, 1.26, 1.08, 1.07], //3
-  ["Skeletal snake", 1.3, 1.33, 1.1, 1.1], //4
-  ["Skeletal vulture", 1.45, 1.48, 1.16, 1.18], //5
-  ["Skeletal hound", 1.6, 1.6, 1.2, 1.2], //6
-  ["Skeletal hydra", 2.8, 3.2, 1.32, 1.3], //7
-  ["Skeletal dragon", 4.5, 4.8, 1.45, 1.45], //8
-  ["Ghost rodent", 1.18, 1.14, 1.04, 1.02], //9
-  ["Ghost fly", 1.22, 1.21, 1.06, 1.06], //10
-  ["Large ghost ant", 1.28, 1.32, 1.1, 1.08], //11
-  ["Ghost bat", 1.4, 1.4, 1.12, 1.12], //12
-  ["Ghost dog", 1.55, 1.64, 1.18, 1.2], //13
-  ["Ghost tarantula", 1.8, 2, 1.28, 1.28], //14
-  ["Ghost hydra", 3.2, 3.5, 1.38, 1.35], //15
-  ["Ghost dragon", 5.7, 6.3, 1.5, 1.5], //16
+  ["Small skeleton", 1.2, 1.16, 1.04, 1.02], //1
+  ["Skeletal dog", 1.23, 1.18, 1.05, 1.04], //2
+  ["Skeleton", 1.26, 1.26, 1.08, 1.08], //3
+  ["Skeletal snake", 1.33, 1.36, 1.08, 1.1], //4
+  ["Skeletal vulture", 1.7, 1.5, 1.15, 1.1], //5
+  ["Skeletal hound", 1.8, 1.8, 1.1, 1.15], //6
+  ["Skeletal hydra", 3.2, 3.8, 1.2, 1.2], //7
+  ["Skeletal dragon", 5.5, 5.8, 1.3, 1.25], //8
+  ["Ghost rodent", 1.22, 1.18, 1.05, 1.03], //9
+  ["Ghost fly", 1.25, 1.21, 1.06, 1.05], //10
+  ["Large ghost ant", 1.35, 1.4, 1.1, 1.08], //11
+  ["Ghost bat", 1.4, 1.4, 1.1, 1.12], //12
+  ["Ghost dog", 1.6, 1.64, 1.2, 1.2], //13
+  ["Ghost tarantula", 2.1, 2.1, 1.13, 1.18], //14
+  ["Ghost hydra", 3.5, 4, 1.25, 1.23], //15
+  ["Ghost dragon", 6.5, 6.6, 1.3, 1.25], //16
 ]
 
 const basicUnboxChances = [

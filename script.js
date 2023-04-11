@@ -658,8 +658,8 @@ function claimDailyReward() {
   game.dailyRewards++
   displayDailyRewards()
   if (game.dailyRewards % 2 == 1) {game.XP += Math.min(17.5 + game.dailyRewards * 2.5, 100)}
-  else if (dailyRewardDay % 4 == 2) {unboxPet(4)}
-  else {unboxPet(5)}
+  else if (dailyRewardDay % 4 == 2) {unboxPet(5)}
+  else {unboxPet(6)}
 }
 
 function changeTheme(x) {
