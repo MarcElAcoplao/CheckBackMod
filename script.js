@@ -118,6 +118,7 @@ function loadGame(loadgame) {
   }
   if (game.unlocks >= 9) {document.getElementById("unboxButton3").style.display = "block"}
   if (game.unlocks >= 10) {document.getElementById("button6").style.display = "block"}
+  if (game.unlocks >= 11) {document.getElementById("unboxButton4").style.display = "block"}
 }
 
 
@@ -171,32 +172,41 @@ function updateSmall() {
     else {document.getElementById("button5").innerHTML = "Gain " + (25 * specialPets[game.selectedPet - pets.length][1]).toFixed(2) + " XP"}
   }
   if (game.buttonCooldowns[5] > 0) {
+    document.getElementById("button6").disabled = true
+    document.getElementById("button6").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[5])
+  }
+  else {
+    document.getElementById("button6").disabled = false
+    if (game.selectedPet < pets.length) {document.getElementById("button6").innerHTML = "Gain " + (50 * pets[game.selectedPet][1]).toFixed(2) + " XP"}
+    else {document.getElementById("button6").innerHTML = "Gain " + (50 * specialPets[game.selectedPet - pets.length][1]).toFixed(2) + " XP"}
+  }
+  if (game.buttonCooldowns[6] > 0) {
     document.getElementById("unboxButton1").disabled = true
-    document.getElementById("unboxButton1").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[5])
+    document.getElementById("unboxButton1").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[6])
   }
   else {
     document.getElementById("unboxButton1").disabled = false
     document.getElementById("unboxButton1").innerHTML = "Unbox a random basic pet"
   }
-  if (game.buttonCooldowns[6] > 0) {
+  if (game.buttonCooldowns[7] > 0) {
     document.getElementById("unboxButton2").disabled = true
-    document.getElementById("unboxButton2").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[6])
+    document.getElementById("unboxButton2").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[7])
   }
   else {
     document.getElementById("unboxButton2").disabled = false
     document.getElementById("unboxButton2").innerHTML = "Unbox a random advanced pet"
   }
-  if (game.buttonCooldowns[7] > 0) {
+  if (game.buttonCooldowns[8] > 0) {
     document.getElementById("unboxButton3").disabled = true
-    document.getElementById("unboxButton3").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[7])
+    document.getElementById("unboxButton3").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[8])
   }
   else {
     document.getElementById("unboxButton3").disabled = false
     document.getElementById("unboxButton3").innerHTML = "Unbox a random epic pet"
   }
-  if (game.buttonCooldowns[8] > 0) {
+  if (game.buttonCooldowns[9] > 0) {
     document.getElementById("claimDailyRewardButton").disabled = true
-    document.getElementById("claimDailyRewardButton").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[8])
+    document.getElementById("claimDailyRewardButton").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[9])
     document.getElementById("dailyRewardButton").style.border = "0.3vh solid #80f"
   }
   else {
@@ -205,15 +215,15 @@ function updateSmall() {
     if (Date.now() % 600 < 300) {document.getElementById("dailyRewardButton").style.border = "0.3vh solid #80f"}
     else {document.getElementById("dailyRewardButton").style.border = "0.3vh solid #d9f"}
   }
-  if (game.buttonCooldowns[9] > 0) {
-    document.getElementById("button6").disabled = true
-    document.getElementById("button6").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[9])
+  if (game.buttonCooldowns[10] > 0) {
+    document.getElementById("unboxButton4").disabled = true
+    document.getElementById("unboxButton4").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[10])
   }
   else {
-    document.getElementById("button6").disabled = false
-    if (game.selectedPet < pets.length) {document.getElementById("button6").innerHTML = "Gain " + (50 * pets[game.selectedPet][1]).toFixed(2) + " XP"}
-    else {document.getElementById("button6").innerHTML = "Gain " + (50 * specialPets[game.selectedPet - pets.length][1]).toFixed(2) + " XP"}
+    document.getElementById("unboxButton4").disabled = false
+    document.getElementById("unboxButton4").innerHTML = "Unbox a random legendary pet"
   }
+
   game.level = XPToLevel(Math.max(Math.floor(game.XP), 0))
   document.getElementById("level").innerHTML = game.level
   //This bit is weird and gross
@@ -242,7 +252,7 @@ setInterval(updateSmall, 16) //Runs the update ~60 times per second
 
 //Updates cooldowns
 function updateLarge() {
-  for (i=0;i<10;i++) {
+  for (i=0;i<11;i++) {
     if (game.buttonCooldowns[i] > 0) game.buttonCooldowns[i] -= ((Date.now() - game.timeOfLastUpdate) / 1000)
     if (game.buttonCooldowns[i] < 0) game.buttonCooldowns[i] = 0
   }
@@ -250,13 +260,15 @@ function updateLarge() {
 }
 setInterval(updateLarge, 100) //Runs the update ~10 times per second
 
-function XPToLevel(x) {return Math.floor((x / 5) ** 0.6) + 1}
-function levelToXP(x) {return Math.ceil((x-1) ** (1/0.6) * 5)}
+function XPToLevel(x) {return Math.floor((x / 5) ** 0.55) + 1}
+function levelToXP(x) {return Math.ceil((x-1) ** (1/0.55) * 5)}
 function numberToTime(x) {
   xCeil = Math.ceil(x)
   result = ""
-  if (xCeil>=7200) result += Math.floor(xCeil/3600) + " hours "
-  else if (xCeil>=3600) result += Math.floor(xCeil/3600) + " hour "
+  if (xCeil>=172800) result += Math.floor(xCeil/86400) + " days "
+  else if (xCeil>=86400) result += Math.floor(xCeil/86400) + " day "
+  if (Math.floor(xCeil/3600)%3600 == 1) result += (Math.floor(xCeil/3600)%3600) + " hour "
+  else if (Math.floor(xCeil/3600)%3600 != 0) result += (Math.floor(xCeil/3600)%3600) + " hours "
   if (Math.floor(xCeil/60)%60 == 1) result += (Math.floor(xCeil/60)%60) + " minute "
   else if (Math.floor(xCeil/60)%60 != 0) result += (Math.floor(xCeil/60)%60) + " minutes "
   if (xCeil%60 == 1) result += Math.floor(xCeil%60) + " second "
@@ -319,11 +331,11 @@ function clickButton(x) {
   else if (x==6 && game.buttonCooldowns[5] == 0) {
     if (game.selectedPet < pets.length) {
       game.XP += (50 * pets[game.selectedPet][2])
-      game.buttonCooldowns[5] = 300 / (pets[game.selectedPet][3]) //5min testing (3d planned)
+      game.buttonCooldowns[5] = 259200 / (pets[game.selectedPet][3]) //3d
     } 
     else {
       game.XP += (50 * specialPets[game.selectedPet - pets.length][2])
-      game.buttonCooldowns[4] = 300 / (specialPets[game.selectedPet - pets.length][3]) //don't know what's this for
+      game.buttonCooldowns[5] = 259200 / (specialPets[game.selectedPet - pets.length][3]) //don't know what's this for
     } 
   }
   updateSmall()
@@ -354,6 +366,7 @@ function handleUnlocks() {
       }
       else if (i==8) {document.getElementById("unboxButton3").style.display = "block"}
       else if (i==9) {document.getElementById("button6").style.display = "block"}
+      else if (i==10) {document.getElementById("unboxButton4").style.display = "block"}
       break
     }
   }
@@ -401,7 +414,7 @@ function unboxPet(x) {
       }
     }
   }
-  else if (x==4) {
+  else if (x==5) {
     for (i=0;i<skeletalUnboxChances.length;i++) totalWeight += skeletalUnboxChances[i][1]
     for (i=0;i<skeletalUnboxChances.length;i++) {
       if (Math.random() * totalWeight < skeletalUnboxChances[i][1]) {
@@ -413,7 +426,7 @@ function unboxPet(x) {
       }
     }
   }
-  else if (x==5) {
+  else if (x==6) {
     for (i=0;i<ghostUnboxChances.length;i++) totalWeight += ghostUnboxChances[i][1]
     for (i=0;i<ghostUnboxChances.length;i++) {
       if (Math.random() * totalWeight < ghostUnboxChances[i][1]) {
@@ -425,8 +438,20 @@ function unboxPet(x) {
       }
     }
   }
+  else if (x==4) {
+    for (i=0;i<legendaryUnboxChances.length;i++) totalWeight += legendaryUnboxChances[i][1]
+    for (i=0;i<legendaryUnboxChances.length;i++) {
+      if (Math.random() * totalWeight < legendaryUnboxChances[i][1]) {
+        petChosen = legendaryUnboxChances[i][0]
+        i = legendaryUnboxChances.length
+      }
+      else {
+        totalWeight -= legendaryUnboxChances[i][1]
+      }
+    }
+  }
   
-  if (x <= 3) {
+  if (x <= 4) {
     alert("Got a " + pets[petChosen][0] + "!")
     if (!game.pets[petChosen]) {game.pets[petChosen] = 1}
     else {game.pets[petChosen]++}
@@ -438,14 +463,16 @@ function unboxPet(x) {
   }
 
   if (game.selectedPet < pets.length) {
-    if (x==1) {game.buttonCooldowns[5] = 7200 / (pets[game.selectedPet][4])} //2 hours
-    else if (x==2) {game.buttonCooldowns[6] = 21600 / (pets[game.selectedPet][4])} //6 hours
-    else if (x==3) {game.buttonCooldowns[7] = 64800 / (pets[game.selectedPet][4])} //18 hours
+    if (x==1) {game.buttonCooldowns[6] = 7200 / (pets[game.selectedPet][4])} //2 hours
+    else if (x==2) {game.buttonCooldowns[7] = 21600 / (pets[game.selectedPet][4])} //6 hours
+    else if (x==3) {game.buttonCooldowns[8] = 64800 / (pets[game.selectedPet][4])} //18 hours
+    else if (x==4) {game.buttonCooldowns[10] = 172800 / (pets[game.selectedPet][4])} //2 days
   }
   else {
-    if (x==1) {game.buttonCooldowns[5] = 7200 / (specialPets[game.selectedPet - pets.length][4])} //2 hours
-    else if (x==2) {game.buttonCooldowns[6] = 21600 / (specialPets[game.selectedPet - pets.length][4])} //6 hours
-    else if (x==3) {game.buttonCooldowns[7] = 64800 / (specialPets[game.selectedPet - pets.length][4])} //18 hours
+    if (x==1) {game.buttonCooldowns[6] = 7200 / (specialPets[game.selectedPet - pets.length][4])} //2 hours
+    else if (x==2) {game.buttonCooldowns[7] = 21600 / (specialPets[game.selectedPet - pets.length][4])} //6 hours
+    else if (x==3) {game.buttonCooldowns[8] = 64800 / (specialPets[game.selectedPet - pets.length][4])} //18 hours
+    else if (x==4) {game.buttonCooldowns[10] = 172800 / (specialPets[game.selectedPet - pets.length][4])} //2 days
   }
   
   if (document.getElementById("petsDiv").style.display == "block") displayPets()
@@ -477,6 +504,15 @@ function displayPetRarities(x) {
       document.getElementById("petRarities").innerHTML += pets[epicUnboxChances[i][0]][0] + ": " + (epicUnboxChances[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
     }
   }
+
+  else if (x==4) {
+  document.getElementById("petRarities").innerHTML = "<img src='img/crateEpic.png' style='width:6vh'><br><b>Rarities for this crate:</b><br>"
+  totalWeight = 0
+  for (i=0;i<legendaryUnboxChances.length;i++) totalWeight += legendaryUnboxChances[i][1]
+  for(i=0;i<legendaryUnboxChances.length;i++) {
+    document.getElementById("petRarities").innerHTML += pets[legendaryUnboxChances[i][0]][0] + ": " + (legendaryUnboxChances[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
+  }
+}
 }
 
 function openClosePetsTab() {
@@ -618,7 +654,7 @@ function displayDailyRewardRarities(x) {
 }
 
 function claimDailyReward() {
-  game.buttonCooldowns[8] = 86400 //24 hours
+  game.buttonCooldowns[9] = 86400 //24 hours
   game.dailyRewards++
   displayDailyRewards()
   if (game.dailyRewards % 2 == 1) {game.XP += Math.min(17.5 + game.dailyRewards * 2.5, 100)}

@@ -1,4 +1,24 @@
-v0.4.0
+v0.1.3
+-Balancing changes
+ -Skeleton and Ghost rare pets are nearly half as rare (they are buffed too)
+ -Buffed some pets, others were nerfed
+    -Buffed: Skeleton 8-9, Ghost 8-9
+    -Nerfed: Skeleton 1-7, Ghost 1-7
+    -Balanced:
+ -Added stats to t4 pets
+
+v0.1.2
+-Trying to add a new pet (legendary pet)
+-9 pets
+-2d cooldown
+-Rarest pet: 0.12% (1/833)
+
+v0.1.1 (1st version from Marc)
+-Mod exists
+-Exp button6 Added
+-Moved all pet and daily cooldowns array by 1
+
+v0.4.0 (Last version from Demonin)
 -Added an epic pet unbox button with 9 new pets! (unlocks at level 30)
 -Added a daily reward system with two new crate types, each with 8 new pets! (unlocks at level 8)
 
@@ -41,14 +61,3 @@ v0.1.1
 v0.1.0
 -Made the game lol
 -Only 3 buttons (1 minute, 10 minutes, 1 hour)
-
-
--Add a new button in the HTML (around line 36)
--Add some CSS to position it (around line 135 in the CSS file)
--Add a new number to the unlock levels constant
--Update the handleUnlocks function (around line 313 in the script file) to make the new button appear when you hit the unlock level
--Update the load function (around line 102) to make the new button appear when loading the page if you're a high enough level
--Add a new section to the clickButton function to give XP and set the cooldown for the button
--Modify updateLarge (around line 234) from (i=0;i<9;i++)  to (i=0;i<10;i++) so that the new cooldown actually decreases
--Add a new section in updateSmall at around line 207 to update how the new button looks depending on whether it's on a cooldown or not
-Most of these are quick steps, if you get it right you can add a new button in like 5 minutes
