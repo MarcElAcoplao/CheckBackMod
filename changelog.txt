@@ -20,6 +20,7 @@ Note: This mod uses different balancing from the main game. If you load your mai
 v0.1.6
 -Polishing
 -Actually, really nothing here, just some final stuff before release
+-Added discord user
 
 v0.1.5
 -Added border to pet list
