@@ -1,3 +1,33 @@
+Full patch notes (v0.2.0)
+-Mod exists
+-2 new xp buttons
+  -Button6 (Unlocked at level 35, gives 50 xp, 3d cooldown)
+  -Button7 (Unlocked at level 70, gives 150 xp, 7d cooldown)
+-New crate (legendary crate)
+  -9 New unique and powerful pets. They wait you at halfway to level 100
+  -Rarest pet is 0.12% (1/833)
+  -2d cooldown
+-The rarest skeleton/ghost pets have been made rarer (Like twice as rare)
+-All pet stats have been balanced (tweaked then buffed)
+-Levels scale faster (harder to level up)
+  -Unlocks are some level sooner
+  -Overall early game is harder
+  -Daily xp rewards cap later (around day 400)
+-Bugfixing (Credit to Demonin and Jacorb with this part)
+-Current endgame: Level 100 (When new feature comes in on next update)
+Note: This mod uses different balancing from the main game. If you load your main save, you will not experience the intended balancing.
+
+v0.1.6
+-Polishing
+-Actually, really nothing here, just some final stuff before release
+
+v0.1.5
+-Added border to pet list
+-Added new exp button (level 70, 150 exp, 7d)
+-Bugfixing (credit to Jacorb)
+-Added funny text to pets (look at constants.js but there's spoilers of pet stats)
+-Nothing really important but daily reward xp is "uncapped" (Caps after nearly 390 days)
+
 v0.1.4
 -Buffed all pets (slightly)
 -Fixed a bug
@@ -11,7 +41,7 @@ v0.1.3
     -Adjusted unlock levels
 
 v0.1.2
--Trying to add a new pet (legendary pet)
+-Trying to add a new crate (legendary crate)
 -9 pets
 -2d cooldown
 -Rarest pet: 0.12% (1/833)

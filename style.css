@@ -142,23 +142,28 @@ img {
   display: none;
 }
 
-#unboxButton1 {
+#button7 {
   top: 61vh;
   display: none;
 }
 
-#unboxButton2 {
+#unboxButton1 {
   top: 67vh;
   display: none;
 }
 
-#unboxButton3 {
+#unboxButton2 {
   top: 73vh;
   display: none;
 }
 
-#unboxButton4 {
+#unboxButton3 {
   top: 79vh;
+  display: none;
+}
+
+#unboxButton4 {
+  top: 85vh;
   display: none;
 }
 
