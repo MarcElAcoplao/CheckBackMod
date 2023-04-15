@@ -528,7 +528,7 @@ function displayPetRarities(x) {
   }
 
   else if (x==4) {
-  document.getElementById("petRarities").innerHTML = "<img src='img/crateEpic.png' style='width:6vh'><br><b>Rarities for this crate:</b><br>"
+  document.getElementById("petRarities").innerHTML = "<img src='img/crateLegendary.png' style='width:6vh'><br><b>Rarities for this crate:</b><br>"
   totalWeight = 0
   for (i=0;i<legendaryUnboxChances.length;i++) totalWeight += legendaryUnboxChances[i][1]
   for(i=0;i<legendaryUnboxChances.length;i++) {

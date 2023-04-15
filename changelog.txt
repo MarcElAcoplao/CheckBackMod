@@ -1,3 +1,6 @@
+v0.2.0.1
+-Legendary crate icon
+
 Full patch notes (v0.2.0)
 -Mod exists
 -2 new xp buttons
