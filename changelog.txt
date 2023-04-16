@@ -1,3 +1,6 @@
+v0.2.0.2
+-Epic crate unlocks at level 20 (previous: level 25)
+
 v0.2.0.1
 -Legendary crate icon
 
