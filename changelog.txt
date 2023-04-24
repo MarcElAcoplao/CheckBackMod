@@ -1,3 +1,30 @@
+v0.3.0.1
+-You can now see ingame you XPBoost
+
+v0.3.0
+-New feature: Prestige! [Kinda]
+  -When you reach level 100, you can reset for +20% XP multiplier
+    -Resets: Current XP
+    -Keep: Everything else (Pets, unlocks, dailyRewardDay)
+    -Text "You have an XPBoost of (value)" [Sadly not visible, use game.XPBoost to look in console]
+    -Small note about this: You are only able to reset once a day, and when you reach level 100
+    -Can be used as currency [v0.4.0]
+-Balancing to make the game faster (Also because you need a lot of XP to progress)
+  -All pet xp value has been doubled
+  -Pets now boost daily reward XP. The 1st xp value boosts the gain and the 2nd value boosts the cap
+-Changed title to "Check Back Mod" as it wasn't updated before
+-Current endgame: x2 XPBoost [Reset 5 times]
+
+v0.2.1
+-Added the new button (feature)
+  -Unlocks at level 100, and increases your XP gain, but resets your XP and unlocks (You keep pets and dailyRewardDay)
+  -New variable, game.XPBoost which increases whenever you click this new button. As it says, it boosts xp gain
+  -New text
+-Pet xp boost x2
+-Buffed dailyRewardXP
+-Changed title to "Check Back Mod" which apparently I didn't before
+
+
 v0.2.0.2
 -Epic crate unlocks at level 20 (previous: level 25)
 -This line is just so I can push something again and see if it updates

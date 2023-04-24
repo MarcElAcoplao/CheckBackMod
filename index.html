@@ -9,7 +9,7 @@
   <meta content="img/icon.png" property="og:image" />
   <meta content="#008888" data-react-helmet="true" name="theme-color" />
   <meta name="color-scheme" content="light only">
-  <title>Check Back</title>
+  <title>Check Back Mod</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <link id="themeLink" href="themes/themeDark.css" rel="stylesheet" type="text/css" />
   <link rel="icon" type="image/x-icon" href="img/icon.png">
@@ -27,6 +27,7 @@
   </div>
   <p id="nextUnlockLevel"></p>
   <button class="button" id="petsTabButton" style="top: 23vh; left: 5vh; display: none" onclick="openClosePetsTab()">Pets</button>
+  <p id="currentXPBoost">You have an XP Boost of: 1</p>
   <p id="selectedPetText">Current selected pet:<br><span id="selectedPet" style="font-weight: bold">None</span><br><img id="selectedPetImg" src="img/pets/0.png" style="width: 8vh; display: none"><br><br><span id="petRarities"></span></p>
   
   <button class="button" id="button1" onclick="clickButton(1)">Gain 1 XP</button>
@@ -36,6 +37,7 @@
   <button class="button" id="button5" onclick="clickButton(5)">Gain 25 XP</button>
   <button class="button" id="button6" onclick="clickButton(6)">Gain 50 XP</button>
   <button class="button" id="button7" onclick="clickButton(7)">Gain 150 XP</button>
+  <button class="button" id="button8" onclick="clickButton(8)">Gain 0.2 XPBoost</button>
 
   <button class="button" id="unboxButton1" onclick="unboxPet(1)" onmouseover="displayPetRarities(1)" onmouseout="displayPetRarities(0)">Unbox a random basic pet</button>
   <button class="button" id="unboxButton2" onclick="unboxPet(2)" onmouseover="displayPetRarities(2)" onmouseout="displayPetRarities(0)">Unbox a random advanced pet</button>
@@ -54,7 +56,7 @@
 
   <button class="button" id="dailyRewardButton" onclick="openCloseDailyRewardTab()">Daily reward</button>
   
-  <p id="versionText">Check Back Mod v0.2.0.2 (Creator: MarcElAcoplao_v2#0722)</p>
+  <p id="versionText">Check Back Mod v0.3.0 (Creator: MarcElAcoplao_v2#0722)</p>
   <button class="settingsButton" style="bottom: 10.5vh" onclick="exportGame()">Export</button>
   <button class="settingsButton" style="bottom: 8vh" onclick="importGame()">Import</button>
   <button class="settingsButton" style="bottom: 5.5vh" onclick="save()">Manual save</button>

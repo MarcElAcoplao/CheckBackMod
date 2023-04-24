@@ -97,6 +97,11 @@ img {
   display: none;
 }
 
+#currentXPBoost{
+  left: 10vh;
+  height: 40vh;
+}
+
 .button {
   position: absolute;
   left: 50%;
@@ -164,6 +169,11 @@ img {
 
 #unboxButton4 {
   top: 85vh;
+  display: none;
+}
+
+#button8 {
+  top: 91vh;
   display: none;
 }
 
