@@ -7,3 +7,15 @@
 -Modify updateLarge (around line 234) from (i=0;i<9;i++)  to (i=0;i<10;i++) so that the new cooldown actually decreases
 -Add a new section in updateSmall at around line 207 to update how the new button looks depending on whether it's on a cooldown or not
 Most of these are quick steps, if you get it right you can add a new button in like 5 minutes
+
+
+
+Full Update log [v1]
+-New buttons
+-New pets
+-New balancing
+    -Pets were rebalanced to make stronger
+        -Pet xp then was doubled
+    -Levels now grow slower (unlocks are faster)
+    -Daily reward xp is now buffed based on pet boost to buttons 1-3, and cap was increased to 1000 * pet boost to buttons 4+
+    -
