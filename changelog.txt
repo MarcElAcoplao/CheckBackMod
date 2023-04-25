@@ -1,5 +1,6 @@
 v0.3.0.1
--You can now see ingame you XPBoost
+-You can now see ingame you XPBoost (Shows in 1st button)
+-Added credit to Demonin
 
 v0.3.0
 -New feature: Prestige! [Kinda]

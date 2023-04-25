@@ -241,7 +241,7 @@ function updateSmall() {
   }
   else {
     document.getElementById("button8").disabled = false
-    document.getElementById("button8").innerHTML = "Gain +20% XP multi, but reset XP"
+    document.getElementById("button8").innerHTML = "Gain +20% XP multi, but reset XP. Current: " + game.XPBoost
   }
 
   game.level = XPToLevel(Math.max(Math.floor(game.XP), 0))
@@ -408,10 +408,7 @@ function handleUnlocks() {
       else if (i==9) {document.getElementById("button6").style.display = "block"}
       else if (i==10) {document.getElementById("unboxButton4").style.display = "block"}
       else if (i==11) {document.getElementById("button7").style.display = "block"}
-      else if (i==12) {
-        document.getElementById("button8").style.display = "block"
-        document.getElementById("currentXPBoost").style.display = "block"
-      }
+      else if (i==12) {document.getElementById("button8").style.display = "block"}
       break
     }
   }

@@ -97,11 +97,6 @@ img {
   display: none;
 }
 
-#currentXPBoost{
-  left: 10vh;
-  height: 40vh;
-}
-
 .button {
   position: absolute;
   left: 50%;
@@ -305,6 +300,15 @@ img {
 }
 
 #versionText {
+  position: absolute;
+  bottom: 3vh;
+  right: 0.5vh;
+  margin: 0;
+  line-height: 2vh;
+  font-size: 2vh;
+}
+
+#creditText {
   position: absolute;
   bottom: 0.5vh;
   right: 0.5vh;
