@@ -5,7 +5,7 @@ function reset() {
     XP: 0,
     level: 1,
     XPBoost: 1,
-    buttonCooldowns: [0, 0, 0, 0, 0, 0],
+    buttonCooldowns: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     unlocks: 0,
     currentTheme: 2,
     lastSave: Date.now(),

@@ -1,3 +1,6 @@
+v0.3.0.2
+-Slight bug fixed: buttonCooldowns 11 and 12 started as undefined and had to be updated manually
+
 v0.3.0.1
 -You can now see ingame you XPBoost (Shows in 1st button)
 -Added credit to Demonin
