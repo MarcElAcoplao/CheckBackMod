@@ -14,19 +14,6 @@ body {
   color: #bbb;
 }
 
-#unboxButton1 {
-  border: 0.3vh solid white;
-}
-
-#unboxButton2 {
-  border: 0.3vh solid #aaf;
-}
-
-#unboxButton3 {
-  border: 0.3vh solid #caf;
-}
-
-
 #nextUnlockLevel, #selectedPetText, #themeText, #versionText {
   color: #bbb;
 }

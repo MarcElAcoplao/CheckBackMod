@@ -301,15 +301,6 @@ img {
 
 #versionText {
   position: absolute;
-  bottom: 3vh;
-  right: 0.5vh;
-  margin: 0;
-  line-height: 2vh;
-  font-size: 2vh;
-}
-
-#creditText {
-  position: absolute;
   bottom: 0.5vh;
   right: 0.5vh;
   margin: 0;
