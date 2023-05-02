@@ -670,7 +670,10 @@ function displayDailyRewards() {
   for (i=0;i<4;i++) {
     dailyRewardDay = game.dailyRewards+i+1
     document.getElementsByClassName("dayBox")[i].innerHTML = "Day " + dailyRewardDay
-    if (dailyRewardDay % 2 == 1) {document.getElementsByClassName("dayBox")[i].innerHTML += "<br><br>" + Math.floor(Math.min((17.5 + dailyRewardDay * 2.5)*pets[game.selectedPet][1], 1000*pets[game.selectedPet][2])) + " XP"}
+    if (dailyRewardDay % 2 == 1) {
+      if (game.selectedPet < pets.length) {
+      document.getElementsByClassName("dayBox")[i].innerHTML += "<br><br>" + Math.floor(Math.min((17.5 + dailyRewardDay * 2.5)*pets[game.selectedPet][1], 1000*pets[game.selectedPet][2])) + " XP"}
+      else {document.getElementsByClassName("dayBox")[i].innerHTML += "<br><br>" + Math.floor(Math.min((17.5 + dailyRewardDay * 2.5)*specialPets[game.selectedPet - pets.length][1], 1000*specialPets[game.selectedPet - pets.length][2])) + " XP"}}
     else if (dailyRewardDay % 4 == 2) {document.getElementsByClassName("dayBox")[i].innerHTML += "<span style='font-size: 1.5vh'><br>Skeletal crate</span><br><img src='img/crateSkeletal.png' style='width:4vh; margin: 0; margin-top: 1vh;'>"}
     else {document.getElementsByClassName("dayBox")[i].innerHTML += "<span style='font-size: 1.5vh'><br>Ghost crate</span><br><img src='img/crateGhost.png' style='width:4vh; margin: 0; margin-top: 1vh;'>"}
   }
@@ -701,7 +704,10 @@ function claimDailyReward() {
   game.buttonCooldowns[9] = 86400 //24 hours
   game.dailyRewards++
   displayDailyRewards()
-  if (game.dailyRewards % 2 == 1) {game.XP += Math.min((17.5 + game.dailyRewards * 2.5)*pets[game.selectedPet][1], 1000 * pets[game.selectedPet][2])}
+  if (game.dailyRewards % 2 == 1) {
+    if (game.selectedPet < pets.length) {
+    game.XP += Math.min((17.5 + game.dailyRewards * 2.5)*pets[game.selectedPet][1], 1000 * pets[game.selectedPet][2])}
+    else (game.XP += Math.min((17.5 + game.dailyRewards * 2.5)*specialPets[game.selectedPet - pets.length][1], 1000 * specialPets[game.selectedPet - pets.length][2]))}
   else if (dailyRewardDay % 4 == 2) {unboxPet(5)}
   else {unboxPet(6)}
 }

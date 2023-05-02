@@ -1,3 +1,6 @@
+v0.3.0.4
+-Fixed an important bug where daily rewards broke when having a special pet equipped [Reported by PSionJoule]
+
 v0.3.0.3
 -Added proper Credit Text (With links to my Discord server and Demonin's server + original version)
 -UnboxButtons 1-3 unique border was removed. All buttons look the same now (I might do later on an update that sets each button type a different color)
