@@ -5,7 +5,7 @@ function reset() {
     XP: 0,
     level: 1,
     XPBoost: 1,
-    buttonCooldowns: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    buttonCooldowns: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     unlocks: 0,
     currentTheme: 2,
     lastSave: Date.now(),
@@ -122,6 +122,7 @@ function loadGame(loadgame) {
   if (game.unlocks >= 11) {document.getElementById("unboxButton4").style.display = "block"}
   if (game.unlocks >= 12) {document.getElementById("button7").style.display = "block"}
   if (game.unlocks >= 13) {document.getElementById("button8").style.display = "block"}
+  if (game.unlocks >= 14) {document.getElementById("unboxButton5").style.display = "block"}
 }
 
 
@@ -243,7 +244,14 @@ function updateSmall() {
     document.getElementById("button8").disabled = false
     document.getElementById("button8").innerHTML = "Gain +20% XP multi, but reset XP. Current: " + game.XPBoost
   }
-
+  if (game.buttonCooldowns[13] > 0) {
+    document.getElementById("unboxButton5").disabled = true
+    document.getElementById("unboxButton5").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[13])
+  }
+  else {
+    document.getElementById("unboxButton5").disabled = false
+    document.getElementById("unboxButton5").innerHTML = "Unbox a random prestige pet for 0.1 XPBoost"
+  }
   game.level = XPToLevel(Math.max(Math.floor(game.XP), 0))
   document.getElementById("level").innerHTML = game.level
   //This bit is weird and gross
@@ -409,6 +417,7 @@ function handleUnlocks() {
       else if (i==10) {document.getElementById("unboxButton4").style.display = "block"}
       else if (i==11) {document.getElementById("button7").style.display = "block"}
       else if (i==12) {document.getElementById("button8").style.display = "block"}
+      else if (i==13) {document.getElementById("unboxButton5").style.display = "block"}
       break
     }
   }
@@ -421,54 +430,6 @@ function unboxPet(x) {
   //Determines the total weight, and then progressively checks random odds until a pet is found
   //These could all probably be condensed into one but I'm lazy
   if (x==1) {
-    for (i=0;i<basicUnboxChances.length;i++) totalWeight += basicUnboxChances[i][1]
-    for (i=0;i<basicUnboxChances.length;i++) {
-      if (Math.random() * totalWeight < basicUnboxChances[i][1]) {
-        petChosen = basicUnboxChances[i][0]
-        i = basicUnboxChances.length
-      }
-      else {
-        totalWeight -= basicUnboxChances[i][1]
-      }
-    }
-  }
-  else if (x==2) {
-    for (i=0;i<advancedUnboxChances.length;i++) totalWeight += advancedUnboxChances[i][1]
-    for (i=0;i<advancedUnboxChances.length;i++) {
-      if (Math.random() * totalWeight < advancedUnboxChances[i][1]) {
-        petChosen = advancedUnboxChances[i][0]
-        i = advancedUnboxChances.length
-      }
-      else {
-        totalWeight -= advancedUnboxChances[i][1]
-      }
-    }
-  }
-  else if (x==3) {
-    for (i=0;i<epicUnboxChances.length;i++) totalWeight += epicUnboxChances[i][1]
-    for (i=0;i<epicUnboxChances.length;i++) {
-      if (Math.random() * totalWeight < epicUnboxChances[i][1]) {
-        petChosen = epicUnboxChances[i][0]
-        i = epicUnboxChances.length
-      }
-      else {
-        totalWeight -= epicUnboxChances[i][1]
-      }
-    }
-  }
-  else if (x==4) {
-    for (i=0;i<legendaryUnboxChances.length;i++) totalWeight += legendaryUnboxChances[i][1]
-    for (i=0;i<legendaryUnboxChances.length;i++) {
-      if (Math.random() * totalWeight < legendaryUnboxChances[i][1]) {
-        petChosen = legendaryUnboxChances[i][0]
-        i = legendaryUnboxChances.length
-      }
-      else {
-        totalWeight -= legendaryUnboxChances[i][1]
-      }
-    }
-  }
-  else if (x==5) {
     for (i=0;i<skeletalUnboxChances.length;i++) totalWeight += skeletalUnboxChances[i][1]
     for (i=0;i<skeletalUnboxChances.length;i++) {
       if (Math.random() * totalWeight < skeletalUnboxChances[i][1]) {
@@ -480,7 +441,7 @@ function unboxPet(x) {
       }
     }
   }
-  else if (x==6) {
+  else if (x==2) {
     for (i=0;i<ghostUnboxChances.length;i++) totalWeight += ghostUnboxChances[i][1]
     for (i=0;i<ghostUnboxChances.length;i++) {
       if (Math.random() * totalWeight < ghostUnboxChances[i][1]) {
@@ -492,9 +453,75 @@ function unboxPet(x) {
       }
     }
   }
+  else if (x==3) {
+    for (i=0;i<basicUnboxChances.length;i++) totalWeight += basicUnboxChances[i][1]
+    for (i=0;i<basicUnboxChances.length;i++) {
+      if (Math.random() * totalWeight < basicUnboxChances[i][1]) {
+        petChosen = basicUnboxChances[i][0]
+        i = basicUnboxChances.length
+      }
+      else {
+        totalWeight -= basicUnboxChances[i][1]
+      }
+    }
+  }
+  else if (x==4) {
+    for (i=0;i<advancedUnboxChances.length;i++) totalWeight += advancedUnboxChances[i][1]
+    for (i=0;i<advancedUnboxChances.length;i++) {
+      if (Math.random() * totalWeight < advancedUnboxChances[i][1]) {
+        petChosen = advancedUnboxChances[i][0]
+        i = advancedUnboxChances.length
+      }
+      else {
+        totalWeight -= advancedUnboxChances[i][1]
+      }
+    }
+  }
+  else if (x==5) {
+    for (i=0;i<epicUnboxChances.length;i++) totalWeight += epicUnboxChances[i][1]
+    for (i=0;i<epicUnboxChances.length;i++) {
+      if (Math.random() * totalWeight < epicUnboxChances[i][1]) {
+        petChosen = epicUnboxChances[i][0]
+        i = epicUnboxChances.length
+      }
+      else {
+        totalWeight -= epicUnboxChances[i][1]
+      }
+    }
+  }
+  else if (x==6) {
+    for (i=0;i<legendaryUnboxChances.length;i++) totalWeight += legendaryUnboxChances[i][1]
+    for (i=0;i<legendaryUnboxChances.length;i++) {
+      if (Math.random() * totalWeight < legendaryUnboxChances[i][1]) {
+        petChosen = legendaryUnboxChances[i][0]
+        i = legendaryUnboxChances.length
+      }
+      else {
+        totalWeight -= legendaryUnboxChances[i][1]
+      }
+    }
+  }
+  else if (x==7) {
+    if (game.XPBoost <= 1) {
+      alert("Making XPBoost go below 1 is not really suggested, and going into negatives will most likely break the game. Save before trying to do so")  
+    }
+    else {
+      game.XPBoost += -0.1
+    for (i=0;i<prestigeUnboxChances.length;i++) totalWeight += prestigeUnboxChances[i][1]
+    for (i=0;i<prestigeUnboxChances.length;i++) {
+      if (Math.random() * totalWeight < prestigeUnboxChances[i][1]) {
+        petChosen = prestigeUnboxChances[i][0]
+        i = prestigeUnboxChances.length
+      }
+      else {
+        totalWeight -= prestigeUnboxChances[i][1]
+      }
+    }
+    }
+  }
 
   
-  if (x <= 4) {
+  if (x >= 3) {
     alert("Got a " + pets[petChosen][0] + "!")
     if (!game.pets[petChosen]) {game.pets[petChosen] = 1}
     else {game.pets[petChosen]++}
@@ -506,24 +533,26 @@ function unboxPet(x) {
   }
 
   if (game.selectedPet < pets.length) {
-    if (x==1) {game.buttonCooldowns[6] = 7200 / (pets[game.selectedPet][4])} //2 hours
-    else if (x==2) {game.buttonCooldowns[7] = 21600 / (pets[game.selectedPet][4])} //6 hours
-    else if (x==3) {game.buttonCooldowns[8] = 64800 / (pets[game.selectedPet][4])} //18 hours
-    else if (x==4) {game.buttonCooldowns[10] = 172800 / (pets[game.selectedPet][4])} //2 days
+    if (x==3) {game.buttonCooldowns[6] = 7200 / (pets[game.selectedPet][4])} //2 hours
+    else if (x==4) {game.buttonCooldowns[7] = 21600 / (pets[game.selectedPet][4])} //6 hours
+    else if (x==5) {game.buttonCooldowns[8] = 64800 / (pets[game.selectedPet][4])} //18 hours
+    else if (x==6) {game.buttonCooldowns[10] = 172800 / (pets[game.selectedPet][4])} //2 days
+    else if (x==7) {game.buttonCooldowns[13] = 43200 / (pets[game.selectedPet][4])} //12 h
   }
   else {
-    if (x==1) {game.buttonCooldowns[6] = 7200 / (specialPets[game.selectedPet - pets.length][4])} //2 hours
-    else if (x==2) {game.buttonCooldowns[7] = 21600 / (specialPets[game.selectedPet - pets.length][4])} //6 hours
-    else if (x==3) {game.buttonCooldowns[8] = 64800 / (specialPets[game.selectedPet - pets.length][4])} //18 hours
-    else if (x==4) {game.buttonCooldowns[10] = 172800 / (specialPets[game.selectedPet - pets.length][4])} //2 days
+    if (x==3) {game.buttonCooldowns[6] = 7200 / (specialPets[game.selectedPet - pets.length][4])} //2 hours
+    else if (x==4) {game.buttonCooldowns[7] = 21600 / (specialPets[game.selectedPet - pets.length][4])} //6 hours
+    else if (x==5) {game.buttonCooldowns[8] = 64800 / (specialPets[game.selectedPet - pets.length][4])} //18 hours
+    else if (x==6) {game.buttonCooldowns[10] = 172800 / (specialPets[game.selectedPet - pets.length][4])} //2 days
+    else if (x==7) {game.buttonCooldowns[13] = 43200 / (specialPets[game.selectedPet - pets.length][4])} //12 h
   }
-  
-  if (document.getElementById("petsDiv").style.display == "block") displayPets()
 }
+  if (document.getElementById("petsDiv").style.display == "block") displayPets()
+
 
 function displayPetRarities(x) {
   if (x==0) {document.getElementById("petRarities").innerHTML = ""}
-  else if (x==1) {
+  else if (x==3) {
     document.getElementById("petRarities").innerHTML = "<img src='img/crateBasic.png' style='width:6vh'><br><b>Rarities for this crate:</b><br>"
     totalWeight = 0
     for (i=0;i<basicUnboxChances.length;i++) totalWeight += basicUnboxChances[i][1]
@@ -531,7 +560,7 @@ function displayPetRarities(x) {
       document.getElementById("petRarities").innerHTML += pets[basicUnboxChances[i][0]][0] + ": " + (basicUnboxChances[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
     }
   }
-  else if (x==2) {
+  else if (x==4) {
     document.getElementById("petRarities").innerHTML = "<img src='img/crateAdvanced.png' style='width:6vh'><br><b>Rarities for this crate:</b><br>"
     totalWeight = 0
     for (i=0;i<advancedUnboxChances.length;i++) totalWeight += advancedUnboxChances[i][1]
@@ -539,7 +568,7 @@ function displayPetRarities(x) {
       document.getElementById("petRarities").innerHTML += pets[advancedUnboxChances[i][0]][0] + ": " + (advancedUnboxChances[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
     }
   }
-  else if (x==3) {
+  else if (x==5) {
     document.getElementById("petRarities").innerHTML = "<img src='img/crateEpic.png' style='width:6vh'><br><b>Rarities for this crate:</b><br>"
     totalWeight = 0
     for (i=0;i<epicUnboxChances.length;i++) totalWeight += epicUnboxChances[i][1]
@@ -548,7 +577,7 @@ function displayPetRarities(x) {
     }
   }
 
-  else if (x==4) {
+  else if (x==6) {
   document.getElementById("petRarities").innerHTML = "<img src='img/crateLegendary.png' style='width:6vh'><br><b>Rarities for this crate:</b><br>"
   totalWeight = 0
   for (i=0;i<legendaryUnboxChances.length;i++) totalWeight += legendaryUnboxChances[i][1]
@@ -556,6 +585,15 @@ function displayPetRarities(x) {
     document.getElementById("petRarities").innerHTML += pets[legendaryUnboxChances[i][0]][0] + ": " + (legendaryUnboxChances[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
   }
 }
+else if (x==7) {
+  document.getElementById("petRarities").innerHTML = "<img src='img/cratePrestige1.png' style='width:6vh'><br><b>Rarities for this crate:</b><br>"
+  totalWeight = 0
+  for (i=0;i<prestigeUnboxChances.length;i++) totalWeight += prestigeUnboxChances[i][1]
+  for(i=0;i<prestigeUnboxChances.length;i++) {
+    document.getElementById("petRarities").innerHTML += pets[prestigeUnboxChances[i][0]][0] + ": " + (prestigeUnboxChances[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
+  }
+}
+
 }
 
 function openClosePetsTab() {

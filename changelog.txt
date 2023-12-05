@@ -1,3 +1,9 @@
+v0.4 - The comeback
+After a long time, I finally managed to fix the bug that was on my spine, thanks to boredom.
+-New crate with op pets. BUT! They cost some of your XPBoost. So I hope you've been able to grind these
+-Remade the special pets code slightly, they are now ID's 1 and 2, so anything bigger than 3 will be the normal pets [why you had to do this system demonin...]
+-New crate icon for upcoming similar pets
+
 v0.3.0.4
 -Fixed an important bug where daily rewards broke when having a special pet equipped [Reported by PSionJoule]
 

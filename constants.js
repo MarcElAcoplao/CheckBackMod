@@ -1,4 +1,4 @@
-const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100]
+const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100,150]
 const levelBarTextures = [50,55,60,65,70,80,90,100,200]
 
 const levelBarColours = [
@@ -65,7 +65,7 @@ const ranks = [
   [160, "Transcendent+++"],
   [180, "Transcendent++++"],
   [200, "Infinite"],
-  [220, "Infinite+"],
+  [220, "Multiversal"],
   [240, "Infinite++"],
   [260, "Infinite+++"],
   [280, "Infinite++++"],
@@ -80,13 +80,14 @@ const ranks = [
   [460, "Endless+++"],
   [480, "Endless++++"],
   [500, "Void"],
+  [1000, "Earned Marc's respect"],
   [Infinity, "Error"],
 ]
 
 const pets = [
   //Name, multiplier to Lower button XP, multiplier to higher button XP, divider to XP cooldowns, divider to pet cooldowns
   ["Test", 1, 1, 1, 1], //0
-  ["Green butterfly", 1.12, 1.08, 1, 1], //1 [The most generic nature pet ever. Overused]
+  ["Green butterfly", 1.12, 1.08, 1, 1], //1 [The most generic nature pet ever. Overused] Stats: 1.12, 1.08, 1, 1
   ["Green lizard", 1.06, 1.16, 1, 1], //2 [These eat mosquitoes. Make sure to have one around your house in summer]
   ["Rat", 1.24, 1.14, 1, 1], //3 [A normal ratatta. Charizard, use fire breath!]
   ["Purple butterfly", 1.2, 1.3, 1.03, 1], //4 [A mutated butterfly. They are quite common around here /s]
@@ -117,6 +118,14 @@ const pets = [
   ["Spirit", 8, 8, 1.2, 1], //newpet1.7 (29) [I really love the design of this one pet]
   ["Living mushroom", 9, 5.4, 1.25, 1.2], //newpet1.8 (30) [If someone of you played Vesteria on roblox, this one is like the mushroom boss]
   ["Purple dragon", 17, 16.2, 1.35, 1.4], //newpet1.9 (31) [We just need 3 more dragons until we get to the rainbow dragon]
+  ["Pet1", 5.2, 4.8, 1.2, 1.3], //newpet 2.1 (32)
+  ["Pet2", 6.3, 6.1, 1.22, 1.24], //newpet 2.2 (33)
+  ["Pet3", 8.9, 7.9, 1.24, 1.21], //newpet 2.3 (34) (Make this similar stats to living mushroom)
+  ["Pet4", 13, 12, 1.3, 1.3], //newpet 2.4 (35)
+  ["Pet5", 17, 17, 1.34, 1.41], //newpet 2.5 (36) (Slightly better than purple dragon)
+  ["Pet6", 25, 26, 1.4, 1.45], //newpet 2.6 (37)
+  ["Pet7", 51, 50, 1.5, 1.6], //newpet 2.7 (38)
+  ["Pet8", 100, 100, 1.7, 1.65], //newpet 2.8 (39) (Best pet for a while, you deserve my respect if you get this rare drop)
 ]
 
 const specialPets = [
@@ -139,7 +148,7 @@ const specialPets = [
   ["Ghost dragon", 12, 12.2, 1.3, 1.25], //16 [Truly a powerful character. Invisibility go br]
 ]
 
-const basicUnboxChances = [
+const basicUnboxChances = [ //this one will actually be 3
   [1,80], [2,64], [3,20], [4,8], [5,6], [6,1]
 ]
 
@@ -151,14 +160,18 @@ const epicUnboxChances = [
   [8,100], [14,90], [10,78], [15,68], [16,55], [17,40], [18,30], [19,17], [20,12], [21,5], [22,1]    
 ]
 
-const legendaryUnboxChances = [
+const legendaryUnboxChances = [ //4 5 and 6
   [23,230], [24,200], [25,150], [26,100], [27,86], [28,40], [29,20], [30,6], [31,1]
 ]
 
-const skeletalUnboxChances = [
+const skeletalUnboxChances = [ //will be set to 1
   [1,56], [2,36], [3,24], [4,16], [5,8], [6,5], [7,2], [8,1]
 ]
 
-const ghostUnboxChances = [
+const ghostUnboxChances = [ //will be set to 2
   [9,56], [10,36], [11,24], [12,16], [13,8], [14,5], [15,2], [16,1]
+]
+
+const prestigeUnboxChances = [ //now it jumps to 7 and works fine from now
+  [32,426], [33,356], [34,286], [35,152], [36,86], [37,26], [38,4], [39,1]
 ]

@@ -11,12 +11,19 @@ Most of these are quick steps, if you get it right you can add a new button in l
 -Remember to add both selected pets and special pets section
    if (game.selectedPet < pets.length)
 
-Full Update log [v1]
--New buttons
--New pets
--New balancing
-    -Pets were rebalanced to make stronger
-        -Pet xp then was doubled
-    -Levels now grow slower (unlocks are faster)
-    -Daily reward xp is now buffed based on pet boost to buttons 1-3, and cap was increased to 1000 * pet boost to buttons 4+
-    -
+
+buttonCooldown[0] Button 1
+buttonCooldown[1] Button 2
+buttonCooldown[2] Button 3
+buttonCooldown[3] Button 4
+buttonCooldown[4] Button 5
+buttonCooldown[5] Button 6
+buttonCooldown[6] Pet 1 [Basic]
+buttonCooldown[7] Pet 2 [Advanced]
+buttonCooldown[8] Pet 3 [Epic]
+buttonCooldown[9] Daily
+buttonCooldown[10] Pet 4 [Legendary]
+buttonCooldown[11] Button 7
+buttonCooldown[12] Reset 1 [0.2 XPBoost]
+buttonCooldown[13] Pet 5 [Prestigious]
+buttonCooldown[14]
