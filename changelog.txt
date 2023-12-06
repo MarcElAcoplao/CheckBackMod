@@ -1,3 +1,6 @@
+v0.4.1.1 - Polishing part 2
+-Changed the pet color border for prestige crate.
+
 v0.4.1 - Polishing
 -Added names and icons to the prestige crate pets
 -Added an XPBoost display [will show in %, as 230% means x2.3]

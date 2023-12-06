@@ -643,13 +643,14 @@ function displayPets() {
       if (game.pets[parseInt(this.id)] > 0) {showPetInfo(parseInt(this.id))}
     })
     petBoxes[i-1].addEventListener('mouseout', function(){showPetInfo(0)})
-    if (game.pets[i] > 0) {
+    if (game.pets[i] > 0) { //1st value is red, 2nd green and 3rd blue
       petBoxes[i-1].innerHTML = "<img src='img/pets/" + i + ".png' style='width: 128px'>"
       petBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.pets[i] + "</p>"
       if (i<=6) petBoxes[i-1].style.border = "8px outset #555"
       else if (i<=13) petBoxes[i-1].style.border = "8px outset #447"
       else if (i<=22) petBoxes[i-1].style.border = "8px outset #647"
       else if (i<=31) petBoxes[i-1].style.border = "8px outset #500"
+      else if (i<=39) petBoxes[i-1].style.border = "8px outset #990"
     }
     else {
       petBoxes[i-1].innerHTML = "<img src='img/pets/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
