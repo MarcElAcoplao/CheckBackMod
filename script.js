@@ -121,7 +121,10 @@ function loadGame(loadgame) {
   if (game.unlocks >= 10) {document.getElementById("button6").style.display = "block"}
   if (game.unlocks >= 11) {document.getElementById("unboxButton4").style.display = "block"}
   if (game.unlocks >= 12) {document.getElementById("button7").style.display = "block"}
-  if (game.unlocks >= 13) {document.getElementById("button8").style.display = "block"}
+  if (game.unlocks >= 13) {
+    document.getElementById("button8").style.display = "block"
+    document.getElementById("XPBoostDisplay").style.display = "block"
+    updateXPBoost()}
   if (game.unlocks >= 14) {document.getElementById("unboxButton5").style.display = "block"}
 }
 
@@ -242,7 +245,7 @@ function updateSmall() {
   }
   else {
     document.getElementById("button8").disabled = false
-    document.getElementById("button8").innerHTML = "Gain +20% XP multi, but reset XP. Current: " + game.XPBoost
+    document.getElementById("button8").innerHTML = "Gain +20% XP multi, but reset XP"
   }
   if (game.buttonCooldowns[13] > 0) {
     document.getElementById("unboxButton5").disabled = true
@@ -381,6 +384,7 @@ function clickButton(x) {
     game.XP = 0
     game.XPBoost += 0.2
     game.buttonCooldowns[12] = 86400 //1 day, can't be modified
+    updateXPBoost()
     }
     else {
       alert("You need at least level 100 to reset for this button")
@@ -388,6 +392,10 @@ function clickButton(x) {
   }
   updateSmall()
 }
+
+//This will simply update the XPBoost display
+function updateXPBoost(){ return document.getElementById("XPBoostDisplay").innerHTML = "XPBoost: " + Math.floor(game.XPBoost*100) + "%"}
+
 
 //Handles unlocks (Happens 60 times a second, could definitely be optimised!)
 function handleUnlocks() {
@@ -416,7 +424,9 @@ function handleUnlocks() {
       else if (i==9) {document.getElementById("button6").style.display = "block"}
       else if (i==10) {document.getElementById("unboxButton4").style.display = "block"}
       else if (i==11) {document.getElementById("button7").style.display = "block"}
-      else if (i==12) {document.getElementById("button8").style.display = "block"}
+      else if (i==12) {
+        document.getElementById("button8").style.display = "block"
+        document.getElementById("XPBoostDisplay").style.display = "block"}
       else if (i==13) {document.getElementById("unboxButton5").style.display = "block"}
       break
     }
@@ -503,10 +513,11 @@ function unboxPet(x) {
   }
   else if (x==7) {
     if (game.XPBoost <= 1) {
-      alert("Making XPBoost go below 1 is not really suggested, and going into negatives will most likely break the game. Save before trying to do so")  
+      alert("XPBoost has to be higher than 1 to buy this crate")  
     }
     else {
       game.XPBoost += -0.1
+      updateXPBoost()
     for (i=0;i<prestigeUnboxChances.length;i++) totalWeight += prestigeUnboxChances[i][1]
     for (i=0;i<prestigeUnboxChances.length;i++) {
       if (Math.random() * totalWeight < prestigeUnboxChances[i][1]) {

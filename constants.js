@@ -118,14 +118,14 @@ const pets = [
   ["Spirit", 8, 8, 1.2, 1], //newpet1.7 (29) [I really love the design of this one pet]
   ["Living mushroom", 9, 5.4, 1.25, 1.2], //newpet1.8 (30) [If someone of you played Vesteria on roblox, this one is like the mushroom boss]
   ["Purple dragon", 17, 16.2, 1.35, 1.4], //newpet1.9 (31) [We just need 3 more dragons until we get to the rainbow dragon]
-  ["Pet1", 5.2, 4.8, 1.2, 1.3], //newpet 2.1 (32)
-  ["Pet2", 6.3, 6.1, 1.22, 1.24], //newpet 2.2 (33)
-  ["Pet3", 8.9, 7.9, 1.24, 1.21], //newpet 2.3 (34) (Make this similar stats to living mushroom)
-  ["Pet4", 13, 12, 1.3, 1.3], //newpet 2.4 (35)
-  ["Pet5", 17, 17, 1.34, 1.41], //newpet 2.5 (36) (Slightly better than purple dragon)
-  ["Pet6", 25, 26, 1.4, 1.45], //newpet 2.6 (37)
-  ["Pet7", 51, 50, 1.5, 1.6], //newpet 2.7 (38)
-  ["Pet8", 100, 100, 1.7, 1.65], //newpet 2.8 (39) (Best pet for a while, you deserve my respect if you get this rare drop)
+  ["Red slime", 5.2, 4.8, 1.2, 1.3], //newpet 2.1 (32)
+  ["Poisonous eyeball", 6.3, 6.1, 1.22, 1.24], //newpet 2.2 (33)
+  ["Eyeball spider", 8.9, 7.9, 1.24, 1.21], //newpet 2.3 (34) (Make this similar stats to living mushroom)
+  ["Living tree", 13, 12, 1.3, 1.3], //newpet 2.4 (35)
+  ["Fire spectral", 17, 17, 1.34, 1.41], //newpet 2.5 (36) (Slightly better than purple dragon)
+  ["Purple star", 25, 26, 1.4, 1.45], //newpet 2.6 (37)
+  ["Holy pig", 61, 59, 1.45, 1.5], //newpet 2.7 (38)
+  ["Yellow dragon", 100, 100, 1.7, 1.65], //newpet 2.8 (39) (Best pet for a while, you deserve my respect if you get this rare drop)
 ]
 
 const specialPets = [
@@ -148,6 +148,14 @@ const specialPets = [
   ["Ghost dragon", 12, 12.2, 1.3, 1.25], //16 [Truly a powerful character. Invisibility go br]
 ]
 
+const skeletalUnboxChances = [ //will be set to 1
+  [1,56], [2,36], [3,24], [4,16], [5,8], [6,5], [7,2], [8,1]
+]
+
+const ghostUnboxChances = [ //will be set to 2
+  [9,56], [10,36], [11,24], [12,16], [13,8], [14,5], [15,2], [16,1]
+]
+
 const basicUnboxChances = [ //this one will actually be 3
   [1,80], [2,64], [3,20], [4,8], [5,6], [6,1]
 ]
@@ -162,14 +170,6 @@ const epicUnboxChances = [
 
 const legendaryUnboxChances = [ //4 5 and 6
   [23,230], [24,200], [25,150], [26,100], [27,86], [28,40], [29,20], [30,6], [31,1]
-]
-
-const skeletalUnboxChances = [ //will be set to 1
-  [1,56], [2,36], [3,24], [4,16], [5,8], [6,5], [7,2], [8,1]
-]
-
-const ghostUnboxChances = [ //will be set to 2
-  [9,56], [10,36], [11,24], [12,16], [13,8], [14,5], [15,2], [16,1]
 ]
 
 const prestigeUnboxChances = [ //now it jumps to 7 and works fine from now

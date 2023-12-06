@@ -97,6 +97,17 @@ img {
   display: none;
 }
 
+#XPBoostDisplay {
+  position: absolute;
+  text-align: left;
+  top: 26vh;
+  left: 0.5vh;
+  font-size: 2vh;
+  line-height: 2.5vh;
+  margin: 0;
+  display: none;
+}
+
 .button {
   position: absolute;
   left: 50%;

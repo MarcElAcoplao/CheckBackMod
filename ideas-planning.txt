@@ -1,0 +1,12 @@
+v0.4.1 ideas [polishing]
+-Icons for prestige pets set 1 [done]
+-Adding an XPBoost display [done]
+-Slight changes to some code parts
+
+v0.5 ideas [more xp go br]
+-New xp button [level 200, a mix between giving good xp and being fast]
+-New prestige [level 250, 1 XPBoost]
+
+v0.6 ideas [more pets]
+-Another prestige crate
+-New pet boost [more XPBoost]

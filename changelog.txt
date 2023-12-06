@@ -1,3 +1,7 @@
+v0.4.1 - Polishing
+-Added names and icons to the prestige crate pets
+-Added an XPBoost display [will show in %, as 230% means x2.3]
+
 v0.4 - The comeback
 After a long time, I finally managed to fix the bug that was on my spine, thanks to boredom.
 -New crate with op pets. BUT! They cost some of your XPBoost. So I hope you've been able to grind these

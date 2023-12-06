@@ -18,6 +18,6 @@ body {
   color: #b6f;
 }
 
-#nextUnlockLevel, #selectedPetText, #themeText, #versionText {
+#nextUnlockLevel, #selectedPetText, #themeText, #versionText, #XPBoostDisplay {
   color: #0ff;
 }
