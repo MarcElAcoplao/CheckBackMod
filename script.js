@@ -758,8 +758,8 @@ function claimDailyReward() {
     if (game.selectedPet < pets.length) {
     game.XP += Math.min((17.5 + game.dailyRewards * 2.5)*pets[game.selectedPet][1], 1000 * pets[game.selectedPet][2])}
     else (game.XP += Math.min((17.5 + game.dailyRewards * 2.5)*specialPets[game.selectedPet - pets.length][1], 1000 * specialPets[game.selectedPet - pets.length][2]))}
-  else if (dailyRewardDay % 4 == 2) {unboxPet(5)}
-  else {unboxPet(6)}
+  else if (dailyRewardDay % 4 == 2) {unboxPet(1)}
+  else {unboxPet(2)}
 }
 
 function changeTheme(x) {

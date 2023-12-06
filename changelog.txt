@@ -1,3 +1,6 @@
+v0.4.1.2 - Small Bugfix
+-Fixed skeletal crates giving the wrong pets [and possibly ghost crate also had the same issue, it doesn't now]
+
 v0.4.1.1 - Polishing part 2
 -Changed the pet color border for prestige crate.
 
