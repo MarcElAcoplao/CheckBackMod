@@ -188,6 +188,16 @@ img {
   display: none;
 }
 
+#button9 {
+  top: 103vh;
+  display: none;
+}
+
+#button10 {
+  top: 109vh;
+  display: none;
+}
+
 .button:hover {
   cursor: pointer;
 }

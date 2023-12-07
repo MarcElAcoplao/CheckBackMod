@@ -1,4 +1,4 @@
-const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100,150]
+const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100,125,200,250]
 const levelBarTextures = [50,55,60,65,70,80,90,100,200]
 
 const levelBarColours = [
@@ -65,7 +65,7 @@ const ranks = [
   [160, "Transcendent+++"],
   [180, "Transcendent++++"],
   [200, "Infinite"],
-  [220, "Multiversal"],
+  [220, "Infinite+"],
   [240, "Infinite++"],
   [260, "Infinite+++"],
   [280, "Infinite++++"],

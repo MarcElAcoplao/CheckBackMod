@@ -11,7 +11,6 @@ Most of these are quick steps, if you get it right you can add a new button in l
 -Remember to add both selected pets and special pets section
    if (game.selectedPet < pets.length)
 
-
 buttonCooldown[0] Button 1
 buttonCooldown[1] Button 2
 buttonCooldown[2] Button 3
@@ -24,6 +23,18 @@ buttonCooldown[8] Pet 3 [Epic]
 buttonCooldown[9] Daily
 buttonCooldown[10] Pet 4 [Legendary]
 buttonCooldown[11] Button 7
-buttonCooldown[12] Reset 1 [0.2 XPBoost]
-buttonCooldown[13] Pet 5 [Prestigious]
-buttonCooldown[14]
+buttonCooldown[12] Button 8 [0.2 XPBoost]
+buttonCooldown[13] Pet 5 [Prestige]
+buttonCooldown[14] Button 9
+buttonCooldown[15] Button 10 [1 XPBoost]
+
+Button 1 - 1 xp // 1min
+Button 2 - 2 xp // 5min
+Button 3 - 5 xp // 30min
+Button 4 - 10 xp // 2h
+Button 5 - 25 xp // 12h
+Button 6 - 50 xp // 2d
+Button 7 - 250 xp // 7d
+Button 8 - 0.2 XPBoost // 1h
+Button 9 - 100 xp // 1d
+Button 10 - 1 XPBoost // 1h

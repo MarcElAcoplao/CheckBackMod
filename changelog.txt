@@ -1,3 +1,15 @@
+v0.5 - Numbers Go Up version
+-Added compatibility with older saves [updating a button cooldown that isn't defined will make it defined "I can do it for 25, and it creates slots from 0 to 25"]
+-Balancing!
+  -Buttons 2-6 are faster and button 7 gives more xp
+  -Any prestige for XPBoost has now a set cooldown of 1h... if you are good, enjoy speedrunning these
+  -Prestige crate 1 now unlocks at level 125
+  -Prestige crate 1 has an 1h cooldown. Have fun buying it
+-2 New buttons
+  -Level 200, gives 100xp every day
+  -Level 250, allows you to prestige for 1 XPBoost, also with 1h cooldown
+-Possibly some bugs are fixed
+
 v0.4.1.2 - Small Bugfix
 -Fixed skeletal crates giving the wrong pets [and possibly ghost crate also had the same issue, it doesn't now]
 
