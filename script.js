@@ -420,14 +420,14 @@ function clickButton(x) {
     } 
   }
   else if (x==10 && game.buttonCooldowns[15] == 0) {
-    if (game.XP > 113683.9) {
+    if (game.XP > 75631.9) {
     game.XP = 0
     game.XPBoost += 1
     game.buttonCooldowns[15] = 3600 //1h, can't be modified... as of now
     updateXPBoost()
     }
     else {
-      alert("You need at least level 250 to reset for this button")
+      alert("You need at least level 200 to reset for this button")
     }
   }
   updateSmall()
