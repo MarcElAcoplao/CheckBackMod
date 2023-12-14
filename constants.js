@@ -1,4 +1,4 @@
-const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100,125,150,200]
+const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100,125,150,200,250,300,350,400]
 const levelBarTextures = [50,55,60,65,70,80,90,100,200]
 
 const levelBarColours = [
@@ -80,72 +80,89 @@ const ranks = [
   [460, "Endless+++"],
   [480, "Endless++++"],
   [500, "Void"],
-  [1000, "Earned Marc's respect"],
+  [1000, "Void+"],
+  [1500, "Void++"],
+  [2000, "Void+++"],
+  [2500, "Extensive grinding"],
+  [5000, "Extensive grinding+"],
+  [7500, "Extensive grinding++"],
+  [10000, "Serious dedication"],
+  [20000, "Epic dedication"],
+  [30000, "Transcendent dedication"],
+  [40000, "Billion XP dedication"],
+  [50000, "Unmatched dedication"],
   [Infinity, "Error"],
 ]
 
 const pets = [
-  //Name, multiplier to Lower button XP, multiplier to higher button XP, divider to XP cooldowns, divider to pet cooldowns
-  ["Test", 1, 1, 1, 1], //0
-  ["Green butterfly", 1.12, 1.08, 1, 1], //1 [The most generic nature pet ever. Overused] Stats: 1.12, 1.08, 1, 1
-  ["Green lizard", 1.06, 1.16, 1, 1], //2 [These eat mosquitoes. Make sure to have one around your house in summer]
-  ["Rat", 1.24, 1.14, 1, 1], //3 [A normal ratatta. Charizard, use fire breath!]
-  ["Purple butterfly", 1.2, 1.3, 1.03, 1], //4 [A mutated butterfly. They are quite common around here /s]
-  ["Glowing spider", 1.34, 1.46, 1.04, 1], //5 [So you can see it in the dark]
-  ["Green dragon", 2.1, 2, 1.08, 1.01], //6 (oldpet1.6 around old3.3) [I don't know how the plants haven't died after many landscapes and heights]
-  ["Snake", 1.3, 1.3, 1.02, 1.02], //7 [They are like librarians, shhhhhhhhhhhhhhhhhhhh]
-  ["Giant firefly", 1.4, 1.36, 1.06, 1.04], //8 [Would be nothing if it was a small firefly. Here is the character for it: ⌤]
-  ["Eldritch eyeball", 1.56, 1.44, 1.05, 1.05], //9 [Eyyyyyyyyyy Eyyyyy Ey! Aaaaaaaaaaaaquiiiiiii ElRich eeeeeeeeeeen Minecraft!]
-  ["Gargoyle", 1.6, 1.64, 1, 1.07], //10 [Do not close the lights with this pet, it will eat you in the dark]
-  ["Glowing eyeball", 1.64, 1.56, 1.08, 1.06], //11 [If it didn't glow it wouldn't be unique]
-  ["Red butterfly", 2.1, 2.1, 1.08, 1.1], //12 [A burning firefly, it heats these exp buttons]
-  ["Blue dragon", 3.6, 3.6, 1.15, 1.14], //13 (oldpet2.7 around new1.3) [Ice dragon? Meh]
-  ["Large tortoise", 1.8, 2.6, 1, 1], //14 [It's so large it walks at the speed of a normal human]
-  ["Mutant tarantula", 1.9, 2, 1.08, 1.02], //15 [Aren't they all mutant? Oh wait, this one's bigger, nonononono]
-  ["Living rose", 2.1, 2.1, 1.06, 1.05], //16 [It would be way worse if you had a dead rose]
-  ["Ice golem", 2.4, 2.4, 1.02, 1.02], //17 [2 elixir, only used as distraction]
-  ["Cat", 1.8, 1.8, 1.23, 1.15], //18 [Alergy go br]
-  ["Vortex monster", 1.8, 2.8, 1.08, 1.1], //19 [I think vortex is like a blackhole, idk]
-  ["Geometrical eyeball", 2.6, 2.6, 1.12, 1.12], //20 [It loves dubstep, you might know why...]
-  ["Death scorpion", 3, 3, 1.1, 1.13], //21 [Don't know if all scorpions are death scorpions, but the name sounds cool]
-  ["Red dragon", 5.8, 5, 1.2, 1.14], //22 (oldpet3.8 around new1.7 or 2.3) [Truly a fire dragon, what they should be]
-  ["Blue butterfly", 2.4, 2.4, 1.1, 1.13], //newpet1.1 (23) [More like cyan butterfly but it doesn't sound as good]
-  ["Shiny rat", 2.6, 2.6, 1.2, 1.2], //newpet1.2 (24) [Oh wow, a shiny Ratatta. The most normal thing that I will do is Charizard, use fire breath!]
-  ["Earth snake", 3.6, 3.6, 1.15, 1.14], //newpet1.3 (25) [How did we just travel to the desert so fast?]
-  ["Salamander", 3.4, 3.4, 1.18, 1.2], //newpet1.4 (26) [You've got the eyes of a salamander]
-  ["Dark snake", 3, 3, 1.24, 1.21], //newpet1.5 (27) [This is just earth snake but took the sun too much]
-  ["Lilypad", 5.6, 6.1, 1.1, 1.1], //newpet1.6 (28) [These lilypads can't handle a plant to defend from zombies]
-  ["Spirit", 8, 8, 1.2, 1], //newpet1.7 (29) [I really love the design of this one pet]
-  ["Living mushroom", 9, 5.4, 1.25, 1.2], //newpet1.8 (30) [If someone of you played Vesteria on roblox, this one is like the mushroom boss]
-  ["Purple dragon", 17, 16.2, 1.35, 1.4], //newpet1.9 (31) [We just need 3 more dragons until we get to the rainbow dragon]
-  ["Red slime", 5.2, 4.8, 1.2, 1.3], //newpet 2.1 (32)
-  ["Poisonous eyeball", 6.3, 6.1, 1.22, 1.24], //newpet 2.2 (33)
-  ["Eyeball spider", 8.9, 7.9, 1.24, 1.21], //newpet 2.3 (34) (Make this similar stats to living mushroom)
-  ["Living tree", 13, 12, 1.3, 1.3], //newpet 2.4 (35)
-  ["Fire spectral", 17, 17, 1.34, 1.41], //newpet 2.5 (36) (Slightly better than purple dragon)
-  ["Purple star", 25, 26, 1.4, 1.45], //newpet 2.6 (37)
-  ["Holy pig", 61, 59, 1.45, 1.5], //newpet 2.7 (38)
-  ["Yellow dragon", 100, 100, 1.7, 1.65], //newpet 2.8 (39) (Best pet for a while, you deserve my respect if you get this rare drop)
+  //Name, multiplier to Lower button XP, multiplier to higher button XP, divider to XP cooldowns, divider to pet cooldowns, XPBoost boost
+  ["Test", 1, 1, 1, 1, 1], //0
+  ["Green butterfly", 1.12, 1.08, 1, 1, 1], //1 [The most generic nature pet ever. Overused] Stats: 1.12, 1.08, 1, 1
+  ["Green lizard", 1.06, 1.16, 1, 1, 1], //2 [These eat mosquitoes. Make sure to have one around your house in summer]
+  ["Rat", 1.24, 1.14, 1, 1, 1], //3 [A normal ratatta. Charizard, use fire breath!]
+  ["Purple butterfly", 1.2, 1.3, 1.03, 1, 1], //4 [A mutated butterfly. They are quite common around here /s]
+  ["Glowing spider", 1.34, 1.46, 1.04, 1, 1], //5 [So you can see it in the dark]
+  ["Green dragon", 2.1, 2, 1.08, 1.01, 1], //6 (oldpet1.6 around old3.3) [I don't know how the plants haven't died after many landscapes and heights]
+  ["Snake", 1.3, 1.3, 1.02, 1.02, 1], //7 [They are like librarians, shhhhhhhhhhhhhhhhhhhh]
+  ["Giant firefly", 1.4, 1.36, 1.06, 1.04, 1], //8 [Would be nothing if it was a small firefly. Here is the character for it: ⌤]
+  ["Eldritch eyeball", 1.56, 1.44, 1.05, 1.05, 1], //9 [Eyyyyyyyyyy Eyyyyy Ey! Aaaaaaaaaaaaquiiiiiii ElRich eeeeeeeeeeen Minecraft!]
+  ["Gargoyle", 1.6, 1.64, 1, 1.07, 1], //10 [Do not close the lights with this pet, it will eat you in the dark]
+  ["Glowing eyeball", 1.64, 1.56, 1.08, 1.06, 1], //11 [If it didn't glow it wouldn't be unique]
+  ["Red butterfly", 2.1, 2.1, 1.08, 1.1, 1], //12 [A burning firefly, it heats these exp buttons]
+  ["Blue dragon", 3.6, 3.6, 1.15, 1.14, 1], //13 (oldpet2.7 around new1.3) [Ice dragon? Meh]
+  ["Large tortoise", 1.8, 2.6, 1, 1, 1], //14 [It's so large it walks at the speed of a normal human]
+  ["Mutant tarantula", 1.9, 2, 1.08, 1.02, 1], //15 [Aren't they all mutant? Oh wait, this one's bigger, nonononono]
+  ["Living rose", 2.1, 2.1, 1.06, 1.05, 1], //16 [It would be way worse if you had a dead rose]
+  ["Ice golem", 2.4, 2.4, 1.02, 1.02, 1], //17 [2 elixir, only used as distraction]
+  ["Cat", 1.8, 1.8, 1.23, 1.15, 1], //18 [Alergy go br]
+  ["Vortex monster", 1.8, 2.8, 1.08, 1.1, 1], //19 [I think vortex is like a blackhole, idk]
+  ["Geometrical eyeball", 2.6, 2.6, 1.12, 1.12, 1], //20 [It loves dubstep, you might know why...]
+  ["Death scorpion", 3, 3, 1.1, 1.13, 1], //21 [Don't know if all scorpions are death scorpions, but the name sounds cool]
+  ["Red dragon", 5.8, 5, 1.2, 1.14, 1], //22 (oldpet3.8 around new1.7 or 2.3) [Truly a fire dragon, what they should be]
+  ["Blue butterfly", 2.4, 2.4, 1.1, 1.13, 1], //newpet1.1 (23) [More like cyan butterfly but it doesn't sound as good]
+  ["Shiny rat", 2.6, 2.6, 1.2, 1.2, 1], //newpet1.2 (24) [Oh wow, a shiny Ratatta. The most normal thing that I will do is Charizard, use fire breath!]
+  ["Earth snake", 3.6, 3.6, 1.15, 1.14, 1], //newpet1.3 (25) [How did we just travel to the desert so fast?]
+  ["Salamander", 3.4, 3.4, 1.18, 1.2, 1], //newpet1.4 (26) [You've got the eyes of a salamander]
+  ["Dark snake", 3, 3, 1.24, 1.21, 1], //newpet1.5 (27) [This is just earth snake but took the sun too much]
+  ["Lilypad", 5.6, 6.1, 1.1, 1.1, 1], //newpet1.6 (28) [These lilypads can't handle a plant to defend from zombies]
+  ["Spirit", 8, 8, 1.2, 1, 1], //newpet1.7 (29) [I really love the design of this one pet]
+  ["Living mushroom", 9, 5.4, 1.25, 1.2, 1], //newpet1.8 (30) [If someone of you played Vesteria on roblox, this one is like the mushroom boss]
+  ["Purple dragon", 17, 16.2, 1.35, 1.4, 1], //newpet1.9 (31) [We just need 3 more dragons until we get to the rainbow dragon]
+  ["Red slime", 5.2, 4.8, 1.2, 1.3, 1], //newpet 2.1 (32)
+  ["Poisonous eyeball", 6.3, 6.1, 1.22, 1.24, 1], //newpet 2.2 (33)
+  ["Eyeball spider", 8.9, 7.9, 1.24, 1.21, 1], //newpet 2.3 (34) (Make this similar stats to living mushroom)
+  ["Living tree", 13, 12, 1.3, 1.3, 1], //newpet 2.4 (35)
+  ["Fire spectral", 17, 17, 1.34, 1.41, 1], //newpet 2.5 (36) (Slightly better than purple dragon)
+  ["Purple star", 25, 26, 1.4, 1.45, 1], //newpet 2.6 (37) "is star one acrimony - quasar"
+  ["Holy pig", 61, 59, 1.45, 1.5, 1.01], //newpet 2.7 (38)
+  ["Yellow dragon", 100, 100, 1.7, 1.65, 1.02], //newpet 2.8 (39) (Best pet for a while, you deserve my respect if you get this rare drop)
+  ["Small elf", 10.2, 10.4, 1.28, 1.27, 1.02], //newpet 3.1 (40)
+  ["All-watcher eye", 23.1, 21.4, 1.37, 1.39, 1.05], //newpet 3.2 (41)
+  ["Glowing jellyfish", 43.4, 44.2, 1.5, 1.5, 1.07], //newpet 3.3 (42)
+  ["Golden butterfly", 87, 91, 1.65, 1.6, 1.1], //newpet 3.4 (43)
+  ["2-headed snake", 183, 168, 2, 2, 1.15], //newpet 3.5 (44)
+  ["Fire lord", 326, 287, 2.35, 2.3, 1.2], //newpet 3.6 (45)
+  ["Dark blue dragon", 746, 683, 2.7, 2.8, 1.3], //newpet 3.7 (46) (Ignore 2.8's message, this one is gonna be the best pet in a considerable time. True respect if you manage to grind this one pet and succeed)
 ]
 
 const specialPets = [
-  ["Test", 1, 1, 1, 1], //0
-  ["Small skeleton", 1.4, 1.32, 1.04, 1.02], //1 [Children slavery, what a coward]
-  ["Skeletal dog", 1.46, 1.36, 1.05, 1.04], //2 [This dog is too busy trying to fetch his bones]
-  ["Skeleton", 1.52, 1.52, 1.08, 1.08], //3 [Adulthood, this skeleton wants to toot toot like so many years ago]
-  ["Skeletal snake", 1.66, 1.72, 1.08, 1.1], //4 [Don't snakes have no bones? This pet is confusing me]
-  ["Skeletal vulture", 2.4, 2, 1.15, 1.1], //5 [This is like a bird but evolved. Truly an outstanding move]
-  ["Skeletal hound", 2.6, 2.6, 1.1, 1.15], //6 [Fun fact: This is the last pet to get funny text]
-  ["Skeletal hydra", 5.4, 3.8, 1.2, 1.2], //7 [Skeletal hydrant or smh don't know about these creatures]
-  ["Skeletal dragon", 10, 10.6, 1.3, 1.25], //8 [This dragon should have felt down to pieces a long time ago]
-  ["Ghost rodent", 1.44, 1.36, 1.05, 1.03], //9 [Ghost buster!]
-  ["Ghost fly", 1.5, 1.42, 1.06, 1.05], //10 [Flies at 3am be like]
-  ["Large ghost ant", 1.7, 1.8, 1.1, 1.08], //11 [Ohio ants]
-  ["Ghost bat", 1.8, 1.8, 1.1, 1.12], //12 [It isn't really a ghost, it just cammo in the dark]
-  ["Ghost dog", 2.2, 2.28, 1.2, 1.2], //13 [Why do all humans ignore me? Truly a ghost moment]
-  ["Ghost tarantula", 3.2, 3.2, 1.13, 1.18], //14 [AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]
-  ["Ghost hydra", 6, 7, 1.25, 1.23], //15 [Really wanna put skeletal hydra text here but, too much ctrl c ctrl v]
-  ["Ghost dragon", 12, 12.2, 1.3, 1.25], //16 [Truly a powerful character. Invisibility go br]
+  ["Test", 1, 1, 1, 1, 1], //0
+  ["Small skeleton", 1.4, 1.32, 1.04, 1.02, 1], //1 [Children slavery, what a coward]
+  ["Skeletal dog", 1.46, 1.36, 1.05, 1.04, 1], //2 [This dog is too busy trying to fetch his bones]
+  ["Skeleton", 1.52, 1.52, 1.08, 1.08, 1], //3 [Adulthood, this skeleton wants to toot toot like so many years ago]
+  ["Skeletal snake", 1.66, 1.72, 1.08, 1.1, 1], //4 [Don't snakes have no bones? This pet is confusing me]
+  ["Skeletal vulture", 2.4, 2, 1.15, 1.1, 1], //5 [This is like a bird but evolved. Truly an outstanding move]
+  ["Skeletal hound", 2.6, 2.6, 1.1, 1.15, 1], //6 [Fun fact: This is the last pet to get funny text]
+  ["Skeletal hydra", 5.4, 3.8, 1.2, 1.2, 1], //7 [Skeletal hydrant or smh don't know about these creatures]
+  ["Skeletal dragon", 10, 10.6, 1.3, 1.25, 1.01], //8 [This dragon should have felt down to pieces a long time ago]
+  ["Ghost rodent", 1.44, 1.36, 1.05, 1.03, 1], //9 [Ghost buster!]
+  ["Ghost fly", 1.5, 1.42, 1.06, 1.05, 1], //10 [Flies at 3am be like]
+  ["Large ghost ant", 1.7, 1.8, 1.1, 1.08, 1], //11 [Ohio ants]
+  ["Ghost bat", 1.8, 1.8, 1.1, 1.12, 1], //12 [It isn't really a ghost, it just cammo in the dark]
+  ["Ghost dog", 2.2, 2.28, 1.2, 1.2, 1], //13 [Why do all humans ignore me? Truly a ghost moment]
+  ["Ghost tarantula", 3.2, 3.2, 1.13, 1.18, 1], //14 [AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]
+  ["Ghost hydra", 6, 7, 1.25, 1.23, 1], //15 [Really wanna put skeletal hydra text here but, too much ctrl c ctrl v]
+  ["Ghost dragon", 12, 12.2, 1.3, 1.25, 1.01], //16 [Truly a powerful character. Invisibility go br]
 ]
 
 const skeletalUnboxChances = [ //will be set to 1
@@ -174,4 +191,8 @@ const legendaryUnboxChances = [ //4 5 and 6
 
 const prestigeUnboxChances = [ //now it jumps to 7 and works fine from now
   [32,426], [33,356], [34,286], [35,152], [36,86], [37,26], [38,4], [39,1]
+]
+
+const trascendantUnboxChances = [ //this is 8
+ [40,126], [41,58], [42,26], [43,11], [44,5], [45,2], [46,1],
 ]

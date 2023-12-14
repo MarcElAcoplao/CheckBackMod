@@ -183,18 +183,38 @@ img {
   display: none;
 }
 
-#unboxButton5 {
+#button10 {
   top: 97vh;
   display: none;
 }
 
-#button9 {
+#button13 {
   top: 103vh;
   display: none;
 }
 
-#button10 {
+#unboxButton5 {
   top: 109vh;
+  display: none;
+}
+
+#unboxButton6 {
+  top: 115vh;
+  display: none;
+}
+
+#button9 {
+  top: 121vh;
+  display: none;
+}
+
+#button11 {
+  top: 127vh;
+  display: none;
+}
+
+#button12 {
+  top: 133vh;
   display: none;
 }
 

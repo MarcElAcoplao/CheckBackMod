@@ -27,6 +27,10 @@ buttonCooldown[12] Button 8 [0.2 XPBoost]
 buttonCooldown[13] Pet 5 [Prestige]
 buttonCooldown[14] Button 9
 buttonCooldown[15] Button 10 [1 XPBoost]
+buttonCooldown[16] Button 11
+buttonCooldown[17] Button 12
+buttonCooldown[18] Pet 6 [Prestige 2]
+buttonCooldown[19] Button 13 [2.5 XPBoost]
 
 Button 1 - 1 xp // 1min
 Button 2 - 2 xp // 5min
@@ -38,3 +42,6 @@ Button 7 - 250 xp // 7d
 Button 8 - 0.2 XPBoost // 1h
 Button 9 - 100 xp // 1d
 Button 10 - 1 XPBoost // 1h
+Button 11 - 33 xp // 6h
+Button 12 - 15 xp // 1h
+Button 13 - 2.5 XPBoost // 1h

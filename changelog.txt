@@ -1,3 +1,17 @@
+v0.6 - Endgame Resurrection Festival Party Fiesta
+-2 New XP Buttons. Similar to the previous button, the cooldowns for these and the gains drop, but they are better than the normal ones.
+  - 33 xp // 6h
+  - 15 xp // 1h
+-1 New prestige crate. New pets that have transcended and gained the ability to boost your XPBoost gain. Along being more expensive.
+  - 2.5 XPBoost // ~268k xp
+-1 New XPBoost button. Go wild with farming this one
+-Call them "tier 2" buttons, and they have all been sorted. XPBoost are all together, xp 8-10 together and the 2 prestige crates also together.
+-Changed the XPBoost display [it no longer shows as %]
+-This was v0.5.0.1 but the 2 new buttons from v0.5 had been nerfed to be unlocked at levels 150 and 200, plus the prestige crate unlocking at 125.
+-Added new XP ranks... reaching level 50k with almost 2b xp to grind. Good luck
+-Note: Possibly adding a display of whenever the alerts show on a text, instead of using the alert function
+
+
 v0.5 - Numbers Go Up version
 -Added compatibility with older saves [updating a button cooldown that isn't defined will make it defined "I can do it for 25, and it creates slots from 0 to 25"]
 -Balancing!
@@ -9,6 +23,7 @@ v0.5 - Numbers Go Up version
   -Level 200, gives 100xp every day
   -Level 250, allows you to prestige for 1 XPBoost, also with 1h cooldown
 -Possibly some bugs are fixed
+
 
 v0.4.1.2 - Small Bugfix
 -Fixed skeletal crates giving the wrong pets [and possibly ghost crate also had the same issue, it doesn't now]
@@ -25,6 +40,7 @@ After a long time, I finally managed to fix the bug that was on my spine, thanks
 -New crate with op pets. BUT! They cost some of your XPBoost. So I hope you've been able to grind these
 -Remade the special pets code slightly, they are now ID's 1 and 2, so anything bigger than 3 will be the normal pets [why you had to do this system demonin...]
 -New crate icon for upcoming similar pets
+
 
 v0.3.0.4
 -Fixed an important bug where daily rewards broke when having a special pet equipped [Reported by PSionJoule]

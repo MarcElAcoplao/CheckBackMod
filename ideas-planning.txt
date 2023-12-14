@@ -1,9 +1,14 @@
 v0.5.1 idea
 -Find how to make stuff stay fixed on the page
 
-v0.6 ideas [more pets]
--Another prestige crate [level 350] //210k xp
--New pet boost [more XPBoost]
+v0.6 ideas [more buttons] [250, 300, 350 and 400]
+-Button re-sorting [done]
+-2 more XP buttons [done]
+-1 more prestige pet crate [done] [fully done]
+-New pet boost [more XPBoost] [done, functional]
+-1 more XPBoost button [level 400, could give +2] [done]
+-Make an in-game last alert message, rather than the alert popup [pending]
+-Make xp bars and all of the UI [anything outside of the main buttons] stay in a fixed part of the page [maybe 0.6.1 update]
 
 v0.7 ideas [new feature]
--Something being unlocked at level 500 //402k xp
+-Something being unlocked at level 500 
