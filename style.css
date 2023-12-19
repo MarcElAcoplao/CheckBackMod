@@ -6,29 +6,33 @@ html {
 
 body {
   transition: background-color 300ms;
+  z-index: 2;
 }
 
 img {
   image-rendering: pixelated;
+  z-index: 2;
 }
 
 #levelBar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 13vh;
   background-color: #5cc;
   transition: background-color 500ms;
+  z-index: 2;
 }
 
 #levelBarBack {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-image: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,0.4) 100%);
+  z-index: 2;
 }
 
 #levelBarText {
@@ -37,6 +41,7 @@ img {
   margin: 0;
   font-size: 6vh;
   line-height: 8vh;
+  z-index: 2;
 }
 
 #levelBarRankText {
@@ -45,15 +50,17 @@ img {
   margin: 0;
   font-size: 3vh;
   line-height: 4vh;
+  z-index: 2;
 }
 
 #XPBar {
-  position: absolute;
+  position: fixed;
   top: 13vh;
   left: 0;
   width: 100vw;
   height: 5vh;
   background-color: black;
+  z-index: 2;
 }
 
 #XPBarBack {
@@ -64,6 +71,7 @@ img {
   height: 100%;
   background-color: #0b0;
   transition: 500ms ease-out;
+  z-index: 2;
 }
 
 #XPBarText {
@@ -78,16 +86,17 @@ img {
 }
 
 #nextUnlockLevel {
-  position: absolute;
+  position: fixed;
   top: 18.5vh;
   left: 0.5vh;
   font-size: 2vh;
   line-height: 2vh;
   margin: 0;
+  z-index: 2;
 }
 
 #selectedPetText {
-  position: absolute;
+  position: fixed;
   text-align: right;
   top: 18.5vh;
   right: 0.5vh;
@@ -95,10 +104,11 @@ img {
   line-height: 2.5vh;
   margin: 0;
   display: none;
+  z-index: 2;
 }
 
 #XPBoostDisplay {
-  position: absolute;
+  position: fixed;
   text-align: left;
   top: 26vh;
   left: 0.5vh;
@@ -106,6 +116,7 @@ img {
   line-height: 2.5vh;
   margin: 0;
   display: none;
+  z-index: 2;
 }
 
 .button {
@@ -228,14 +239,16 @@ img {
 }
 
 #dailyRewardButton {
+  position: fixed;
   transform: none;
   bottom: 5.5vh;
   left: 0.5vh;
   display: none;
+  z-index: 2;
 }
 
 #dailyRewardDiv {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -245,10 +258,11 @@ img {
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
+  z-index: 2;
 }
 
 #dailyRewardRarities {
-  position: absolute;
+  position: fixed;
   text-align: right;
   top: 3vh;
   right: 0.5vh;
@@ -261,10 +275,16 @@ img {
 #claimDailyRewardButton {
   bottom: 16vh;
   font-size: 2vh;
+  z-index: 2;
+}
+
+#petsTabButton {
+  position: fixed;
+  z-index: 2;
 }
 
 .dayBox {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 13vh;
   height: 13vh;
@@ -273,10 +293,11 @@ img {
   text-align: center;
   color: white;
   font-size: 3vh;
+  z-index: 2;
 } 
 
 #petsDiv {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -286,10 +307,11 @@ img {
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
+  z-index: 2;
 }
 
 .closeButton {
-  position: absolute;
+  position: fixed;
   top: 4px;
   right: 4px;
   height: 30px;
@@ -321,7 +343,7 @@ img {
 }
 
 #petInfo {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   width: 40%;
@@ -330,38 +352,38 @@ img {
   background-image: url('img/halftoneDots.png')
 }
 
-
-
-
-
 #themeDiv {
-  position: absolute;
+  position: fixed;
   bottom: 0.5vh;
   left: 0.5vh;
+  z-index: 2;
 }
 
 .themeButton {
   height: 2.5vh;
   font-size: 1.5vh;
+  z-index: 2;
 }
 
 #versionText {
-  position: absolute;
+  position: fixed;
   bottom: 0.5vh;
   right: 0.5vh;
   margin: 0;
   line-height: 2vh;
   font-size: 2vh;
+  z-index: 2;
 }
 
 .settingsButton {
-  position: absolute;
+  position: fixed;
   right: 0.5vh;
   height: 2.2vh;
   font-size: 1.5vh;
   line-height: 1.5vh;
   background-color: #bbb;
   border: 3px solid #666;
+  z-index: 2;
 }
 
 .settingsButton:hover {

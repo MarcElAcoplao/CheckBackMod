@@ -1,3 +1,13 @@
+v0.6.5 Improvement update
+-Visuals like the xp bar and selected pets are now fixed on the screen. Scrolling will only affect buttons
+-Pet XP Boosts were made simpler [compressed all xp-related things to only 1 stat]
+  -Some stats have been rebalanced slightly
+-Prestige button 3 buffed [2.5 --> 4 XPBoost]
+-Added Dancing Skeleton as filler pet for pet ID reasons [same odds as skeletal dragon/slightly weaker stats]
+-Special pets have been "removed" and now they are displayed after crate 6 as normal pets. To do the conversion, refresh 1-2 more times and click the "SpecialPet conversion" button.
+  -Code was made simpler
+Specifically in this update, let me know if there's any issues before I start working with the new feature
+
 v0.6 - Endgame Resurrection Festival Party Fiesta
 -2 New XP Buttons. Similar to the previous button, the cooldowns for these and the gains drop, but they are better than the normal ones.
   - 33 xp // 6h
