@@ -416,7 +416,7 @@ function clickButton(x) {
   else if (x==13 && game.buttonCooldowns[19] == 0) {
     if (game.XP > 267924.9) {
     game.XP = 0
-    game.XPBoost += 4 * pets[game.selectedPet][5]
+    game.XPBoost += 4 * pets[game.selectedPet][4]
     game.buttonCooldowns[19] = 3600 //1h, can't be modified... as of now
     updateXPBoost()
     }
