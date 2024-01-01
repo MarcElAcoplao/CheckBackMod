@@ -381,9 +381,12 @@ function numberToTime(x) {
 }
 function numberShort(x) {
 xCeil = Math.ceil(x)
+exponent = Math.floor(Math.log10(xCeil))
 result = ""
-if (xCeil >= 1000000) result = (xCeil/1000000).toFixed(1) + "m"
-else if (xCeil >= 1000) result = (xCeil/1000).toFixed(1) + "k"
+if (exponent >= 12) result = (xCeil / 10 ** exponent).toFixed(2) + "e" + exponent
+else if (exponent >= 9) result = (xCeil/10 ** 9).toFixed(1) + " B"
+else if (exponent >= 6) result = (xCeil/10 ** 6).toFixed(1) + " M"
+else if (exponent >= 3) result = (xCeil/10 ** 3).toFixed(1) + " K"
 else result = (x).toFixed(2)
 return result
 }
@@ -474,9 +477,9 @@ function clickButton(x) {
 
 //This will simply update the XPBoost display
 function updateXPBoost(){
-  if (game.XPBoost < 10) {return document.getElementById("XPBoostDisplay").innerHTML = "XPBoost: " + (game.XPBoost).toFixed(1),
+  if (game.XPBoost < 10) {return document.getElementById("XPBoostDisplay").innerHTML = "XPBoost: " + numberShort(game.XPBoost),
    game.XPBoostEffect = game.XPBoost}
-  else {return document.getElementById("XPBoostDisplay").innerHTML = "XPBoost: " + (game.XPBoost).toFixed(1) + "<br> Effective Boost: " + ((9 + (game.XPBoost - 9) ** 0.5).toFixed(1)),
+  else {return document.getElementById("XPBoostDisplay").innerHTML = "XPBoost: " + numberShort(game.XPBoost) + "<br> Effective Boost: " + numberShort((9 + (game.XPBoost - 9) ** 0.5)),
    game.XPBoostEffect = 9 + (game.XPBoost - 9) ** 0.5}
 }
 

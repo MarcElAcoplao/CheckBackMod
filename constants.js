@@ -92,7 +92,7 @@ const ranks = [
   [30000, "Transcendent dedication"],
   [40000, "Billion XP dedication"],
   [50000, "Unmatched dedication"],
-  [1000000, "This is 405b XP"]
+  [1000000, "This is 405b XP"],
   [Infinity, "Error"],
 ]
 
