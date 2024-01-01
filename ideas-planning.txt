@@ -1,17 +1,4 @@
-v0.6.5 [code clearance]
-Done:
--Visuals like the xp bar and selected pets are now fixed on the screen. Scrolling will only affect buttons
--Pet XP Boosts were made simpler [compressed all xp-related things to only 1 stat]
--Prestige button 3 buffed [2.5 --> 4 XPBoost]
--Added Dancing Skeleton as filler pet for pet ID reasons
--Special pets have been "removed" and now
-
-v0.7 ideas [new feature]
--Something being unlocked at level 1000? [Combat]
-   -3 New stats [hp, damage, defense]
-   -Crate like enemy picking with stats [rarer = tougher]
-     -Pet inventory like enemy display
-   -Drop tier [rewards would be tier-based and stat-based, so tougher enemies give more loot]
-     -XP rewards
-     -XPBoost rewards [very small]
-   -Some new resource
+v0.8 ideas
+Shop-like feature
+Upgrades require coins and pets [yes, your 300 green butterflies will be useful]
+Upgrades will give a small boost to something [something like an upgrade can be an extra dmg]

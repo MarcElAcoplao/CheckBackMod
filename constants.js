@@ -1,4 +1,4 @@
-const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100,125,150,200,250,300,350,400]
+const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100,125,150,200,250,300,350,400,500]
 const levelBarTextures = [50,55,60,65,70,80,90,100,200]
 
 const levelBarColours = [
@@ -80,6 +80,7 @@ const ranks = [
   [460, "Endless+++"],
   [480, "Endless++++"],
   [500, "Void"],
+  [825, "Million XP"],
   [1000, "Void+"],
   [1500, "Void++"],
   [2000, "Void+++"],
@@ -91,6 +92,7 @@ const ranks = [
   [30000, "Transcendent dedication"],
   [40000, "Billion XP dedication"],
   [50000, "Unmatched dedication"],
+  [1000000, "This is 405b XP"]
   [Infinity, "Error"],
 ]
 
@@ -193,3 +195,17 @@ const prestigeUnboxChances = [ //now it jumps to 7 and works fine from now
 const trascendantUnboxChances = [ //this is 8
  [40,126], [41,58], [42,26], [43,11], [44,5], [45,2], [46,1],
 ]
+
+const enemies = [
+  //Name, hp, damage, defense, loot tier
+  ["Test", 0.1, 0.1, 0.01, 1],
+  ["Small humanoid", 5, 0.5, 0.05, 1], //1.1 (1) - 1k XP / 0.5 Coins
+  ["Angry humanoid", 20, 2, 0.1, 1], //1.2 (2) - 4k XP / 2 Coins
+  ["Angry wife", 50, 5, 0.2, 1], //1.3 (3) - 10k XP / 5 Coins
+  ["Nordic grandfather", 150, 10, 0.5, 1], //1.4 (4) - 30k XP / 10 Coins
+  ["Armored human", 500, 25, 2, 2], //1.5 (5) - 250k XP / 50 Coins / 0.2 XPBoost
+  ]
+
+  const starterEnemiesChances = [ //45, 30, 15, 8, 2
+  [1, 35], [2, 25], [3, 20], [4, 15], [5, 5],
+  ]

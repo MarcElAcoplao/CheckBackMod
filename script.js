@@ -3,17 +3,25 @@ var autosaveStarted = false
 function reset() {
 	game = {
     XP: 0,
+    coins: 0,
     level: 1,
     XPBoost: 1,
+    XPBoostEffect: 1,
     buttonCooldowns: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     unlocks: 0,
     currentTheme: 2,
     lastSave: Date.now(),
     timeOfLastUpdate: Date.now(),
     pets: [],
+    enemies: [0, 0, 0, 0, 0, 0],
     selectedPet: 0,
     dailyRewards: 0,
     speed: 1,
+    HP: 0,
+    currentHP: 0,
+    enemyHP: 0,
+    DMG: 0,
+    DEF: 0,
   }
 }
 reset()
@@ -127,6 +135,12 @@ function loadGame(loadgame) {
   if (game.unlocks >= 18) {document.getElementById("button12").style.display = "block"}
   if (game.unlocks >= 19) {document.getElementById("unboxButton6").style.display = "block"}
   if (game.unlocks >= 20) {document.getElementById("button13").style.display = "block"}
+  if (game.unlocks >= 21) {
+    document.getElementById("enemiesTabButton").style.display = "block"
+    document.getElementById("fightingTabButton").style.display = "block"
+    document.getElementById("button14").style.display = "block"
+    enemiesChosen = 1
+  }
 }
 
 
@@ -140,7 +154,7 @@ function updateSmall() {
   }
   else {
     document.getElementById("button1").disabled = false
-    document.getElementById("button1").innerHTML = "Gain " + (pets[game.selectedPet][1] * game.XPBoost).toFixed(2) + " XP"
+    document.getElementById("button1").innerHTML = "Gain " + numberShort((1 * pets[game.selectedPet][1] * game.XPBoostEffect)) + " XP"
   }
   if (game.buttonCooldowns[1] > 0) {
     document.getElementById("button2").disabled = true
@@ -148,7 +162,7 @@ function updateSmall() {
   }
   else {
     document.getElementById("button2").disabled = false
-    document.getElementById("button2").innerHTML = "Gain " + (2 * pets[game.selectedPet][1] * game.XPBoost).toFixed(2) + " XP"
+    document.getElementById("button2").innerHTML = "Gain " + numberShort(2 * pets[game.selectedPet][1] * game.XPBoostEffect) + " XP"
   }
   if (game.buttonCooldowns[2] > 0) {
     document.getElementById("button3").disabled = true
@@ -156,7 +170,7 @@ function updateSmall() {
   }
   else {
     document.getElementById("button3").disabled = false
-    document.getElementById("button3").innerHTML = "Gain " + (5 * pets[game.selectedPet][1] * game.XPBoost).toFixed(2) + " XP"
+    document.getElementById("button3").innerHTML = "Gain " + numberShort(5 * pets[game.selectedPet][1] * game.XPBoostEffect) + " XP"
   }
   if (game.buttonCooldowns[3] > 0) {
     document.getElementById("button4").disabled = true
@@ -164,7 +178,7 @@ function updateSmall() {
   }
   else {
     document.getElementById("button4").disabled = false
-    document.getElementById("button4").innerHTML = "Gain " + (10 * pets[game.selectedPet][1] * game.XPBoost).toFixed(2) + " XP"
+    document.getElementById("button4").innerHTML = "Gain " + numberShort(10 * pets[game.selectedPet][1] * game.XPBoostEffect) + " XP"
   }
   if (game.buttonCooldowns[4] > 0) {
     document.getElementById("button5").disabled = true
@@ -172,7 +186,7 @@ function updateSmall() {
   }
   else {
     document.getElementById("button5").disabled = false
-    document.getElementById("button5").innerHTML = "Gain " + (25 * pets[game.selectedPet][1] * game.XPBoost).toFixed(2) + " XP"
+    document.getElementById("button5").innerHTML = "Gain " + numberShort(25 * pets[game.selectedPet][1] * game.XPBoostEffect) + " XP"
   }
   if (game.buttonCooldowns[5] > 0) {
     document.getElementById("button6").disabled = true
@@ -180,7 +194,7 @@ function updateSmall() {
   }
   else {
     document.getElementById("button6").disabled = false
-    document.getElementById("button6").innerHTML = "Gain " + (50 * pets[game.selectedPet][1] * game.XPBoost).toFixed(2) + " XP"
+    document.getElementById("button6").innerHTML = "Gain " + numberShort(50 * pets[game.selectedPet][1] * game.XPBoostEffect) + " XP"
   }
   if (game.buttonCooldowns[6] > 0) {
     document.getElementById("unboxButton1").disabled = true
@@ -231,7 +245,7 @@ function updateSmall() {
   }
   else {
     document.getElementById("button7").disabled = false
-    document.getElementById("button7").innerHTML = "Gain " + (250 * pets[game.selectedPet][1] * game.XPBoost).toFixed(2) + " XP"
+    document.getElementById("button7").innerHTML = "Gain " + numberShort(250 * pets[game.selectedPet][1] * game.XPBoostEffect) + " XP"
   }
   if (game.buttonCooldowns[12] > 0) {
     document.getElementById("button8").disabled = true
@@ -255,7 +269,7 @@ function updateSmall() {
   }
   else {
     document.getElementById("button9").disabled = false
-    document.getElementById("button9").innerHTML = "Gain " + (100 * pets[game.selectedPet][1] * game.XPBoost).toFixed(2) + " XP"
+    document.getElementById("button9").innerHTML = "Gain " + numberShort(100 * pets[game.selectedPet][1] * game.XPBoostEffect) + " XP"
   }
   if (game.buttonCooldowns[15] > 0) {
     document.getElementById("button10").disabled = true
@@ -271,7 +285,7 @@ function updateSmall() {
   }
   else {
     document.getElementById("button11").disabled = false
-    document.getElementById("button11").innerHTML = "Gain " + (33 * pets[game.selectedPet][1] * game.XPBoost).toFixed(2) + " XP"
+    document.getElementById("button11").innerHTML = "Gain " + numberShort(33 * pets[game.selectedPet][1] * game.XPBoostEffect) + " XP"
   }
   if (game.buttonCooldowns[17] > 0) {
     document.getElementById("button12").disabled = true
@@ -279,7 +293,7 @@ function updateSmall() {
   }
   else {
     document.getElementById("button12").disabled = false
-    document.getElementById("button12").innerHTML = "Gain " + (15 * pets[game.selectedPet][1] * game.XPBoost).toFixed(2) + " XP"
+    document.getElementById("button12").innerHTML = "Gain " + numberShort(15 * pets[game.selectedPet][1] * game.XPBoostEffect) + " XP"
   }
   if (game.buttonCooldowns[18] > 0) {
     document.getElementById("unboxButton6").disabled = true
@@ -297,6 +311,23 @@ function updateSmall() {
     document.getElementById("button13").disabled = false
     document.getElementById("button13").innerHTML = "Gain " + (4 * pets[game.selectedPet][4]).toFixed(2) + " XPBoost, but reset XP"
   }
+  if (game.buttonCooldowns[20] > 0) {
+    document.getElementById("button14").disabled = true
+    document.getElementById("button14").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[20])
+  }
+  else {
+    document.getElementById("button14").disabled = false
+    document.getElementById("button14").innerHTML = "Gain 5 HP, 0.5 DMG and 0.05 DEF "
+  }
+  if (game.buttonCooldowns[21] > 0) {
+    document.getElementById("fight1Button").disabled = true
+    document.getElementById("fight1Button").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[21])
+  }
+  else {
+    document.getElementById("fight1Button").disabled = false
+    document.getElementById("fight1Button").innerHTML = "Fight an area 1 foe "
+  }
+
   game.level = XPToLevel(Math.max(Math.floor(game.XP), 0))
   document.getElementById("level").innerHTML = game.level
   //This bit is weird and gross
@@ -325,7 +356,7 @@ setInterval(updateSmall, 16) //Runs the update ~60 times per second
 
 //Updates cooldowns
 function updateLarge() {
-  for (i=0;i<20;i++) {
+  for (i=0;i<22;i++) {
     if (game.buttonCooldowns[i] > 0) game.buttonCooldowns[i] -= ((Date.now() - game.timeOfLastUpdate) / (1000/game.speed))
     if (game.buttonCooldowns[i] < 0) game.buttonCooldowns[i] = 0
   }
@@ -348,35 +379,43 @@ function numberToTime(x) {
   else if (xCeil%60 != 0) result += Math.floor(xCeil%60) + " seconds "
   return result
 }
+function numberShort(x) {
+xCeil = Math.ceil(x)
+result = ""
+if (xCeil >= 1000000) result = (xCeil/1000000).toFixed(1) + "m"
+else if (xCeil >= 1000) result = (xCeil/1000).toFixed(1) + "k"
+else result = (x).toFixed(2)
+return result
+}
 
 //Handles clicking the buttons
 function clickButton(x) {
   if (x==1 && game.buttonCooldowns[0] == 0) {
-      game.XP += (pets[game.selectedPet][1] * game.XPBoost)
+      game.XP += (pets[game.selectedPet][1] * game.XPBoostEffect)
       game.buttonCooldowns[0] = 60 / (pets[game.selectedPet][2]) //1 minute
   }
   else if (x==2 && game.buttonCooldowns[1] == 0) {
-      game.XP += (2 * pets[game.selectedPet][1] * game.XPBoost)
+      game.XP += (2 * pets[game.selectedPet][1] * game.XPBoostEffect)
       game.buttonCooldowns[1] = 300 / (pets[game.selectedPet][2]) //5 minutes
   }
   else if (x==3 && game.buttonCooldowns[2] == 0) {
-      game.XP += (5 * pets[game.selectedPet][1] * game.XPBoost)
+      game.XP += (5 * pets[game.selectedPet][1] * game.XPBoostEffect)
       game.buttonCooldowns[2] = 1800 / (pets[game.selectedPet][2]) //30 minutes
   }
   else if (x==4 && game.buttonCooldowns[3] == 0) {
-      game.XP += (10 * pets[game.selectedPet][1] * game.XPBoost)
+      game.XP += (10 * pets[game.selectedPet][1] * game.XPBoostEffect)
       game.buttonCooldowns[3] = 7200 / (pets[game.selectedPet][2]) //2 hours
   }
   else if (x==5 && game.buttonCooldowns[4] == 0) {
-      game.XP += (25 * pets[game.selectedPet][1] * game.XPBoost)
+      game.XP += (25 * pets[game.selectedPet][1] * game.XPBoostEffect)
       game.buttonCooldowns[4] = 43200 / (pets[game.selectedPet][2]) //12 hours
   }
   else if (x==6 && game.buttonCooldowns[5] == 0) {
-      game.XP += (50 * pets[game.selectedPet][1] * game.XPBoost)
+      game.XP += (50 * pets[game.selectedPet][1] * game.XPBoostEffect)
       game.buttonCooldowns[5] = 172800 / (pets[game.selectedPet][2]) //2d
   }
   else if (x==7 && game.buttonCooldowns[11] == 0) {
-      game.XP += (250 * pets[game.selectedPet][1] * game.XPBoost)
+      game.XP += (250 * pets[game.selectedPet][1] * game.XPBoostEffect)
       game.buttonCooldowns[11] = 604800 / (pets[game.selectedPet][2]) //7d
   }
   else if (x==8 && game.buttonCooldowns[12] == 0) {
@@ -391,7 +430,7 @@ function clickButton(x) {
     }
   }
   else if (x==9 && game.buttonCooldowns[14] == 0) {
-      game.XP += (100 * pets[game.selectedPet][1] * game.XPBoost)
+      game.XP += (100 * pets[game.selectedPet][1] * game.XPBoostEffect)
       game.buttonCooldowns[14] = 86400 / (pets[game.selectedPet][2]) //7d
   }
   else if (x==10 && game.buttonCooldowns[15] == 0) {
@@ -406,11 +445,11 @@ function clickButton(x) {
     }
   }
   else if (x==11 && game.buttonCooldowns[16] == 0) {
-      game.XP += (33 * pets[game.selectedPet][1] * game.XPBoost)
+      game.XP += (33 * pets[game.selectedPet][1] * game.XPBoostEffect)
       game.buttonCooldowns[16] = 21600 / (pets[game.selectedPet][2]) //6h
   }
   else if (x==12 && game.buttonCooldowns[17] == 0) {
-      game.XP += (15 * pets[game.selectedPet][1] * game.XPBoost)
+      game.XP += (15 * pets[game.selectedPet][1] * game.XPBoostEffect)
       game.buttonCooldowns[17] = 3600 / (pets[game.selectedPet][2]) //1h
   }
   else if (x==13 && game.buttonCooldowns[19] == 0) {
@@ -424,11 +463,22 @@ function clickButton(x) {
       alert("You need at least level 400 to reset for this button")
     }
   }
+  else if (x==14 && game.buttonCooldowns[20] == 0) {
+    game.HP += 5
+    game.DMG += 0.5
+    game.DEF += 0.05 
+    game.buttonCooldowns[20] = 3600 //1h
+}
   updateSmall()
 }
 
 //This will simply update the XPBoost display
-function updateXPBoost(){ return document.getElementById("XPBoostDisplay").innerHTML = "XPBoost: " + (game.XPBoost).toFixed(2)}
+function updateXPBoost(){
+  if (game.XPBoost < 10) {return document.getElementById("XPBoostDisplay").innerHTML = "XPBoost: " + (game.XPBoost).toFixed(1),
+   game.XPBoostEffect = game.XPBoost}
+  else {return document.getElementById("XPBoostDisplay").innerHTML = "XPBoost: " + (game.XPBoost).toFixed(1) + "<br> Effective Boost: " + ((9 + (game.XPBoost - 9) ** 0.5).toFixed(1)),
+   game.XPBoostEffect = 9 + (game.XPBoost - 9) ** 0.5}
+}
 
 
 //Handles unlocks (Happens 60 times a second, could definitely be optimised!)
@@ -487,6 +537,12 @@ function handleUnlocks() {
       game.buttonCooldowns[18] = 0}
       else if (i==19) {document.getElementById("button13").style.display = "block"
       game.buttonCooldowns[19] = 0}
+      else if (i==20) {
+        document.getElementById("enemiesTabButton").style.display = "block"
+        document.getElementById("fightingTabButton").style.display = "block"
+        document.getElementById("button14").style.display = "block"
+        game.buttonCooldowns[20] = 0
+        game.buttonCooldowns[21] = 0}
       break
     }
   }
@@ -571,8 +627,9 @@ function unboxPet(x) {
     }
   }
   else if (x==7) {
-    if (game.XPBoost <= 1) {
-      alert("XPBoost has to be higher than 1 to buy this crate")  
+    if (game.XPBoost <= 1.09) {
+      alert("XPBoost has to not drop below 1 to buy this crate") 
+      petChosen = 0 
     }
     else {
       game.XPBoost += -0.1
@@ -590,8 +647,9 @@ function unboxPet(x) {
     }
   }
   else if (x==8) {
-    if (game.XPBoost <= 1) {
-      alert("XPBoost has to be higher than 1 to buy this crate")  
+    if (game.XPBoost <= 1.24) {
+      alert("XPBoost has to not drop below 1 to buy this crate")
+      petChosen = 0
     }
     else {
       game.XPBoost += -0.25
@@ -608,10 +666,11 @@ function unboxPet(x) {
     }
     }
   }
-
+if (petChosen >= 1) {
     alert("Got a " + pets[petChosen][0] + "!")
     if (!game.pets[petChosen]) {game.pets[petChosen] = 1}
     else {game.pets[petChosen]++}
+
 
     if (x==3) {game.buttonCooldowns[6] = 7200 / (pets[game.selectedPet][3])} //2 hours
     else if (x==4) {game.buttonCooldowns[7] = 21600 / (pets[game.selectedPet][3])} //6 hours
@@ -619,6 +678,7 @@ function unboxPet(x) {
     else if (x==6) {game.buttonCooldowns[10] = 172800 / (pets[game.selectedPet][3])} //2 days
     else if (x==7) {game.buttonCooldowns[13] = 3600 / (pets[game.selectedPet][3])} //1 h
     else if (x==8) {game.buttonCooldowns[18] = 3600 / (pets[game.selectedPet][3])} //1 h  
+ }
 }
   if (document.getElementById("petsDiv").style.display == "block") displayPets()
 
@@ -735,7 +795,7 @@ function displayPets() {
 
 function showPetInfo(x) {
   if (x==0) {document.getElementById("petInfo").innerHTML = ""}
-  else document.getElementById("petInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + pets[x][0] + "</span><br>You have " + game.pets[x] + "</p><br><img src='img/pets/" + x + ".png' style='width: 50%'><br><p style='color: white'><span style='font-size: 32px; font-weight: bold'>Effects:</span><br>+" + ((pets[x][1] - 1) * 100).toFixed(1) + "% XP from buttons and Daily<br>-" + ((1 - (1 / pets[x][2])) * 100).toFixed(1) + "% XP button cooldown<br>-" + ((1 - (1 / pets[x][3])) * 100).toFixed(1) + "% pet button cooldown<br>+" + ((pets[x][4] - 1) * 100).toFixed(1) + "% XPBoost stat</p></center>"
+  else document.getElementById("petInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + pets[x][0] + "</span><br>You have " + game.pets[x] + "</p><br><img src='img/pets/" + x + ".png' style='width: 50%'><br><p style='color: white'><span style='font-size: 32px; font-weight: bold'>Effects:</span><br>x" + numberShort(pets[x][1]) + " XP from buttons and Daily<br>-" + ((1 - (1 / pets[x][2])) * 100).toFixed(1) + "% XP button cooldown<br>-" + ((1 - (1 / pets[x][3])) * 100).toFixed(1) + "% pet button cooldown<br>+" + ((pets[x][4] - 1) * 100).toFixed(1) + "% XPBoost stat</p></center>"
 }
 
 function setSelectedPet(x) {
@@ -821,4 +881,154 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
        }
     }
     alert("Special pets have been changed and are now normal pets. The now hidden value has been transfered to your normal pets (Make sure to reload if it didn't work). Thanks to @shadow for this")
+  }
+
+  //Fighting mechanics
+  function openCloseEnemiesTab() {
+    if (document.getElementById("enemiesDiv").style.display == "block") {
+      document.getElementById("enemiesDiv").style.display = "none"
+      document.getElementById("enemiesListInner").innerHTML = ""
+    }
+    else {
+      document.getElementById("enemiesDiv").style.display = "block"
+      displayEnemies()
+    }
+  }
+
+  function displayEnemies() {
+    document.getElementById("enemiesListInner").innerHTML = ""
+    let enemyBox = document.createElement("div")
+    enemyBox.style.display = "inline-block"
+    enemyBox.style.position = "relative"
+    enemyBox.style.width = "128px"
+    enemyBox.style.height = "128px"
+    enemyBox.style.margin = "8px 0 0 8px"
+    enemyBox.style.border = "8px solid black"
+    enemyBox.style.cursor = "pointer"
+    enemyBox.style.backgroundColor = "#888"
+    enemyBox.style.backgroundImage = "url('img/halftoneDots.png')"
+    enemyBox.className += "enemyBox"
+    enemyBoxes = document.getElementsByClassName("enemyBox");
+    for (i=1;i<enemies.length;i++) {
+      document.getElementById("enemiesListInner").appendChild(enemyBox.cloneNode(true))
+      enemyBoxes[i-1].setAttribute("id", i)
+      enemyBoxes[i-1].addEventListener('mouseover', function(){
+        if (game.enemies[parseInt(this.id)] > 0) {showEnemiesInfo(parseInt(this.id))}
+      })
+      enemyBoxes[i-1].addEventListener('mouseout', function(){showEnemiesInfo(0)})
+      if (game.enemies[i] > 0) { //1st value is red, 2nd green and 3rd blue
+        enemyBoxes[i-1].innerHTML = "<img src='img/enemies/" + i + ".png' style='width: 128px'>"
+        enemyBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.enemies[i] + "</p>"
+        if (i<=6) enemyBoxes[i-1].style.border = "8px outset #555"
+        else if (i<=13) enemyBoxes[i-1].style.border = "8px outset #447"
+        else if (i<=22) enemyBoxes[i-1].style.border = "8px outset #647"
+        else if (i<=31) enemyBoxes[i-1].style.border = "8px outset #500"
+        else if (i<=39) enemyBoxes[i-1].style.border = "8px outset #990"
+        else if (i<=46) enemyBoxes[i-1].style.border = "8px outset #229"
+        else if (i<=55) enemyBoxes[i-1].style.border = "8px outset #bbb"
+        else if (i<=63) enemyBoxes[i-1].style.border = "8px outset #282"
+      }
+      else {
+        enemyBoxes[i-1].innerHTML = "<img src='img/enemies/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
+        enemyBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>0</p>"
+      }
+    }
+    j=enemies.length-1
+  }
+
+  function showEnemiesInfo(x) {
+    if (x==0) {document.getElementById("enemiesInfo").innerHTML = ""}
+    else document.getElementById("enemiesInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + enemies[x][0] + "</span><br>You killed " + game.enemies[x] + "</p><br><img src='img/enemies/" + x + ".png' style='width: 50%'><br><p style='color: white'><span style='font-size: 32px; font-weight: bold'>Stats:</span><br>" + (enemies[x][1]).toFixed(1) + " HP<br>" + (enemies[x][2]).toFixed(1) + " Damage<br>" + (enemies[x][3]).toFixed(1) + " Defense<br> Drop tier: " + (pets[x][4]) + "</p></center>"
+  }
+
+  function openCloseFightingTab() {
+    if (document.getElementById("fightingDiv").style.display == "block") {
+      document.getElementById("fightingDiv").style.display = "none"
+    }
+    else {
+      document.getElementById("fightingDiv").style.display = "block"
+      displayStats()
+      document.getElementsByClassName("dropBox")[0].innerHTML = ""
+      document.getElementsByClassName("dropBox")[1].innerHTML = ""
+      document.getElementsByClassName("dropBox")[2].innerHTML = ""
+      document.getElementsByClassName("dropBox")[3].innerHTML = ""
+    }
+  }
+
+  function displayStats() {
+    document.getElementById("statsDisplay").innerHTML = "<left><p style='color: white'><span style='font-size: 20px; font-weight: bold'> HP: " + (game.HP).toFixed(1) + "<br> Current HP: " + (game.currentHP).toFixed(1) + "<br> DMG: " + (game.DMG).toFixed(1) + "<br> DEF: " + (game.DEF).toFixed(1) + "</p></center>"  
+  }
+
+  function displayEnemiesFightRarities(x) {
+    if (x==0) {document.getElementById("enemiesFightChances").innerHTML = ""}
+    else if (x == 1) {
+      document.getElementById("enemiesFightChances").innerHTML = "<style='width:6vh'><br><b>Rarities for this area:</b><br>"
+      totalWeight = 0
+      for (i=0;i<starterEnemiesChances.length;i++) totalWeight += starterEnemiesChances[i][1]
+      for(i=0;i<starterEnemiesChances.length;i++) {
+        document.getElementById("enemiesFightChances").innerHTML += enemies[starterEnemiesChances[i][0]][0] + ": " + (starterEnemiesChances[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
+      }
+    }
+  }
+
+  function startFight(x) {
+    totalWeight = 0
+    if (x==1) {
+      for (i=0;i<starterEnemiesChances.length;i++) totalWeight += starterEnemiesChances[i][1]
+      for (i=0;i<starterEnemiesChances.length;i++) {
+        if (Math.random() * totalWeight < starterEnemiesChances[i][1]) {
+          enemiesChosen = starterEnemiesChances[i][0]
+          i = starterEnemiesChances.length
+        }
+        else {
+          totalWeight -= starterEnemiesChances[i][1]
+        }
+      }
+     game.buttonCooldowns[21] = 3600 //1h
+    }
+    alert("Fighting a " + enemies[enemiesChosen][0] + "!")
+    game.currentHP = game.HP
+    game.enemyHP = enemies[enemiesChosen][1]
+    attack()
+    displayCurrentEnemy()
+  }
+
+function displayCurrentEnemy() {
+
+}
+
+  function attack() {
+    game.enemyHP -= game.DMG - enemies[enemiesChosen][3]
+     game.currentHP -= enemies[enemiesChosen][2] - game.DEF
+     displayStats()
+     //doSomeStuff()  You don't need to keep the function seperated
+     setTimeout(() => {
+      if (game.enemyHP <= 0) {fightRewards(enemies[enemiesChosen][4])}
+     else if (game.currentHP <= 0) {alert("You died... and nothing happens")}
+     else if (game.DMG < enemies[enemiesChosen][3]) {alert("Can't deal damage to the enemy, fight ends here")}
+     else attack()
+      console.log('100ms later')
+      //Anything you want to happen in sequence after 100ms can go here
+     }, 100)
+     // everything past this comment will not wait.
+  }
+
+  function fightRewards(x) {
+     if (x==1) {
+      document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(200 * enemies[enemiesChosen][1]) + " XP"
+      document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(1 * enemies[enemiesChosen][2]) + " Coins"
+      document.getElementsByClassName("dropBox")[2].innerHTML = ""
+      game.XP += 200 * enemies[enemiesChosen][1]
+      game.coins += 1 * enemies[enemiesChosen][2]
+     }
+     if (x==2) {
+      document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(500 * enemies[enemiesChosen][1]) + " XP"
+      document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(2 * enemies[enemiesChosen][2]) + " Coins"
+      document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(0.1 * enemies[enemiesChosen][3]) + " XPBoost"
+      game.XP += 500 * enemies[enemiesChosen][1]
+      game.coins += 2 * enemies[enemiesChosen][2]
+      game.XPBoost += 0.1 * enemies[enemiesChosen][3]
+      updateXPBoost()
+     }
+     game.enemies[enemiesChosen] += 1
   }

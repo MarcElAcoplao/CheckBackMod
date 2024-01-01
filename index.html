@@ -27,6 +27,8 @@
   </div>
   <p id="nextUnlockLevel"></p>
   <button class="button" id="petsTabButton" style="top: 23vh; left: 5vh; display: none" onclick="openClosePetsTab()">Pets</button>
+  <button class="button" id="enemiesTabButton" style="top: 34vh; left: 8vh; display: none" onclick="openCloseEnemiesTab()">Enemies</button>
+  <button class="button" id="fightingTabButton" style="top: 39vh; left: 8vh; display: none" onclick="openCloseFightingTab()">Fighting</button>
   <p id="selectedPetText">Current selected pet:<br><span id="selectedPet" style="font-weight: bold">None</span><br><img id="selectedPetImg" src="img/pets/0.png" style="width: 8vh; display: none"><br><br><span id="petRarities"></span></p>
   
   <button class="button" id="button1" onclick="clickButton(1)">Gain 1 XP</button>
@@ -42,6 +44,7 @@
   <button class="button" id="button11" onclick="clickButton(11)">Gain 33 XP</button>
   <button class="button" id="button12" onclick="clickButton(12)">Gain 15 XP</button>
   <button class="button" id="button13" onclick="clickButton(13)">Gain 4 XPBoost</button>
+  <button class="button" id="button14" onclick="clickButton(14)">Gain 5 Stats</button>
 
   <button class="button" id="unboxButton1" onclick="unboxPet(3)" onmouseover="displayPetRarities(3)" onmouseout="displayPetRarities(0)">Unbox a random basic pet</button>
   <button class="button" id="unboxButton2" onclick="unboxPet(4)" onmouseover="displayPetRarities(4)" onmouseout="displayPetRarities(0)">Unbox a random advanced pet</button>
@@ -63,7 +66,7 @@
   <button class="button" id="dailyRewardButton" onclick="openCloseDailyRewardTab()">Daily reward</button>
   
   <p id="XPBoostDisplay">XPBoost: 1</p>
-  <p id="versionText">Check Back Mod v0.6.5 (Creator: MarcElAcoplao, <a href="https://discord.gg/qNqRWg4EYT">Discord</a>)<br>
+  <p id="versionText">Check Back Mod v0.7 (Creator: MarcElAcoplao, <a href="https://discord.gg/qNqRWg4EYT">Discord</a>)<br>
     <a href="https://demonin.com/games/checkBack/">Original</a> by Demonin (<a href="https://discord.gg/3hwM7ScH6k">Discord</a>)</p>
   <button class="settingsButton" style="bottom: 15vh" onclick="noSpecialPets()">SpecialPet conversion</button>
   <button class="settingsButton" style="bottom: 12.5vh" onclick="exportGame()">Export</button>
@@ -92,6 +95,31 @@
     </div>
     <div id="petInfo"></div>
   </div>
+
+  <div id="enemiesDiv">
+    <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Enemies</p>
+    <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px'>Hover over the enemies to see their stats</p>
+    <button class="closeButton" onclick="openCloseEnemiesTab()">Close</button>
+    <div id="enemiesList">
+      <div id="enemiesListInner"></div>
+    </div>
+    <div id="enemiesInfo"></div>
+  </div>
+
+  <div id="fightingDiv">
+    <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Fighting</p>
+    <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px; width: 50%'>Fight different types of enemies and get loot</p>
+    <p id="enemiesFightChances"></p>
+    <p id="statsDisplay"></p>
+    <button class="button" id="fight1Button" onclick="startFight(1)" onmouseover="displayEnemiesFightRarities(1)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 1 foe</button> 
+    <div class="dropBox" style="left: 0; color: #bff"></div>
+    <div class="dropBox" style="left: 15vh; color: #bff"></div>
+    <div class="dropBox" style="left: 30vh; color: #bff"></div>
+    <div class="dropBox" style="left: 45vh; color: #bff"></div>
+    <div id="enemiesDisplayInfo"></div>
+    <button class="closeButton" onclick="openCloseFightingTab()">Close</button>
+  </div>
+
   <script src="constants.js"></script>
   <script src="script.js"></script>
   <script defer>setAutoSave()</script>

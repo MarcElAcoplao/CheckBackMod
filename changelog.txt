@@ -1,3 +1,25 @@
+v0.7 Fighting update (And happy new year update)
+- Fixed a bug with prestige crates when you can't open them. Now it prevents you from dropping XPBoost below 1 [imagine opening one that costs 1.3 and getting a negative boost :skull:]
+- Added rounding to buttons. Now they will display "3542" as "3.5k" XP. Also added it to the pets tab [xp and xpboost boosts] and the new feature.
+- Added a softcap to XPBoost effect. After you reach 10, it will start increasing at square root rate [possible that in future updates it will get softer]
+- New feature unlocked at level 500: FIGHTING!
+  - Increase your stats (HP, DMG and DEF) through a new button with 1h cooldown
+  - Fighting tab
+   - Displays your current stats
+   - Allows you to start a combat in one area
+     - Combat system: 
+     1- You and the enemy deal damage based on their own damage and the receiver's defense
+     2- If the player deals no damage, the battle ends
+     3- If the enemy hp is below 0, the battle ends and it rolls rewards [they are based on a set tier and some of the enemy stats]
+     4- If the player hp is below 0, the battle ends
+     5- If the battle hasn't ended in any way, it goes back to step 1
+    - Has buttons to pick whatever area you wanna fight [Each area has some set of enemies with their rarities, hover over the button to display the rarities]
+    - 1st area is unlocked at level 500, enemies drop XP, coins [a new resource, no display and no use as of now] and XPBoost [only the boss]
+  - Enemies tab
+   - Displays all the enemies and the amount you've killed of each
+    - If you killed that enemy, you can hover over it to see their stats
+If there's any issues or you feel something's weird with balancing, let me know. This update took a while to make [more effective hours than 0.4] and I want you all to enjoy it
+
 v0.6.5 Improvement update
 -Visuals like the xp bar and selected pets are now fixed on the screen. Scrolling will only affect buttons
 -Pet XP Boosts were made simpler [compressed all xp-related things to only 1 stat]

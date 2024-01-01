@@ -227,6 +227,11 @@ img {
   display: none;
 }
 
+#button14 {
+  top: 139vh;
+  display: none;
+}
+
 .button:hover {
   cursor: pointer;
 }
@@ -304,7 +309,6 @@ img {
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
-  z-index: 2;
 }
 
 .closeButton {
@@ -386,3 +390,92 @@ img {
 .settingsButton:hover {
   cursor: pointer;
 }
+
+#enemiesTabButton {
+  position: fixed;
+  z-index: 2;
+}
+
+#enemiesDiv {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 70%;
+  height: 70%;
+  background-color: #444;
+  display: none;
+  border: 0.8vh outset #555;
+}
+
+#enemiesCloseButton:hover {
+  cursor: pointer;
+}
+
+#enemiesList {
+  position: relative;
+  margin: 0;
+  width: 60%;
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+#enemiesListInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#enemiesInfo {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background-color: #666;
+  background-image: url('img/halftoneDots.png')
+}
+
+#fightingTabButton {
+  position: fixed;
+  z-index: 2;
+}
+
+#fightingDiv {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+  width: 60vh;
+  height: 80vh;
+  background-color: #444;
+  display: none;
+  border: 0.8vh outset #555;
+}
+
+#fight1Button {
+  bottom: 15vh;
+  font-size: 2vh;
+  z-index: 2;
+}
+
+#enemiesFightChances {
+  color: white;
+  text-align: right;
+  float: right
+}
+
+.dropBox {
+  position: fixed;
+  bottom: 0;
+  width: 13vh;
+  height: 13vh;
+  background-color: #666;
+  border: 1vh outset #777;
+  text-align: center;
+  color: white;
+  font-size: 3vh;
+  z-index: 2;
+} 
