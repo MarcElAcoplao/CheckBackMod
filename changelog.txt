@@ -1,3 +1,7 @@
+v0.7.0.2
+-The enemy selected is set to 1 when you get to level 500 [also by default when you refresh], should fix a small issue with sometimes the button not working
+-Added the rounding to the daily rewards
+
 v0.7 Fighting update (And happy new year update)
 - Fixed a bug with prestige crates when you can't open them. Now it prevents you from dropping XPBoost below 1 [imagine opening one that costs 1.3 and getting a negative boost :skull:]
 - Added rounding to buttons. Now they will display "3542" as "3.5k" XP. Also added it to the pets tab [xp and xpboost boosts] and the new feature.
