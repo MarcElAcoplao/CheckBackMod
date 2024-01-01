@@ -827,7 +827,7 @@ function displayDailyRewards() {
     dailyRewardDay = game.dailyRewards+i+1
     document.getElementsByClassName("dayBox")[i].innerHTML = "Day " + dailyRewardDay
     if (dailyRewardDay % 2 == 1) {
-      document.getElementsByClassName("dayBox")[i].innerHTML += "<br><br>" + numberShort(Math.min((17.5 + dailyRewardDay * 2.5)*pets[game.selectedPet][1], 1000*pets[game.selectedPet][1])) + " XP"}
+      document.getElementsByClassName("dayBox")[i].innerHTML += "<br>" + numberShort(Math.min((17.5 + dailyRewardDay * 2.5)*pets[game.selectedPet][1], 1000*pets[game.selectedPet][1])) + " XP"}
     else if (dailyRewardDay % 4 == 2) {document.getElementsByClassName("dayBox")[i].innerHTML += "<span style='font-size: 1.5vh'><br>Skeletal crate</span><br><img src='img/crateSkeletal.png' style='width:4vh; margin: 0; margin-top: 1vh;'>"}
     else {document.getElementsByClassName("dayBox")[i].innerHTML += "<span style='font-size: 1.5vh'><br>Ghost crate</span><br><img src='img/crateGhost.png' style='width:4vh; margin: 0; margin-top: 1vh;'>"}
   }
