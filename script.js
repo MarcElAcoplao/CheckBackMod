@@ -542,7 +542,8 @@ function handleUnlocks() {
         document.getElementById("fightingTabButton").style.display = "block"
         document.getElementById("button14").style.display = "block"
         game.buttonCooldowns[20] = 0
-        game.buttonCooldowns[21] = 0}
+        game.buttonCooldowns[21] = 0
+        enemiesChosen = 1}
       break
     }
   }
