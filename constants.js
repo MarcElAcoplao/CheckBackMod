@@ -177,7 +177,7 @@ const basicUnboxChances = [ //this one will actually be 3
 ]
 
 const advancedUnboxChances = [
-  [7,85], [8,75], [9,55], [10,42], [11,28], [12,16], [13,11], [14,5], [15,1]
+  [4,85], [7,75], [5,55], [8,42], [9,28], [10,16], [11,11], [12,5], [13,1]
 ]
 
 const epicUnboxChances = [

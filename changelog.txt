@@ -1,3 +1,6 @@
+v0.7.0.4
+-Advanced pet crate [2nd one] had their rarities bugged, now fixed them [blue dragons were x11 as common]
+
 v0.7.0.3
 -Added the rounding display to XPBoost
 -Fixed an issue with levels if you would get to I believe past level 1m
