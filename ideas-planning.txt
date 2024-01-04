@@ -2,3 +2,14 @@ v0.8 ideas
 Shop-like feature
 Upgrades require coins and pets [yes, your 300 green butterflies will be useful]
 Upgrades will give a small boost to something [something like an upgrade can be an extra dmg]
+Hukutka reached level 3666 after the update. Next update could possibly be at level 1500 or 2000, depending on how the progression feels
+
+Upgrade Ideas:
+
+Increased XP gain
+Increased XPBoost gain
+Button cooldowns are a little bit faster
+More fighting stats [like an hp boost, a dmg boost and a def boost]
+Some new unlocks [like a new XP button...]
+Make the XPBoost softcap better
+Make it fight more times

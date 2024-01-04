@@ -326,6 +326,8 @@ function updateSmall() {
   else {
     document.getElementById("fight1Button").disabled = false
     document.getElementById("fight1Button").innerHTML = "Fight an area 1 foe "
+    if (Date.now() % 600 < 300) {document.getElementById("fightingTabButton").style.border = "0.3vh solid #77f"}
+    else {document.getElementById("fightingTabButton").style.border = "0.3vh solid #2df"}
   }
 
   game.level = XPToLevel(Math.max(Math.floor(game.XP), 0))
