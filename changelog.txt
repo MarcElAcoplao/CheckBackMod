@@ -1,3 +1,6 @@
+v0.8.0.1
+-Fixed a bug where the 4th upgrade would take something else instead of the actual pet
+
 v0.8 The Item Shop!
 -New feature unlocked at level 1500! The shop!
   -Items in the shop have a cost, which is usually coins and some pets. They give an effect.

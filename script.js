@@ -1325,11 +1325,11 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
        game.coins -= 200
        game.pets[3] -= 20
        game.pets[18] -= 5
-       game.pets[21] -= 5
+       game.pets[24] -= 5
        game.items[4] +=1
        alert("Bought " + items[x][0])
       }
-    else {alert("Not enough items; " + numberShort(game.coins) + "/200 coins, " + game.pets[3] + "/20 Rats, " + game.pets[18] + "/5 Cats, " + game.pets[21] + "/5 Shiny rats")}
+    else {alert("Not enough items; " + numberShort(game.coins) + "/200 coins, " + game.pets[3] + "/20 Rats, " + game.pets[18] + "/5 Cats, " + game.pets[24] + "/5 Shiny rats")}
    }
    if (x==5) {
     if (game.coins >= 250 && game.pets[5] >= 10 && game.pets[16] >= 3) {
