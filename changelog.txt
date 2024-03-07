@@ -1,3 +1,20 @@
+v0.8 The Item Shop!
+-New feature unlocked at level 1500! The shop!
+  -Items in the shop have a cost, which is usually coins and some pets. They give an effect.
+  -Some of the effects are increased XP gain and increased XPBoost gain.
+  -Some of these items are more important, as they give QoL or new unlocks. They are more expensive though
+-New area
+  -6 strong enemies are waiting for you. They do give a bunch of coins
+-Many changes and improvements.
+  -Help button! Provides a quick guide on what to do.
+  -Stuff like the xpboost info is now being refreshed constantly rather than just when it updates [through in-game features and not console].
+  -Hidden stats, lost xp and highest level. No way to check them ingame but they do exist [it's gonna be on the save string and on console, possibly gonna be added in some other update].
+  -The "all unlocks" message now tells you what's considered endgame [and makes you expect a new update]
+   -Once you get to the shop, the game will tell you there's level unlocks at () or through other means [like an upgrade]
+   -Or that if you don't have all possible unlocks, but the remaining unlocks are non xp related, it hints that you should try look somewhere else
+-And more stuff and improvements, tell me if there's any issue with the game.
+  
+
 v0.7.0.5
 -Fighting tab button now has a visual indicator on when there's a fight ready [similar to daily reward]
 

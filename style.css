@@ -461,6 +461,13 @@ img {
   z-index: 2;
 }
 
+#fight2Button {
+  bottom: 20vh;
+  font-size: 2vh;
+  z-index: 2;
+  display: none;
+}
+
 #enemiesFightChances {
   color: white;
   text-align: right;
@@ -479,3 +486,61 @@ img {
   font-size: 3vh;
   z-index: 2;
 } 
+
+#shopTabButton {
+  position: fixed;
+  z-index: 2;
+}
+
+#shopDiv {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 70%;
+  height: 70%;
+  background-color: #444;
+  display: none;
+  border: 0.8vh outset #555;
+}
+
+#shopCloseButton:hover {
+  cursor: pointer;
+}
+
+#shopList {
+  position: relative;
+  margin: 0;
+  width: 60%;
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+#shopListInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#shopInfo {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background-color: #666;
+  background-image: url('img/halftoneDots.png')
+}
+
+#ItemBoostDisplay {
+  position: fixed;
+  text-align: left;
+  top: 47vh;
+  left: 0.5vh;
+  font-size: 2vh;
+  line-height: 2.5vh;
+  margin: 0;
+  display: none;
+  z-index: 2;
+}

@@ -1,4 +1,4 @@
-const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100,125,150,200,250,300,350,400,500]
+const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100,125,150,200,250,300,350,400,500,1500]
 const levelBarTextures = [50,55,60,65,70,80,90,100,200]
 
 const levelBarColours = [
@@ -80,7 +80,6 @@ const ranks = [
   [460, "Endless+++"],
   [480, "Endless++++"],
   [500, "Void"],
-  [825, "Million XP"],
   [1000, "Void+"],
   [1500, "Void++"],
   [2000, "Void+++"],
@@ -93,6 +92,7 @@ const ranks = [
   [40000, "Billion XP dedication"],
   [50000, "Unmatched dedication"],
   [1000000, "This is 405b XP"],
+  [2000000, "Insanity"],
   [Infinity, "Error"],
 ]
 
@@ -197,15 +197,49 @@ const trascendantUnboxChances = [ //this is 8
 ]
 
 const enemies = [
-  //Name, hp, damage, defense, loot tier
+  //Name, hp, damage, defense, loot tier, numbers in the comments are the base drops [with no looting boosts]
   ["Test", 0.1, 0.1, 0.01, 1],
   ["Small humanoid", 5, 0.5, 0.05, 1], //1.1 (1) - 1k XP / 0.5 Coins
   ["Angry humanoid", 20, 2, 0.1, 1], //1.2 (2) - 4k XP / 2 Coins
   ["Angry wife", 50, 5, 0.2, 1], //1.3 (3) - 10k XP / 5 Coins
   ["Nordic grandfather", 150, 10, 0.5, 1], //1.4 (4) - 30k XP / 10 Coins
   ["Armored human", 500, 25, 2, 2], //1.5 (5) - 250k XP / 50 Coins / 0.2 XPBoost
+  ["Stone boy", 750, 25, 10, 3], //2.1 (6) - 412.5k XP / 125 Coins / 1.5 XPBoost
+  ["Water boy", 800, 70, 8, 3], //2.2 (7) - 440k XP / 350 Coins / 1.2 XPBoost
+  ["Nature boy", 1000, 100, 11, 3], //2.3 (8) - 550k XP / 500 Coins / 1.65 XPBoost
+  ["Magma boy", 1500, 130, 15, 3], //2.4 (9) - 825k XP / 650 Coins / 2.25 XPBoost
+  ["Water siren", 2000, 170, 20, 3], //2.5 (10) - 1.1M XP / 850 Coins / 3 XPBoost
+  ["The siren of nature", 3000, 250, 50, 4], //2.6 (11) - 2.3M XP / 2.5k Coins / 10 XPBoost
   ]
 
   const starterEnemiesChances = [ //45, 30, 15, 8, 2
-  [1, 35], [2, 25], [3, 20], [4, 15], [5, 5],
+  [1, 30], [2, 25], [3, 20], [4, 15], [5, 10],
+  ]
+
+  const intermediateEnemiesChances = [
+  [6, 30], [7, 25], [8, 20], [9, 15], [10, 10], [11, 5],
+  ]
+
+
+  const items = [
+//Name, amount you can buy
+  ["Test", 1],
+  ["Starter XP orb", 2], //50 Coins + 20 green butterflies -- +50% XP gain
+  ["Starter armor", 1], //100 coins + 5 gargoyles -- +25% Stat gains
+  ["Starter XPBoost orb", 1], //150 coins + 1 golden butterfly -- +10% XPBoost gain
+  ["Starter speed up", 1], //200 coins + 20 Rats + 5 cats + 5 shiny rats -- +2% cooldown speed
+  ["Starter looting boost", 2], //250 coins 30 glowing spiders + 5 living roses -- +25% fight bonus loot
+  ["New area", 1], //500 coins + Beat area 1 boss -- unlocks a new fighting area
+  ["Intermediate XPBoost orb", 1], //500 coins + some trans pets -- XPBoostEffect softcap exponent + 0.025
+  ["Intermediate XP orb", 2], //500 coins + some more butterflies -- +100% XP gain
+  ["Intermediate armor", 1], //1000 coins + some more armored enemies -- +75% stat gains
+  ["No more pet alerts", 1], //250 coins + something -- All current pet buttons will not play an alert
+  ["Intermediate looting boost", 2], //1500 coins + a bunch of enemies -- +75% fight bonus loot
+  ["XPBoost mastery", 1], //2000 coins + 100XPBoost + a bunch of pets -- XPBoost buttons 1-3 substract xp rather than resetting to 0
+  ["Advanced XP orb", 3], //2000 coins + something -- +200% XP gain
+  ["Iron helmet", 1], //some more coins and gives even more stats
+  ["Human automation", 1], // Uses the 1st person from the area to automate pet crates 1-4 [tries to open them every 30mins]
+  ["Plus one", 1], //Gives +1 of something... not decided yet
+  ["Advanced looting boost", 3], //a lot of coins and stuff and gives a lot of looting boost
+  ["Daily rewards staff", 1], //more coins and some skeleton/ghost pets, increases dailyXP by the square root of xpboost effect
   ]

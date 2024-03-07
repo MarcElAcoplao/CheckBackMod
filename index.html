@@ -29,6 +29,7 @@
   <button class="button" id="petsTabButton" style="top: 23vh; left: 5vh; display: none" onclick="openClosePetsTab()">Pets</button>
   <button class="button" id="enemiesTabButton" style="top: 34vh; left: 8vh; display: none" onclick="openCloseEnemiesTab()">Enemies</button>
   <button class="button" id="fightingTabButton" style="top: 39vh; left: 8vh; display: none" onclick="openCloseFightingTab()">Fighting</button>
+  <button class="button" id="shopTabButton" style="top: 44vh; left: 6vh; display: none" onclick="openCloseShopTab()">Shop</button>
   <p id="selectedPetText">Current selected pet:<br><span id="selectedPet" style="font-weight: bold">None</span><br><img id="selectedPetImg" src="img/pets/0.png" style="width: 8vh; display: none"><br><br><span id="petRarities"></span></p>
   
   <button class="button" id="button1" onclick="clickButton(1)">Gain 1 XP</button>
@@ -46,10 +47,10 @@
   <button class="button" id="button13" onclick="clickButton(13)">Gain 4 XPBoost</button>
   <button class="button" id="button14" onclick="clickButton(14)">Gain 5 Stats</button>
 
-  <button class="button" id="unboxButton1" onclick="unboxPet(3)" onmouseover="displayPetRarities(3)" onmouseout="displayPetRarities(0)">Unbox a random basic pet</button>
-  <button class="button" id="unboxButton2" onclick="unboxPet(4)" onmouseover="displayPetRarities(4)" onmouseout="displayPetRarities(0)">Unbox a random advanced pet</button>
-  <button class="button" id="unboxButton3" onclick="unboxPet(5)" onmouseover="displayPetRarities(5)" onmouseout="displayPetRarities(0)">Unbox a random epic pet</button>
-  <button class="button" id="unboxButton4" onclick="unboxPet(6)" onmouseover="displayPetRarities(6)" onmouseout="displayPetRarities(0)">Unbox a random legendary pet</button>
+  <button class="button" id="unboxButton1" onclick="unboxPet(3, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(3)" onmouseout="displayPetRarities(0)">Unbox a random basic pet</button>
+  <button class="button" id="unboxButton2" onclick="unboxPet(4, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(4)" onmouseout="displayPetRarities(0)">Unbox a random advanced pet</button>
+  <button class="button" id="unboxButton3" onclick="unboxPet(5, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(5)" onmouseout="displayPetRarities(0)">Unbox a random epic pet</button>
+  <button class="button" id="unboxButton4" onclick="unboxPet(6, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(6)" onmouseout="displayPetRarities(0)">Unbox a random legendary pet</button>
   <button class="button" id="unboxButton5" onclick="unboxPet(7)" onmouseover="displayPetRarities(7)" onmouseout="displayPetRarities(0)">Unbox a random prestige pet</button>
   <button class="button" id="unboxButton6" onclick="unboxPet(8)" onmouseover="displayPetRarities(8)" onmouseout="displayPetRarities(0)">Unbox a random transcendant pet</button>
 
@@ -66,8 +67,10 @@
   <button class="button" id="dailyRewardButton" onclick="openCloseDailyRewardTab()">Daily reward</button>
   
   <p id="XPBoostDisplay">XPBoost: 1</p>
-  <p id="versionText">Check Back Mod v0.7.0.5 (Creator: MarcElAcoplao, <a href="https://discord.gg/qNqRWg4EYT">Discord</a>)<br>
+  <p id="ItemBoostDisplay">Your items give the following:</p>
+  <p id="versionText">Check Back Mod v0.8 (Creator: MarcElAcoplao, <a href="https://discord.gg/qNqRWg4EYT">Discord</a>)<br>
     <a href="https://demonin.com/games/checkBack/">Original</a> by Demonin (<a href="https://discord.gg/3hwM7ScH6k">Discord</a>)</p>
+  <button class="settingsButton" style="bottom: 17.5vh" onclick="help()">Help</button>
   <button class="settingsButton" style="bottom: 15vh" onclick="noSpecialPets()">SpecialPet conversion</button>
   <button class="settingsButton" style="bottom: 12.5vh" onclick="exportGame()">Export</button>
   <button class="settingsButton" style="bottom: 10vh" onclick="importGame()">Import</button>
@@ -111,13 +114,24 @@
     <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px; width: 50%'>Fight different types of enemies and get loot</p>
     <p id="enemiesFightChances"></p>
     <p id="statsDisplay"></p>
-    <button class="button" id="fight1Button" onclick="startFight(1)" onmouseover="displayEnemiesFightRarities(1)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 1 foe</button> 
+    <button class="button" id="fight1Button" onclick="startFight(1)" onmouseover="displayEnemiesFightRarities(1)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 2 foe</button>
+    <button class="button" id="fight2Button" onclick="startFight(2)" onmouseover="displayEnemiesFightRarities(2)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 1 foe</button>  
     <div class="dropBox" style="left: 0; color: #bff"></div>
     <div class="dropBox" style="left: 15vh; color: #bff"></div>
     <div class="dropBox" style="left: 30vh; color: #bff"></div>
     <div class="dropBox" style="left: 45vh; color: #bff"></div>
     <div id="enemiesDisplayInfo"></div>
     <button class="closeButton" onclick="openCloseFightingTab()">Close</button>
+  </div>
+
+  <div id="shopDiv">
+    <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Shop</p>
+    <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px'>Click on an item to buy it</p>
+    <button class="closeButton" onclick="openCloseShopTab()">Close</button>
+    <div id="shopList">
+      <div id="shopListInner"></div>
+    </div>
+    <div id="shopInfo"></div>
   </div>
 
   <script src="constants.js"></script>

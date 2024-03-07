@@ -8,9 +8,6 @@
 -Add a new section in updateSmall at around line 207 to update how the new button looks depending on whether it's on a cooldown or not
 Most of these are quick steps, if you get it right you can add a new button in like 5 minutes
 
--Remember to add both selected pets and special pets section
-   if (game.selectedPet < pets.length)
-
 buttonCooldown[0] Button 1
 buttonCooldown[1] Button 2
 buttonCooldown[2] Button 3
@@ -33,6 +30,8 @@ buttonCooldown[18] Pet 6 [Prestige 2]
 buttonCooldown[19] Button 13 [2.5 XPBoost]
 buttonCooldown[20] Button 14 [5 Stats]
 buttonCooldown[21] Fight 1
+buttonCooldown[22] Fight 2
+buttonCooldown[23] Auto pets 1
 
 Button 1 - 1 xp // 1min
 Button 2 - 2 xp // 5min
@@ -46,5 +45,5 @@ Button 9 - 100 xp // 1d
 Button 10 - 1 XPBoost // 1h
 Button 11 - 33 xp // 6h
 Button 12 - 15 xp // 1h
-Button 13 - 2.5 XPBoost // 1h
+Button 13 - 4 XPBoost // 1h
 Button 14 - 5 Stats // 1h [1 Stat: 1HP 0.1DMG 0.01DEF]

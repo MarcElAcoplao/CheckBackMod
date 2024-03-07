@@ -14,6 +14,6 @@ body {
   color: #ddd;
 }
 
-#nextUnlockLevel, #selectedPetText, #themeText, #versionText, #XPBoostDisplay {
+#nextUnlockLevel, #selectedPetText, #themeText, #versionText, #XPBoostDisplay, #ItemBoostDisplay {
   color: #444;
 }
