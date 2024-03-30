@@ -1,3 +1,6 @@
+v0.9.1.1
+-Fixed a bug when going below the level from your current highest unlock [with the progress to next unlock]
+
 v0.9.1
 -Did some changes in the xp to next level bar
   -Once you reach level 1500 [the shop], the bar changes to "XP to next unlock", showing all the jump there is in terms of xp

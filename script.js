@@ -484,7 +484,7 @@ else {
   while (game.level >= ranks[i+1][0]) i++
   document.getElementById("rank").innerHTML= ranks[i][1]
   //Sets the "XP to next level" text
-  if (game.unlocks < 22) { //Before level 1500
+  if (game.level < 1500) { //Before level 1500
   XPToNextLevel = levelToXP(game.level + 1) - levelToXP(game.level)
   ProgressToNextLevel = (game.XP - levelToXP(game.level)).toFixed(1)
   document.getElementById("XPToNextlevel").innerHTML = xpShort(ProgressToNextLevel) + "/" + xpShort(XPToNextLevel)
@@ -492,8 +492,8 @@ else {
   if (game.level > game.highestLevel) {game.highestLevel = game.level}
   }
   else if (game.unlocks < unlockLevels.length) { //After level 1500
-  XPToNextUnlock = levelToXP(unlockLevels[game.unlocks]) - levelToXP(unlockLevels[game.unlocks - 1])
-  ProgressToNextUnlock = (game.XP - levelToXP(unlockLevels[game.unlocks - 1]))
+  XPToNextUnlock = levelToXP(unlockLevels[game.unlocks]) // - levelToXP(unlockLevels[game.unlocks - 1])
+  ProgressToNextUnlock = game.XP // - levelToXP(unlockLevels[game.unlocks - 1]))
   document.getElementById("XPBarText").innerHTML = "XP to next unlock: <span id=XPToNextlevel>0/0</span></p>"
   document.getElementById("XPToNextlevel").innerHTML = xpShort(ProgressToNextUnlock) + "/" + xpShort(XPToNextUnlock)
   document.getElementById("XPBarBack").style.width = (ProgressToNextUnlock / XPToNextUnlock * 100) + "%"

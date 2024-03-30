@@ -100,7 +100,7 @@ const ranks = [
   [8000000, "Insanity+++"],
   [10000000, "Time"],
   [Infinity, "Error"],
-]
+] //space and finality, omega
 
 const pets = [
   //Name, XP multiplier [button and daily], xp button cooldown reducer, crate cooldown reducer, XPBoost multi
