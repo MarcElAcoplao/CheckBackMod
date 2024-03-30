@@ -1,10 +1,10 @@
 body {
-  background-color: #422;
+  background-color: rgb(43, 1, 1);
 }
 
 .button {
-  background-color: #d75;
-  border: 0.3vh solid #722;
+  background-color: rgb(182, 101, 74);
+  border: 0.3vh solid #d22;
   color: #fff;
 }
 

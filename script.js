@@ -107,10 +107,10 @@ if (x == 6) {alert("The new feature is pets. Open crates and get rarer pets. Pet
 if (x == 7) {alert("Another pet crate. Some of them will give 1-2 pets from the previous crate. Also, there's daily rewards. It has 2 crates with rare pets and increasing xp rewards.")}
 if (x == 8) {alert("3 New themes... go get level 20.")}
 if (x == 9) {alert("More pets, which means that numbers go up. Each pet crate has a dragon pet, which has better stats than some of the next crate pets.")}
-if (x == 10) {alert("New xp button now. Keep going on now.")}
+if (x == 10) {alert("New xp button now. Keep going on now. Also, heads up. Keep opening your crates even if the pets won't get any better. They will have an use... eventually")}
 if (x == 11) {alert("This is the 1st pet crate that's not in Demonin's original. Same thing as before, stronger pets and slower crates.")}
 if (x == 12) {alert("So close to something new. Buttons are sorted in like tier sections, that's why the gaps in some places. But they will be filled.")}
-if (x == 13) {alert("A simple prestige feature. Resets your xp back to level 1 and, in exchange, your xp gains are increased. I suggest doing one now.")}
+if (x == 13) {alert("A simple prestige feature. Resets your xp back to level 1 and, in exchange, your xp gains are increased. I suggest waiting a little bit... you'll see.")}
 if (x == 14) {alert("These new crates will cost a bit of your XPBoost, but the new pets are worth it. All future pet crates won't be free. By the way, you can scroll down to these buttons.")}
 if (x == 15) {alert("The xp buttons in this section are like (xp amount between buttons 4 and 5 with a cooldown between 3 and 4), or overall better.")}
 if (x == 16) {alert("Advanced XPBoost buttons will have a higher xp to xpboost ratio, but they do require of you to get to the unlock level to do the reset.")}
@@ -121,6 +121,9 @@ if (x == 20) {alert("Were you lucky during the previous segment? If you really h
 if (x == 21) {alert("Fighting. There's one button that will give you stats. On the fighting menu, you can see your stats. Starting a fight automatically heals you, and the combat system is very simple. You get rewards by winning.")}
 if (x == 22) {alert("The shop. Here you buy items and unlocks. There's boosts, there's QoL and unlocks. These also require of you having opened a bunch of pet crates constantly through the playthrough.")}
 if (x == 23) {alert("Your 1st non-level unlock. You unlocked a new area. Stuff will get grindy from here, and numbers will go up fast.")}
+if (x == 24) {alert("Back to grinding XP. These new pets are gonna be expensive but useful to push further. If you haven't bought items 1-18, you should go for them. (Note: This crate still has alerts)")}
+if (x == 25) {alert("Oh, hey! More stats. Sure thing I'll be able to beat the boss soon...")}
+if (x == 26) {alert("It's just grind, grind, grind. The next feature unlock is gonna be expensive, so might as well make sure to get all upgrades and better pets")}
 }
 
 function loadGame(loadgame) {
@@ -191,7 +194,28 @@ function loadGame(loadgame) {
   document.getElementById("ItemBoostDisplay").style.display = "block"
   updateShopBoosts()
   }
+  if (game.unlocks >= 23) {document.getElementById("unboxButton7").style.display = "block"}
+  if (game.unlocks >= 24) {document.getElementById("button15").style.display = "block"}
   if (game.itemUnlocks >= 1) {document.getElementById("fight2Button").style.display = "block"}
+  if (game.unlocks >= 25) {document.getElementById("fight3Button").style.display = "block"}
+
+ for (let i=0;i<pets.length;i++) {if (!game.pets[i]) game.pets[i] = 0}
+ for (let i=0;i<enemies.length;i++) {if (!game.enemies[i]) game.enemies[i] = 0}
+ for (let i=0;i<items.length;i++) {if (!game.items[i]) game.items[i] = 0}
+ for (let i =0;i<17; i++) {
+  if (game.specialPets[i] >= 1) {
+  game.pets[i+47] += game.specialPets[i]
+  if (game.pets[i+47] >= game.specialPets[i]) {
+       game.specialPets[i] = 0
+       if (game.selectedPet >= 23 && game.selectedPet <= 39) game.selectedPet = i+47
+     }
+    }
+  }
+  if (game.pets[21] < 0) {
+    game.pets[21] += 5
+    game.pets[48] -= 3
+    game.pets[40] -= 5
+     }
 }
 
 
@@ -395,7 +419,6 @@ function updateSmall() {
   if (game.buttonCooldowns[21] > 0) {
     document.getElementById("fight1Button").disabled = true
     document.getElementById("fight1Button").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[21])
-    document.getElementById("fightingTabButton").style.border = "0.3vh solid #0ff"
   }
   else {
     document.getElementById("fight1Button").disabled = false
@@ -404,18 +427,42 @@ function updateSmall() {
   if (game.buttonCooldowns[22] > 0) {
     document.getElementById("fight2Button").disabled = true
     document.getElementById("fight2Button").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[22])
-    document.getElementById("fightingTabButton").style.border = "0.3vh solid #0ff"
   }
   else {
     document.getElementById("fight2Button").disabled = false
     document.getElementById("fight2Button").innerHTML = "Fight an area 2 foe "
   }
- if (game.buttonCooldowns[21] == 0 || game.buttonCooldowns[22] == 0) {
+ if (game.buttonCooldowns[21] == 0 || game.buttonCooldowns[22] == 0 || game.buttonCooldowns[26] == 0) {
   if (Date.now() % 600 < 300) {document.getElementById("fightingTabButton").style.border = "0.3vh solid #77f"}
   else {document.getElementById("fightingTabButton").style.border = "0.3vh solid #0ff"}
  }
+ else {document.getElementById("fightingTabButton").style.border = "0.3vh solid #0ff"}
  if (game.buttonCooldowns[23] > 0) {}
  else {autoPets()}
+ if (game.buttonCooldowns[24] > 0) {
+  document.getElementById("unboxButton7").disabled = true
+  document.getElementById("unboxButton7").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[24])
+}
+else {
+  document.getElementById("unboxButton7").disabled = false
+  document.getElementById("unboxButton7").innerHTML = "Unbox a random universal pet for 250 coins"
+}
+if (game.buttonCooldowns[25] > 0) {
+  document.getElementById("button15").disabled = true
+  document.getElementById("button15").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[25])
+}
+else {
+  document.getElementById("button15").disabled = false
+  document.getElementById("button15").innerHTML = "Gain " + numberShort(20 * game.itemStat) + " HP, " + numberShort(2 * game.itemStat) + " DMG and " + numberShort(0.2 * game.itemStat) + " DEF"
+}
+if (game.buttonCooldowns[26] > 0) {
+  document.getElementById("fight3Button").disabled = true
+  document.getElementById("fight3Button").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[26])
+}
+else {
+  document.getElementById("fight3Button").disabled = false
+  document.getElementById("fight3Button").innerHTML = "Fight an area 3 foe "
+}
 
   game.level = XPToLevel(Math.max(Math.floor(game.XP), 0))
   document.getElementById("level").innerHTML = levelShort(game.level)
@@ -446,7 +493,7 @@ setInterval(updateSmall, 16) //Runs the update ~60 times per second
 
 //Updates cooldowns
 function updateLarge() {
-  for (i=0;i<24;i++) {
+  for (i=0;i<27;i++) {
     if (game.buttonCooldowns[i] > 0) game.buttonCooldowns[i] -= ((Date.now() - game.timeOfLastUpdate) / (1000/game.speed))
     if (game.buttonCooldowns[i] < 0) game.buttonCooldowns[i] = 0
   }
@@ -457,7 +504,7 @@ setInterval(updateLarge, 100) //Runs the update ~10 times per second
 function XPToLevel(x) {return Math.floor((x / 5) ** 0.55) + 1}
 function levelToXP(x) {return Math.ceil((x-1) ** (1/0.55) * 5)}
 function numberToTime(x) {
-  xCeil = Math.ceil(x)
+  xCeil = Math.ceil(x) / game.speed
   result = ""
   if (xCeil>=172800) result += Math.floor(xCeil/86400) + " days "
   else if (xCeil>=86400) result += Math.floor(xCeil/86400) + " day "
@@ -611,6 +658,12 @@ function clickButton(x) {
     game.DEF += 0.05 * game.itemStat
     game.buttonCooldowns[20] = 3600 / (game.itemCooldown) //1h
 }
+else if (x==15 && game.buttonCooldowns[25] == 0) {
+  game.HP += 20 * game.itemStat
+  game.DMG += 2 * game.itemStat
+  game.DEF += 0.2 * game.itemStat
+  game.buttonCooldowns[25] = 21600 / (game.itemCooldown) //6h
+}
   updateSmall()
 }
 
@@ -691,16 +744,26 @@ function handleUnlocks() {
         document.getElementById("shopTabButton").style.display = "block"
         document.getElementById("ItemBoostDisplay").style.display = "block"
         updateShopBoosts() }
+      else if (i==22) {document.getElementById("unboxButton7").style.display = "block"
+        game.buttonCooldowns[24] = 0
+        for (let i =0;i<9; i++) {
+          game.pets[i+64] = 0
+        }
+      }
+      else if (i==23) {document.getElementById("button15").style.display = "block"
+      game.buttonCooldowns[25] = 0}
+      else if (i==24) {document.getElementById("fight3Button").style.display = "block"}
       break
     }
   }
+  game.possibleUnlocks = 26 
   if (game.itemUnlocks > game.extraUnlocks) {
     game.extraUnlocks += 1
     game.totalUnlocks = game.unlocks + game.extraUnlocks
     if (game.extraUnlocks == 1) {document.getElementById("fight2Button").style.display = "block"}
   }
 
-  if (game.totalUnlocks == game.possibleUnlocks) {document.getElementById("nextUnlockLevel").innerHTML = "All unlocks have been achieved! For now... (Endgame: All upgrades/all enemies beaten)"}
+  if (game.totalUnlocks == game.possibleUnlocks) {document.getElementById("nextUnlockLevel").innerHTML = "All unlocks have been achieved! For now... (Endgame: All upgrades/Best pet/Strongest enemy beaten)"}
   else if (game.unlocks == unlockLevels.length) {document.getElementById("nextUnlockLevel").innerHTML = "All XP unlocks have been achieved! But not all possible ones"}
   else if (game.unlocks >= 22) {document.getElementById("nextUnlockLevel").innerHTML = "You will unlock something new at level " + numberShort(unlockLevels[game.unlocks]) + " or through other means!"}
   else {document.getElementById("nextUnlockLevel").innerHTML = "You will unlock something new at level " + unlockLevels[game.unlocks] + "!"}
@@ -820,8 +883,28 @@ function unboxPet(x, y=1) {
     }
     }
   }
+  else if (x==9) {
+    if (game.coins <= 250) {
+      alert("You don't have enough coins to buy this crate")
+      petChosen = 0
+    }
+    else {
+      game.coins -= 250
+    for (i=0;i<universalUnboxChances.length;i++) totalWeight += universalUnboxChances[i][1]
+    for (i=0;i<universalUnboxChances.length;i++) {
+      if (Math.random() * totalWeight < universalUnboxChances[i][1]) {
+        petChosen = universalUnboxChances[i][0]
+        i = universalUnboxChances.length
+      }
+      else {
+        totalWeight -= universalUnboxChances[i][1]
+      }
+    }
+    }
+  }
+
 if (petChosen >= 1) {
-    if (game.items[10] == 0) {alert("Got a " + pets[petChosen][0] + "!")}
+    if (game.items[10] == 0 || x >= 9) {alert("Got a " + pets[petChosen][0] + "!")}
     if (!game.pets[petChosen]) {game.pets[petChosen] = 1}
     else {game.pets[petChosen]++}
 
@@ -832,6 +915,7 @@ if (petChosen >= 1) {
     else if (x==6) {game.buttonCooldowns[10] = 172800 / (pets[game.selectedPet][3] * game.itemCooldown)} //2 days
     else if (x==7) {game.buttonCooldowns[13] = 3600 / (pets[game.selectedPet][3] * game.itemCooldown)} //1 h
     else if (x==8) {game.buttonCooldowns[18] = 3600 / (pets[game.selectedPet][3] * game.itemCooldown)} //1 h  
+    else if (x==9) {game.buttonCooldowns[24] = 43200 / (pets[game.selectedPet][3] * game.itemCooldown)} //12 h  
  }
 y += -1
 if (y < 1) {}
@@ -910,6 +994,14 @@ else if (x==8) {
     document.getElementById("petRarities").innerHTML += pets[trascendantUnboxChances[i][0]][0] + ": " + (trascendantUnboxChances[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
   }
 }
+else if (x==9) {
+  document.getElementById("petRarities").innerHTML = "<img src='img/crateUniversal.png' style='width:6vh'><br><b>Rarities for this crate:</b><br>"
+  totalWeight = 0
+  for (i=0;i<universalUnboxChances.length;i++) totalWeight += universalUnboxChances[i][1]
+  for(i=0;i<universalUnboxChances.length;i++) {
+    document.getElementById("petRarities").innerHTML += pets[universalUnboxChances[i][0]][0] + ": " + (universalUnboxChances[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
+  }
+}
 
 }
 
@@ -960,6 +1052,7 @@ function displayPets() {
       else if (i<=46) petBoxes[i-1].style.border = "8px outset #229"
       else if (i<=55) petBoxes[i-1].style.border = "8px outset #bbb"
       else if (i<=63) petBoxes[i-1].style.border = "8px outset #282"
+      else if (i<=72) petBoxes[i-1].style.border = "8px outset #d83"
     }
     else {
       petBoxes[i-1].innerHTML = "<img src='img/pets/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
@@ -1049,18 +1142,6 @@ function changeTheme(x) {
   else if (x==6) {document.getElementById("themeLink").href = "themes/themeRed.css"}
 }
 
-function noSpecialPets(x) { //Converts player special pets that could be saved up into their corresponding pets
-  for (let i =0;i<17; i++) {
-    if (game.specialPets[i] > 0) {
-    game.pets[i+47] += game.specialPets[i]
-    if (game.pets[i+47] >= game.specialPets[i]) {
-         game.specialPets[i]=0
-       }
-      }
-    }
-    alert("Special pets have been changed and are now normal pets. The now hidden value has been transfered to your normal pets (Make sure to reload if it didn't work). Thanks to @shadow for this")
-  }
-
   //Fighting mechanics
   function openCloseEnemiesTab() {
     if (document.getElementById("enemiesDiv").style.display == "block") {
@@ -1098,7 +1179,7 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
         enemyBoxes[i-1].innerHTML = "<img src='img/enemies/" + i + ".png' style='width: 128px'>"
         enemyBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.enemies[i] + "</p>"
         if (i<=5) enemyBoxes[i-1].style.border = "8px outset #555"
-        else if (i<=13) enemyBoxes[i-1].style.border = "8px outset #447"
+        else if (i<=11) enemyBoxes[i-1].style.border = "8px outset #447"
         else if (i<=22) enemyBoxes[i-1].style.border = "8px outset #647"
         else if (i<=31) enemyBoxes[i-1].style.border = "8px outset #500"
         else if (i<=39) enemyBoxes[i-1].style.border = "8px outset #990"
@@ -1155,6 +1236,14 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
         document.getElementById("enemiesFightChances").innerHTML += enemies[intermediateEnemiesChances[i][0]][0] + ": " + (intermediateEnemiesChances[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
       }
     }
+    else if (x == 3) {
+      document.getElementById("enemiesFightChances").innerHTML = "<style='width:6vh'><br><b>Rarities for this area:</b><br>"
+      totalWeight = 0
+      for (i=0;i<advancedEnemiesChances.length;i++) totalWeight += advancedEnemiesChances[i][1]
+      for(i=0;i<advancedEnemiesChances.length;i++) {
+        document.getElementById("enemiesFightChances").innerHTML += enemies[advancedEnemiesChances[i][0]][0] + ": " + (advancedEnemiesChances[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
+      }
+    }
   }
 
   function startFight(x) {
@@ -1185,6 +1274,19 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
       }
      game.buttonCooldowns[22] = 21600 / (game.itemCooldown) //6h
     }
+    if (x==3) {
+      for (i=0;i<advancedEnemiesChances.length;i++) totalWeight += advancedEnemiesChances[i][1]
+      for (i=0;i<advancedEnemiesChances.length;i++) {
+        if (Math.random() * totalWeight < advancedEnemiesChances[i][1]) {
+          enemiesChosen = advancedEnemiesChances[i][0]
+          i = advancedEnemiesChances.length
+        }
+        else {
+          totalWeight -= advancedEnemiesChances[i][1]
+        }
+      }
+     game.buttonCooldowns[26] = 86400 / (game.itemCooldown) //24h
+    }
     alert("Fighting a " + enemies[enemiesChosen][0] + "!")
     game.currentHP = game.HP
     game.enemyHP = enemies[enemiesChosen][1]
@@ -1198,7 +1300,7 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
      //doSomeStuff()  You don't need to keep the function seperated
      setTimeout(() => {
       if (game.enemyHP <= 0) {fightRewards(enemies[enemiesChosen][4])}
-     else if (game.currentHP <= 0) {alert("You died... and nothing happens")}
+     else if (game.currentHP <= 0) {alert("You died... and nothing happens. Remaining enemy hp: " + numberShort(game.enemyHP))}
      else if (game.DMG < enemies[enemiesChosen][3]) {alert("Can't deal damage to the enemy, fight ends here")}
      else attack()
       console.log('100ms later')
@@ -1239,7 +1341,17 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
       game.coins += 10 * enemies[enemiesChosen][2] * game.itemLoot
       game.XPBoost += 0.2 * enemies[enemiesChosen][3] * game.itemLoot
      }
+     if (x==5) {
+      document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(1000 * enemies[enemiesChosen][1] * game.itemLoot) + " XP"
+      document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(2 * enemies[enemiesChosen][2] * game.itemLoot) + " Coins"
+      document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(0.15 * enemies[enemiesChosen][3] * game.itemLoot) + " XPBoost"
+      game.XP += 1000 * enemies[enemiesChosen][1] * game.itemLoot
+      game.coins += 2 * enemies[enemiesChosen][2] * game.itemLoot
+      game.XPBoost += 0.15 * enemies[enemiesChosen][3] * game.itemLoot
+     }
      game.enemies[enemiesChosen] += 1
+     if (!game.enemies[enemiesChosen]) {game.enemies[enemiesChosen] = 1}
+     else {game.enemies[enemiesChosen]++}
   }
 
   //Shop features
@@ -1277,15 +1389,20 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
       if (game.items[i] >= items[i][1]) itemBoxes[i-1].style.backgroundColor = "#282"
     //1st red 2nd green 3rd blue
         itemBoxes[i-1].innerHTML = "<img src='img/shop/" + i + ".png' style='width: 128px'>"
-        itemBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.items[i] + "</p>"
+        if (!game.items[i]) {itemBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>0</p>"}
+        else {itemBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.items[i] + "</p>"}
         if (i<=6) itemBoxes[i-1].style.border = "8px outset #555"
         else if (i<=12) itemBoxes[i-1].style.border = "8px outset #447"
-        else if (i<=22) itemBoxes[i-1].style.border = "8px outset #647"
+        else if (i<=18) itemBoxes[i-1].style.border = "8px outset #647"
         else if (i<=31) itemBoxes[i-1].style.border = "8px outset #500"
         else if (i<=39) itemBoxes[i-1].style.border = "8px outset #990"
         else if (i<=46) itemBoxes[i-1].style.border = "8px outset #229"
         else if (i<=55) itemBoxes[i-1].style.border = "8px outset #bbb"
         else if (i<=63) itemBoxes[i-1].style.border = "8px outset #282"
+        if (i > 18 && game.highestLevel <= 20000) {
+          itemBoxes[i-1].innerHTML = "<img src='img/shop/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
+          itemBoxes[i-1].addEventListener('mouseover', function(){showItemHiddenInfo(parseInt(this.id))})
+          itemBoxes[i-1].addEventListener('mouseout', function(){showItemHiddenInfo(0)})}
     }
     j=items.length-1
   }
@@ -1297,28 +1414,31 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
     if (game.coins >= 50 && game.pets[1] >= 20) {
        game.coins -= 50
        game.pets[1] -= 20
-       game.items[1] +=1
+       itemChosen = x
        alert("Bought " + items[x][0])
      }
-     else {alert("Not enough items; " + numberShort(game.coins) + "/50 coins, " + game.pets[1] + "/20 Green butterflies")}
+     else {alert("Not enough items; " + numberShort(game.coins) + "/50 coins, " + game.pets[1] + "/20 Green butterflies")
+    itemChosen = 0}
     }
   if (x==2) {
     if (game.coins >= 100 && game.pets[10] >= 5) {
        game.coins -= 100
        game.pets[10] -= 5
-       game.items[2] +=1
+       itemChosen = x
        alert("Bought " + items[x][0])
       }
-     else {alert("Not enough items; " + numberShort(game.coins) + "/100 coins, " + game.pets[10] + "/5 Gargoyles")}
+     else {alert("Not enough items; " + numberShort(game.coins) + "/100 coins, " + game.pets[10] + "/5 Gargoyles")
+     itemChosen = 0}
      }
   if (x==3) {
     if (game.coins >= 150 && game.pets[43] >= 1) {
        game.coins -= 150
        game.pets[43] -= 1
-       game.items[3] +=1
+       itemChosen = x
        alert("Bought " + items[x][0])
       }
-     else {alert("Not enough items; " + numberShort(game.coins) + "/150 coins, " + game.pets[43] + "/1 Golden butterflies")}
+     else {alert("Not enough items; " + numberShort(game.coins) + "/150 coins, " + game.pets[43] + "/1 Golden butterflies")
+     itemChosen = 0}
     }
    if (x==4) {
      if (game.coins >= 200 && game.pets[3] >= 20 && game.pets[18] >= 5 && game.pets[24] >= 5) {
@@ -1326,88 +1446,97 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
        game.pets[3] -= 20
        game.pets[18] -= 5
        game.pets[24] -= 5
-       game.items[4] +=1
+       itemChosen = x
        alert("Bought " + items[x][0])
       }
-    else {alert("Not enough items; " + numberShort(game.coins) + "/200 coins, " + game.pets[3] + "/20 Rats, " + game.pets[18] + "/5 Cats, " + game.pets[24] + "/5 Shiny rats")}
+    else {alert("Not enough items; " + numberShort(game.coins) + "/200 coins, " + game.pets[3] + "/20 Rats, " + game.pets[18] + "/5 Cats, " + game.pets[24] + "/5 Shiny rats")
+    itemChosen = 0}
    }
    if (x==5) {
     if (game.coins >= 250 && game.pets[5] >= 10 && game.pets[16] >= 3) {
       game.coins -= 250
       game.pets[5] -= 10
       game.pets[16] -= 3
-      game.items[5] +=1
+      itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/250 coins, " + game.pets[5] + "/10 Glowing spiders, " + game.pets[16] + "/3 Living roses")}
+   else {alert("Not enough items; " + numberShort(game.coins) + "/250 coins, " + game.pets[5] + "/10 Glowing spiders, " + game.pets[16] + "/3 Living roses")
+   itemChosen = 0}
   }
   if (x==6) {
     if (game.coins >= 500 && game.enemies[5] >= 1) {
        game.coins -= 500
-       game.items[6] +=1
+       itemChosen = x
        alert("Unlocked a new area")
       }
-     else {alert("Not enough items; " + numberShort(game.coins) + "/500 coins, " + game.enemies[5] + "/1 Armored humans beaten")}
+     else {alert("Not enough items; " + numberShort(game.coins) + "/500 coins, " + game.enemies[5] + "/1 Armored humans beaten")
+     itemChosen = 0}
     }
   if (x==7) {
     if (game.coins >= 500 && game.pets[41] >= 5 && game.pets[42] >= 3) {
       game.coins -= 500
       game.pets[41] -= 5
       game.pets[42] -= 3
-      game.items[7] +=1
+      itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/500 coins, " + game.pets[41] + "/5 Eyeloons, " + game.pets[42] + "/3 Glowing jellyfishes")}
+   else {alert("Not enough items; " + numberShort(game.coins) + "/500 coins, " + game.pets[41] + "/5 Eyeloons, " + game.pets[42] + "/3 Glowing jellyfishes")
+   itemChosen = 0}
   }
   if (x==8) {
     if (game.coins >= 500 && game.pets[4] >= 20 && game.pets[23] >= 7) {
       game.coins -= 500
       game.pets[4] -= 20
       game.pets[23] -= 7
-      game.items[8] +=1
+      itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/500 coins, " + game.pets[4] + "/20 Purple butterflies, " + game.pets[42] + "/7 Blue butterflies")}
+   else {alert("Not enough items; " + numberShort(game.coins) + "/500 coins, " + game.pets[4] + "/20 Purple butterflies, " + game.pets[23] + "/7 Blue butterflies")
+   itemChosen = 0}
   }
   if (x==9) {
     if (game.coins >= 750 && game.pets[14] >= 15 && game.pets[25] >= 5) {
       game.coins -= 750
       game.pets[14] -= 15
       game.pets[25] -= 5
-      game.items[9] +=1
+      itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/750 coins, " + game.pets[14] + "/15 Large tortoises, " + game.pets[25] + "/5 Earth snakes")}
+   else {alert("Not enough items; " + numberShort(game.coins) + "/750 coins, " + game.pets[14] + "/15 Large tortoises, " + game.pets[25] + "/5 Earth snakes")
+   itemChosen = 0}
   }
   if (x==10) {
     if (game.coins >= 250 && game.pets[6] >= 1) {
       game.coins -= 250
-      game.items[10] +=1
+      itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/250 coins, " + game.pets[6] + "/1 Green dragon")}
+   else {alert("Not enough items; " + numberShort(game.coins) + "/250 coins, " + game.pets[6] + "/1 Green dragon")
+   itemChosen = 0}
   }
   if (x==11) {
     if (game.coins >= 1000 && game.pets[33] >= 5 && game.pets[29] >= 1) {
       game.coins -= 1000
       game.pets[33] -= 5
       if (game.items[x] == 1) game.pets[29] -= 1
-      game.items[11] +=1
+      itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/1000 coins, " + game.pets[33] + "/5 Poisonous eyeballs, " + game.pets[29] + "/1 Spirit")}
+   else {alert("Not enough items; " + numberShort(game.coins) + "/1000 coins, " + game.pets[33] + "/5 Poisonous eyeballs, " + game.pets[29] + "/1 Spirit")
+   itemChosen = 0}
   }
   if (x==12) {
-    if (game.coins >= 2000 && game.XPBoost >=201 && game.pets[9] >= 20 && game.pets[32] >= 5 && game.pets[48] >= 5) {
+    if (game.coins >= 2000 && game.XPBoost >=201 && game.pets[9] >= 20 && game.pets[32] >= 10 && game.pets[48] >= 3) {
       game.coins -= 2000
       game.XPBoost -= 200
       game.pets[9] -= 20
-      game.pets[32] -= 5
-      game.pets[21] -= 5
-      game.items[12] +=1
+      game.pets[32] -= 10
+      game.pets[48] -= 3
+      itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/2000 coins, " + numberShort(game.XPBoost) + "/201 XPboost, " + game.pets[9] + "/20 Eldritch eyeballs, " + game.pets[32] + "/10 Red slimes, " + game.pets[48] + "/3 Small skeletons")}
+   else {alert("Not enough items; " + numberShort(game.coins) + "/2000 coins, " + numberShort(game.XPBoost) + "/201 XPboost, " + game.pets[9] + "/20 Eldritch eyeballs, " + game.pets[32] + "/10 Red slimes, " + game.pets[48] + "/3 Small skeletons")
+   itemChosen = 0}
   }
   if (x==13) {
     if (game.coins >= 1500 && game.pets[1] >= 50 && game.pets[12] >= 3 && game.pets[43] >= 1) {
@@ -1415,10 +1544,11 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
       game.pets[1] -= 50
       game.pets[12] -= 3
       game.pets[43] -= 1
-      game.items[13] +=1
+      itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/1500 coins, " + game.pets[1] + "/50 Green butterflies, " + game.pets[12] + "/3 Red butterflies, " + game.pets[43] + "/1 Golden butterfly")}
+   else {alert("Not enough items; " + numberShort(game.coins) + "/1500 coins, " + game.pets[1] + "/50 Green butterflies, " + game.pets[12] + "/3 Red butterflies, " + game.pets[43] + "/1 Golden butterfly")
+   itemChosen = 0}
   }
   if (x==14) {
     if (game.coins >= 1750 && game.pets[17] >= 5 && game.pets[35] >= 5 && game.pets[19] >= 2) {
@@ -1426,10 +1556,11 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
       game.pets[17] -= 5
       game.pets[35] -= 5
       game.pets[19] -= 2
-      game.items[14] +=1
+      itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/1750 coins, " + game.pets[17] + "/5 Ice golems, " + game.pets[35] + "/5 Living trees, " + game.pets[19] + "/2 Vortex monsters")}
+   else {alert("Not enough items; " + numberShort(game.coins) + "/1750 coins, " + game.pets[17] + "/5 Ice golems, " + game.pets[35] + "/5 Living trees, " + game.pets[19] + "/2 Vortex monsters")
+   itemChosen = 0}
   }
   if (x==15) {
     if (game.coins >= 2000 && game.pets[40] >= 25 && game.enemies[1] >= 10 && game.enemies[4] >= 2) {
@@ -1437,10 +1568,11 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
       game.pets[40] -= 25
       game.enemies[1] -= 10
       game.enemies[4] -= 2
-      game.items[15] +=1
+      itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/2000 coins, " + game.pets[17] + "/25 Small elfs, " + game.pets[35] + "/10 Small humanoids beaten, " + game.pets[19] + "/2 Nordic grandfathers beaten")}
+   else {alert("Not enough items; " + numberShort(game.coins) + "/2000 coins, " + game.pets[40] + "/25 Small elfs, " + game.enemies[1] + "/10 Small humanoids beaten, " + game.enemies[4] + "/2 Nordic grandfathers beaten")
+   itemChosen = 0}
   }
   if (x==16) {
     if (game.coins >= 1750 && game.pets[2] >= 75 && game.pets[7] >= 30 && game.pets[15] >= 10) {
@@ -1448,10 +1580,11 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
       game.pets[2] -= 75
       game.pets[7] -= 30
       game.pets[15] -= 10
-      game.items[16] +=1
+      itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/1750 coins, " + game.pets[2] + "/75 Green lizards, " + game.pets[7] + "/30 Snakes, " + game.pets[15] + "/10 Mutant tarantulas")}
+   else {alert("Not enough items; " + numberShort(game.coins) + "/1750 coins, " + game.pets[2] + "/75 Green lizards, " + game.pets[7] + "/30 Snakes, " + game.pets[15] + "/10 Mutant tarantulas")
+   itemChosen = 0}
   }
   if (x==17) {
     if (game.coins >= 2500 && game.pets[8] >= 20 && game.pets[36] >= 1 && game.pets[28] >= 1) {
@@ -1459,10 +1592,11 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
       game.pets[8] -= 20
       game.pets[36] -= 1
       game.pets[28] -= 1
-      game.items[17] +=1
+      itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/2500 coins, " + game.pets[8] + "/20 Giant fireflies, " + game.pets[36] + "/1 Fire spectral, " + game.pets[28] + "/1 Lilypad")}
+   else {alert("Not enough items; " + numberShort(game.coins) + "/2500 coins, " + game.pets[8] + "/20 Giant fireflies, " + game.pets[36] + "/1 Fire spectral, " + game.pets[28] + "/1 Lilypad")
+   itemChosen = 0}
   }
   if (x==18) {
     if (game.coins >= 5000 && game.pets[56] >= 5 && game.pets[49] >= 3 && game.pets[37] >= 1) {
@@ -1470,79 +1604,135 @@ function noSpecialPets(x) { //Converts player special pets that could be saved u
       game.pets[56] -= 5
       game.pets[49] -= 3
       game.pets[37] -= 1
-      game.items[18] +=1
+      itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/5000 coins, " + game.pets[56] + "/5 Ghost rodents, " + game.pets[49] + "/3 Skeletal dogs, " + game.pets[37] + "/1 Purple star")}
+   else {alert("Not enough items; " + numberShort(game.coins) + "/5000 coins, " + game.pets[56] + "/5 Ghost rodents, " + game.pets[49] + "/3 Skeletal dogs, " + game.pets[37] + "/1 Purple star")
+   itemChosen = 0}
   }
+  if (x==19) {
+    if (game.highestLevel < 20000) {alert("Not unlocked yet")}
+    else {
+    if (game.coins >= 15000 && game.pets[64] >= 3 && game.pets[65] >= 1) {
+      game.coins -= 15000
+      game.pets[64] -= 3
+      game.pets[65] -= 1
+      itemChosen = x
+      alert("Bought " + items[x][0])
+     }
+   else {alert("Not enough items; " + numberShort(game.coins) + "/15000 coins, " + game.pets[64] + "/3 Infected spiders, " + game.pets[65] + "/1 Red snake")
+   itemChosen = 0}
+  }
+}
+if (x==20) {
+  if (game.highestLevel < 20000) {alert("Not unlocked yet")}
+  else {
+  if (game.coins >= 25000 && game.enemies[6] >= 3 && game.enemies[9] >= 1) {
+    game.coins -= 25000
+    game.enemies[6] -= 3
+    game.enemies[9] -= 1
+    itemChosen = x
+    alert("Bought " + items[x][0])
+   }
+ else {alert("Not enough items; " + numberShort(game.coins) + "/25000 coins, " + game.enemies[6] + "/3 Stone boys beaten, " + game.enemies[9] + "/1 Magma boy beaten")
+ itemChosen = 0}
+ }
+}
+if (x==21) {
+  if (game.highestLevel < 20000) {alert("Not unlocked yet")}
+  else {
+  if (game.coins >= 30000 && game.pets[44] >= 3 && game.pets[66] >= 1) {
+    game.coins -= 30000
+    game.pets[44] -= 3
+    game.pets[66] -= 1
+    itemChosen = x
+    alert("Bought " + items[x][0])
+   }
+ else {alert("Not enough items; " + numberShort(game.coins) + "/30000 coins, " + game.pets[44] + "/3 2-Headed snakes, " + game.pets[66] + "/1 Dimensional eye")
+ itemChosen = 0}
+ }
+}
+if (x==22) {
+  if (game.highestLevel < 20000) {alert("Not unlocked yet")}
+  else {
+  if (game.coins >= 50000 && game.pets[11] >= 10 && game.pets[26] >= 5 && game.highestLevel >= 75000) {
+    game.coins -= 50000
+    game.pets[11] -= 10
+    game.pets[26] -= 5
+    itemChosen = x
+    alert("Bought " + items[x][0])
+   }
+ else {alert("Not enough items; " + numberShort(game.coins) + "/50000 coins, " + game.pets[11] + "/10 Glowing eyeballs, " + game.pets[26] + "/5 Salamanders, " + numberShort(game.highestLevel) + "/75k Highest level")
+ itemChosen = 0}
+ }
+}
+if (x==23) {
+  if (game.highestLevel < 20000) {alert("Not unlocked yet")}
+  else {
+  if (game.coins >= 75000 && game.pets[34] >= 10 && game.pets[27] >= 3 && game.highestLevel >= 100000) {
+    game.coins -= 75000
+    game.pets[34] -= 10
+    game.pets[27] -= 3
+    itemChosen = x
+    alert("Bought " + items[x][0])
+   }
+ else {alert("Not enough items; " + numberShort(game.coins) + "/75000 coins, " + game.pets[34] + "/10 Eyeball spiders, " + game.pets[27] + "/3 Dark snakes, " + numberShort(game.highestLevel) + "/100k Highest level")
+ itemChosen = 0}
+ }
+}
+
+if (!game.items[itemChosen]) {game.items[itemChosen] = 1}
+     else {game.items[itemChosen]++}
    }
   }
   function showItemInfo(x) {
  if (x==0) {document.getElementById("shopInfo").innerHTML = ""}
  else {
-  if (x==1) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-50 Coins<br>-20 Green butterflies<br><br>Effects:<br>+50% XP gain</p></center>"
+  if (x==1) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-50 Coins<br>-20 Green butterflies<br><br>Effects:<br>+50% XP gain</p></center>"}
+ if (x==2) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-100 Coins<br>-5 Gargoyles<br><br>Effects:<br>+25% Stats gain</p></center>"}
+ if (x==3) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-150 Coins<br>-1 Golden butterfly<br><br>Effects:<br>+10% XPBoost gain</p></center>"}
+ if (x==4) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-200 Coins<br>-20 Rats<br>-5 Cats<br>-5 Shiny rats<br><br>Effects:<br>+2% Faster cooldowns</p></center>"}
+ if (x==5) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-250 Coins<br>-10 Glowing spiders<br>-3 Living roses<br><br>Effects:<br>+30% Fighting rewards</p></center>"}
+ if (x==6) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-500 Coins<br>-Beat (Armored Human)<br><br>Effects:<br>-Unlock a new area (focused in coin drops)</p></center>"}
+ if (x==7) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-500 Coins<br>-5 Eyeloons<br>-3 Glowing jellyfishes<br><br>Effects:<br>-XPBoost softcap exponent ^0.5 --> ^0.525</p></center>"}
+ if (x==8) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-500 Coins<br>-20 Purple butterflies<br>-7 Blue butterflies<br><br>Effects:<br>+100% XP gain</p></center>"}
+ if (x==9) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-750 Coins<br>-15 Large tortoises<br>-5 Earth snakes<br><br>Effects:<br>+75% Stats gain</p></center>"}
+ if (x==10) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-250 Coins<br>-Own (Green dragon)<br><br>Effects:<br>-Any current pet crate will stop giving popups</p></center>"}
+ if (x==11) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1000 Coins<br>-5 Poisonous eyeballs<br>-1 Spirit (2nd level only)<br><br>Effects:<br>+90% Fighting rewards</p></center>"}
+ if (x==12) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-2000 Coins<br>-200 XPBoost<br>-20 Eldritch eyeballs<br>-10 Red slimes<br>-3 Small skeletons<br><br>Effects:<br>-XPBoost buttons 1-3 substract XP rather than resetting to 0</p></center>"}
+ if (x==13) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1500 Coins<br>-50 Green butterflies<br>-3 Red butterflies<br>-1 Golden butterfly<br><br>Effects:<br>+200% XP gain</p></center>"}
+ if (x==14) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1750 Coins<br>-5 Ice golems<br>-5 Living trees<br>-2 Vortex monsters<br><br>Effects:<br>+150% Fighting stats</p></center>"}
+ if (x==15) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-2000 Coins<br>-25 Small elfs<br>-10 Small humanoids<br>-2 Nordic grandfathers<br><br>Effects:<br>-The 4 basic pet crates try to be opened every 30 minutes automatically</p></center>"}
+ if (x==16) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1750 Coins<br>-75 Green lizards<br>-30 Snakes<br>-10 Mutant tarantulas<br><br>Effects:<br>-The 4 basic crates unbox an extra pet</p></center>"}
+ if (x==17) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-2500 Coins<br>-20 Giant fireflies<br>-1 Fire spectral<br>-1 Lilypad<br><br>Effects:<br>+220% Fighting rewards</p></center>"}
+ if (x==18) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-5000 Coins<br>-5 Ghost rodents<br>-3 Skeletal dogs<br>-1 Purple star<br><br>Effects:<br>-XPBoost affects DailyXP at a reduced rate</p></center>"}
+ if (x==19) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-15000 Coins<br>-3 Infected spiders<br>-1 Red snake<br><br>Effects:<br>x2 XP (additive with itself, multiplicative with others)</p></center>"}
+ if (x==20) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-25000 Coins<br>-3 Stone boys beaten<br>-1 Magma boy beaten<br><br>Effects:<br>x2 Stats</p></center>"}
+ if (x==21) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-30000 Coins<br>-3 2-Headed snakes<br>-1 Dimensional eye<br><br>Effects:<br>+40% XPBoost</p></center>"}
+ if (x==22) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-50000 Coins<br>-10 Glowing eyeballs<br>-5 Salamanders<br>-Reach level 75k<br><br>Effects:<br>/1.1 All button cooldowns</p></center>"}
+ if (x==23) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-75000 Coins<br>-10 Eyeball spiders<br>-3 Dark snakes<br>-Reach level 100k<br><br>Effects:<br>x2 Looting boost (Additive with itself, stacks with others)</p></center>"}
+ if (x==24) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-Too expensive!<br><br>Effects:<br>-Unlocks a new feature (Coming soon)</p></center>"}  
+}
+}
+
+function showItemHiddenInfo(x) {
+  if (x==0) {document.getElementById("shopInfo").innerHTML = ""}
+  else {
+   if (x==19) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 20k to Unlock"}
+   if (x==20) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 20k to Unlock"}
+   if (x==21) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 20k to Unlock"}
+   if (x==22) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 20k to Unlock"}
+   if (x==23) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 20k to Unlock"}
+   if (x==24) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 20k to Unlock"}
  }
- if (x==2) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-100 Coins<br>-5 Gargoyles<br><br>Effects:<br>+25% Stats gain</p></center>"
- }
- if (x==3) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-150 Coins<br>-1 Golden butterfly<br><br>Effects:<br>+10% XPBoost gain</p></center>"
- }
- if (x==4) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-200 Coins<br>-20 Rats<br>-5 Cats<br>-5 Shiny rats<br><br>Effects:<br>+2% Faster cooldowns</p></center>"
- }
- if (x==5) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-250 Coins<br>-10 Glowing spiders<br>-3 Living roses<br><br>Effects:<br>+25% Fighting rewards</p></center>"
- }
- if (x==6) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-500 Coins<br>-Beat (Armored Human)<br><br>Effects:<br>-Unlock a new area (focused in coin drops)</p></center>"
- }
- if (x==7) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-500 Coins<br>-5 Eyeloons<br>-3 Glowing jellyfishes<br><br>Effects:<br>-XPBoost softcap exponent ^0.5 --> ^0.525</p></center>"
- }
- if (x==8) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-500 Coins<br>-20 Purple butterflies<br>-7 Blue butterflies<br><br>Effects:<br>+100% XP gain</p></center>"
- }
- if (x==9) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-750 Coins<br>-15 Large tortoises<br>-5 Earth snakes<br><br>Effects:<br>+75% Stats gain</p></center>"
- }
- if (x==10) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-250 Coins<br>-Own (Green dragon)<br><br>Effects:<br>-Any current pet crate will stop giving popups</p></center>"
- }
- if (x==11) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1000 Coins<br>-5 Poisonous eyeballs<br>-1 Spirit (2nd level only)<br><br>Effects:<br>+75% Fighting rewards</p></center>"
- }
- if (x==12) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-2000 Coins<br>-200 XPBoost<br>-20 Eldritch eyeballs<br>-10 Red slimes<br>-3 Small skeletons<br><br>Effects:<br>-XPBoost buttons 1-3 substract XP rather than resetting to 0</p></center>"
- }
- if (x==13) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1500 Coins<br>-50 Green butterflies<br>-3 Red butterflies<br>-1 Golden butterfly<br><br>Effects:<br>+200% XP gain</p></center>"
- }
- if (x==14) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1750 Coins<br>-5 Ice golems<br>-5 Living trees<br>-2 Vortex monsters<br><br>Effects:<br>+150% Fighting stats</p></center>"
- }
- if (x==15) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-2000 Coins<br>-25 Small elfs<br>-10 Small humanoids<br>-2 Nordic grandfathers<br><br>Effects:<br>-The 4 basic pet crates try to be opened every 30 minutes automatically</p></center>"
- }
- if (x==16) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1750 Coins<br>-75 Green lizards<br>-30 Snakes<br>-10 Mutant tarantulas<br><br>Effects:<br>-The 4 basic crates unbox an extra pet</p></center>"
- }
- if (x==17) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-2500 Coins<br>-20 Giant fireflies<br>-1 Fire spectral<br>-1 Lilypad<br><br>Effects:<br>+175% Fighting rewards</p></center>"
- }
- if (x==18) {
-  document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-5000 Coins<br>-5 Ghost rodents<br>-3 Skeletal dogs<br>-1 Purple star<br><br>Effects:<br>-XPBoost affects DailyXP at a reduced rate</p></center>"
- }
-  }
 }
 
 function updateShopBoosts() {
-  game.itemXP = 1 + (game.items[1] * 0.5) + (game.items[8] * 1) + (game.items[13] * 2)
-  game.itemStat = 1 + (game.items[2] * 0.25) + (game.items[9] * 0.75) + (game.items[14] * 1.5)
-  game.itemXPBoost = 1 + (game.items[3] * 0.1)
-  game.itemCooldown = 1 + (game.items[4] * 0.02)
-  game.itemLoot = 1 + (game.items[5] * 0.25) + (game.items[11] * 0.75) + (game.items[17] * 1.75)
+  game.itemXP = (1 + (game.items[1] * 0.5) + (game.items[8] * 1) + (game.items[13] * 2)) * (game.items[19] + 1)
+  game.itemStat = (1 + (game.items[2] * 0.25) + (game.items[9] * 0.75) + (game.items[14] * 1.5)) * (game.items[20] + 1)
+  game.itemXPBoost = 1 + (game.items[3] * 0.1) + (game.items[21] * 0.4)
+  game.itemCooldown = 1 + (game.items[4] * 0.02) + (game.items[22] * 0.1)
+  game.itemLoot = (1 + (game.items[5] * 0.3) + (game.items[11] * 0.9) + (game.items[17] * 2.2)) * (game.items[23] + 1)
   game.itemXPBoostEffectSoftcap = 0 + (game.items[7] * 0.025)
   if (game.items[18] == 1) game.itemDailyXP = (game.XPBoostEffect ** 0.5)
   game.itemUnlocks = 0 + (game.items[6])

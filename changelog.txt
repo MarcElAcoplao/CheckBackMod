@@ -1,3 +1,21 @@
+v0.9 Update - A little bit of everything!
+-New crate!
+  -Unlocks at level 20k
+  -Costs 250 coins to open one [And has a base cooldown of 12h]
+  -Has some of the rarest pets and also the most busted ones. Good luck for anyone trying to get all of them.
+-New upgrades!
+  -You need level 20k to see these upgrades and to buy them
+  -These are quite expensive and require some of the new pets
+-New area!
+  -Unlocked at level 100k
+  -Has 5 new powerful enemies [loot focused on xp gains]
+-New stat button!
+  -Unlocked at level 50k
+  -Gives x4 the previous stats at just x6 the cooldown (20hp 2dmg 0.2 def / 6h)
+-Fixed some bugs related to cost upgrades
+-Better compatibility with older saves [mainly people importing from Demonin's original version]
+-Some themes have been tweaked slightly to look better. [Neon still on top]
+
 v0.8.0.1
 -Fixed a bug where the 4th upgrade would take something else instead of the actual pet
 

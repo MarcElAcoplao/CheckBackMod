@@ -46,6 +46,7 @@
   <button class="button" id="button12" onclick="clickButton(12)">Gain 15 XP</button>
   <button class="button" id="button13" onclick="clickButton(13)">Gain 4 XPBoost</button>
   <button class="button" id="button14" onclick="clickButton(14)">Gain 5 Stats</button>
+  <button class="button" id="button15" onclick="clickButton(15)">Gain 20 Stats</button>
 
   <button class="button" id="unboxButton1" onclick="unboxPet(3, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(3)" onmouseout="displayPetRarities(0)">Unbox a random basic pet</button>
   <button class="button" id="unboxButton2" onclick="unboxPet(4, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(4)" onmouseout="displayPetRarities(0)">Unbox a random advanced pet</button>
@@ -53,6 +54,7 @@
   <button class="button" id="unboxButton4" onclick="unboxPet(6, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(6)" onmouseout="displayPetRarities(0)">Unbox a random legendary pet</button>
   <button class="button" id="unboxButton5" onclick="unboxPet(7)" onmouseover="displayPetRarities(7)" onmouseout="displayPetRarities(0)">Unbox a random prestige pet</button>
   <button class="button" id="unboxButton6" onclick="unboxPet(8)" onmouseover="displayPetRarities(8)" onmouseout="displayPetRarities(0)">Unbox a random transcendant pet</button>
+  <button class="button" id="unboxButton7" onclick="unboxPet(9)" onmouseover="displayPetRarities(9)" onmouseout="displayPetRarities(0)">Unbox a random universal pet</button>
 
   <div id="themeDiv">
     <p id="themeText" style="font-size: 1.5vh; margin: 0.3vh">Theme:</p>
@@ -68,14 +70,13 @@
   
   <p id="XPBoostDisplay">XPBoost: 1</p>
   <p id="ItemBoostDisplay">Your items give the following:</p>
-  <p id="versionText">Check Back Mod v0.8.0.1 (Creator: MarcElAcoplao, <a href="https://discord.gg/qNqRWg4EYT">Discord</a>)<br>
+  <p id="versionText">Check Back Mod v0.9 (Creator: MarcElAcoplao, <a href="https://discord.gg/qNqRWg4EYT">Discord</a>)<br>
     <a href="https://demonin.com/games/checkBack/">Original</a> by Demonin (<a href="https://discord.gg/3hwM7ScH6k">Discord</a>)</p>
-  <button class="settingsButton" style="bottom: 17.5vh" onclick="help()">Help</button>
-  <button class="settingsButton" style="bottom: 15vh" onclick="noSpecialPets()">SpecialPet conversion</button>
-  <button class="settingsButton" style="bottom: 12.5vh" onclick="exportGame()">Export</button>
-  <button class="settingsButton" style="bottom: 10vh" onclick="importGame()">Import</button>
-  <button class="settingsButton" style="bottom: 7.5vh" onclick="save()">Manual save</button>
-  <button class="settingsButton" style="bottom: 5vh; background-color: #d99" onclick="hardReset()">Hard reset</button>
+  <button class="settingsButton" id="setting6" style="bottom: 17.5vh" onclick="help()">Help</button>
+  <button class="settingsButton" id="setting4" style="bottom: 12.5vh" onclick="exportGame()">Export</button>
+  <button class="settingsButton" id="setting3" style="bottom: 10vh" onclick="importGame()">Import</button>
+  <button class="settingsButton" id="setting2" style="bottom: 7.5vh" onclick="save()">Manual save</button>
+  <button class="settingsButton" id="setting1" style="bottom: 5vh; background-color: #d99" onclick="hardReset()">Hard reset</button>
 
   <div id="dailyRewardDiv">
     <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Daily reward</p>
@@ -114,6 +115,7 @@
     <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px; width: 50%'>Fight different types of enemies and get loot</p>
     <p id="enemiesFightChances"></p>
     <p id="statsDisplay"></p>
+    <button class="button" id="fight3Button" onclick="startFight(3)" onmouseover="displayEnemiesFightRarities(3)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 3 foe</button>
     <button class="button" id="fight1Button" onclick="startFight(1)" onmouseover="displayEnemiesFightRarities(1)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 2 foe</button>
     <button class="button" id="fight2Button" onclick="startFight(2)" onmouseover="displayEnemiesFightRarities(2)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 1 foe</button>  
     <div class="dropBox" style="left: 0; color: #bff"></div>

@@ -212,23 +212,33 @@ img {
   display: none;
 }
 
-#button9 {
+#unboxButton7 {
   top: 121vh;
   display: none;
 }
 
-#button11 {
+#button9 {
   top: 127vh;
   display: none;
 }
 
-#button12 {
+#button11 {
   top: 133vh;
   display: none;
 }
 
-#button14 {
+#button12 {
   top: 139vh;
+  display: none;
+}
+
+#button14 {
+  top: 145vh;
+  display: none;
+}
+
+#button15 {
+  top: 151vh;
   display: none;
 }
 
@@ -463,6 +473,12 @@ img {
 
 #fight2Button {
   bottom: 20vh;
+  font-size: 2vh;
+  z-index: 2;
+  display: none;
+}
+#fight3Button {
+  bottom: 25vh;
   font-size: 2vh;
   z-index: 2;
   display: none;

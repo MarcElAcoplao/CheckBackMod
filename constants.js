@@ -1,4 +1,4 @@
-const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100,125,150,200,250,300,350,400,500,1500]
+const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100,125,150,200,250,300,350,400,500,1500,20000,50000,100000]
 const levelBarTextures = [50,55,60,65,70,80,90,100,200]
 
 const levelBarColours = [
@@ -83,16 +83,22 @@ const ranks = [
   [1000, "Void+"],
   [1500, "Void++"],
   [2000, "Void+++"],
-  [2500, "Extensive grinding"],
-  [5000, "Extensive grinding+"],
-  [7500, "Extensive grinding++"],
-  [10000, "Serious dedication"],
-  [20000, "Epic dedication"],
-  [30000, "Transcendent dedication"],
-  [40000, "Billion XP dedication"],
-  [50000, "Unmatched dedication"],
-  [1000000, "This is 405b XP"],
+  [2500, "Extensive"],
+  [5000, "Extensive+"],
+  [7500, "Extensive++"],
+  [10000, "Extensive+++"],
+  [20000, "Dedicated"],
+  [50000, "Worthy"],
+  [100000, "Loot"],
+  [250000, "Magic"],
+  [500000, "Magic+"],
+  [1000000, "oNlY 1% pLaYeRs CaN rEaCh ThIs LeVeL!!!!"],
+  [1500000, "Troll"],
   [2000000, "Insanity"],
+  [4000000, "Insanity+"],
+  [6000000, "Insanity++"],
+  [8000000, "Insanity+++"],
+  [10000000, "Time"],
   [Infinity, "Error"],
 ]
 
@@ -162,6 +168,15 @@ const pets = [
   ["Ghost tarantula", 3.2, 1.13, 1.18, 1], //60 [AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]
   ["Ghost hydra", 7, 1.25, 1.23, 1], //61 [Really wanna put skeletal hydra text here but, too much ctrl c ctrl v]
   ["Ghost dragon", 12.2, 1.3, 1.25, 1.01], //63 [Truly a powerful character. Invisibility go br]
+  ["Infected spider", 105, 1.75, 1.7, 1.1], //64 [Around yellow dragon stats]
+  ["Red snake", 180, 1.95, 1.95, 1.15], //65
+  ["Dimensional eye", 300, 2.2, 2.2, 1.2], //66
+  ["Radioactive rat", 500, 2.5, 2.5, 1.25], //67 
+  ["Toxic mushroom", 777, 2.8, 2.9, 1.35], //68 [Around dark blue dragon stats]
+  ["Universal vortex", 1200, 3.2, 3.3, 1.5], //69 [Starts to drop below 1%] [nice]
+  ["3-Headed snake", 1900, 3.6, 3.6, 1.65], //70
+  ["Electric eel", 3000, 4.1, 4.1, 1.8], //71 [Reference to endless stairwell from Demonin]
+  ["White dragon", 5700, 4.7, 5.1, 2], //72 [Strongest pet, but it's gonna be a huge strike of luck to get it]
 ]
 
 const skeletalUnboxChances = [ //will be set to 1
@@ -196,6 +211,10 @@ const trascendantUnboxChances = [ //this is 8
  [40,126], [41,58], [42,26], [43,11], [44,5], [45,2], [46,1],
 ]
 
+const universalUnboxChances = [
+  [64,783], [65,543], [66,345], [67,157], [68,50], [69,20], [70,6], [71,3], [72,1], 
+]
+
 const enemies = [
   //Name, hp, damage, defense, loot tier, numbers in the comments are the base drops [with no looting boosts]
   ["Test", 0.1, 0.1, 0.01, 1],
@@ -210,6 +229,11 @@ const enemies = [
   ["Magma boy", 1500, 130, 15, 3], //2.4 (9) - 825k XP / 650 Coins / 2.25 XPBoost
   ["Water siren", 2000, 170, 20, 3], //2.5 (10) - 1.1M XP / 850 Coins / 3 XPBoost
   ["The siren of nature", 3000, 250, 50, 4], //2.6 (11) - 2.3M XP / 2.5k Coins / 10 XPBoost
+  ["White tailed human", 2500, 250, 25, 5], //3.1 (12) - 2.5M XP / 500 Coins / 3.75 XPBoost
+  ["Orange tailed human", 5000, 500, 50, 5], //3.2 (13) - 5M XP / 1k Coins / 7.5 XPBoost
+  ["Yellow tailed human", 10000, 1000, 100, 5], //3.3 (14) - 10M XP / 2k Coins / 15 XPBoost
+  ["Green tailed human", 20000, 2000, 200, 5], //3.4 (15) - 20M XP / 4k Coins / 30 XPBoost
+  ["Evil tailed human", 50000, 5000, 500, 5], //3.5 (16) - 50M XP / 10k Coins / 75 XPBoost
   ]
 
   const starterEnemiesChances = [ //45, 30, 15, 8, 2
@@ -220,26 +244,35 @@ const enemies = [
   [6, 30], [7, 25], [8, 20], [9, 15], [10, 10], [11, 5],
   ]
 
+  const advancedEnemiesChances = [
+  [12, 1], [13, 1], [14, 1], [15, 1], [16, 1],
+  ]
 
   const items = [
 //Name, amount you can buy
   ["Test", 1],
-  ["Starter XP orb", 2], //50 Coins + 20 green butterflies -- +50% XP gain
-  ["Starter armor", 1], //100 coins + 5 gargoyles -- +25% Stat gains
-  ["Starter XPBoost orb", 1], //150 coins + 1 golden butterfly -- +10% XPBoost gain
-  ["Starter speed up", 1], //200 coins + 20 Rats + 5 cats + 5 shiny rats -- +2% cooldown speed
-  ["Starter looting boost", 2], //250 coins 30 glowing spiders + 5 living roses -- +25% fight bonus loot
-  ["New area", 1], //500 coins + Beat area 1 boss -- unlocks a new fighting area
-  ["Intermediate XPBoost orb", 1], //500 coins + some trans pets -- XPBoostEffect softcap exponent + 0.025
-  ["Intermediate XP orb", 2], //500 coins + some more butterflies -- +100% XP gain
-  ["Intermediate armor", 1], //1000 coins + some more armored enemies -- +75% stat gains
-  ["No more pet alerts", 1], //250 coins + something -- All current pet buttons will not play an alert
-  ["Intermediate looting boost", 2], //1500 coins + a bunch of enemies -- +75% fight bonus loot
-  ["XPBoost mastery", 1], //2000 coins + 100XPBoost + a bunch of pets -- XPBoost buttons 1-3 substract xp rather than resetting to 0
-  ["Advanced XP orb", 3], //2000 coins + something -- +200% XP gain
-  ["Iron helmet", 1], //some more coins and gives even more stats
+  ["Starter XP orb", 2], //+50% XP gain
+  ["Starter armor", 1], //+25% Stat gains
+  ["Starter XPBoost orb", 1], //+10% XPBoost gain
+  ["Starter speed up", 1], // /1.02 cooldowns
+  ["Starter looting boost", 2], //+25% fight bonus loot
+  ["New area", 1], //unlocks a new fighting area
+  ["Intermediate XPBoost orb", 1], //XPBoostEffect softcap exponent + 0.025
+  ["Intermediate XP orb", 2], //+100% XP gain
+  ["Intermediate armor", 1], //+75% stat gains
+  ["No more pet alerts", 1], //All current pet buttons will not play an alert
+  ["Intermediate looting boost", 2], //+75% fight bonus loot
+  ["XPBoost mastery", 1], //XPBoost buttons 1-3 substract xp rather than resetting to 0
+  ["Advanced XP orb", 3], //+200% XP gain
+  ["Iron helmet", 1], //+150% Stats
   ["Human automation", 1], // Uses the 1st person from the area to automate pet crates 1-4 [tries to open them every 30mins]
-  ["Plus one", 1], //Gives +1 of something... not decided yet
-  ["Advanced looting boost", 3], //a lot of coins and stuff and gives a lot of looting boost
-  ["Daily rewards staff", 1], //more coins and some skeleton/ghost pets, increases dailyXP by the square root of xpboost effect
+  ["Plus one", 1], //The 4 basic pet crates unbox an extra pet
+  ["Advanced looting boost", 3], //+175% Fighting rewards
+  ["Daily rewards staff", 1], //Daily rewards x(XPboostEffect^0.5)
+  ["Legendary XP orb", 2], //x2 xp [additive with itself, multiplicative with others]
+  ["Appropiate shoes", 1], //x2 stats [multiplicative with others]
+  ["Advanced XPBoost orb", 1], //+40% xpboost
+  ["Speed dilation", 1], // /1.1 Button Cooldowns
+  ["Loot again", 2], // x2 looting boost [additive with itself, multiplicative with others]
+  ["Check Back Soon :tm:", 1], //New feature, not gonna be added yet
   ]

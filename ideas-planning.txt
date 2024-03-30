@@ -1,10 +1,56 @@
 v0.9 ideas:
--A new Pet crate
--A new stats button
+-A new Pet crate [Progress: Only missing the crate icon]
+  -Costs 500 Coins
+  -12h cooldown [base, expect to be like 4h when you unlock it]
+  -Worst pets are around x150 xp gain
+  -Best pets reach like... x5k or x10k xp, somewhere around that [but they are like ~1/2k or rarer]
+-A new stats button [Progress: Added]
+  -Could be like x3 the rewards but with 6h base cooldown
+-New area [Confirmed, unlock maybe level 75k]
+  -Maybe buffed xp drops
 -More upgrades [like an extra row of expensive upgrades]
--Maybe a new area? depends
+  -Uses some of the new pets
+  -They could range from level 50k to like level 1m [where new feature would kick in]
+
+Upgrade ideas:
+ -x2 xp [additive, 3-4 levels]
+ -x2 stats
+ -+40% xpboost
+ -x2 looting boost
+ -/1.1 all button cooldown
+ -Next update upgrade [would not be added], which would unlock the next feature
+
+-Early pets would be buffed slightly [to make the power curve feel better]
+-Code re-structure
 
 
-Pending:
--Making the 2nd zone
-  -Decide the enemy names and images
+
+----------------------------------------------------------
+v1.0 ideas:
+-Time shards! definitively not an antimatter dimensions reskin where buttons would give the lower dimension, and the 1st one gives time shards
+ -These could have a passive boost, or be used for other stuff
+ -Time shards would be required for upgrades and stronger stuff
+
+
+1st Dimension: 1 Time Shard / 5 minutes
+  -Unlock: One expensive upgrade
+2nd Dimension: 1 D1 / 30 minutes
+  -Unlock: 10 Time Shards
+  -Extra: Time Shards boost the item cooldowns stat (Log10(x))/(10+Log10(sqrt(x)))
+3rd Dimension: 1 D2 / 2 hours
+  -Unlock: 100 Time Shards
+  -Extra: D1 multi x2
+4th Dimension: 1 D3 / 6 hours
+  -Unlock: 10k Time Shards
+
+Dimension reset
+  -Requirement: 1m Time Shards + something else [like a level, there would also be an upgrade for increasing xp gains even more]
+  -Resets current dimension progress
+
+5th Dimension: 1 D4 / 1 day
+  -Unlock: 1b Time Shards + having done the reset
+
+---------------------------------------------------------
+Future reference:
+
+for (let i=0;i<game.pets.length;i++) {if (game.pets[i] is in some form) game.pets[i] = 0}
