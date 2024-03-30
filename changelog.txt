@@ -1,3 +1,9 @@
+v0.9.1
+-Did some changes in the xp to next level bar
+  -Once you reach level 1500 [the shop], the bar changes to "XP to next unlock", showing all the jump there is in terms of xp
+   -Therefore, when you reach the highest possible xp unlock [level 100k], the bar simply changes to "Total XP"
+-Some slight changes in 0.9.0.1 and 0.9.0.2
+
 v0.9.0.2
 -Added actual rarities to the enemies in the 3rd zone [they were all 20% each]
 
