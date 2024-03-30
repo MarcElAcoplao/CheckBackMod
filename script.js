@@ -489,7 +489,6 @@ else {
   ProgressToNextLevel = (game.XP - levelToXP(game.level)).toFixed(1)
   document.getElementById("XPToNextlevel").innerHTML = xpShort(ProgressToNextLevel) + "/" + xpShort(XPToNextLevel)
   document.getElementById("XPBarBack").style.width = (ProgressToNextLevel / XPToNextLevel * 100) + "%"
-  if (game.level > game.highestLevel) {game.highestLevel = game.level}
   }
   else if (game.unlocks < unlockLevels.length) { //After level 1500
   XPToNextUnlock = levelToXP(unlockLevels[game.unlocks]) // - levelToXP(unlockLevels[game.unlocks - 1])
@@ -502,6 +501,7 @@ else {
     document.getElementById("XPBarText").innerHTML = "Total XP: " + numberShort(game.XP)
     document.getElementById("XPBarBack").style.width = 100 + "%"
   }
+  if (game.level > game.highestLevel) {game.highestLevel = game.level}
   handleUnlocks()
 }
 setInterval(updateSmall, 16) //Runs the update ~60 times per second
