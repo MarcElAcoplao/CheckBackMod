@@ -17,6 +17,7 @@ function reset() {
     lastSave: Date.now(),
     timeOfLastUpdate: Date.now(),
     pets: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+    specialPets: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
     enemies: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     selectedPet: 0,
     dailyRewards: 0,
@@ -202,6 +203,7 @@ function loadGame(loadgame) {
  for (let i=0;i<pets.length;i++) {if (!game.pets[i]) game.pets[i] = 0}
  for (let i=0;i<enemies.length;i++) {if (!game.enemies[i]) game.enemies[i] = 0}
  for (let i=0;i<items.length;i++) {if (!game.items[i]) game.items[i] = 0}
+ for (let i =0;i<17; i++) {if (!game.specialPets[i]) game.specialPets[i] = 0}
  for (let i =0;i<17; i++) {
   if (game.specialPets[i] >= 1) {
   game.pets[i+47] += game.specialPets[i]
