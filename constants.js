@@ -245,7 +245,7 @@ const enemies = [
   ]
 
   const advancedEnemiesChances = [
-  [12, 1], [13, 1], [14, 1], [15, 1], [16, 1],
+  [12, 13], [13, 8], [14, 5], [15, 3], [16, 2],
   ]
 
   const items = [
