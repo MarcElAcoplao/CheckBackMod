@@ -919,7 +919,7 @@ function unboxPet(x, y=1) {
   }
 
 if (petChosen >= 1) {
-    if (game.items[10] == 0 || x >= 9) {alert("Got a " + pets[petChosen][0] + "!")}
+  if (game.items[10] == 0 || x >= 9 || y < 1000) {alert("Got a " + pets[petChosen][0] + "!")}
     if (!game.pets[petChosen]) {game.pets[petChosen] = 1}
     else {game.pets[petChosen]++}
 
@@ -934,7 +934,7 @@ if (petChosen >= 1) {
  }
 y += -1
 if (y < 1) {}
-else if (x >= 3 && x <= 6) {unboxPet(x, y=y)}
+else unboxPet(x, y=y)
 
 }
   if (document.getElementById("petsDiv").style.display == "block") displayPets()
@@ -1364,7 +1364,6 @@ function changeTheme(x) {
       game.coins += 2 * enemies[enemiesChosen][2] * game.itemLoot
       game.XPBoost += 0.15 * enemies[enemiesChosen][3] * game.itemLoot
      }
-     game.enemies[enemiesChosen] += 1
      if (!game.enemies[enemiesChosen]) {game.enemies[enemiesChosen] = 1}
      else {game.enemies[enemiesChosen]++}
   }
