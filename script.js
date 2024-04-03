@@ -919,7 +919,7 @@ function unboxPet(x, y=1) {
   }
 
 if (petChosen >= 1) {
-  if (game.items[10] == 0 || x >= 9 || y < 1000) {alert("Got a " + pets[petChosen][0] + "!")}
+  if (game.items[10] == 0 || x >= 9) {alert("Got a " + pets[petChosen][0] + "!")}
     if (!game.pets[petChosen]) {game.pets[petChosen] = 1}
     else {game.pets[petChosen]++}
 
