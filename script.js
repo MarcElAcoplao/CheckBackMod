@@ -402,7 +402,15 @@ for (let i=1;i<XPButtons.length;i++) {
     document.getElementById("StatsTab").style.border = "0.3vh solid #0ff"
   }
 
- if (game.buttonCooldowns[21] == 0 || game.buttonCooldowns[22] == 0 || game.buttonCooldowns[26] == 0) {
+  if (CratesTab() == true) {
+    if (Date.now() % 600 < 300) {document.getElementById("CratesTab").style.border = "0.3vh solid #77f"}
+  else {document.getElementById("CratesTab").style.border = "0.3vh solid #0ff"}
+  }
+  else {
+    document.getElementById("CratesTab").style.border = "0.3vh solid #0ff"
+  }
+
+ if (FightingTab() == true) {
   if (Date.now() % 600 < 300) {document.getElementById("fightingTabButton").style.border = "0.3vh solid #77f"}
   else {document.getElementById("fightingTabButton").style.border = "0.3vh solid #0ff"}
  }

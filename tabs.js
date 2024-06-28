@@ -142,3 +142,20 @@ function StatTab() {
   }
   return false
 }
+
+function CratesTab() {
+  for (let i=1;i<PetButtons.length;i++) {
+    if (game.buttonCooldowns[PetButtons[i].cooldownID] == 0 && game.unlocks >= PetButtons[i].unlock) {
+      return true
+      break
+    }
+  }
+  return false
+}
+
+function FightingTab() {
+    if (game.buttonCooldowns[FightingButtons[1].cooldownID] == 0 && game.unlocks >= FightingButtons[1].unlock) {return true}
+    else if (game.buttonCooldowns[FightingButtons[3].cooldownID] == 0 && game.unlocks >= FightingButtons[3].unlock) {return true}
+    else if (game.buttonCooldowns[FightingButtons[2].cooldownID] == 0 && game.items[6] >= 1) {return true}
+    else return false
+}
