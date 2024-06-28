@@ -105,17 +105,47 @@ img {
   z-index: 2;
 }
 
-#XPBoostDisplay {
+.tabButton {
   position: fixed;
-  text-align: left;
-  top: 26vh;
-  left: 0.5vh;
-  font-size: 2vh;
-  line-height: 2.5vh;
-  margin: 0;
-  display: none;
-  z-index: 2;
+  left: 50%;
+  height: 4vh;
+  min-width: 4vh;
+  transform: translate(-50%, -50%);
+  padding-left: 1vh;
+  padding-right: 1vh;
+  border-radius: 2vh;
+  font-family: Verdana, sans-serif;
+  font-size: 3vh;
+  line-height: 0;
+  transition: background-color 300ms ease-out, color 300ms ease-out, border 300ms ease-out,;
+  white-space: nowrap;
+  z-index: 3;
 }
+ #XPTab {
+  top: 23vh;
+  left: 10vh;
+  display: none;
+ }
+
+ #CratesTab {
+  top: 33vh;
+  left: 14vh;
+  display: none;
+ }
+
+ #XPBoostTab {
+  top: 38vh;
+  left: 15vh;
+  display: none;
+
+ }
+
+ #StatsTab {
+  top: 43vh;
+  left: 11vh;
+  display: none;
+ }
+
 
 .button {
   position: absolute;
@@ -133,112 +163,112 @@ img {
   white-space: nowrap;
 }
 
-#button1 {
+#XPbutton1 {
   top: 25vh;
 }
 
-#button2 {
+#XPbutton2 {
   top: 31vh;
   display: none;
 }
 
-#button3 {
+#XPbutton3 {
   top: 37vh;
   display: none;
 }
 
-#button4 {
+#XPbutton4 {
   top: 43vh;
   display: none;
 }
 
-#button5 {
+#XPbutton5 {
   top: 49vh;
   display: none;
 }
 
-#button6 {
+#XPbutton6 {
   top: 55vh;
   display: none;
 }
 
-#button7 {
+#XPbutton7 {
   top: 61vh;
   display: none;
 }
 
 #unboxButton1 {
-  top: 67vh;
+  top: 25vh;
   display: none;
 }
 
 #unboxButton2 {
-  top: 73vh;
+  top: 31vh;
   display: none;
 }
 
 #unboxButton3 {
-  top: 79vh;
+  top: 37vh;
   display: none;
 }
 
 #unboxButton4 {
-  top: 85vh;
+  top: 43vh;
   display: none;
 }
 
-#button8 {
-  top: 91vh;
+#XPBbutton1 {
+  top: 25vh;
   display: none;
 }
 
-#button10 {
-  top: 97vh;
+#XPBbutton2 {
+  top: 31vh;
   display: none;
 }
 
-#button13 {
-  top: 103vh;
+#XPBbutton3 {
+  top: 37vh;
   display: none;
 }
 
 #unboxButton5 {
-  top: 109vh;
+  top: 49vh;
   display: none;
 }
 
 #unboxButton6 {
-  top: 115vh;
+  top: 55vh;
   display: none;
 }
 
 #unboxButton7 {
-  top: 121vh;
+  top: 61vh;
   display: none;
 }
 
-#button9 {
-  top: 127vh;
+#XPbutton8 {
+  top: 67vh;
   display: none;
 }
 
-#button11 {
-  top: 133vh;
+#XPbutton9 {
+  top: 73vh;
   display: none;
 }
 
-#button12 {
-  top: 139vh;
+#XPbutton10 {
+  top: 79vh;
   display: none;
 }
 
-#button14 {
-  top: 145vh;
+#StatButton1 {
+  top: 25vh;
   display: none;
 }
 
-#button15 {
-  top: 151vh;
+#StatButton2 {
+  top: 31vh;
   display: none;
 }
 
@@ -463,6 +493,7 @@ img {
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
+  z-index: 2;
 }
 
 #fight1Button {
@@ -549,14 +580,68 @@ img {
   background-image: url('img/halftoneDots.png')
 }
 
-#ItemBoostDisplay {
+#dailyMessagesDiv {
   position: fixed;
-  text-align: left;
-  top: 47vh;
-  left: 0.5vh;
-  font-size: 2vh;
-  line-height: 2.5vh;
-  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 40%;
+  height: 70%;
+  background-color: #444;
   display: none;
-  z-index: 2;
+  border: 0.8vh outset #555;
+  z-index: 3;
+}
+
+.closeDailyMessage {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 3vw;
+  height: 3vw;
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8vw;
+  padding: 0px;
+  border-radius: 0px;
+  background-color: #2e2e2e;
+  z-index: 5;
+}
+
+.equipPet {
+  position: absolute;
+  top: 87%;
+  right: 39%;
+  width: 8vw;
+  height: 3vw;
+  color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8vw;
+  padding: 0px;
+  border-radius: 0px;
+  background-color: #2e2e2e;
+  z-index: 5;
+  display: none;
+}
+
+#messageInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#messageInfo {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #666;
+  background-image: url('img/halftoneDots.png');
+  z-index: 3;
 }

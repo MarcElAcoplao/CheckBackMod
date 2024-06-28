@@ -17,3 +17,9 @@ body {
 #nextUnlockLevel, #selectedPetText, #themeText, #versionText, #XPBoostDisplay, #ItemBoostDisplay {
   color: #9d8;
 }
+
+.tabButton {
+  background-color: #496;
+  border: 0.3vh solid #2d2;
+  color: #fff;
+}

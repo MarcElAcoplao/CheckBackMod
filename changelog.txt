@@ -1,3 +1,19 @@
+v0.9.2 The tab update - 28/06/24
+Added content:
+-Added tabs! Buttons are now separated into sections, so you can see stuff like all xp buttons in the same place
+-Added tab related statistics! For each tab, you will see boosts that are related to whatever buttons you are seeing [like any xp multiplier and xp button cooldown modifiers in the xp tab]
+-Added statistics! Starting from this update, info like enemies killed and crates opened are tracked and can be seen by clicking "Display stats" [also brings you to the xp buttons tab, that's how it's coded]
+-Added a proper message system for things like unboxing pets or displaying what enemy are you fighting against [report if any bugs happen with this one and give suggestions]
+Balancing changes:
+-New skeleton and ghost pets that can be found after day 100 [also rarer skeleton/ghost pets are buffed in these "new" crates]
+-The daily rewards staff has received a significant buff [xp items will boost daily xp if you have this item, reaching a maximum of x30 daily xp at the moment]
+-Each discovered pet gives an additive +1% xp gain [to boost early game progression a little bit and to give an incentive to keep opening crates] [yes, there's a discovered pets stats]
+Other changes:
+-Did a bunch of improvements in the code to make adding more buttons easier [and can make stuff easier to deal with loops]
+-Fixed some typos and bugs I guess [and more to come I guess]
+-Some changes I might have done before june that I might have forgot are included in this update but they aren't in the changelog [or could have been released in v0.9.1.4/5 I don't know]
+-Manipulation of time is tearing down all the dimensions. Do not come alone, proceed with caution. Will you manage to fix the temporal rift? (coming soon)
+
 v0.9.1.3
 -How does someone break this much stuff, seriously
 

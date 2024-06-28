@@ -151,7 +151,7 @@ const pets = [
   ["2-headed snake", 183, 2, 2, 1.15], //newpet 3.5 (44)
   ["Fire lord", 326, 2.35, 2.3, 1.2], //newpet 3.6 (45)
   ["Dark blue dragon", 746, 2.7, 2.8, 1.3], //newpet 3.7 (46) (Ignore 2.8's message, this one is gonna be the best pet in a considerable time. True respect if you manage to grind this one pet and succeed)
-  ["Dancing skeleton", 10.1, 1.31, 1.26, 1.011], //47 shadows of placeholder
+  ["Dancing skeleton", 15.1, 1.41, 1.29, 1.015], //47 shadows of placeholder
   ["Small skeleton", 1.4, 1.04, 1.02, 1], //48 [Children slavery, what a coward]
   ["Skeletal dog", 1.46, 1.05, 1.04, 1], //48 [This dog is too busy trying to fetch his bones]
   ["Skeleton", 1.52, 1.08, 1.08, 1], //49 [Adulthood, this skeleton wants to toot toot like so many years ago]
@@ -177,14 +177,24 @@ const pets = [
   ["3-Headed snake", 1900, 3.6, 3.6, 1.65], //70
   ["Electric eel", 3000, 4.1, 4.1, 1.8], //71 [Reference to endless stairwell from Demonin]
   ["White dragon", 5700, 4.7, 5.1, 2], //72 [Strongest pet, but it's gonna be a huge strike of luck to get it]
+  ["Armored skeleton", 2600, 3.8, 3.8, 1.75], //73 [Day 100+, new skeleton crate]
+  ["Horrifying ghost", 4800, 4.4, 4.8, 1.9], //74 [Day 100+, new ghost crate]
 ]
 
 const skeletalUnboxChances = [ //will be set to 1
-  [47,1], [48,56], [49,36], [50,24], [51,16], [52,8], [53,5], [54,2], [55,1]
+  [48,112], [49,72], [50,48], [51,32], [52,16], [53,10], [54,4], [55,2], [47,1]
+]
+
+const skeletalBoostUnboxChances = [ //Same thing as original one but boosted odds and day 100+
+  [48,560], [49,360], [50,240], [51,200], [52,160], [53,110], [54,80], [55,40], [47,20], [73,4]
 ]
 
 const ghostUnboxChances = [ //will be set to 2
   [56,56], [57,36], [58,24], [59,16], [60,8], [61,5], [62,2], [63,1]
+]
+
+const ghostBoostUnboxChances = [ //Same thing as original but boosted odds and day 100+
+  [56,560], [57,360], [58,240], [59,200], [60,160], [61,110], [62,80], [63,30], [74, 5]
 ]
 
 const basicUnboxChances = [ //this one will actually be 3
@@ -192,7 +202,7 @@ const basicUnboxChances = [ //this one will actually be 3
 ]
 
 const advancedUnboxChances = [
-  [4,85], [7,75], [5,55], [8,42], [9,28], [10,16], [11,11], [12,5], [13,1]
+  [4,170], [7,150], [5,108], [8,84], [9,56], [10,32], [11,22], [12,12], [13,2]
 ]
 
 const epicUnboxChances = [
@@ -250,7 +260,7 @@ const enemies = [
 
   const items = [
 //Name, amount you can buy
-  ["Test", 1],
+  ["Test", 100000],
   ["Starter XP orb", 2], //+50% XP gain
   ["Starter armor", 1], //+25% Stat gains
   ["Starter XPBoost orb", 1], //+10% XPBoost gain

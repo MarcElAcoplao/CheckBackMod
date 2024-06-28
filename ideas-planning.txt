@@ -1,27 +1,10 @@
-v0.9 ideas:
--A new Pet crate [Progress: Only missing the crate icon]
-  -Costs 500 Coins
-  -12h cooldown [base, expect to be like 4h when you unlock it]
-  -Worst pets are around x150 xp gain
-  -Best pets reach like... x5k or x10k xp, somewhere around that [but they are like ~1/2k or rarer]
--A new stats button [Progress: Added]
-  -Could be like x3 the rewards but with 6h base cooldown
--New area [Confirmed, unlock maybe level 75k]
-  -Maybe buffed xp drops
--More upgrades [like an extra row of expensive upgrades]
-  -Uses some of the new pets
-  -They could range from level 50k to like level 1m [where new feature would kick in]
+Stuff I should do before the next update [update: Stuff I should do and publish before starting to work with v1.0]
 
-Upgrade ideas:
- -x2 xp [additive, 3-4 levels]
- -x2 stats
- -+40% xpboost
- -x2 looting boost
- -/1.1 all button cooldown
- -Next update upgrade [would not be added], which would unlock the next feature
+-Button display should be looped [can be done using the objects]
+-Add a flickering [like daily/fighting tab] for any tab [a button is ready indicator]
+   -This is almost finished, needs some stuff to be done
+   -Make sure that the fighting tab doesn't light up because of not unlocked buttons [comes with the above thing] [it's a bug that I should fix for v0.9.2.1]
 
--Early pets would be buffed slightly [to make the power curve feel better]
--Code re-structure
 
 
 

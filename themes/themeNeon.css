@@ -21,3 +21,9 @@ body {
 #nextUnlockLevel, #selectedPetText, #themeText, #versionText, #XPBoostDisplay, #ItemBoostDisplay {
   color: #0ff;
 }
+
+.tabButton { /* This, when it returns true */
+  background-color: #111;
+  border: 0.3vh solid #0ff;
+  color: #0ff;
+}
