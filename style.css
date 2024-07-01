@@ -177,11 +177,6 @@ img {
   z-index: 2;
 }
 
-#petsTabButton {
-  display: none;
-  z-index: 2;
-}
-
 .dayBox {
   position: fixed;
   bottom: 0;
@@ -288,11 +283,6 @@ img {
   cursor: pointer;
 }
 
-#enemiesTabButton {
-  display: none;
-  z-index: 2;
-}
-
 #enemiesDiv {
   position: fixed;
   top: 50%;
@@ -332,11 +322,6 @@ img {
   height: 100%;
   background-color: #666;
   background-image: url('img/halftoneDots.png')
-}
-
-#fightingTabButton {
-  display: none;
-  z-index: 2;
 }
 
 #fightingDiv {
@@ -388,11 +373,6 @@ img {
   text-align: center;
   color: white;
   font-size: 3vh;
-  z-index: 2;
-}
-
-#shopTabButton {
-  display: none;
   z-index: 2;
 }
 
