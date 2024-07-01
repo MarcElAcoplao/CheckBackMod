@@ -89,22 +89,6 @@ img {
   z-index: 2;
 }
 
-#XPTab {
-  display: none;
-}
-
-#CratesTab {
-  display: none;
-}
-
-#XPBoostTab {
-  display: none;
-}
-
-#StatsTab {
-  display: none;
-}
-
 #mainContainer {
   display: flex;
   justify-content: space-between;
