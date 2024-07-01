@@ -13,9 +13,13 @@ img {
   image-rendering: pixelated;
 }
 
-#levelBar {
+#topBar {
+  position: sticky;
   top: 0;
   left: 0;
+}
+
+#levelBar {
   width: 100%;
   height: 13vh;
   background-color: #5cc;
@@ -95,9 +99,13 @@ img {
 }
 
 #tabsContainer {
+  position: sticky;
+  top: 182px;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  align-self: flex-start;
   gap: 10px;
   margin-left: 8px;
   margin-top: 5px;
@@ -114,9 +122,13 @@ img {
 }
 
 #infosContainer {
+  position: sticky;
+  top: 182px;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  align-self: flex-start;
   flex-basis: 25%;
 }
 
