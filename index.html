@@ -17,7 +17,6 @@
 
 <body>
   <div id="levelBar">
-    <div id="levelBarBack"></div>
     <p id="levelBarText">Level <span id="level">1</span></p>
     <p id="levelBarRankText">(<span id="rank">beginner</span> clicker)</p>
   </div>
@@ -25,43 +24,51 @@
     <div id="XPBarBack"></div>
     <p id="XPBarText">XP to next level: <span id="XPToNextlevel">0/0</span></p>
   </div>
-  <p id="nextUnlockLevel"></p>
-  <button class="button" id="petsTabButton" style="top: 28vh; left: 5vh; display: none" onclick="openClosePetsTab()">Pets</button>
-  <button class="button" id="enemiesTabButton" style="top: 48vh; left: 8vh; display: none" onclick="openCloseEnemiesTab()">Enemies</button>
-  <button class="button" id="fightingTabButton" style="top: 53vh; left: 8vh; display: none" onclick="openCloseFightingTab()">Fighting</button>
-  <button class="button" id="shopTabButton" style="top: 58vh; left: 6vh; display: none" onclick="openCloseShopTab()">Shop</button>
-  <p id="selectedPetText">Current selected pet:<br><span id="selectedPet" style="font-weight: bold">None</span><br><img id="selectedPetImg" src="img/pets/0.png" style="width: 8vh; display: none"><br><br><span id="petRarities"></span></p>
-  
-  <button class="tabButton" id="XPTab" onclick="tab(1)">XP Buttons</button>
-  <button class="tabButton" id="CratesTab" onclick="tab(2)">Unbox new pets</button>
-  <button class="tabButton" id="XPBoostTab" onclick="tab(3)">XP Boost Buttons</button>
-  <button class="tabButton" id="StatsTab" onclick="tab(4)">Stat Buttons</button>
+  <div id="mainContainer">
+    <div id="tabsContainer">
+      <p id="nextUnlockLevel"></p>
+      <button class="button" id="XPTab" onclick="tab(1)">XP Buttons</button>
+      <button class="button" id="petsTabButton" onclick="openClosePetsTab()">Pets</button>
+      <button class="button" id="enemiesTabButton" onclick="openCloseEnemiesTab()">Enemies</button>
+      <button class="button" id="fightingTabButton" onclick="openCloseFightingTab()">Fighting</button>
+      <button class="button" id="shopTabButton" onclick="openCloseShopTab()">Shop</button>
+      <button class="button" id="CratesTab" onclick="tab(2)">Unbox new pets</button>
+      <button class="button" id="XPBoostTab" onclick="tab(3)">XP Boost Buttons</button>
+      <button class="button" id="StatsTab" onclick="tab(4)">Stat Buttons</button>
+    </div>
 
-  <button class="button" id="XPbutton1" onclick="clickButton(1)">Gain 1 XP</button>
-  <button class="button" id="XPbutton2" onclick="clickButton(2)">Gain 2 XP</button>
-  <button class="button" id="XPbutton3" onclick="clickButton(3)">Gain 5 XP</button>
-  <button class="button" id="XPbutton4" onclick="clickButton(4)">Gain 10 XP</button>
-  <button class="button" id="XPbutton5" onclick="clickButton(5)">Gain 25 XP</button>
-  <button class="button" id="XPbutton6" onclick="clickButton(6)">Gain 50 XP</button>
-  <button class="button" id="XPbutton7" onclick="clickButton(7)">Gain 250 XP</button>
-  <button class="button" id="XPbutton8" onclick="clickButton(8)">Gain 100 XP</button>
-  <button class="button" id="XPbutton9" onclick="clickButton(9)">Gain 33 XP</button>
-  <button class="button" id="XPbutton10" onclick="clickButton(10)">Gain 15 XP</button>
+    <div id="buttonsContainer">
+      <button class="button" id="XPbutton1" onclick="clickButton(1)">Gain 1 XP</button>
+      <button class="button" id="XPbutton2" onclick="clickButton(2)">Gain 2 XP</button>
+      <button class="button" id="XPbutton3" onclick="clickButton(3)">Gain 5 XP</button>
+      <button class="button" id="XPbutton4" onclick="clickButton(4)">Gain 10 XP</button>
+      <button class="button" id="XPbutton5" onclick="clickButton(5)">Gain 25 XP</button>
+      <button class="button" id="XPbutton6" onclick="clickButton(6)">Gain 50 XP</button>
+      <button class="button" id="XPbutton7" onclick="clickButton(7)">Gain 250 XP</button>
+      <button class="button" id="XPbutton8" onclick="clickButton(8)">Gain 100 XP</button>
+      <button class="button" id="XPbutton9" onclick="clickButton(9)">Gain 33 XP</button>
+      <button class="button" id="XPbutton10" onclick="clickButton(10)">Gain 15 XP</button>
 
-  <button class="button" id="XPBbutton1" onclick="click2Button(1)">Gain 0.2 XPBoost</button>
-  <button class="button" id="XPBbutton2" onclick="click2Button(2)">Gain 1 XPBoost</button>
-  <button class="button" id="XPBbutton3" onclick="click2Button(3)">Gain 4 XPBoost</button>
+      <button class="button" id="XPBbutton1" onclick="click2Button(1)">Gain 0.2 XPBoost</button>
+      <button class="button" id="XPBbutton2" onclick="click2Button(2)">Gain 1 XPBoost</button>
+      <button class="button" id="XPBbutton3" onclick="click2Button(3)">Gain 4 XPBoost</button>
 
-  <button class="button" id="StatButton1" onclick="click3Button(1)">Gain 5 Stats</button>
-  <button class="button" id="StatButton2" onclick="click3Button(2)">Gain 20 Stats</button>
+      <button class="button" id="StatButton1" onclick="click3Button(1)">Gain 5 Stats</button>
+      <button class="button" id="StatButton2" onclick="click3Button(2)">Gain 20 Stats</button>
 
-  <button class="button" id="unboxButton1" onclick="unboxPet(3, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(3)" onmouseout="displayPetRarities(0)">Unbox a random basic pet</button>
-  <button class="button" id="unboxButton2" onclick="unboxPet(4, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(4)" onmouseout="displayPetRarities(0)">Unbox a random advanced pet</button>
-  <button class="button" id="unboxButton3" onclick="unboxPet(5, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(5)" onmouseout="displayPetRarities(0)">Unbox a random epic pet</button>
-  <button class="button" id="unboxButton4" onclick="unboxPet(6, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(6)" onmouseout="displayPetRarities(0)">Unbox a random legendary pet</button>
-  <button class="button" id="unboxButton5" onclick="unboxPet(7)" onmouseover="displayPetRarities(7)" onmouseout="displayPetRarities(0)">Unbox a random prestige pet</button>
-  <button class="button" id="unboxButton6" onclick="unboxPet(8)" onmouseover="displayPetRarities(8)" onmouseout="displayPetRarities(0)">Unbox a random transcendant pet</button>
-  <button class="button" id="unboxButton7" onclick="unboxPet(9)" onmouseover="displayPetRarities(9)" onmouseout="displayPetRarities(0)">Unbox a random universal pet</button>
+      <button class="button" id="unboxButton1" onclick="unboxPet(3, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(3)" onmouseout="displayPetRarities(0)">Unbox a random basic pet</button>
+      <button class="button" id="unboxButton2" onclick="unboxPet(4, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(4)" onmouseout="displayPetRarities(0)">Unbox a random advanced pet</button>
+      <button class="button" id="unboxButton3" onclick="unboxPet(5, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(5)" onmouseout="displayPetRarities(0)">Unbox a random epic pet</button>
+      <button class="button" id="unboxButton4" onclick="unboxPet(6, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(6)" onmouseout="displayPetRarities(0)">Unbox a random legendary pet</button>
+      <button class="button" id="unboxButton5" onclick="unboxPet(7)" onmouseover="displayPetRarities(7)" onmouseout="displayPetRarities(0)">Unbox a random prestige pet</button>
+      <button class="button" id="unboxButton6" onclick="unboxPet(8)" onmouseover="displayPetRarities(8)" onmouseout="displayPetRarities(0)">Unbox a random transcendant pet</button>
+      <button class="button" id="unboxButton7" onclick="unboxPet(9)" onmouseover="displayPetRarities(9)" onmouseout="displayPetRarities(0)">Unbox a random universal pet</button>
+    </div>
+
+    <div id="infosContainer">
+      <p id="selectedPetText">Current selected pet:<br><span id="selectedPet" style="font-weight: bold">None</span><br><img id="selectedPetImg" src="img/pets/0.png" style="width: 8vh; display: none"><br><br><span id="petRarities"></span></p>
+    </div>
+  </div>
 
   <div id="themeDiv">
     <p id="themeText" style="font-size: 1.5vh; margin: 0.3vh">Theme:</p>
