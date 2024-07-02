@@ -107,10 +107,12 @@
     <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px; width: 50%'>Check back on this tab each day for a special reward!</p>
     <p id="dailyRewardRarities"></p>
     <button class="button" id="claimDailyRewardButton" onclick="claimDailyReward()">Claim daily reward</button>
-    <div class="dayBox" style="left: 0; color: #bff" onmouseover="displayDailyRewardRarities(1)" onmouseout="displayDailyRewardRarities(0)"></div>
-    <div class="dayBox" style="left: 15vh; opacity: 0.75" onmouseover="displayDailyRewardRarities(2)" onmouseout="displayDailyRewardRarities(0)"></div>
-    <div class="dayBox" style="left: 30vh; opacity: 0.5" onmouseover="displayDailyRewardRarities(3)" onmouseout="displayDailyRewardRarities(0)"></div>
-    <div class="dayBox" style="left: 45vh; opacity: 0.25" onmouseover="displayDailyRewardRarities(4)" onmouseout="displayDailyRewardRarities(0)"></div>
+    <div id="dailyRewardsPreview">
+      <div class="dayBox" style="color: #bff" onmouseover="displayDailyRewardRarities(1)" onmouseout="displayDailyRewardRarities(0)"></div>
+      <div class="dayBox" style="opacity: 0.75" onmouseover="displayDailyRewardRarities(2)" onmouseout="displayDailyRewardRarities(0)"></div>
+      <div class="dayBox" style="opacity: 0.5" onmouseover="displayDailyRewardRarities(3)" onmouseout="displayDailyRewardRarities(0)"></div>
+      <div class="dayBox" style="opacity: 0.25" onmouseover="displayDailyRewardRarities(4)" onmouseout="displayDailyRewardRarities(0)"></div>
+    </div>
     <button class="closeButton" onclick="openCloseDailyRewardTab()">Close</button>
   </div>
   

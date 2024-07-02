@@ -194,11 +194,13 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 12;
-  width: 60vh;
+  width: 60%;
+  max-width: 60vh;
   height: 60vh;
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
+  text-align: center;
 }
 
 #dailyRewardRarities {
@@ -218,17 +220,27 @@ img {
   z-index: 2;
 }
 
-.dayBox {
-  position: fixed;
+#dailyRewardsPreview {
+  display: flex;
+  width: 100%;
+  position: absolute;
   bottom: 0;
-  width: 13vh;
-  height: 13vh;
+}
+
+.dayBox {
+  width: 25%;
+  height: auto;
+  aspect-ratio: 1 / 1;
   background-color: #666;
   border: 1vh outset #777;
   text-align: center;
   color: white;
-  font-size: 3vh;
+  font-size: 3vmin;
   z-index: 2;
+}
+
+.crateName {
+  font-size: 1.5vmin;
 }
 
 #petsDiv {
@@ -505,7 +517,7 @@ img {
 }
 
 /* Responsive stuff */
-@media (width <= 700px) {
+@media (width <= 720px) {
   #selectedPetText {
     font-size: 1.5vh;
   }
@@ -517,5 +529,35 @@ img {
 
   #buttonsContainer {
     margin-bottom: 200px;
+  }
+
+  #dailyRewardsPreview {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .dayBox {
+    width: 35%;
+    font-size: 3vh;
+  }
+
+  .crateName {
+    font-size: 1.5vh;
+  }
+}
+
+@media (width <= 550px) {
+  .dayBox {
+    width: 40%;
+  }
+
+  @media (height >= 760px) {
+    .dayBox {
+      font-size: 2vh;
+    }
+
+    .crateName {
+      font-size: 1.2vh;
+    }
   }
 }
