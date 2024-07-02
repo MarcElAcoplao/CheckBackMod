@@ -565,3 +565,13 @@ img {
     }
   }
 }
+
+@media (width <= 610px) {
+  #selectedPetUpperText {
+    display: none;
+  }
+
+  #selectedPetImg {
+    margin-top: 8px;
+  }
+}
