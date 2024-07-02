@@ -203,6 +203,10 @@ img {
   text-align: center;
 }
 
+#dailyRewardsHeader {
+  margin-bottom: 20px;
+}
+
 #dailyRewardRarities {
   position: fixed;
   text-align: right;
