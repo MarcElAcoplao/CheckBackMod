@@ -131,6 +131,40 @@ img {
   flex-basis: 25%;
 }
 
+#footerContainer {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#leftFooterColumn {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  gap: 10px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
+#rightFooterColumn {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  gap: 10px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+#settingsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
 .button {
   min-width: 4vh;
   padding-left: 1vh;
@@ -150,10 +184,6 @@ img {
 }
 
 #dailyRewardButton {
-  position: fixed;
-  transform: none;
-  bottom: 5.5vh;
-  left: 0.5vh;
   display: none;
   z-index: 2;
 }
@@ -257,9 +287,6 @@ img {
 }
 
 #themeDiv {
-  position: fixed;
-  bottom: 0.5vh;
-  left: 0.5vh;
   z-index: 2;
 }
 
@@ -270,9 +297,6 @@ img {
 }
 
 #versionText {
-  position: fixed;
-  bottom: 0.5vh;
-  right: 0.5vh;
   margin: 0;
   line-height: 2vh;
   font-size: 2vh;
@@ -280,8 +304,6 @@ img {
 }
 
 .settingsButton {
-  position: fixed;
-  right: 0.5vh;
   height: 2.2vh;
   font-size: 1.5vh;
   line-height: 1.5vh;
@@ -492,4 +514,20 @@ img {
   background-color: #666;
   background-image: url('img/halftoneDots.png');
   z-index: 3;
+}
+
+/* Responsive stuff */
+@media (width <= 700px) {
+  #selectedPetText {
+    font-size: 1.5vh;
+  }
+
+  #versionText {
+    line-height: 1vh;
+    font-size: 1vh;
+  }
+
+  #buttonsContainer {
+    margin-bottom: 200px;
+  }
 }

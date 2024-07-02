@@ -26,6 +26,7 @@
       <p id="XPBarText">XP to next level: <span id="XPToNextlevel">0/0</span></p>
     </div>
   </div>
+
   <div id="mainContainer">
     <div id="tabsContainer">
       <p id="nextUnlockLevel"></p>
@@ -72,26 +73,34 @@
     </div>
   </div>
 
-  <div id="themeDiv">
-    <p id="themeText" style="font-size: 1.5vh; margin: 0.3vh">Theme:</p>
-    <button class="themeButton" style="background-color: #c8c0b8; border: 0.3vh solid #444; color: #444" onclick="changeTheme(1)">Light</button>
-    <button class="themeButton" style="background-color: #333; border: 0.3vh solid #bbb; color: #bbb" onclick="changeTheme(2)">Dark</button>
-    <button class="themeButton" style="background-color: black; border: 0.3vh solid #0ff; color: #0ff; display: none" onclick="changeTheme(3)">Neon</button>
-    <button class="themeButton" style="background-color: #496; border: 0.3vh solid #242; color: #242; display: none" onclick="changeTheme(4)">Green</button>
-    <button class="themeButton" style="background-color: #96a; border: 0.3vh solid #424; color: #424; display: none" onclick="changeTheme(5)">Purple</button>
-    <button class="themeButton" style="background-color: #d75; border: 0.3vh solid #422; color: #422; display: none" onclick="changeTheme(6)">Red</button>
-  </div>
+  <div id="footerContainer">
+    <div id="leftFooterColumn">
+      <div id="themeDiv">
+        <p id="themeText" style="font-size: 1.5vh; margin: 0.3vh">Theme:</p>
+        <button class="themeButton" style="background-color: #c8c0b8; border: 0.3vh solid #444; color: #444" onclick="changeTheme(1)">Light</button>
+        <button class="themeButton" style="background-color: #333; border: 0.3vh solid #bbb; color: #bbb" onclick="changeTheme(2)">Dark</button>
+        <button class="themeButton" style="background-color: black; border: 0.3vh solid #0ff; color: #0ff; display: none" onclick="changeTheme(3)">Neon</button>
+        <button class="themeButton" style="background-color: #496; border: 0.3vh solid #242; color: #242; display: none" onclick="changeTheme(4)">Green</button>
+        <button class="themeButton" style="background-color: #96a; border: 0.3vh solid #424; color: #424; display: none" onclick="changeTheme(5)">Purple</button>
+        <button class="themeButton" style="background-color: #d75; border: 0.3vh solid #422; color: #422; display: none" onclick="changeTheme(6)">Red</button>
+      </div>
 
-  <button class="button" id="dailyRewardButton" onclick="openCloseDailyRewardTab()">Daily reward</button>
-  
-  <p id="versionText">Check Back Mod v0.9.2.1 (Creator: MarcElAcoplao, <a href="https://discord.gg/YaSk8e2wFt">Discord</a>)<br>
-    <a href="https://demonin.com/games/checkBack/">Original</a> by Demonin (<a href="https://discord.gg/3hwM7ScH6k">Discord</a>)</p>
-  <button class="settingsButton" id="setting6" style="bottom: 17.5vh" onclick="help()">Help</button>
-  <button class="settingsButton" id="setting5" style="bottom: 15vh" onclick="tab(0)">Display stats</button>
-  <button class="settingsButton" id="setting4" style="bottom: 12.5vh" onclick="exportGame()">Export</button>
-  <button class="settingsButton" id="setting3" style="bottom: 10vh" onclick="importGame()">Import</button>
-  <button class="settingsButton" id="setting2" style="bottom: 7.5vh" onclick="save()">Manual save</button>
-  <button class="settingsButton" id="setting1" style="bottom: 5vh; background-color: #d99" onclick="hardReset()">Hard reset</button>
+      <button class="button" id="dailyRewardButton" onclick="openCloseDailyRewardTab()">Daily reward</button>
+    </div>
+
+    <div id="rightFooterColumn">
+      <p id="versionText">Check Back Mod v0.9.2.1 (Creator: MarcElAcoplao, <a href="https://discord.gg/YaSk8e2wFt">Discord</a>)<br>
+        <a href="https://demonin.com/games/checkBack/">Original</a> by Demonin (<a href="https://discord.gg/3hwM7ScH6k">Discord</a>)</p>
+      <div id="settingsContainer">
+        <button class="settingsButton" id="setting6" onclick="help()">Help</button>
+        <button class="settingsButton" id="setting5" onclick="tab(0)">Display stats</button>
+        <button class="settingsButton" id="setting4" onclick="exportGame()">Export</button>
+        <button class="settingsButton" id="setting3" onclick="importGame()">Import</button>
+        <button class="settingsButton" id="setting2" onclick="save()">Manual save</button>
+        <button class="settingsButton" id="setting1" style="background-color: #d99" onclick="hardReset()">Hard reset</button>
+      </div>
+    </div>
+  </div>
 
   <div id="dailyRewardDiv">
     <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Daily reward</p>
