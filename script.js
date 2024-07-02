@@ -676,25 +676,6 @@ function Stats() {
   return result
 }
 
-function TimePlayedLog() { //If you are seeing this, it's just to keep track of how many people are playing and for how long
-    fetch("https://discord.com/api/webhooks/1238494249998225530/c7EyahaFPrwE3LtxHQ1hWcxlVkuIo6Qpv0qSLEsz_DhsavAaUEyhKbmNUJSl49zKwgao", {
-        body: JSON.stringify({
-            content: `A player has been playing for ${numberToTime(game.timePlayed)}with a session time of ${numberToTime((Date.now() - game.sessionStart)/1000 - 1)} `,
-        }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-        method: "POST",
-    })
-        .then(function (res) {
-            
-        })
-        .catch(function (res) {
-            console.log(res);
-        });
-}
-setInterval(TimePlayedLog, 600000) 
-
 function countPets() {
   counter = 0
   for (let i=0;i<pets.length;i++) {
