@@ -162,11 +162,13 @@
 
   <div id="dailyMessagesDiv">
     <button class="closeDailyMessage" onclick="openCloseMessages(0)">X</button>
-    <button class="equipPet" id="equipPet" onclick="setSelectedPet(petChosen)">Equip</button>
-    <div id="message">
-      <div id="messageInner"></div>
+    <div class="modalContent">
+      <div id="message">
+        <div id="messageInner"></div>
+      </div>
+      <div id="messageInfo"></div>
+      <button class="equipPet" id="equipPet" onclick="setSelectedPet(petChosen)">Equip</button>
     </div>
-    <div id="messageInfo"></div>
   </div>
 
   <script src="constants.js"></script>

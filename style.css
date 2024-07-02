@@ -457,11 +457,11 @@ img {
   transform: translate(-50%, -50%);
   z-index: 10;
   width: 40%;
-  height: 70%;
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
-  z-index: 3;
+  background-image: url('img/halftoneDots.png');
+  padding-bottom: 20px;
 }
 
 .closeDailyMessage {
@@ -481,38 +481,26 @@ img {
   z-index: 5;
 }
 
-.equipPet {
-  position: absolute;
-  top: 87%;
-  right: 39%;
-  width: 8vw;
-  height: 3vw;
-  color: green;
+.modalContent {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 2.8vw;
-  padding: 0px;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.equipPet {
+  position: relative;
+  top: 87%;
+  height: 42px;
+  color: green;
+  font-size: 35px;
   border-radius: 0px;
   background-color: #2e2e2e;
   z-index: 5;
   display: none;
 }
 
-#messageInner {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 #messageInfo {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #666;
-  background-image: url('img/halftoneDots.png');
   z-index: 3;
 }
 
