@@ -17,7 +17,7 @@ img {
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 9;
+  z-index: 3;
 }
 
 #levelBar {
@@ -386,7 +386,7 @@ img {
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
-  z-index: 2;
+  z-index: 10;
 }
 
 #fight1Button {
@@ -575,5 +575,11 @@ img {
 
   #selectedPetImg {
     margin-top: 8px;
+  }
+}
+
+@media (width <= 950px) {
+  #tabsContainer .button {
+    font-size: 16px;
   }
 }
