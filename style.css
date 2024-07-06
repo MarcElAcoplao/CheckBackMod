@@ -386,7 +386,6 @@ img {
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
-  z-index: 10;
 }
 
 #fight1Button {
