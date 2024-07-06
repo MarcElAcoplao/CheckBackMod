@@ -205,14 +205,14 @@ img {
   text-align: center;
 }
 
-#dailyRewardsHeader {
+.modalHeader {
   margin-bottom: 20px;
 }
 
-#dailyRewardRarities {
+#dailyRewardRarities, #enemiesFightChances {
   position: fixed;
   text-align: right;
-  top: 3vh;
+  top: 80px;
   right: 0.5vh;
   font-size: 2vh;
   line-height: 2.5vh;
@@ -226,7 +226,7 @@ img {
   z-index: 2;
 }
 
-#dailyRewardsPreview {
+.modalBoxes {
   display: flex;
   width: 100%;
   position: absolute;
@@ -381,11 +381,13 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 12;
-  width: 60vh;
+  width: 60%;
+  max-width: 60vh;
   height: 80vh;
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
+  text-align: center;
 }
 
 #fight1Button {
@@ -407,22 +409,19 @@ img {
   display: none;
 }
 
-#enemiesFightChances {
-  color: white;
-  text-align: right;
-  float: right
+#statsDisplay {
+  text-align: left;
 }
 
 .dropBox {
-  position: fixed;
-  bottom: 0;
-  width: 13vh;
-  height: 13vh;
+  width: 25%;
+  height: auto;
+  aspect-ratio: 1 / 1;
   background-color: #666;
   border: 1vh outset #777;
   text-align: center;
   color: white;
-  font-size: 3vh;
+  font-size: 3vmin;
   z-index: 2;
 }
 
@@ -536,12 +535,12 @@ img {
     margin-bottom: 200px;
   }
 
-  #dailyRewardsPreview {
+  .modalBoxes {
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .dayBox {
+  .dayBox, .dropBox {
     width: 35%;
     font-size: 3vh;
   }
@@ -552,12 +551,12 @@ img {
 }
 
 @media (width <= 550px) {
-  .dayBox {
+  .dayBox, .dropBox {
     width: 40%;
   }
 
   @media (height >= 760px) {
-    .dayBox {
+    .dayBox, .dropBox {
       font-size: 2vh;
     }
 

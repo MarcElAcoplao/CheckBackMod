@@ -103,13 +103,13 @@
   </div>
 
   <div id="dailyRewardDiv">
-    <div id="dailyRewardsHeader">
+    <div class="modalHeader">
       <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Daily reward</p>
       <p style='font-size: 1.6vh; color: #ccc; margin: auto; width: 50%'>Check back on this tab each day for a special reward!</p>
     </div>
     <p id="dailyRewardRarities"></p>
     <button class="button" id="claimDailyRewardButton" onclick="claimDailyReward()">Claim daily reward</button>
-    <div id="dailyRewardsPreview">
+    <div class="modalBoxes">
       <div class="dayBox" style="color: #bff" onmouseover="displayDailyRewardRarities(1)" onmouseout="displayDailyRewardRarities(0)"></div>
       <div class="dayBox" style="opacity: 0.75" onmouseover="displayDailyRewardRarities(2)" onmouseout="displayDailyRewardRarities(0)"></div>
       <div class="dayBox" style="opacity: 0.5" onmouseover="displayDailyRewardRarities(3)" onmouseout="displayDailyRewardRarities(0)"></div>
@@ -139,17 +139,21 @@
   </div>
 
   <div id="fightingDiv">
-    <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Fighting</p>
-    <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px; width: 50%'>Fight different types of enemies and get loot</p>
-    <p id="enemiesFightChances"></p>
+    <div class="modalHeader">
+      <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Fighting</p>
+      <p style='font-size: 1.6vh; color: #ccc; margin: auto; width: 50%'>Fight different types of enemies and get loot</p>
+    </div>
     <p id="statsDisplay"></p>
+    <p id="enemiesFightChances"></p>
     <button class="button" id="fight3Button" onclick="startFight(3)" onmouseover="displayEnemiesFightRarities(3)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 3 foe</button>
     <button class="button" id="fight1Button" onclick="startFight(1)" onmouseover="displayEnemiesFightRarities(1)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 2 foe</button>
     <button class="button" id="fight2Button" onclick="startFight(2)" onmouseover="displayEnemiesFightRarities(2)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 1 foe</button>  
-    <div class="dropBox" style="left: 0; color: #bff"></div>
-    <div class="dropBox" style="left: 15vh; color: #bff"></div>
-    <div class="dropBox" style="left: 30vh; color: #bff"></div>
-    <div class="dropBox" style="left: 45vh; color: #bff"></div>
+    <div class="modalBoxes">
+      <div class="dropBox" style="left: 0; color: #bff"></div>
+      <div class="dropBox" style="left: 15vh; color: #bff"></div>
+      <div class="dropBox" style="left: 30vh; color: #bff"></div>
+      <div class="dropBox" style="left: 45vh; color: #bff"></div>
+    </div>
     <div id="enemiesDisplayInfo"></div>
     <button class="closeButton" onclick="openCloseFightingTab()">Close</button>
   </div>
