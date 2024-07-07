@@ -525,6 +525,12 @@ img {
 }
 
 /* Responsive stuff */
+@media (width <= 950px) {
+  #tabsContainer .button {
+    font-size: 16px;
+  }
+}
+
 @media (width <= 720px) {
   #selectedPetText {
     font-size: 1.5vh;
@@ -585,6 +591,10 @@ img {
     bottom: 59vw;
   }
 
+  #tabsContainer .button {
+    font-size: 12px;
+  }
+
   @media (height >= 760px) {
     .dayBox, .dropBox {
       font-size: 2vh;
@@ -603,11 +613,5 @@ img {
 
   #selectedPetImg {
     margin-top: 8px;
-  }
-}
-
-@media (width <= 950px) {
-  #tabsContainer .button {
-    font-size: 16px;
   }
 }
