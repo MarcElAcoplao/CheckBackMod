@@ -587,6 +587,10 @@ img {
     width: 40%;
   }
 
+  #XPBarText {
+    font-size: 2vh;
+  }
+
   #fightButtons {
     bottom: 59vw;
   }
