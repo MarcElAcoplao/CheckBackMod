@@ -145,9 +145,11 @@
     </div>
     <p id="statsDisplay"></p>
     <p id="enemiesFightChances"></p>
-    <button class="button" id="fight3Button" onclick="startFight(3)" onmouseover="displayEnemiesFightRarities(3)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 3 foe</button>
-    <button class="button" id="fight1Button" onclick="startFight(1)" onmouseover="displayEnemiesFightRarities(1)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 2 foe</button>
-    <button class="button" id="fight2Button" onclick="startFight(2)" onmouseover="displayEnemiesFightRarities(2)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 1 foe</button>  
+    <div id="fightButtons">
+      <button class="button" id="fight1Button" onclick="startFight(1)" onmouseover="displayEnemiesFightRarities(1)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 2 foe</button>
+      <button class="button" id="fight2Button" onclick="startFight(2)" onmouseover="displayEnemiesFightRarities(2)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 1 foe</button>
+      <button class="button" id="fight3Button" onclick="startFight(3)" onmouseover="displayEnemiesFightRarities(3)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 3 foe</button>
+    </div>
     <div class="modalBoxes">
       <div class="dropBox" style="left: 0; color: #bff"></div>
       <div class="dropBox" style="left: 15vh; color: #bff"></div>

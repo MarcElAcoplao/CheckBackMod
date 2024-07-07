@@ -390,27 +390,31 @@ img {
   text-align: center;
 }
 
-#fight1Button {
-  bottom: 15vh;
-  font-size: 2vh;
+#fightButtons {
+  position: absolute;
+  bottom: 16vh;
   z-index: 2;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+  width: 100%;
+  font-size: 2vh;
 }
 
 #fight2Button {
-  bottom: 20vh;
-  font-size: 2vh;
-  z-index: 2;
   display: none;
 }
+
 #fight3Button {
-  bottom: 25vh;
-  font-size: 2vh;
-  z-index: 2;
   display: none;
 }
 
 #statsDisplay {
   text-align: left;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .dropBox {
@@ -545,14 +549,35 @@ img {
     font-size: 3vh;
   }
 
+  #fightButtons {
+    bottom: 49vw;
+  }
+
+  #fightButtons .button {
+    font-size: 14px;
+  }
+
+  #statsDisplay {
+    font-size: 14px;
+  }
+
   .crateName {
     font-size: 1.5vh;
+  }
+
+  #dailyRewardRarities, #enemiesFightChances {
+    font-size: 14px;
+    line-height: normal;
   }
 }
 
 @media (width <= 550px) {
   .dayBox, .dropBox {
     width: 40%;
+  }
+
+  #fightButtons {
+    bottom: 59vw;
   }
 
   @media (height >= 760px) {
