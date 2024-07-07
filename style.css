@@ -530,6 +530,10 @@ img {
     font-size: 1.5vh;
   }
 
+  #nextUnlockLevel {
+    font-size: 12px;
+  }
+
   #versionText {
     line-height: 1vh;
     font-size: 1vh;
