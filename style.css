@@ -589,6 +589,7 @@ img {
 
   #XPBarText {
     font-size: 2vh;
+    text-shadow: 0.15vh 0.15vh black;
   }
 
   #fightButtons {
