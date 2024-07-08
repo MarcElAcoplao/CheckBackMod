@@ -527,13 +527,21 @@ img {
 /* Responsive stuff */
 @media (width <= 950px) {
   #tabsContainer .button {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
 @media (width <= 720px) {
+  #tabsContainer {
+    flex-basis: 65%;
+  }
+
+  #buttonsContainer .button {
+    font-size: 18px;
+  }
+
   #selectedPetText {
-    font-size: 1.5vh;
+    font-size: 10px;
   }
 
   #nextUnlockLevel {
@@ -582,6 +590,16 @@ img {
   }
 }
 
+@media (width <= 610px) {
+  #selectedPetUpperText {
+    display: none;
+  }
+
+  #selectedPetImg {
+    margin-top: 8px;
+  }
+}
+
 @media (width <= 550px) {
   .dayBox, .dropBox {
     width: 40%;
@@ -596,10 +614,6 @@ img {
     bottom: 59vw;
   }
 
-  #tabsContainer .button {
-    font-size: 12px;
-  }
-
   @media (height >= 760px) {
     .dayBox, .dropBox {
       font-size: 2vh;
@@ -611,12 +625,8 @@ img {
   }
 }
 
-@media (width <= 610px) {
-  #selectedPetUpperText {
-    display: none;
-  }
-
-  #selectedPetImg {
-    margin-top: 8px;
+@media (width <= 400px) {
+  #tabsContainer .button {
+    font-size: 14px;
   }
 }
