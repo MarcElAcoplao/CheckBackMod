@@ -14,6 +14,8 @@ onDomReady(function () {
         const key = event.key; // Or const {key} = event; in ES6+
         if (key === "Enter" || key === " ") {
             document.getElementById("dailyMessagesDiv").style.display = "none";
+            document.getElementById("equipPet").style.display = "none"
+            document.getElementById("messageInner").innerHTML = ""
         }
     });
 });
