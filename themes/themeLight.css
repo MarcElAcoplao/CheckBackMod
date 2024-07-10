@@ -9,9 +9,8 @@ body {
 }
 
 @keyframes flickering {
-  0%   {border-color: #543;}
-  50%  {border-color: #c29d78;}
-  100% {border-color: #543;}
+  from {border-color: #543;}
+  to {border-color: #c29d78;}
 }
 
 .button:disabled {

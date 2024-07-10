@@ -181,7 +181,8 @@ img {
 .button.flickering {
   animation-name: flickering;
   animation-iteration-count: infinite;
-  animation-duration: 600ms;
+  animation-duration: 300ms;
+  animation-direction: alternate;
 }
 
 .button:hover {
