@@ -8,6 +8,10 @@ body {
   color: #fff;
 }
 
+.button.flickering {
+  border: 0.3vh solid #ece61a;
+}
+
 .button:disabled {
   background-color: #777;
   border: 0.3vh solid #444;

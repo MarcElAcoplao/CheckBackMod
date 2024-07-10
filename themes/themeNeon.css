@@ -8,10 +8,8 @@ body {
   color: #0ff;
 }
 
-.button:disabled {
-  background-color: #444;
-  border: 0.3vh solid #f00;
-  color: #ddd;
+.button.flickering {
+  border: 0.3vh solid #77f;
 }
 
 #dailyRewardButton {
