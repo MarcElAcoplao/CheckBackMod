@@ -228,9 +228,7 @@ img {
 }
 
 #claimDailyRewardButton {
-  bottom: 16vh;
   font-size: 2vh;
-  z-index: 2;
 }
 
 .modalBoxes {
@@ -397,7 +395,7 @@ img {
   text-align: center;
 }
 
-#fightButtons {
+.modalActionButtons {
   position: absolute;
   bottom: 16vh;
   z-index: 2;
@@ -587,11 +585,11 @@ img {
     font-size: 3vh;
   }
 
-  #fightButtons {
+  .modalActionButtons {
     bottom: 49vw;
   }
 
-  #fightButtons .button {
+  .modalActionButtons .button {
     font-size: 14px;
   }
 
@@ -629,7 +627,7 @@ img {
     text-shadow: 0.15vh 0.15vh black;
   }
 
-  #fightButtons {
+  .modalActionButtons {
     bottom: 59vw;
   }
 

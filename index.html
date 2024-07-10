@@ -108,7 +108,9 @@
       <p style='font-size: 1.6vh; color: #ccc; margin: auto; width: 50%'>Check back on this tab each day for a special reward!</p>
     </div>
     <p id="dailyRewardRarities"></p>
-    <button class="button" id="claimDailyRewardButton" onclick="claimDailyReward()">Claim daily reward</button>
+    <div class="modalActionButtons">
+      <button class="button" id="claimDailyRewardButton" onclick="claimDailyReward()">Claim daily reward</button>
+    </div>
     <div class="modalBoxes">
       <div class="dayBox" style="color: #bff" onmouseover="displayDailyRewardRarities(1)" onmouseout="displayDailyRewardRarities(0)"></div>
       <div class="dayBox" style="opacity: 0.75" onmouseover="displayDailyRewardRarities(2)" onmouseout="displayDailyRewardRarities(0)"></div>
@@ -145,7 +147,7 @@
     </div>
     <p id="statsDisplay"></p>
     <p id="enemiesFightChances"></p>
-    <div id="fightButtons">
+    <div class="modalActionButtons">
       <button class="button" id="fight1Button" onclick="startFight(1)" onmouseover="displayEnemiesFightRarities(1)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 2 foe</button>
       <button class="button" id="fight2Button" onclick="startFight(2)" onmouseover="displayEnemiesFightRarities(2)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 1 foe</button>
       <button class="button" id="fight3Button" onclick="startFight(3)" onmouseover="displayEnemiesFightRarities(3)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 3 foe</button>
