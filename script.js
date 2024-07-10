@@ -701,18 +701,20 @@ function countItems() {
 
 // Syncing animations
 document.addEventListener("animationstart", (event) => {
-  let animationCurrentTime;
-  let anims = document.getAnimations();
-  for(let i = 0; i < anims.length; i++) {
-    if(anims[i].animationName === event.animationName) {
-      animationCurrentTime = anims[i].currentTime;
-      break;
+  if (event.animationName === "flickering") {
+    let animationCurrentTime;
+    let anims = document.getAnimations();
+    for (let i = 0; i < anims.length; i++) {
+      if (anims[i].animationName === event.animationName) {
+        animationCurrentTime = anims[i].currentTime;
+        break;
+      }
     }
-  }
 
-  for(let i = 0; i < anims.length; i++) {
-    if(anims[i].animationName === event.animationName) {
-      if(animationCurrentTime) anims[i].currentTime = animationCurrentTime;
+    for (let i = 0; i < anims.length; i++) {
+      if (anims[i].animationName === event.animationName) {
+        if (animationCurrentTime) anims[i].currentTime = animationCurrentTime;
+      }
     }
   }
 });
