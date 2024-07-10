@@ -177,6 +177,13 @@ img {
   transition: background-color 300ms ease-out, color 300ms ease-out, border 300ms ease-out;
 }
 
+/* flickering animation is defined in each theme css file */
+.button.flickering {
+  animation-name: flickering;
+  animation-iteration-count: infinite;
+  animation-duration: 600ms;
+}
+
 .button:hover {
   cursor: pointer;
 }

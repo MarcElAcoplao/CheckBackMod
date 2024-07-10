@@ -279,13 +279,13 @@ for (let i=1;i<XPButtons.length;i++) {
   if (game.buttonCooldowns[9] > 0) {
     document.getElementById("claimDailyRewardButton").disabled = true
     document.getElementById("claimDailyRewardButton").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[9])
-    document.getElementById("dailyRewardButton").classList.remove("flickering")
+    document.getElementById("dailyRewardButton").style.border = "0.3vh solid #80f"
   }
   else {
     document.getElementById("claimDailyRewardButton").disabled = false
     document.getElementById("claimDailyRewardButton").innerHTML = "Claim daily reward"
-    if (Date.now() % 600 < 300) {document.getElementById("dailyRewardButton").classList.add("flickering")}
-    else {document.getElementById("dailyRewardButton").classList.remove("flickering")}
+    if (Date.now() % 600 < 300) {document.getElementById("dailyRewardButton").style.border = "0.3vh solid #80f"}
+    else {document.getElementById("dailyRewardButton").style.border = "0.3vh solid #d9f"}
   }
   if (game.buttonCooldowns[10] > 0) {
     document.getElementById("unboxButton4").disabled = true
@@ -380,40 +380,35 @@ for (let i=1;i<XPButtons.length;i++) {
   }
 
   if (XPTab() == true) {
-    if (Date.now() % 600 < 300) {document.getElementById("XPTab").classList.add("flickering")}
-  else {document.getElementById("XPTab").classList.remove("flickering")}
+    document.getElementById("XPTab").classList.add("flickering")
   }
   else {
     document.getElementById("XPTab").classList.remove("flickering")
   }
 
   if (XPBoostTab() == true) {
-    if (Date.now() % 600 < 300) {document.getElementById("XPBoostTab").classList.add("flickering")}
-  else {document.getElementById("XPBoostTab").classList.remove("flickering")}
+    document.getElementById("XPBoostTab").classList.add("flickering")
   }
   else {
     document.getElementById("XPBoostTab").classList.remove("flickering")
   }
 
   if (StatTab() == true) {
-    if (Date.now() % 600 < 300) {document.getElementById("StatsTab").classList.add("flickering")}
-  else {document.getElementById("StatsTab").classList.remove("flickering")}
+    document.getElementById("StatsTab").classList.add("flickering")
   }
   else {
     document.getElementById("StatsTab").classList.remove("flickering")
   }
 
   if (CratesTab() == true) {
-    if (Date.now() % 600 < 300) {document.getElementById("CratesTab").classList.add("flickering")}
-  else {document.getElementById("CratesTab").classList.remove("flickering")}
+    document.getElementById("CratesTab").classList.add("flickering")
   }
   else {
     document.getElementById("CratesTab").classList.remove("flickering")
   }
 
  if (FightingTab() == true) {
-  if (Date.now() % 600 < 300) {document.getElementById("fightingTabButton").classList.add("flickering")}
-  else {document.getElementById("fightingTabButton").classList.remove("flickering")}
+  document.getElementById("fightingTabButton").classList.add("flickering")
  }
  else {document.getElementById("fightingTabButton").classList.remove("flickering")}
 

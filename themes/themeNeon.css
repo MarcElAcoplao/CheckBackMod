@@ -8,8 +8,10 @@ body {
   color: #0ff;
 }
 
-.button.flickering {
-  border: 0.3vh solid #77f;
+@keyframes flickering {
+  0%   {border-color: #0ff;}
+  50%  {border-color: #77f;}
+  100% {border-color: #0ff;}
 }
 
 #dailyRewardButton {

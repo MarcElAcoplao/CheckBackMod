@@ -8,8 +8,10 @@ body {
   color: #feb;
 }
 
-.button.flickering {
-  border: 0.3vh solid #a2d1ff;
+@keyframes flickering {
+  0%   {border-color: #975;}
+  50%  {border-color: #a2d1ff;}
+  100% {border-color: #975;}
 }
 
 .button:disabled {
