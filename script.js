@@ -672,7 +672,7 @@ function Stats() {
   if (game.unlocks >= 22) result += "Upgrades Maxed: " + countItems() + "<br>"
   return result
 }
-//asd
+//asdfgh
 
 function countPets() {
   counter = 0
