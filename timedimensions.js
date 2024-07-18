@@ -5,4 +5,5 @@ const Dimensions = [ //Dimension stats
     {name: "Dimension2", dimensionID: 2, amount: 0, multiplier: 1},
     {name: "Dimension3", dimensionID: 3, amount: 0, multiplier: 1},
     {name: "Dimension4", dimensionID: 4, amount: 0, multiplier: 1},
+    {name: "Dimension5", dimensionID: 5, amount: 0, multiplier: 1},
   ]
