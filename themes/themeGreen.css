@@ -8,6 +8,11 @@ body {
   color: #fff;
 }
 
+@keyframes flickering {
+  from {border-color: #2d2;}
+  to {border-color: #ece61a;}
+}
+
 .button:disabled {
   background-color: #777;
   border: 0.3vh solid #444;

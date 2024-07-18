@@ -378,43 +378,40 @@ for (let i=1;i<XPButtons.length;i++) {
     document.getElementById("fight2Button").disabled = false
     document.getElementById("fight2Button").innerHTML = "Fight an area 2 foe "
   }
+
   if (XPTab() == true) {
-    if (Date.now() % 600 < 300) {document.getElementById("XPTab").style.border = "0.3vh solid #77f"}
-  else {document.getElementById("XPTab").style.border = "0.3vh solid #0ff"}
+    document.getElementById("XPTab").classList.add("flickering")
   }
   else {
-    document.getElementById("XPTab").style.border = "0.3vh solid #0ff"
+    document.getElementById("XPTab").classList.remove("flickering")
   }
 
   if (XPBoostTab() == true) {
-    if (Date.now() % 600 < 300) {document.getElementById("XPBoostTab").style.border = "0.3vh solid #77f"}
-  else {document.getElementById("XPBoostTab").style.border = "0.3vh solid #0ff"}
+    document.getElementById("XPBoostTab").classList.add("flickering")
   }
   else {
-    document.getElementById("XPBoostTab").style.border = "0.3vh solid #0ff"
+    document.getElementById("XPBoostTab").classList.remove("flickering")
   }
 
   if (StatTab() == true) {
-    if (Date.now() % 600 < 300) {document.getElementById("StatsTab").style.border = "0.3vh solid #77f"}
-  else {document.getElementById("StatsTab").style.border = "0.3vh solid #0ff"}
+    document.getElementById("StatsTab").classList.add("flickering")
   }
   else {
-    document.getElementById("StatsTab").style.border = "0.3vh solid #0ff"
+    document.getElementById("StatsTab").classList.remove("flickering")
   }
 
   if (CratesTab() == true) {
-    if (Date.now() % 600 < 300) {document.getElementById("CratesTab").style.border = "0.3vh solid #77f"}
-  else {document.getElementById("CratesTab").style.border = "0.3vh solid #0ff"}
+    document.getElementById("CratesTab").classList.add("flickering")
   }
   else {
-    document.getElementById("CratesTab").style.border = "0.3vh solid #0ff"
+    document.getElementById("CratesTab").classList.remove("flickering")
   }
 
  if (FightingTab() == true) {
-  if (Date.now() % 600 < 300) {document.getElementById("fightingTabButton").style.border = "0.3vh solid #77f"}
-  else {document.getElementById("fightingTabButton").style.border = "0.3vh solid #0ff"}
+  document.getElementById("fightingTabButton").classList.add("flickering")
  }
- else {document.getElementById("fightingTabButton").style.border = "0.3vh solid #0ff"}
+ else {document.getElementById("fightingTabButton").classList.remove("flickering")}
+
  if (game.buttonCooldowns[23] > 0) {}
  else {autoPets()}
  if (game.buttonCooldowns[24] > 0) {
@@ -701,3 +698,23 @@ function countItems() {
   }
   return counter + "/" + (items.length - 1)
 }
+
+// Syncing animations
+document.addEventListener("animationstart", (event) => {
+  if (event.animationName === "flickering") {
+    let animationCurrentTime;
+    let anims = document.getAnimations();
+    for (let i = 0; i < anims.length; i++) {
+      if (anims[i].animationName === event.animationName) {
+        animationCurrentTime = anims[i].currentTime;
+        break;
+      }
+    }
+
+    for (let i = 0; i < anims.length; i++) {
+      if (anims[i].animationName === event.animationName) {
+        if (animationCurrentTime) anims[i].currentTime = animationCurrentTime;
+      }
+    }
+  }
+});

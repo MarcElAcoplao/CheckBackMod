@@ -16,83 +16,107 @@
 </head>
 
 <body>
-  <div id="levelBar">
-    <div id="levelBarBack"></div>
-    <p id="levelBarText">Level <span id="level">1</span></p>
-    <p id="levelBarRankText">(<span id="rank">beginner</span> clicker)</p>
-  </div>
-  <div id="XPBar">
-    <div id="XPBarBack"></div>
-    <p id="XPBarText">XP to next level: <span id="XPToNextlevel">0/0</span></p>
-  </div>
-  <p id="nextUnlockLevel"></p>
-  <button class="button" id="petsTabButton" style="top: 28vh; left: 5vh; display: none" onclick="openClosePetsTab()">Pets</button>
-  <button class="button" id="enemiesTabButton" style="top: 48vh; left: 8vh; display: none" onclick="openCloseEnemiesTab()">Enemies</button>
-  <button class="button" id="fightingTabButton" style="top: 53vh; left: 8vh; display: none" onclick="openCloseFightingTab()">Fighting</button>
-  <button class="button" id="shopTabButton" style="top: 58vh; left: 6vh; display: none" onclick="openCloseShopTab()">Shop</button>
-  <p id="selectedPetText">Current selected pet:<br><span id="selectedPet" style="font-weight: bold">None</span><br><img id="selectedPetImg" src="img/pets/0.png" style="width: 8vh; display: none"><br><br><span id="petRarities"></span></p>
-  
-  <button class="tabButton" id="XPTab" onclick="tab(1)">XP Buttons</button>
-  <button class="tabButton" id="CratesTab" onclick="tab(2)">Unbox new pets</button>
-  <button class="tabButton" id="XPBoostTab" onclick="tab(3)">XP Boost Buttons</button>
-  <button class="tabButton" id="StatsTab" onclick="tab(4)">Stat Buttons</button>
-
-  <button class="button" id="XPbutton1" onclick="clickButton(1)">Gain 1 XP</button>
-  <button class="button" id="XPbutton2" onclick="clickButton(2)">Gain 2 XP</button>
-  <button class="button" id="XPbutton3" onclick="clickButton(3)">Gain 5 XP</button>
-  <button class="button" id="XPbutton4" onclick="clickButton(4)">Gain 10 XP</button>
-  <button class="button" id="XPbutton5" onclick="clickButton(5)">Gain 25 XP</button>
-  <button class="button" id="XPbutton6" onclick="clickButton(6)">Gain 50 XP</button>
-  <button class="button" id="XPbutton7" onclick="clickButton(7)">Gain 250 XP</button>
-  <button class="button" id="XPbutton8" onclick="clickButton(8)">Gain 100 XP</button>
-  <button class="button" id="XPbutton9" onclick="clickButton(9)">Gain 33 XP</button>
-  <button class="button" id="XPbutton10" onclick="clickButton(10)">Gain 15 XP</button>
-
-  <button class="button" id="XPBbutton1" onclick="click2Button(1)">Gain 0.2 XPBoost</button>
-  <button class="button" id="XPBbutton2" onclick="click2Button(2)">Gain 1 XPBoost</button>
-  <button class="button" id="XPBbutton3" onclick="click2Button(3)">Gain 4 XPBoost</button>
-
-  <button class="button" id="StatButton1" onclick="click3Button(1)">Gain 5 Stats</button>
-  <button class="button" id="StatButton2" onclick="click3Button(2)">Gain 20 Stats</button>
-
-  <button class="button" id="unboxButton1" onclick="unboxPet(3, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(3)" onmouseout="displayPetRarities(0)">Unbox a random basic pet</button>
-  <button class="button" id="unboxButton2" onclick="unboxPet(4, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(4)" onmouseout="displayPetRarities(0)">Unbox a random advanced pet</button>
-  <button class="button" id="unboxButton3" onclick="unboxPet(5, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(5)" onmouseout="displayPetRarities(0)">Unbox a random epic pet</button>
-  <button class="button" id="unboxButton4" onclick="unboxPet(6, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(6)" onmouseout="displayPetRarities(0)">Unbox a random legendary pet</button>
-  <button class="button" id="unboxButton5" onclick="unboxPet(7)" onmouseover="displayPetRarities(7)" onmouseout="displayPetRarities(0)">Unbox a random prestige pet</button>
-  <button class="button" id="unboxButton6" onclick="unboxPet(8)" onmouseover="displayPetRarities(8)" onmouseout="displayPetRarities(0)">Unbox a random transcendant pet</button>
-  <button class="button" id="unboxButton7" onclick="unboxPet(9)" onmouseover="displayPetRarities(9)" onmouseout="displayPetRarities(0)">Unbox a random universal pet</button>
-
-  <div id="themeDiv">
-    <p id="themeText" style="font-size: 1.5vh; margin: 0.3vh">Theme:</p>
-    <button class="themeButton" style="background-color: #c8c0b8; border: 0.3vh solid #444; color: #444" onclick="changeTheme(1)">Light</button>
-    <button class="themeButton" style="background-color: #333; border: 0.3vh solid #bbb; color: #bbb" onclick="changeTheme(2)">Dark</button>
-    <button class="themeButton" style="background-color: black; border: 0.3vh solid #0ff; color: #0ff; display: none" onclick="changeTheme(3)">Neon</button>
-    <button class="themeButton" style="background-color: #496; border: 0.3vh solid #242; color: #242; display: none" onclick="changeTheme(4)">Green</button>
-    <button class="themeButton" style="background-color: #96a; border: 0.3vh solid #424; color: #424; display: none" onclick="changeTheme(5)">Purple</button>
-    <button class="themeButton" style="background-color: #d75; border: 0.3vh solid #422; color: #422; display: none" onclick="changeTheme(6)">Red</button>
+  <div id="topBar">
+    <div id="levelBar">
+      <p id="levelBarText">Level <span id="level">1</span></p>
+      <p id="levelBarRankText">(<span id="rank">beginner</span> clicker)</p>
+    </div>
+    <div id="XPBar">
+      <div id="XPBarBack"></div>
+      <p id="XPBarText">XP to next level: <span id="XPToNextlevel">0/0</span></p>
+    </div>
   </div>
 
-  <button class="button" id="dailyRewardButton" onclick="openCloseDailyRewardTab()">Daily reward</button>
-  
-  <p id="versionText">Check Back Mod v0.9.2.1 (Creator: MarcElAcoplao, <a href="https://discord.gg/YaSk8e2wFt">Discord</a>)<br>
-    <a href="https://demonin.com/games/checkBack/">Original</a> by Demonin (<a href="https://discord.gg/3hwM7ScH6k">Discord</a>)</p>
-  <button class="settingsButton" id="setting6" style="bottom: 17.5vh" onclick="help()">Help</button>
-  <button class="settingsButton" id="setting5" style="bottom: 15vh" onclick="tab(0)">Display stats</button>
-  <button class="settingsButton" id="setting4" style="bottom: 12.5vh" onclick="exportGame()">Export</button>
-  <button class="settingsButton" id="setting3" style="bottom: 10vh" onclick="importGame()">Import</button>
-  <button class="settingsButton" id="setting2" style="bottom: 7.5vh" onclick="save()">Manual save</button>
-  <button class="settingsButton" id="setting1" style="bottom: 5vh; background-color: #d99" onclick="hardReset()">Hard reset</button>
+  <div id="mainContainer">
+    <div id="tabsContainer">
+      <p id="nextUnlockLevel"></p>
+      <button class="button" id="XPTab" style="display: none" onclick="tab(1)">XP Buttons</button>
+      <button class="button" id="petsTabButton" style="display: none" onclick="openClosePetsTab()">Pets</button>
+      <button class="button" id="CratesTab" style="display: none" onclick="tab(2)">Unbox new pets</button>
+      <button class="button" id="XPBoostTab" style="display: none" onclick="tab(3)">XP Boost Buttons</button>
+      <button class="button" id="enemiesTabButton" style="display: none" onclick="openCloseEnemiesTab()">Enemies</button>
+      <button class="button" id="StatsTab" style="display: none" onclick="tab(4)">Stat Buttons</button>
+      <button class="button" id="fightingTabButton" style="display: none" onclick="openCloseFightingTab()">Fighting</button>
+      <button class="button" id="shopTabButton" style="display: none" onclick="openCloseShopTab()">Shop</button>
+    </div>
+
+    <div id="buttonsContainer">
+      <button class="button" id="XPbutton1" onclick="clickButton(1)">Gain 1 XP</button>
+      <button class="button" id="XPbutton2" style="display: none" onclick="clickButton(2)">Gain 2 XP</button>
+      <button class="button" id="XPbutton3" style="display: none" onclick="clickButton(3)">Gain 5 XP</button>
+      <button class="button" id="XPbutton4" style="display: none" onclick="clickButton(4)">Gain 10 XP</button>
+      <button class="button" id="XPbutton5" style="display: none" onclick="clickButton(5)">Gain 25 XP</button>
+      <button class="button" id="XPbutton6" style="display: none" onclick="clickButton(6)">Gain 50 XP</button>
+      <button class="button" id="XPbutton7" style="display: none" onclick="clickButton(7)">Gain 250 XP</button>
+      <button class="button" id="XPbutton8" style="display: none" onclick="clickButton(8)">Gain 100 XP</button>
+      <button class="button" id="XPbutton9" style="display: none" onclick="clickButton(9)">Gain 33 XP</button>
+      <button class="button" id="XPbutton10" style="display: none" onclick="clickButton(10)">Gain 15 XP</button>
+
+      <button class="button" id="XPBbutton1" style="display: none" onclick="click2Button(1)">Gain 0.2 XPBoost</button>
+      <button class="button" id="XPBbutton2" style="display: none" onclick="click2Button(2)">Gain 1 XPBoost</button>
+      <button class="button" id="XPBbutton3" style="display: none" onclick="click2Button(3)">Gain 4 XPBoost</button>
+
+      <button class="button" id="StatButton1" style="display: none" onclick="click3Button(1)">Gain 5 Stats</button>
+      <button class="button" id="StatButton2" style="display: none" onclick="click3Button(2)">Gain 20 Stats</button>
+
+      <button class="button" id="unboxButton1" style="display: none" onclick="unboxPet(3, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(3)" onmouseout="displayPetRarities(0)">Unbox a random basic pet</button>
+      <button class="button" id="unboxButton2" style="display: none" onclick="unboxPet(4, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(4)" onmouseout="displayPetRarities(0)">Unbox a random advanced pet</button>
+      <button class="button" id="unboxButton3" style="display: none" onclick="unboxPet(5, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(5)" onmouseout="displayPetRarities(0)">Unbox a random epic pet</button>
+      <button class="button" id="unboxButton4" style="display: none" onclick="unboxPet(6, y=(1 + game.extraPetAmount))" onmouseover="displayPetRarities(6)" onmouseout="displayPetRarities(0)">Unbox a random legendary pet</button>
+      <button class="button" id="unboxButton5" style="display: none" onclick="unboxPet(7)" onmouseover="displayPetRarities(7)" onmouseout="displayPetRarities(0)">Unbox a random prestige pet</button>
+      <button class="button" id="unboxButton6" style="display: none" onclick="unboxPet(8)" onmouseover="displayPetRarities(8)" onmouseout="displayPetRarities(0)">Unbox a random transcendant pet</button>
+      <button class="button" id="unboxButton7" style="display: none" onclick="unboxPet(9)" onmouseover="displayPetRarities(9)" onmouseout="displayPetRarities(0)">Unbox a random universal pet</button>
+    </div>
+
+    <div id="infosContainer">
+      <p id="selectedPetText"><span id="selectedPetUpperText">Current selected pet:<br><span id="selectedPet" style="font-weight: bold">None</span><br></span><img id="selectedPetImg" src="img/pets/0.png" style="width: 8vh; display: none"><br><br><span id="petRarities"></span></p>
+    </div>
+  </div>
+
+  <div id="footerContainer">
+    <div id="leftFooterColumn">
+      <div id="themeDiv">
+        <p id="themeText" style="font-size: 1.5vh; margin: 0.3vh">Theme:</p>
+        <button class="themeButton" style="background-color: #c8c0b8; border: 0.3vh solid #444; color: #444" onclick="changeTheme(1)">Light</button>
+        <button class="themeButton" style="background-color: #333; border: 0.3vh solid #bbb; color: #bbb" onclick="changeTheme(2)">Dark</button>
+        <button class="themeButton" style="background-color: black; border: 0.3vh solid #0ff; color: #0ff; display: none" onclick="changeTheme(3)">Neon</button>
+        <button class="themeButton" style="background-color: #496; border: 0.3vh solid #242; color: #242; display: none" onclick="changeTheme(4)">Green</button>
+        <button class="themeButton" style="background-color: #96a; border: 0.3vh solid #424; color: #424; display: none" onclick="changeTheme(5)">Purple</button>
+        <button class="themeButton" style="background-color: #d75; border: 0.3vh solid #422; color: #422; display: none" onclick="changeTheme(6)">Red</button>
+      </div>
+
+      <button class="button" id="dailyRewardButton" onclick="openCloseDailyRewardTab()">Daily reward</button>
+    </div>
+
+    <div id="rightFooterColumn">
+      <p id="versionText">Check Back Mod v0.9.2.1 (Creator: MarcElAcoplao, <a href="https://discord.gg/YaSk8e2wFt">Discord</a>)<br>
+        <a href="https://demonin.com/games/checkBack/">Original</a> by Demonin (<a href="https://discord.gg/3hwM7ScH6k">Discord</a>)</p>
+      <div id="settingsContainer">
+        <button class="settingsButton" id="setting6" onclick="help()">Help</button>
+        <button class="settingsButton" id="setting5" onclick="tab(0)">Display stats</button>
+        <button class="settingsButton" id="setting4" onclick="exportGame()">Export</button>
+        <button class="settingsButton" id="setting3" onclick="importGame()">Import</button>
+        <button class="settingsButton" id="setting2" onclick="save()">Manual save</button>
+        <button class="settingsButton" id="setting1" style="background-color: #d99" onclick="hardReset()">Hard reset</button>
+      </div>
+    </div>
+  </div>
 
   <div id="dailyRewardDiv">
-    <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Daily reward</p>
-    <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px; width: 50%'>Check back on this tab each day for a special reward!</p>
+    <div class="modalHeader">
+      <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Daily reward</p>
+      <p style='font-size: 1.6vh; color: #ccc; margin: auto; width: 50%'>Check back on this tab each day for a special reward!</p>
+    </div>
     <p id="dailyRewardRarities"></p>
-    <button class="button" id="claimDailyRewardButton" onclick="claimDailyReward()">Claim daily reward</button>
-    <div class="dayBox" style="left: 0; color: #bff" onmouseover="displayDailyRewardRarities(1)" onmouseout="displayDailyRewardRarities(0)"></div>
-    <div class="dayBox" style="left: 15vh; opacity: 0.75" onmouseover="displayDailyRewardRarities(2)" onmouseout="displayDailyRewardRarities(0)"></div>
-    <div class="dayBox" style="left: 30vh; opacity: 0.5" onmouseover="displayDailyRewardRarities(3)" onmouseout="displayDailyRewardRarities(0)"></div>
-    <div class="dayBox" style="left: 45vh; opacity: 0.25" onmouseover="displayDailyRewardRarities(4)" onmouseout="displayDailyRewardRarities(0)"></div>
+    <div class="modalActionButtons">
+      <button class="button" id="claimDailyRewardButton" onclick="claimDailyReward()">Claim daily reward</button>
+    </div>
+    <div class="modalBoxes">
+      <div class="dayBox" style="color: #bff" onmouseover="displayDailyRewardRarities(1)" onmouseout="displayDailyRewardRarities(0)"></div>
+      <div class="dayBox" style="opacity: 0.75" onmouseover="displayDailyRewardRarities(2)" onmouseout="displayDailyRewardRarities(0)"></div>
+      <div class="dayBox" style="opacity: 0.5" onmouseover="displayDailyRewardRarities(3)" onmouseout="displayDailyRewardRarities(0)"></div>
+      <div class="dayBox" style="opacity: 0.25" onmouseover="displayDailyRewardRarities(4)" onmouseout="displayDailyRewardRarities(0)"></div>
+    </div>
     <button class="closeButton" onclick="openCloseDailyRewardTab()">Close</button>
   </div>
   
@@ -117,17 +141,23 @@
   </div>
 
   <div id="fightingDiv">
-    <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Fighting</p>
-    <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px; width: 50%'>Fight different types of enemies and get loot</p>
-    <p id="enemiesFightChances"></p>
+    <div class="modalHeader">
+      <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Fighting</p>
+      <p style='font-size: 1.6vh; color: #ccc; margin: auto; width: 50%'>Fight different types of enemies and get loot</p>
+    </div>
     <p id="statsDisplay"></p>
-    <button class="button" id="fight3Button" onclick="startFight(3)" onmouseover="displayEnemiesFightRarities(3)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 3 foe</button>
-    <button class="button" id="fight1Button" onclick="startFight(1)" onmouseover="displayEnemiesFightRarities(1)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 2 foe</button>
-    <button class="button" id="fight2Button" onclick="startFight(2)" onmouseover="displayEnemiesFightRarities(2)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 1 foe</button>  
-    <div class="dropBox" style="left: 0; color: #bff"></div>
-    <div class="dropBox" style="left: 15vh; color: #bff"></div>
-    <div class="dropBox" style="left: 30vh; color: #bff"></div>
-    <div class="dropBox" style="left: 45vh; color: #bff"></div>
+    <p id="enemiesFightChances"></p>
+    <div class="modalActionButtons">
+      <button class="button" id="fight1Button" onclick="startFight(1)" onmouseover="displayEnemiesFightRarities(1)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 2 foe</button>
+      <button class="button" id="fight2Button" onclick="startFight(2)" onmouseover="displayEnemiesFightRarities(2)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 1 foe</button>
+      <button class="button" id="fight3Button" onclick="startFight(3)" onmouseover="displayEnemiesFightRarities(3)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 3 foe</button>
+    </div>
+    <div class="modalBoxes">
+      <div class="dropBox" style="left: 0; color: #bff"></div>
+      <div class="dropBox" style="left: 15vh; color: #bff"></div>
+      <div class="dropBox" style="left: 30vh; color: #bff"></div>
+      <div class="dropBox" style="left: 45vh; color: #bff"></div>
+    </div>
     <div id="enemiesDisplayInfo"></div>
     <button class="closeButton" onclick="openCloseFightingTab()">Close</button>
   </div>
@@ -144,11 +174,13 @@
 
   <div id="dailyMessagesDiv">
     <button class="closeDailyMessage" onclick="openCloseMessages(0)">X</button>
-    <button class="equipPet" id="equipPet" onclick="setSelectedPet(petChosen)">Equip</button>
-    <div id="message">
-      <div id="messageInner"></div>
+    <div class="modalContent">
+      <div id="message">
+        <div id="messageInner"></div>
+      </div>
+      <div id="messageInfo"></div>
+      <button class="equipPet" id="equipPet" onclick="setSelectedPet(petChosen)">Equip</button>
     </div>
-    <div id="messageInfo"></div>
   </div>
 
   <script src="constants.js"></script>
@@ -160,6 +192,7 @@
   <script src="tabs.js"></script>
   <script src="message.js"></script>
   <script src="script.js"></script>
+  <script src="modals.js"></script>
   <script defer>setAutoSave()</script>
 </body>
 

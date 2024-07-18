@@ -6,32 +6,29 @@ html {
 
 body {
   transition: background-color 300ms;
+  margin: 0px;
 }
 
 img {
   image-rendering: pixelated;
 }
 
-#levelBar {
-  position: fixed;
+#topBar {
+  position: sticky;
   top: 0;
   left: 0;
-  width: 100vw;
+  z-index: 3;
+}
+
+#levelBar {
+  width: 100%;
   height: 13vh;
   background-color: #5cc;
   transition: background-color 500ms;
   z-index: 2;
+  background-image: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,0.4) 100%);
 }
 
-#levelBarBack {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 15%;
-  background-image: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,0.4) 100%);
-  z-index: 2;
-}
 /* This one thing above, if made it work properly, it breaks everything. Now it doesn't */
 #levelBarText {
   text-align: center;
@@ -52,10 +49,8 @@ img {
 }
 
 #XPBar {
-  position: fixed;
-  top: 13vh;
-  left: 0;
-  width: 100vw;
+  position: relative;
+  width: 100%;
   height: 5vh;
   background-color: black;
   z-index: 2;
@@ -84,9 +79,6 @@ img {
 }
 
 #nextUnlockLevel {
-  position: fixed;
-  top: 18.5vh;
-  left: 0.5vh;
   font-size: 2vh;
   line-height: 2vh;
   margin: 0;
@@ -94,10 +86,7 @@ img {
 }
 
 #selectedPetText {
-  position: fixed;
   text-align: right;
-  top: 18.5vh;
-  right: 0.5vh;
   font-size: 2vh;
   line-height: 2.5vh;
   margin: 0;
@@ -105,187 +94,106 @@ img {
   z-index: 2;
 }
 
-.tabButton {
-  position: fixed;
-  left: 50%;
-  height: 4vh;
-  min-width: 4vh;
-  transform: translate(-50%, -50%);
-  padding-left: 1vh;
-  padding-right: 1vh;
-  border-radius: 2vh;
-  font-family: Verdana, sans-serif;
-  font-size: 3vh;
-  line-height: 0;
-  transition: background-color 300ms ease-out, color 300ms ease-out, border 300ms ease-out,;
-  white-space: nowrap;
-  z-index: 3;
+#mainContainer {
+  display: flex;
+  justify-content: space-between;
 }
- #XPTab {
-  top: 23vh;
-  left: 10vh;
-  display: none;
- }
 
- #CratesTab {
-  top: 33vh;
-  left: 14vh;
-  display: none;
- }
+#tabsContainer {
+  position: sticky;
+  top: 19vh;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: flex-start;
+  gap: 10px;
+  margin-left: 8px;
+  flex-basis: 25%;
+}
 
- #XPBoostTab {
-  top: 38vh;
-  left: 15vh;
-  display: none;
+#buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+  margin-bottom: 100px;
+  z-index: 1;
+}
 
- }
+#infosContainer {
+  position: sticky;
+  top: 18vh;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  align-self: flex-start;
+  flex-basis: 25%;
+}
 
- #StatsTab {
-  top: 43vh;
-  left: 11vh;
-  display: none;
- }
+#footerContainer {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 
+#leftFooterColumn {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  gap: 10px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
+#rightFooterColumn {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  gap: 10px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+#settingsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
 
 .button {
-  position: absolute;
-  left: 50%;
-  height: 4vh;
   min-width: 4vh;
-  transform: translate(-50%, -50%);
   padding-left: 1vh;
   padding-right: 1vh;
   border-radius: 2vh;
   font-family: Verdana, sans-serif;
   font-size: 3vh;
-  line-height: 0;
-  transition: background-color 300ms ease-out, color 300ms ease-out, border 300ms ease-out,;
-  white-space: nowrap;
+  transition: background-color 300ms ease-out, color 300ms ease-out, border 300ms ease-out;
 }
 
-#XPbutton1 {
-  top: 25vh;
-}
-
-#XPbutton2 {
-  top: 31vh;
-  display: none;
-}
-
-#XPbutton3 {
-  top: 37vh;
-  display: none;
-}
-
-#XPbutton4 {
-  top: 43vh;
-  display: none;
-}
-
-#XPbutton5 {
-  top: 49vh;
-  display: none;
-}
-
-#XPbutton6 {
-  top: 55vh;
-  display: none;
-}
-
-#XPbutton7 {
-  top: 61vh;
-  display: none;
-}
-
-#unboxButton1 {
-  top: 25vh;
-  display: none;
-}
-
-#unboxButton2 {
-  top: 31vh;
-  display: none;
-}
-
-#unboxButton3 {
-  top: 37vh;
-  display: none;
-}
-
-#unboxButton4 {
-  top: 43vh;
-  display: none;
-}
-
-#XPBbutton1 {
-  top: 25vh;
-  display: none;
-}
-
-#XPBbutton2 {
-  top: 31vh;
-  display: none;
-}
-
-#XPBbutton3 {
-  top: 37vh;
-  display: none;
-}
-
-#unboxButton5 {
-  top: 49vh;
-  display: none;
-}
-
-#unboxButton6 {
-  top: 55vh;
-  display: none;
-}
-
-#unboxButton7 {
-  top: 61vh;
-  display: none;
-}
-
-#XPbutton8 {
-  top: 67vh;
-  display: none;
-}
-
-#XPbutton9 {
-  top: 73vh;
-  display: none;
-}
-
-#XPbutton10 {
-  top: 79vh;
-  display: none;
-}
-
-#StatButton1 {
-  top: 25vh;
-  display: none;
-}
-
-#StatButton2 {
-  top: 31vh;
-  display: none;
+/* flickering animation is defined in each theme css file */
+.button.flickering {
+  animation-name: flickering;
+  animation-iteration-count: infinite;
+  animation-duration: 300ms;
+  animation-direction: alternate;
 }
 
 .button:hover {
   cursor: pointer;
 }
 
-
 .button:disabled {
   cursor: default;
 }
 
 #dailyRewardButton {
-  position: fixed;
-  transform: none;
-  bottom: 5.5vh;
-  left: 0.5vh;
   display: none;
   z-index: 2;
 }
@@ -296,17 +204,23 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 12;
-  width: 60vh;
+  width: 60%;
+  max-width: 60vh;
   height: 60vh;
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
+  text-align: center;
 }
 
-#dailyRewardRarities {
+.modalHeader {
+  margin-bottom: 20px;
+}
+
+#dailyRewardRarities, #enemiesFightChances {
   position: fixed;
   text-align: right;
-  top: 3vh;
+  top: 80px;
   right: 0.5vh;
   font-size: 2vh;
   line-height: 2.5vh;
@@ -315,28 +229,31 @@ img {
 }
 
 #claimDailyRewardButton {
-  bottom: 16vh;
   font-size: 2vh;
-  z-index: 2;
 }
 
-#petsTabButton {
-  position: fixed;
-  z-index: 2;
+.modalBoxes {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 .dayBox {
-  position: fixed;
-  bottom: 0;
-  width: 13vh;
-  height: 13vh;
+  width: 25%;
+  height: auto;
+  aspect-ratio: 1 / 1;
   background-color: #666;
   border: 1vh outset #777;
   text-align: center;
   color: white;
-  font-size: 3vh;
+  font-size: 3vmin;
   z-index: 2;
-} 
+}
+
+.crateName {
+  font-size: 1.5vmin;
+}
 
 #petsDiv {
   position: fixed;
@@ -394,9 +311,6 @@ img {
 }
 
 #themeDiv {
-  position: fixed;
-  bottom: 0.5vh;
-  left: 0.5vh;
   z-index: 2;
 }
 
@@ -407,9 +321,6 @@ img {
 }
 
 #versionText {
-  position: fixed;
-  bottom: 0.5vh;
-  right: 0.5vh;
   margin: 0;
   line-height: 2vh;
   font-size: 2vh;
@@ -417,8 +328,6 @@ img {
 }
 
 .settingsButton {
-  position: fixed;
-  right: 0.5vh;
   height: 2.2vh;
   font-size: 1.5vh;
   line-height: 1.5vh;
@@ -429,11 +338,6 @@ img {
 
 .settingsButton:hover {
   cursor: pointer;
-}
-
-#enemiesTabButton {
-  position: fixed;
-  z-index: 2;
 }
 
 #enemiesDiv {
@@ -477,65 +381,57 @@ img {
   background-image: url('img/halftoneDots.png')
 }
 
-#fightingTabButton {
-  position: fixed;
-  z-index: 2;
-}
-
 #fightingDiv {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 12;
-  width: 60vh;
+  width: 60%;
+  max-width: 60vh;
   height: 80vh;
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
-  z-index: 2;
+  text-align: center;
 }
 
-#fight1Button {
-  bottom: 15vh;
-  font-size: 2vh;
+.modalActionButtons {
+  position: absolute;
+  bottom: 16vh;
   z-index: 2;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+  width: 100%;
+  font-size: 2vh;
 }
 
 #fight2Button {
-  bottom: 20vh;
-  font-size: 2vh;
-  z-index: 2;
-  display: none;
-}
-#fight3Button {
-  bottom: 25vh;
-  font-size: 2vh;
-  z-index: 2;
   display: none;
 }
 
-#enemiesFightChances {
-  color: white;
-  text-align: right;
-  float: right
+#fight3Button {
+  display: none;
+}
+
+#statsDisplay {
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .dropBox {
-  position: fixed;
-  bottom: 0;
-  width: 13vh;
-  height: 13vh;
+  width: 25%;
+  height: auto;
+  aspect-ratio: 1 / 1;
   background-color: #666;
   border: 1vh outset #777;
   text-align: center;
   color: white;
-  font-size: 3vh;
-  z-index: 2;
-} 
-
-#shopTabButton {
-  position: fixed;
+  font-size: 3vmin;
   z-index: 2;
 }
 
@@ -585,63 +481,170 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;
+  z-index: 100;
   width: 40%;
-  height: 70%;
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
-  z-index: 3;
+  background-image: url('img/halftoneDots.png');
+  padding-bottom: 20px;
 }
 
 .closeDailyMessage {
   position: absolute;
   top: 0px;
   right: 0px;
-  width: 3vw;
-  height: 3vw;
+  width: 36px;
+  height: 36px;
   color: red;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.8vw;
+  font-size: 32px;
   padding: 0px;
   border-radius: 0px;
   background-color: #2e2e2e;
   z-index: 5;
 }
 
-.equipPet {
-  position: absolute;
-  top: 87%;
-  right: 39%;
-  width: 8vw;
-  height: 3vw;
-  color: green;
+.modalContent {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 2.8vw;
-  padding: 0px;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.equipPet {
+  position: relative;
+  top: 87%;
+  height: 42px;
+  color: green;
+  font-size: 35px;
   border-radius: 0px;
   background-color: #2e2e2e;
   z-index: 5;
   display: none;
 }
 
-#messageInner {
-  position: absolute;
-  top: 0;
-  left: 0;
+#messageInfo {
+  z-index: 3;
 }
 
-#messageInfo {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #666;
-  background-image: url('img/halftoneDots.png');
-  z-index: 3;
+/* Responsive stuff */
+@media (width <= 1120px) {
+  #tabsContainer .button {
+    font-size: 26px;
+  }
+}
+
+@media (width <= 960px) {
+  #tabsContainer .button {
+    font-size: 18px;
+  }
+}
+
+@media (width <= 780px) {
+  #tabsContainer .button {
+    font-size: 16px;
+  }
+}
+
+@media (width <= 720px) {
+  #tabsContainer {
+    flex-basis: 65%;
+  }
+
+  #buttonsContainer .button {
+    font-size: 18px;
+  }
+
+  #selectedPetText {
+    font-size: 10px;
+  }
+
+  #nextUnlockLevel {
+    font-size: 12px;
+    line-height: normal;
+  }
+
+  #versionText {
+    line-height: 1vh;
+    font-size: 1vh;
+  }
+
+  #buttonsContainer {
+    margin-bottom: 200px;
+  }
+
+  .modalBoxes {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .dayBox, .dropBox {
+    width: 35%;
+    font-size: 3vh;
+  }
+
+  .modalActionButtons {
+    bottom: 49vw;
+  }
+
+  .modalActionButtons .button {
+    font-size: 14px;
+  }
+
+  #statsDisplay {
+    font-size: 14px;
+  }
+
+  .crateName {
+    font-size: 1.5vh;
+  }
+
+  #dailyRewardRarities, #enemiesFightChances {
+    font-size: 14px;
+    line-height: normal;
+  }
+}
+
+@media (width <= 610px) {
+  #selectedPetUpperText {
+    display: none;
+  }
+
+  #selectedPetImg {
+    margin-top: 8px;
+  }
+}
+
+@media (width <= 550px) {
+  .dayBox, .dropBox {
+    width: 40%;
+  }
+
+  #XPBarText {
+    font-size: 2vh;
+    text-shadow: 0.15vh 0.15vh black;
+  }
+
+  .modalActionButtons {
+    bottom: 59vw;
+  }
+
+  @media (height >= 760px) {
+    .dayBox, .dropBox {
+      font-size: 2vh;
+    }
+
+    .crateName {
+      font-size: 1.2vh;
+    }
+  }
+}
+
+@media (width <= 400px) {
+  #tabsContainer .button {
+    font-size: 14px;
+  }
 }

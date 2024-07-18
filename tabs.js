@@ -22,9 +22,9 @@ function displayStuff() {
    else document.getElementById("XPbutton7").style.display = "none"
   if (game.currentTab <= 1 && game.unlocks >= 15) {document.getElementById("XPbutton8").style.display = "block" }
    else document.getElementById("XPbutton8").style.display = "none"
-  if (game.currentTab <= 1 && game.unlocks >= 16) {document.getElementById("XPbutton9").style.display = "block" }
+  if (game.currentTab <= 1 && game.unlocks >= 17) {document.getElementById("XPbutton9").style.display = "block" }
    else document.getElementById("XPbutton9").style.display = "none"
-  if (game.currentTab <= 1 && game.unlocks >= 17) {document.getElementById("XPbutton10").style.display = "block" }
+  if (game.currentTab <= 1 && game.unlocks >= 18) {document.getElementById("XPbutton10").style.display = "block" }
    else document.getElementById("XPbutton10").style.display = "none"
   if (game.currentTab == 2 && game.unlocks >= 6) {document.getElementById("unboxButton1").style.display = "block" }
    else document.getElementById("unboxButton1").style.display = "none"

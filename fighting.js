@@ -78,7 +78,7 @@ function openCloseEnemiesTab() {
   }
 
   function displayStats() {
-    document.getElementById("statsDisplay").innerHTML = "<left><p style='color: white'><span style='font-size: 20px; font-weight: bold'> HP: " + numberShort(game.HP) + "<br> Current HP: " + numberShort(game.currentHP) + "<br> DMG: " + numberShort(game.DMG) + "<br> DEF: " + numberShort(game.DEF) + "<br> Coins: " + numberShort(game.coins) + "</p></center>"  
+    document.getElementById("statsDisplay").innerHTML = "<left><p style='color: white'><span> HP: " + numberShort(game.HP) + "<br> Current HP: " + numberShort(game.currentHP) + "<br> DMG: " + numberShort(game.DMG) + "<br> DEF: " + numberShort(game.DEF) + "<br> Coins: " + numberShort(game.coins) + "</p></center>"
   }
 
   function displayEnemiesFightRarities(x) {
