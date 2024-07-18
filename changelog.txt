@@ -1,3 +1,9 @@
+v0.9.3 Narrow screen adaptability - 18/07/24
+-Changes in the css have been done to make buttons scale properly with zoom and different screen sizes
+-A smoother flickering has been added + colors to each theme
+-This update has been done by @Alderi so huge thanks to him for contributing to this game
+-Corruption is affecting the space-time continuum and magic is gonna be needed for it. There may be a magic rank awaiting for you to get there (coming soon)
+
 v0.9.2.1
 -Crates tab should now flicker when a crate is ready to use
 -Fighting tab flicker should also work properly
