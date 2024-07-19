@@ -101,7 +101,7 @@ img {
 
 #tabsContainer {
   position: sticky;
-  top: 19vh;
+  top: 18vh;
   left: 0;
   display: flex;
   flex-direction: column;
