@@ -524,9 +524,9 @@ function levelShort(x) {
   exponent = Math.floor(Math.log10(xCeil))
   result = ""
   if (exponent >= 12) result = (xCeil / 10 ** exponent).toFixed(2) + "e" + exponent
-  else if (exponent >= 9) result = (xCeil/10 ** 9).toFixed(2) + " B"
-  else if (exponent >= 6) result = (xCeil/10 ** 6).toFixed(2) + " M"
-  else if (exponent >= 4) result = (xCeil/10 ** 3).toFixed(1) + " K"
+  else if (exponent >= 9) result = (xCeil/10 ** 9).toFixed(2) + "&nbsp;B"
+  else if (exponent >= 6) result = (xCeil/10 ** 6).toFixed(2) + "&nbsp;M"
+  else if (exponent >= 4) result = (xCeil/10 ** 3).toFixed(1) + "&nbsp;K"
   else result = xCeil
   return result
   }
@@ -536,9 +536,9 @@ function levelShort(x) {
     exponent = Math.floor(Math.log10(xCeil))
     result = ""
     if (exponent >= 12) result = (xCeil / 10 ** exponent).toFixed(2) + "e" + exponent
-    else if (exponent >= 9) result = (xCeil/10 ** 9).toFixed(2) + " B"
-    else if (exponent >= 6) result = (xCeil/10 ** 6).toFixed(2) + " M"
-    else if (exponent >= 4) result = (xCeil/10 ** 3).toFixed(1) + " K"
+    else if (exponent >= 9) result = (xCeil/10 ** 9).toFixed(2) + "&nbsp;B"
+    else if (exponent >= 6) result = (xCeil/10 ** 6).toFixed(2) + "&nbsp;M"
+    else if (exponent >= 4) result = (xCeil/10 ** 3).toFixed(1) + "&nbsp;K"
     else result = (x)
     return result
     }
