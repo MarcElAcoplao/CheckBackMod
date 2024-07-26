@@ -622,16 +622,8 @@ img {
   }
 }
 
-@media (width <= 400px) {
-  @media (height >= 800px) {
-    #tabsContainer .button {
-      font-size: 2vh;
-    }
-  }
-}
-
-@media (height >= 2000px) {
+@media (height >= 190vw) {
   #tabsContainer .button {
-    font-size: 2vh;
+    font-size: 2.5vh;
   }
 }
