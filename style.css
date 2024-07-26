@@ -532,7 +532,6 @@ img {
 }
 
 /* Responsive stuff */
-
 @media (width <= 720px) {
   #tabsContainer {
     flex-basis: 65%;
@@ -628,5 +627,11 @@ img {
     #tabsContainer .button {
       font-size: 2vh;
     }
+  }
+}
+
+@media (height >= 2000px) {
+  #tabsContainer .button {
+    font-size: 2vh;
   }
 }
