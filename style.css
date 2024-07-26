@@ -110,13 +110,14 @@ img {
   gap: 10px;
   margin-left: 8px;
   flex-basis: 25%;
+  z-index: 1;
 }
 
 #buttonsContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
   margin-top: 40px;
   margin-bottom: 100px;
   z-index: 1;
@@ -531,31 +532,10 @@ img {
 }
 
 /* Responsive stuff */
-@media (width <= 1120px) {
-  #tabsContainer .button {
-    font-size: 26px;
-  }
-}
-
-@media (width <= 960px) {
-  #tabsContainer .button {
-    font-size: 18px;
-  }
-}
-
-@media (width <= 780px) {
-  #tabsContainer .button {
-    font-size: 16px;
-  }
-}
 
 @media (width <= 720px) {
   #tabsContainer {
     flex-basis: 65%;
-  }
-
-  #buttonsContainer .button {
-    font-size: 18px;
   }
 
   #selectedPetText {
@@ -644,7 +624,9 @@ img {
 }
 
 @media (width <= 400px) {
-  #tabsContainer .button {
-    font-size: 14px;
+  @media (height >= 800px) {
+    #tabsContainer .button {
+      font-size: 2vh;
+    }
   }
 }
