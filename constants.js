@@ -1,4 +1,4 @@
-const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100,125,150,200,250,300,350,400,500,1500,20000,50000,100000]
+const unlockLevels = [2,3,4,5,6,8,12,18,20,35,50,70,100,125,150,200,250,300,350,400,500,1500,20000,50000,100000,1000000,5000000]
 const levelBarTextures = [50,55,60,65,70,80,90,100,200]
 
 const levelBarColours = [
@@ -88,19 +88,66 @@ const ranks = [
   [7500, "Extensive++"],
   [10000, "Extensive+++"],
   [20000, "Dedicated"],
-  [50000, "Worthy"],
+  [40000, "Dedicated+"],
+  [60000, "Dedicated++"],
+  [80000, "Dedicated+++"],
   [100000, "Loot"],
   [250000, "Magic"],
   [500000, "Magic+"],
-  [1000000, "oNlY 1% pLaYeRs CaN rEaCh ThIs LeVeL!!!!"],
+  [750000, "Magic++"],
+  [1000000, "Magic+++"],
   [1500000, "Troll"],
   [2000000, "Insanity"],
   [4000000, "Insanity+"],
   [6000000, "Insanity++"],
   [8000000, "Insanity+++"],
   [10000000, "Time"],
+  [20000000, "Time+"],
+  [30000000, "Time++"],
+  [40000000, "Time+++"],
+  [50000000, "Space"],
+  [75000000, "Space+"],
+  [100000000, "Space++"],
+  [150000000, "Space+++"],
+  [200000000, "Finality"],
+  [400000000, "Finality+"],
+  [600000000, "Finality++"],
+  [800000000, "Finality+++"],
+  [1000000000, "Alpha"],
+  [1000000000000, "Impossibly dedicated"],
   [Infinity, "Error"],
 ] //space and finality, omega
+
+const tierRanks = [
+  [1, "Beginner"],
+  [2, "Basic"],
+  [3, "Unremarkable"],
+  [4, "Mediocre"],
+  [5, "Average"],
+  [6, "Decent"],
+  [8, "Competent"],
+  [10, "Proficient"],
+  [12, "Skilled"],
+  [14, "Talented"],
+  [16, "Expert"],
+  [18, "Exceptional"],
+  [20, "Brilliant"],
+  [25, "Extraordinary"],
+  [30, "Renowned"],
+  [35, "Unmatched"],
+  [40, "Superior"],
+  [45, "Legendary"],
+  [50, "Mythical"],
+  [55, "Insane"],
+  [60, "Supreme"],
+  [65, "Godly"],
+  [70, "Universal"],
+  [75, "Multiversal"],
+  [80, "Omniversal"],
+  [90, "Hyperdimensional"],
+  [100, "Transcendent"],
+  [Infinity, "Error"],
+]
 
 const pets = [
   //Name, XP multiplier [button and daily], xp button cooldown reducer, crate cooldown reducer, XPBoost multi
@@ -244,6 +291,7 @@ const enemies = [
   ["Yellow tailed human", 10000, 1000, 100, 5], //3.3 (14) - 10M XP / 2k Coins / 15 XPBoost
   ["Green tailed human", 20000, 2000, 200, 5], //3.4 (15) - 20M XP / 4k Coins / 30 XPBoost
   ["Evil tailed human", 50000, 5000, 500, 5], //3.5 (16) - 50M XP / 10k Coins / 75 XPBoost
+  ["Awakened Beast", 100000, 20000, 0, 0], //4.1 (17) - Scales with each kill and drops are managed separatedly. 1B XP / 1k Coins / 0.1 All Dimensions multi (/90 to compensate looting boosts). Stat scaling: 2^kills. Rewards scaling: 1.5^kill / 1.5^kill / kills
   ]
 
   const starterEnemiesChances = [ //45, 30, 15, 8, 2
@@ -257,6 +305,10 @@ const enemies = [
   const advancedEnemiesChances = [
   [12, 13], [13, 8], [14, 5], [15, 3], [16, 2],
   ]
+
+  const BossChances = [
+    [17, 1],
+    ]
 
   const items = [
 //Name, amount you can buy
@@ -284,5 +336,17 @@ const enemies = [
   ["Advanced XPBoost orb", 1], //+40% xpboost
   ["Speed dilation", 1], // /1.1 Button Cooldowns
   ["Loot again", 2], // x2 looting boost [additive with itself, multiplicative with others]
-  ["Check Back Soon :tm:", 1], //New feature, not gonna be added yet
+  ["A portal to a new dimension", 1], //New feature
+  ["Dimensional reset #1", 1], //(25) From new feature, resets all dimensions and gives an xp boost
+  ["Dimensional reset #2", 1], //(26) From new feature, resets all dimensions and gives a cooldown boost [on items]
+  ["Dimensional reset #3", 1], //(27) From new feature, resets all dimensions and gives a tickspeed boost to dimensions
+  ["Dimensional reset #4", 1], //(28) From new feature, resets all dimensions and... could boost stats or xpboost
+  ["Dimensional reset #5", 1], //(29) Wait... what!!! You are telling me the 9th dimension exists
+  ["Dimensional sacrifice #1", 1], //(30) Resets upgrades 25-29 but essencially adds a new level to each of them
+  ["Clicky dimensions", 1], //(31) Buttons clicked boost dimension multipliers, +5000 buttons clicked Formula: sqrt((x^1.5)/353553) also maybe level 500k
+  ["Blasphemous blade", 1], //(32) x2 Stat gain, x3 loot drops and enemies killed increases dimension multipliers. Formula: ln(e + x/250) maybe level 750k
+  ["The necklace of awakening", 1], //(33) Unlocks a boss fight maybe level 1m
+  ["Lantern of inflation", 1], //(34) Very expensive but increases many things
+  ["A helping hand", 1], //(35) Helps out /shrug
+  ["The trophy of time", 1], //(36) A trophy with some boosts and congratulates the player for beating check back v1.0
   ]

@@ -43,7 +43,7 @@ function openCloseEnemiesTab() {
         enemyBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.enemies[i] + "</p>"
         if (i<=5) enemyBoxes[i-1].style.border = "8px outset #555"
         else if (i<=11) enemyBoxes[i-1].style.border = "8px outset #447"
-        else if (i<=22) enemyBoxes[i-1].style.border = "8px outset #647"
+        else if (i<=16) enemyBoxes[i-1].style.border = "8px outset #647"
         else if (i<=31) enemyBoxes[i-1].style.border = "8px outset #500"
         else if (i<=39) enemyBoxes[i-1].style.border = "8px outset #990"
         else if (i<=46) enemyBoxes[i-1].style.border = "8px outset #229"
@@ -107,6 +107,14 @@ function openCloseEnemiesTab() {
         document.getElementById("enemiesFightChances").innerHTML += enemies[advancedEnemiesChances[i][0]][0] + ": " + (advancedEnemiesChances[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
       }
     }
+    else if (x == 4) {
+      document.getElementById("enemiesFightChances").innerHTML = "<style='width:6vh'><br><b>Rarities for this area:</b><br>"
+      totalWeight = 0
+      for (i=0;i<BossChances.length;i++) totalWeight += BossChances[i][1]
+      for(i=0;i<BossChances.length;i++) {
+        document.getElementById("enemiesFightChances").innerHTML += enemies[BossChances[i][0]][0] + ": " + (BossChances[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
+      }
+    }
   }
 
   function startFight(x) {
@@ -122,7 +130,7 @@ function openCloseEnemiesTab() {
           totalWeight -= starterEnemiesChances[i][1]
         }
       }
-     game.buttonCooldowns[21] = 3600 / (game.itemCooldown) //1h
+     game.buttonCooldowns[21] = 3600 / (game.itemCooldown * game.tierCooldown) //1h
     }
     if (x==2) {
       for (i=0;i<intermediateEnemiesChances.length;i++) totalWeight += intermediateEnemiesChances[i][1]
@@ -135,7 +143,7 @@ function openCloseEnemiesTab() {
           totalWeight -= intermediateEnemiesChances[i][1]
         }
       }
-     game.buttonCooldowns[22] = 21600 / (game.itemCooldown) //6h
+     game.buttonCooldowns[22] = 21600 / (game.itemCooldown * game.tierCooldown) //6h
     }
     if (x==3) {
       for (i=0;i<advancedEnemiesChances.length;i++) totalWeight += advancedEnemiesChances[i][1]
@@ -148,29 +156,60 @@ function openCloseEnemiesTab() {
           totalWeight -= advancedEnemiesChances[i][1]
         }
       }
-     game.buttonCooldowns[26] = 86400 / (game.itemCooldown) //24h
+     game.buttonCooldowns[26] = 86400 / (game.itemCooldown * game.tierCooldown) //24h
     }
+    if (x==4) {
+      game.currentHP = game.HP
+      enemiesChosen = 17
+      if (document.getElementById("dailyMessagesDiv").style.display == "block") {openCloseMessages(0)}
+      openCloseMessages(3)
+      attackBoss()
+    game.buttonCooldowns[36] = 43200 / (game.itemCooldown * game.tierCooldown) //12h
+    }
+    else {
     if (document.getElementById("dailyMessagesDiv").style.display == "block") {openCloseMessages(0)}
     openCloseMessages(2)
     game.currentHP = game.HP
     game.enemyHP = enemies[enemiesChosen][1]
     attack()
+    }
   }
 
   function attack() {
     game.enemyHP -= game.DMG - enemies[enemiesChosen][3]
      game.currentHP -= enemies[enemiesChosen][2] - game.DEF
      displayStats()
-     //doSomeStuff()  You don't need to keep the function seperated
      setTimeout(() => {
       if (game.enemyHP <= 0) {fightRewards(enemies[enemiesChosen][4])}
      else if (game.currentHP <= 0) {alert("You died... and nothing happens. Remaining enemy hp: " + numberShort(game.enemyHP))}
      else if (game.DMG < enemies[enemiesChosen][3]) {alert("Can't deal damage to the enemy, fight ends here")}
      else attack()
-      console.log('100ms later')
-      //Anything you want to happen in sequence after 100ms can go here
-     }, 100)
-     // everything past this comment will not wait.
+     }, 100) //100ms delay
+  }
+
+  function attackBoss() {
+    game.bossHP -= game.DMG
+    game.currentHP -= enemies[enemiesChosen][2] * 2 ** game.bossKills
+    displayStats()
+    setTimeout(() => {
+     if (game.bossHP <= 0) {killBoss()}
+     else if (game.currentHP <= 0) {alert("You died... try again later. Remaining boss hp: " + numberShort(game.bossHP))}
+     else attackBoss()
+     }, 100) //100ms delay
+  }
+
+  function killBoss() {
+    game.bossKills += 1
+    game.bossHP = enemies[17][1] * 2 ** game.bossKills
+    game.bossMulti += 0.1 * game.bossKills * game.itemLoot / 90
+    game.XP += 10000000000 * game.itemLoot * 1.5 ** game.bossKills
+    game.coins += 10000 * game.itemLoot * 1.5 ** game.bossKills
+    document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(10000000000 * game.itemLoot * 1.5 ** game.bossKills) + " XP"
+    document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(10000 * game.itemLoot * 1.5 ** game.bossKills) + " Coins"
+    document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(0.1 * game.bossKills * game.itemLoot / 90) + " DimMulti"
+    if (!game.enemies[enemiesChosen]) {game.enemies[enemiesChosen] = 1}
+     else {game.enemies[enemiesChosen]++}
+     game.enemiesDefeated += 1
   }
 
   function fightRewards(x) {

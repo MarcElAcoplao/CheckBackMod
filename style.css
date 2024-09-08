@@ -417,6 +417,10 @@ img {
   display: none;
 }
 
+#fight4Button {
+  display: none;
+}
+
 #statsDisplay {
   text-align: left;
   font-size: 20px;

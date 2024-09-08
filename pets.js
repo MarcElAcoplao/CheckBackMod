@@ -84,33 +84,33 @@ function unboxPet(x, y=1) {
       }
   }
   if (x==7) {
-    if (game.XPBoost <= 1.1) {
+    if (game.XPBoost < 1.1) {
       alert("XPBoost has to not drop below 1 to buy this crate") 
       petChosen = 0 
     }
-    else game.XPBoost -= 0.1
+    else if (game.items[35] == 0) game.XPBoost -= 0.1
   }
   if (x==8) {
-    if (game.XPBoost <= 1.25) {
+    if (game.XPBoost < 1.25) {
       alert("XPBoost has to not drop below 1 to buy this crate") 
       petChosen = 0 
     }
-    else game.XPBoost -= 0.25
+    else if (game.items[35] == 0) game.XPBoost -= 0.25
   }
   if (x==9) {
     if (game.coins < 250) {
       alert("Not enough coins") 
       petChosen = 0 
     }
-    else game.coins -= 250
+    else if (game.items[35] == 0) game.coins -= 250
   }
   if (petChosen >= 1) {
-    if (game.items[10] == 0 || x >= 9) {openCloseMessages(1)}
+    if (game.items[10] == 0 || game.pets[petChosen] < 1) {openCloseMessages(1)}
       if (!game.pets[petChosen]) {game.pets[petChosen] = 1}
       else {game.pets[petChosen]++}
       game.cratesOpened += 1
   
-      if (x >= 3) {game.buttonCooldowns[PetButtons[x].cooldownID] = PetButtons[x].cooldown / (pets[game.selectedPet][3] * game.itemCooldown)} //2 hours
+      if (x >= 3) {game.buttonCooldowns[PetButtons[x].cooldownID] = PetButtons[x].cooldown / (pets[game.selectedPet][3] * game.itemCooldown * game.tierCooldown)} //2 hours
   y += -1
   if (y < 1) {}
   else unboxPet(x, y=y)
@@ -121,7 +121,7 @@ function unboxPet(x, y=1) {
   
     function autoPets() {
       y = Math.ceil(1 + game.extraPetAmount)
-       if (game.items[15] == 1) {
+       if (game.items[15] >= 1) {
       if (game.buttonCooldowns[6] == 0) {
         unboxPet(3,y=y)
       }
@@ -134,8 +134,18 @@ function unboxPet(x, y=1) {
       if (game.buttonCooldowns[10] == 0) {
         unboxPet(6,y=y)
       }
+      if (game.buttonCooldowns[13] == 0 && game.items[35] >= 1) {
+        unboxPet(7)
+      }
+      if (game.buttonCooldowns[18] == 0 && game.items[35] >= 1) {
+        unboxPet(8)
+      }
+      if (game.buttonCooldowns[24] == 0 && game.items[35] >= 1) {
+        unboxPet(9)
+      }
      }
-     game.buttonCooldowns[23] = 1800
+     if (game.items[35] == 0) game.buttonCooldowns[23] = 1800
+     else game.buttonCooldowns[23] = 300
     }
   
   function displayPetRarities(x) {

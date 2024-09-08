@@ -15,7 +15,7 @@ function openCloseDailyRewardTab() {
       dailyRewardDay = game.dailyRewards+i+1
       document.getElementsByClassName("dayBox")[i].innerHTML = "Day " + dailyRewardDay
       if (dailyRewardDay % 2 == 1) {
-        document.getElementsByClassName("dayBox")[i].innerHTML += "<br>" + numberShort(Math.min((17.5 + dailyRewardDay * 2.5) * pets[game.selectedPet][1] * game.itemDailyXP * (1 + game.petsDiscovered / 100), 10000 * pets[game.selectedPet][1] * game.itemDailyXP * (1 + game.petsDiscovered / 100))) + " XP"}
+        document.getElementsByClassName("dayBox")[i].innerHTML += "<br>" + numberShort(Math.min((17.5 + dailyRewardDay * 2.5) * pets[game.selectedPet][1] * game.itemDailyXP * game.tierXPmulti * (1 + game.petsDiscovered / 100), 10000 * pets[game.selectedPet][1] * game.itemDailyXP * game.tierXPmulti * (1 + game.petsDiscovered / 100))) + " XP"}
       else if (dailyRewardDay % 4 == 2) {document.getElementsByClassName("dayBox")[i].innerHTML += "<span class='crateName'><br>Skeletal crate</span><br><img src='img/crateSkeletal.png' style='width:4vh; margin: 0; margin-top: 1vh;'>"}
       else {document.getElementsByClassName("dayBox")[i].innerHTML += "<span class='crateName'><br>Ghost crate</span><br><img src='img/crateGhost.png' style='width:4vh; margin: 0; margin-top: 1vh;'>"}
     }
@@ -63,11 +63,11 @@ function openCloseDailyRewardTab() {
   }
   
   function claimDailyReward() {
-    game.buttonCooldowns[9] = 86400 / game.itemCooldown //24 hours
+    game.buttonCooldowns[9] = 86400 / (game.itemCooldown * game.tierCooldown) //24 hours
     game.dailyRewards++
     displayDailyRewards()
     if (game.dailyRewards % 2 == 1) {
-      game.XP += Math.min((17.5 + game.dailyRewards * 2.5) * pets[game.selectedPet][1] * game.itemDailyXP * (1 + game.petsDiscovered / 100), 10000 * pets[game.selectedPet][1] * game.itemDailyXP * (1 + game.petsDiscovered / 100))}
+      game.XP += Math.min((17.5 + game.dailyRewards * 2.5) * pets[game.selectedPet][1] * game.tierXPmulti * game.itemDailyXP * (1 + game.petsDiscovered / 100), 10000 * pets[game.selectedPet][1] * game.tierXPmulti * game.itemDailyXP * (1 + game.petsDiscovered / 100))}
     else if (dailyRewardDay % 4 == 2) {unboxPet(1)}
     else {unboxPet(2)}
   }
@@ -77,8 +77,9 @@ function openCloseDailyRewardTab() {
     if (game.selectedPet >= 1) {result += "x" + numberShort(pets[game.selectedPet][1]) + " From pets<br>"}
     if (game.petsDiscovered >= 1) {result += "x" + numberShort(1 + game.petsDiscovered / 100) + " From pet collection<br>"}
     if (game.items[18] >= 1) {result += "x" + numberShort(game.XPBoostEffect ** 0.5) + " From XPBoost<br>"}
-    if (game.items[18] >= 1) {result += "x" + numberShort(game.itemXP) + " From items<br>"}
-    result += "Total: x" + numberShort((pets[game.selectedPet][1] * game.itemDailyXP * (1 + game.petsDiscovered / 100)))
+    if (game.items[18] >= 1) {result += "x" + numberShort(game.itemXP * (9 * game.items[34] + 1)) + " From items<br>"}
+    if (game.items[25] >= 1) {result += "x" + numberShort(game.tierXPmulti) + " From your tier<br>"}
+    result += "Total: x" + numberShort((pets[game.selectedPet][1] * game.itemDailyXP * game.tierXPmulti * (1 + game.petsDiscovered / 100)))
     return result
   }
   

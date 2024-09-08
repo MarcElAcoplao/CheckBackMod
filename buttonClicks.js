@@ -15,9 +15,9 @@ const XPButtons = [ //The stats of every single xp button
 //The code for any of the xp buttons
 function clickButton(x) {
     if (game.buttonCooldowns[XPButtons[x].cooldownID] == 0) { //Checks the proper button is off cooldown
-        game.buttonClicks += 1
-        game.XP += XPButtons[x].xp * (pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100)) //Assigns the xp that you have to get
-        game.buttonCooldowns[XPButtons[x].cooldownID] = XPButtons[x].cooldown / (pets[game.selectedPet][2] * game.itemCooldown) //Selects the cooldownID and the cooldown of the button, and sets them to one
+        game.buttonClicks += 1 + game.items[31]
+        game.XP += XPButtons[x].xp * (pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti) //Assigns the xp that you have to get
+        game.buttonCooldowns[XPButtons[x].cooldownID] = XPButtons[x].cooldown / (pets[game.selectedPet][2] * game.itemCooldown * game.tierCooldown) //Selects the cooldownID and the cooldown of the button, and sets them to one
     }
     updateSmall()
   }
@@ -35,13 +35,13 @@ const XPBoostButtons = [ //Stats of the xpboost buttons
         game.lostXP += levelToXP(XPBoostButtons[x].level)
         game.XP -= levelToXP(XPBoostButtons[x].level)
         game.XPBoost += XPBoostButtons[x].xpboost * pets[game.selectedPet][4] * game.itemXPBoost
-        game.buttonCooldowns[XPBoostButtons[x].cooldownID] = XPBoostButtons[x].cooldown / (game.itemCooldown) //1h
+        game.buttonCooldowns[XPBoostButtons[x].cooldownID] = XPBoostButtons[x].cooldown / (game.itemCooldown * game.tierCooldown) //1h
       }
       else {
         game.lostXP += game.XP
         game.XP = 0
         game.XPBoost += XPBoostButtons[x].xpboost * pets[game.selectedPet][4] * game.itemXPBoost
-        game.buttonCooldowns[XPBoostButtons[x].cooldownID] = XPBoostButtons[x].cooldown / (game.itemCooldown) //1h
+        game.buttonCooldowns[XPBoostButtons[x].cooldownID] = XPBoostButtons[x].cooldown / (game.itemCooldown * game.tierCooldown) //1h
       }
       game.buttonClicks += 1
     }
@@ -55,14 +55,16 @@ const StatButtons = [
   {name: "Test", stats: 0, cooldown: 60, cooldownID: 0, unlock: 0},
   {name: "StatButton1", stats: 5, cooldown: 3600, cooldownID: 20, unlock: 21},
   {name: "StatButton2", stats: 20, cooldown: 21600, cooldownID: 25, unlock: 24},
+  {name: "StatButton3", stats: 50, cooldown: 43200, cooldownID: 37, unlock: 26},
+  {name: "StatButton4", stats: 120, cooldown: 86400, cooldownID: 38, unlock: 27},
 ]
 
   function click3Button(x) {
     if (game.buttonCooldowns[StatButtons[x].cooldownID] == 0) {
-      game.HP += 1 * StatButtons[x].stats * game.itemStat
-      game.DMG += 0.1 * StatButtons[x].stats * game.itemStat
-      game.DEF += 0.01 * StatButtons[x].stats * game.itemStat
-      game.buttonCooldowns[StatButtons[x].cooldownID] = StatButtons[x].cooldown / (game.itemCooldown) //1h
+      game.HP += 1 * StatButtons[x].stats * game.itemStat * game.tierStats
+      game.DMG += 0.1 * StatButtons[x].stats * game.itemStat * game.tierStats
+      game.DEF += 0.01 * StatButtons[x].stats * game.itemStat * game.tierStats
+      game.buttonCooldowns[StatButtons[x].cooldownID] = StatButtons[x].cooldown / (game.itemCooldown * game.tierCooldown) //1h
       game.buttonClicks += 1
   }
   updateSmall()

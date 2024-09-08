@@ -49,3 +49,5 @@ Button 12 - 15 xp // 1h
 Button 13 - 4 XPBoost // 1h
 Button 14 - 5 Stats // 1h [1 Stat: 1HP 0.1DMG 0.01DEF]
 Button 15 - 20 Stats // 6h [1 Stat: 1HP 0.1DMG 0.01DEF]
+Button 16 - 50 Stats // 12h
+Button 17 - 120 Stats // 1d

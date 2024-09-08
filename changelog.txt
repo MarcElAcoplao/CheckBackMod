@@ -1,3 +1,18 @@
+v1.0 CHECK BACK'S OFFICIAL RELEASE! - 08/09/24 
+-First of all, this has become the official version for Check Back. No need to call it Check Back Mod anymore.
+-All the references towards a feature coming soon... it's here! Upgrade 24 is now available and it's not really that hard to obtain.
+-New feature inspired by Antimatter Dimensions but adapted to the core mechanic of Check Back
+-12 new upgrades that will make your numbers skyrocket into millions of levels
+-Also should have merged some fixes coming from Alderi's pull request, plus did some other tiny changes (Doing this after making sure the update is properly out)
+ -Fixed some typos
+ -Short notation "20 K" should no longer be automatically cut into a new line
+ -The upgrade that hides the pet popups has been re-coded to only show newly discovered pets from any crate
+ -Placeholder better shop costs display for the first upgrade
+ -Added new ranks going up to level 1 billion alongside an "XP to next rank" text rather than "total xp"
+Play here:
+https://marcelacoplao.github.io/CheckBackMod/
+https://galaxy.click/play/43 
+
 v0.9.3 Narrow screen adaptability - 18/07/24
 -Changes in the css have been done to make buttons scale properly with zoom and different screen sizes
 -A smoother flickering has been added + colors to each theme

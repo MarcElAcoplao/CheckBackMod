@@ -7,10 +7,12 @@ function reset() {
     coins: 0,
     level: 1,
     highestLevel: 1,
+    ranks: 0,
     XPBoost: 1,
     XPBoostEffect: 1,
-    buttonCooldowns: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+    buttonCooldowns: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     unlocks: 0,
+    timeUnlocks: 0,
     totalUnlocks: 0,
     possibleUnlocks: 26,
     currentTheme: 2,
@@ -28,7 +30,7 @@ function reset() {
     enemyHP: 0,
     DMG: 0,
     DEF: 0,
-    items: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    items: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     itemXP: 1,
     itemStat: 1,
     itemXPBoost: 1,
@@ -46,6 +48,21 @@ function reset() {
     cratesOpened: 0,
     enemiesDefeated: 0,
     petsDiscovered: 0,
+    tier: 1,
+    highestTier: 1,
+    timeShards: 0,
+    tierXPmulti: 1,
+    tierCooldown: 1,
+    tierStats: 1,
+    dimensionCooldown: 1,
+    dimensionUnlocks: 0,
+    dimensionAmount: [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    dimensionMulti: [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    clickToDimension: 1,
+    enemiesToDimension: 1,
+    bossHP: 100000,
+    bossKills: 0,
+    bossMulti: 1,
   }
 }
 reset()
@@ -75,6 +92,7 @@ function load() {
 	reset()
 	let loadgame = JSON.parse(localStorage.getItem("checkBackSave"))
 	if (loadgame != null) {loadGame(loadgame)}
+  else {loadGame(newSavefile)}
   updateSmall()
 }
 
@@ -105,33 +123,20 @@ function importGame() {
 function help() {
 x = game.totalUnlocks
 console.log(x)
-if (x == 0) {alert("Click a button to gain xp. It has a cooldown. You check back in some time.")}
-if (x == 1) {alert("Some buttons have more rewards, but a higher cooldown.")}
-if (x == 2) {alert("Keep going, there's more than just xp buttons.")}
-if (x == 3) {alert("Keep going, there's more than just xp buttons.")}
-if (x == 4) {alert("Yes, this unlocked a new theme. But it's the one I always use so it's good - Marc")}
-if (x == 5) {alert("Almost there. Go get level 8 now.")}
-if (x == 6) {alert("The new feature is pets. Open crates and get rarer pets. Pets have stats such as you get more xp or buttons are faster.")}
-if (x == 7) {alert("Another pet crate. Some of them will give 1-2 pets from the previous crate. Also, there's daily rewards. It has 2 crates with rare pets and increasing xp rewards.")}
-if (x == 8) {alert("3 New themes... go get level 20.")}
-if (x == 9) {alert("More pets, which means that numbers go up. Each pet crate has a dragon pet, which has better stats than some of the next crate pets.")}
-if (x == 10) {alert("New xp button now. Keep going on now. Also, heads up. Keep opening your crates even if the pets won't get any better. They will have an use... eventually")}
-if (x == 11) {alert("This is the 1st pet crate that's not in Demonin's original. Same thing as before, stronger pets and slower crates.")}
-if (x == 12) {alert("So close to something new. Buttons are sorted in like tier sections, that's why the gaps in some places. But they will be filled.")}
-if (x == 13) {alert("A simple prestige feature. Resets your xp back to level 1 and, in exchange, your xp gains are increased. I suggest waiting a little bit... you'll see.")}
-if (x == 14) {alert("These new crates will cost a bit of your XPBoost, but the new pets are worth it. All future pet crates won't be free. By the way, you can scroll down to these buttons.")}
-if (x == 15) {alert("The xp buttons in this section are like (xp amount between buttons 4 and 5 with a cooldown between 3 and 4), or overall better.")}
-if (x == 16) {alert("Advanced XPBoost buttons will have a higher xp to xpboost ratio, but they do require of you to get to the unlock level to do the reset.")}
-if (x == 17) {alert("Keep going, you are doing great <3. Also, make sure to consider whenever pushing for new unlocks is better or not than farming XPBoost. I'd say to push.")}
-if (x == 18) {alert("If you are more active like person, this xp button is for you.")}
-if (x == 19) {alert("These pets also boost your XPBoost gain. Awesome, right? These pets have quick xp gain scaling too.")}
-if (x == 20) {alert("Were you lucky during the previous segment? If you really haven't grinded XPBoost, this new button is gonna be enough to bring you to the next stage of the game.")}
-if (x == 21) {alert("Fighting. There's one button that will give you stats. On the fighting menu, you can see your stats. Starting a fight automatically heals you, and the combat system is very simple. You get rewards by winning.")}
-if (x == 22) {alert("The shop. Here you buy items and unlocks. There's boosts, there's QoL and unlocks. These also require of you having opened a bunch of pet crates constantly through the playthrough.")}
-if (x == 23) {alert("Your 1st non-level unlock. You unlocked a new area. Stuff will get grindy from here, and numbers will go up fast.")}
-if (x == 24) {alert("Back to grinding XP. These new pets are gonna be expensive but useful to push further. If you haven't bought items 1-18, you should go for them. (Note: This crate still has alerts)")}
-if (x == 25) {alert("Oh, hey! More stats. Sure thing I'll be able to beat the boss soon...")}
-if (x == 26) {alert("It's just grind, grind, grind. The next feature unlock is gonna be expensive, so might as well make sure to get all upgrades and better pets")}
+if (x <= 5) {alert("Hello and welcome to Check Back! In this game your goal is simple, click buttons and gain xp to levelup and unlock new buttons. But, there's a catch! Buttons have cooldowns. This game requires minimal focus so, as suggested by the developer, open another tab and go watch some youtube. A new tip will be shown when you reach level 8")}
+else if (x <= 12) {alert("Congratulations! You unlocked pets. Pets can be obtained through a crate in a similar tab (Can be opened with the left side menus, below the next unlock text). Rarer pets have better stats. Keep progressing and you will be unlocking more pets and xp buttons. There's also daily rewards, can be found bottom-left of the screen, above the tab buttons. A new tip will be shown when you reach level 100")}
+else if (x == 13) {alert("A simple prestige feature. Resets your xp back to level 1 and, in exchange, your xp gains are increased. I suggest waiting a little bit... you'll see. A new tip will show up at level 125")}
+else if (x <= 20) {alert("Now that you've unlocked a new pet crate, gonna tell you that all future crates will have a cost. This section is about unlocking new buttons and strategizing doing xpboost resets and opening crates. A new tip will show up at level 500")}
+else if (x == 21) {alert("Fighting. There's one button that will give you stats. On the fighting menu, you can see your stats. Starting a fight automatically heals you, and the combat system is very simple. You get rewards by winning and they can be quite useful. A new tip will show up at level 1500")}
+else if (x <= 23) {alert("The shop. Here you buy items and unlocks. There's boosts, there's QoL and unlocks. These also require of you having opened a bunch of pet crates constantly through the playthrough. This might be a grindy section. Next tip will show up when you get 2 more unlocks")}
+else if (x <= 26) {alert("If you are reading this, you either have unlocked the 2nd area and reached level 20k, or simply went for level 50k. If you are from the 2nd case, I'd heavily suggest to unlock the new area (upgrade 6) and focusing on getting more coins. Either way, your goal should be to get more xp, better pets and maxing out the first 23 upgrades. A new tip will show up when you reach 27 total unlocks")}
+else if (x <= 29) {alert("Congratulations on reaching the v1.0 content. This new feature is basically a recreation of Antimatter Dimensions but recreated to Check Back (go play AD, it's good). If you never played a game with the dimensions style, the first dimension produces a resource, in this case shards, while the 2nd produces the 1st, the 3rd produces the 2nd... and so on. A new tip will show up when you reach 30 total unlocks")}
+else if (x <= 32) {alert("Now that you unlocked the 4th dimension, what are dimensional resets? They are kinda like the dimensional boosts from AD, they reset your dimensions to give a multiplier to some dimensions and unlock a new dimension. They also give an additional boost to resources like XP. There's also a set of additional upgrades that, if you are seeing 6 squares each line, they are below the dimensional resets. These additional upgrades are intended to help out the player progress through the time dimensions and they give good boosts. A new tip will show up at 33 total unlocks")}
+else if (x <= 34) {alert("You might have noticed that the upgrade that goes along the 3rd dimensional reset unlocks a bossfight. Go unlock it and progress through dimensions. And don't forget to keep opening crates and clicking every single button, everything contributes to progress. A new tip will show up at 35 total unlocks")}
+else if (x < 38) {alert("The boss has scaling health and damage, scaled rewards and also hp saves between fights, so you don't have to be insanely strong to beat it. Keep pushing and reach the 9th dimension. A new tip will unlock when you do so")}
+else if (game.items[30] == 0) {alert("The final push is here! At level 40 you can perform a dimensional sacrifice and re-run all the dimensions section but way quicker. A new message will show up after unlocking the 9th dimension but after doing the dimensional sacrifice.")}
+else if (game.items[36] == 0) {alert("Before you officially complete this game, there is one final upgrade (with a little bit placeholder effects) that you might wanna get. Having that upgrade grants access to a unique role in the discord server (community chat + sneak peeks of future updates)")}
+else {alert("Congratulations! Thanks for playing Check Back and hope you had a fun experience. Push levels, bosses, tiers, find all pets or something while waiting for an update.")}
 }
 
 function loadGame(loadgame) {
@@ -207,7 +212,13 @@ function loadGame(loadgame) {
   if (game.unlocks >= 23) {document.getElementById("unboxButton7").style.display = "block"}
   if (game.unlocks >= 24) {document.getElementById("StatButton2").style.display = "block"}
   if (game.itemUnlocks >= 1) {document.getElementById("fight2Button").style.display = "block"}
+  if (game.itemUnlocks >= 2) {
+    document.getElementById("TimeTab").style.display = "block"
+    document.getElementsByClassName("themeButton")[6].style.display = "inline-block"}
+  if (game.itemUnlocks >= 3) {document.getElementById("fight4Button").style.display = "block"}
   if (game.unlocks >= 25) {document.getElementById("fight3Button").style.display = "block"}
+  if (game.unlocks >= 26) {document.getElementById("StatButton3").style.display = "block"}
+  if (game.unlocks >= 27) {document.getElementById("StatButton4").style.display = "block"}
 
  for (let i=0;i<pets.length;i++) {if (!game.pets[i]) game.pets[i] = 0}
  for (let i=0;i<enemies.length;i++) {if (!game.enemies[i]) game.enemies[i] = 0}
@@ -222,11 +233,7 @@ function loadGame(loadgame) {
      }
     }
   }
-  if (game.pets[21] < 0) {
-    game.pets[21] += 5
-    game.pets[48] -= 3
-    game.pets[40] -= 5
-     }
+  //This section of the special pets is here in case you load your save coming from the original Check Back version by demonin. 
   displayStuff()
   tab(1)
   countPets()
@@ -244,7 +251,19 @@ for (let i=1;i<XPButtons.length;i++) {
   }
   else {
     document.getElementById(XPButtons[i].name).disabled = false
-    document.getElementById(XPButtons[i].name).innerHTML = "Gain " + numberShort((XPButtons[i].xp * pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100))) + " XP"
+    document.getElementById(XPButtons[i].name).innerHTML = "Gain " + numberShort((XPButtons[i].xp * pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti)) + " XP"
+  }
+}
+
+for (let i=1;i<Dimensions.length;i++) {
+  if (game.buttonCooldowns[Dimensions[i].cooldownID] > 0) {
+    document.getElementById(Dimensions[i].name).disabled = true
+    document.getElementById(Dimensions[i].name).innerHTML = "D" + i + "  Amount: " + numberShort(game.dimensionAmount[Dimensions[i].dimensionArray]) + "  Multiplier: x" + numberShort(game.dimensionMulti[Dimensions[i].dimensionArray]) + "<br>Check back in " + numberToTime(game.buttonCooldowns[Dimensions[i].cooldownID])
+  }
+  else {
+    document.getElementById(Dimensions[i].name).disabled = false
+    if (i == 1) {document.getElementById(Dimensions[i].name).innerHTML = "D" + i + "  Amount: " + numberShort(game.dimensionAmount[Dimensions[i].dimensionArray]) + "  Multiplier: x" + numberShort(game.dimensionMulti[Dimensions[i].dimensionArray]) + "<br>Gain " + numberShort(game.dimensionMulti[Dimensions[i].dimensionArray] * game.dimensionAmount[Dimensions[i].dimensionArray]) + " " + Dimensions[i-1].name + " (+" + numberShort((game.dimensionMulti[Dimensions[i].dimensionArray] * game.dimensionAmount[Dimensions[i].dimensionArray])/Math.max(game.timeShards, 1) * 100) + "%)"}
+    else {document.getElementById(Dimensions[i].name).innerHTML = "D" + i + "  Amount: " + numberShort(game.dimensionAmount[Dimensions[i].dimensionArray]) + "  Multiplier: x" + numberShort(game.dimensionMulti[Dimensions[i].dimensionArray]) + "<br>Gain " + numberShort(game.dimensionMulti[Dimensions[i].dimensionArray] * game.dimensionAmount[Dimensions[i].dimensionArray]) + " " + Dimensions[i-1].name + " (+" + numberShort((game.dimensionMulti[Dimensions[i].dimensionArray] * game.dimensionAmount[Dimensions[i].dimensionArray])/game.dimensionAmount[Dimensions[i-1].dimensionArray] * 100) + "%)"}
   }
 }
 
@@ -307,7 +326,7 @@ for (let i=1;i<XPButtons.length;i++) {
     }
     else {
       document.getElementById("XPBbutton1").disabled = false
-      document.getElementById("XPBbutton1").innerHTML = "Gain " + numberShort(0.2 * pets[game.selectedPet][4] * game.itemXPBoost) + " XPBoost, but loose 21.2k XP"
+      document.getElementById("XPBbutton1").innerHTML = "Gain " + numberShort(0.2 * pets[game.selectedPet][4] * game.itemXPBoost) + " XPBoost, but lose 21.2k XP"
     }
   }
   if (game.buttonCooldowns[13] > 0) {
@@ -316,7 +335,8 @@ for (let i=1;i<XPButtons.length;i++) {
   }
   else {
     document.getElementById("unboxButton5").disabled = false
-    document.getElementById("unboxButton5").innerHTML = "Unbox a random prestige pet for 0.1 XPBoost"
+    if (game.items[35] == 1) {document.getElementById("unboxButton5").innerHTML = "Unbox a random prestige pet. Auto: " + numberToTime(game.buttonCooldowns[23])}
+    else {document.getElementById("unboxButton5").innerHTML = "Unbox a random prestige pet for 0.1 XPBoost"}
   }
   if (game.buttonCooldowns[15] > 0) {
     document.getElementById("XPBbutton2").disabled = true
@@ -329,7 +349,7 @@ for (let i=1;i<XPButtons.length;i++) {
       }
       else {
         document.getElementById("XPBbutton2").disabled = false
-        document.getElementById("XPBbutton2").innerHTML = "Gain " + numberShort(1 * pets[game.selectedPet][4] * game.itemXPBoost) + " XPBoost, but loose 75.6k XP"
+        document.getElementById("XPBbutton2").innerHTML = "Gain " + numberShort(1 * pets[game.selectedPet][4] * game.itemXPBoost) + " XPBoost, but lose 75.6k XP"
       }
   }
   if (game.buttonCooldowns[18] > 0) {
@@ -338,7 +358,8 @@ for (let i=1;i<XPButtons.length;i++) {
   }
   else {
     document.getElementById("unboxButton6").disabled = false
-    document.getElementById("unboxButton6").innerHTML = "Unbox a random transcendant pet for 0.25 XPBoost"
+    if (game.items[35] == 1) {document.getElementById("unboxButton6").innerHTML = "Unbox a random transcendant pet. Auto: " + numberToTime(game.buttonCooldowns[23])}
+    else {document.getElementById("unboxButton6").innerHTML = "Unbox a random transcendant pet for 0.25 XPBoost"}
   }
   if (game.buttonCooldowns[19] > 0) {
     document.getElementById("XPBbutton3").disabled = true
@@ -351,7 +372,7 @@ for (let i=1;i<XPButtons.length;i++) {
       }
       else {
         document.getElementById("XPBbutton3").disabled = false
-        document.getElementById("XPBbutton3").innerHTML = "Gain " + numberShort(4 * pets[game.selectedPet][4] * game.itemXPBoost) + " XPBoost, but loose 267.9k XP"
+        document.getElementById("XPBbutton3").innerHTML = "Gain " + numberShort(4 * pets[game.selectedPet][4] * game.itemXPBoost) + " XPBoost, but lose 267.9k XP"
       }
   }
   if (game.buttonCooldowns[20] > 0) {
@@ -360,7 +381,7 @@ for (let i=1;i<XPButtons.length;i++) {
   }
   else {
     document.getElementById("StatButton1").disabled = false
-    document.getElementById("StatButton1").innerHTML = "Gain " + numberShort(5 * game.itemStat) + " HP, " + numberShort(0.5 * game.itemStat) + " DMG and " + numberShort(0.05 * game.itemStat) + " DEF"
+    document.getElementById("StatButton1").innerHTML = "Gain " + numberShort(5 * game.itemStat * game.tierStats) + " HP, " + numberShort(0.5 * game.itemStat * game.tierStats) + " DMG and " + numberShort(0.05 * game.itemStat * game.tierStats) + " DEF"
   }
   if (game.buttonCooldowns[21] > 0) {
     document.getElementById("fight1Button").disabled = true
@@ -406,6 +427,12 @@ for (let i=1;i<XPButtons.length;i++) {
   else {
     document.getElementById("CratesTab").classList.remove("flickering")
   }
+  if (DimTab() == true) {
+    document.getElementById("TimeTab").classList.add("flickering")
+  }
+  else {
+    document.getElementById("TimeTab").classList.remove("flickering")
+  }
 
  if (FightingTab() == true) {
   document.getElementById("fightingTabButton").classList.add("flickering")
@@ -420,7 +447,8 @@ for (let i=1;i<XPButtons.length;i++) {
 }
 else {
   document.getElementById("unboxButton7").disabled = false
-  document.getElementById("unboxButton7").innerHTML = "Unbox a random universal pet for 250 coins"
+  if (game.items[35] == 1) {document.getElementById("unboxButton7").innerHTML = "Unbox a random universal pet. Auto: " + numberToTime(game.buttonCooldowns[23])}
+  else {document.getElementById("unboxButton7").innerHTML = "Unbox a random universal pet for 250 coins"}
 }
 if (game.buttonCooldowns[25] > 0) {
   document.getElementById("StatButton2").disabled = true
@@ -428,7 +456,23 @@ if (game.buttonCooldowns[25] > 0) {
 }
 else {
   document.getElementById("StatButton2").disabled = false
-  document.getElementById("StatButton2").innerHTML = "Gain " + numberShort(20 * game.itemStat) + " HP, " + numberShort(2 * game.itemStat) + " DMG and " + numberShort(0.2 * game.itemStat) + " DEF"
+  document.getElementById("StatButton2").innerHTML = "Gain " + numberShort(20 * game.itemStat * game.tierStats) + " HP, " + numberShort(2 * game.itemStat * game.tierStats) + " DMG and " + numberShort(0.2 * game.itemStat * game.tierStats) + " DEF"
+}
+if (game.buttonCooldowns[37] > 0) {
+  document.getElementById("StatButton3").disabled = true
+  document.getElementById("StatButton3").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[37])
+}
+else {
+  document.getElementById("StatButton3").disabled = false
+  document.getElementById("StatButton3").innerHTML = "Gain " + numberShort(50 * game.itemStat * game.tierStats) + " HP, " + numberShort(5 * game.itemStat * game.tierStats) + " DMG and " + numberShort(0.5 * game.itemStat * game.tierStats) + " DEF"
+}
+if (game.buttonCooldowns[38] > 0) {
+  document.getElementById("StatButton4").disabled = true
+  document.getElementById("StatButton4").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[38])
+}
+else {
+  document.getElementById("StatButton4").disabled = false
+  document.getElementById("StatButton4").innerHTML = "Gain " + numberShort(120 * game.itemStat * game.tierStats) + " HP, " + numberShort(12 * game.itemStat * game.tierStats) + " DMG and " + numberShort(1.2 * game.itemStat * game.tierStats) + " DEF"
 }
 if (game.buttonCooldowns[26] > 0) {
   document.getElementById("fight3Button").disabled = true
@@ -439,8 +483,19 @@ else {
   document.getElementById("fight3Button").innerHTML = "Fight an area 3 foe "
 }
 
+if (game.buttonCooldowns[36] > 0) {
+  document.getElementById("fight4Button").disabled = true
+  document.getElementById("fight4Button").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[36])
+}
+else {
+  document.getElementById("fight4Button").disabled = false
+  document.getElementById("fight4Button").innerHTML = "Awaken a level " + (game.bossKills + 1) + " mighty boss"
+}
+
   game.level = XPToLevel(Math.max(Math.floor(game.XP), 0))
-  document.getElementById("level").innerHTML = levelShort(game.level)
+  game.tier = ShardToTier(Math.max(Math.floor(game.timeShards), 0))
+  if (game.currentTab <= 4) {
+    document.getElementById("level").innerHTML = "Level " + levelShort(game.level)
   //This bit is weird and gross
   //Sets the colour of the level bar, the texture of the level bar (if you're a high enough level), and your rank name
   i=0
@@ -455,7 +510,8 @@ else {
   }
   i=0
   while (game.level >= ranks[i+1][0]) i++
-  document.getElementById("rank").innerHTML= ranks[i][1]
+  game.ranks = i
+  document.getElementById("rank").innerHTML= ranks[i][1] + " clicker"
   //Sets the "XP to next level" text
   if (game.level < 1500) { //Before level 1500
   XPToNextLevel = levelToXP(game.level + 1) - levelToXP(game.level)
@@ -464,16 +520,30 @@ else {
   document.getElementById("XPBarBack").style.width = (ProgressToNextLevel / XPToNextLevel * 100) + "%"
   }
   else if (game.unlocks < unlockLevels.length) { //After level 1500
-  XPToNextUnlock = levelToXP(unlockLevels[game.unlocks]) // - levelToXP(unlockLevels[game.unlocks - 1])
-  ProgressToNextUnlock = game.XP // - levelToXP(unlockLevels[game.unlocks - 1]))
+  XPToNextUnlock = levelToXP(unlockLevels[game.unlocks])
+  ProgressToNextUnlock = game.XP
   document.getElementById("XPBarText").innerHTML = "XP to next unlock: " + xpShort(ProgressToNextUnlock) + "/" + xpShort(XPToNextUnlock)
   document.getElementById("XPBarBack").style.width = (ProgressToNextUnlock / XPToNextUnlock * 100) + "%"
   }
-  else {
-    document.getElementById("XPBarText").innerHTML = "Total XP: " + numberShort(game.XP)
-    document.getElementById("XPBarBack").style.width = 100 + "%"
+  else { //Maxed out
+  XPToNextRank = levelToXP(ranks[game.ranks + 1][0])
+  ProgressToNextUnlock = game.XP
+  document.getElementById("XPBarText").innerHTML = "XP to next rank: " + numberShort(game.XP) + "/" + xpShort(XPToNextRank)
+  document.getElementById("XPBarBack").style.width = (ProgressToNextUnlock / XPToNextRank * 100) + "%"
   }
+}
+else {
+  i=0
+  while (game.tier >= tierRanks[i+1][0]) i++
+  document.getElementById("rank").innerHTML= tierRanks[i][1] + " warper"
+  document.getElementById("level").innerHTML = "Tier " + levelShort(game.tier)
+  XPToNextLevel = TierToShard(game.tier + 1) - TierToShard(game.tier)
+  ProgressToNextLevel = (game.timeShards - TierToShard(game.tier)).toFixed(1)
+  document.getElementById("XPBarText").innerHTML = "Shards to next tier: " + xpShort(ProgressToNextLevel) + "/" + xpShort(XPToNextLevel)
+  document.getElementById("XPBarBack").style.width = (ProgressToNextLevel / XPToNextLevel * 100) + "%"
+}
   if (game.level > game.highestLevel) {game.highestLevel = game.level}
+  if (game.tier > game.highestTier) {game.highestTier = game.tier}
   handleUnlocks()
   displayStuff()
 }
@@ -481,9 +551,10 @@ setInterval(updateSmall, 16) //Runs the update ~60 times per second
 
 //Updates cooldowns
 function updateLarge() {
-  for (i=0;i<27;i++) {
+  for (i=0;i<40;i++) {
     if (game.buttonCooldowns[i] > 0) game.buttonCooldowns[i] -= ((Date.now() - game.timeOfLastUpdate) / (1000/game.speed))
     if (game.buttonCooldowns[i] < 0) game.buttonCooldowns[i] = 0
+    if (!game.buttonCooldowns[i]) game.buttonCooldowns[i] = 0
   }
   if (game.timeOfLastUpdate - game.sessionStart <= 2000) {}
   else game.timePlayed += (Date.now() - game.timeOfLastUpdate)/1000;
@@ -515,6 +586,7 @@ else if (exponent >= 9) result = (xCeil/10 ** 9).toFixed(1) + " B"
 else if (exponent >= 6) result = (xCeil/10 ** 6).toFixed(1) + " M"
 else if (exponent >= 3) result = (xCeil/10 ** 3).toFixed(1) + " K"
 else if (x >= 1) result = (x).toFixed(2)
+else if (x <= 0) result = x
 else result = (x).toFixed(3)
 return result
 }
@@ -558,7 +630,6 @@ function handleUnlocks() {
   for (i=0;i<unlockLevels.length;i++) {
     if (game.level >= unlockLevels[i] && game.unlocks < i+1) {
       game.unlocks = i+1
-      game.totalUnlocks = game.unlocks + game.extraUnlocks
       //Could probably use a switch
       if (i==0) {document.getElementById("XPbutton2").style.display = "block"
       game.buttonCooldowns[1] = 0}
@@ -625,27 +696,45 @@ function handleUnlocks() {
         updateShopBoosts() }
       else if (i==22) {document.getElementById("unboxButton7").style.display = "block"
         game.buttonCooldowns[24] = 0
-        for (let i =0;i<9; i++) {
-          game.pets[i+64] = 0
-        }
       }
       else if (i==23) {document.getElementById("StatButton2").style.display = "block"
       game.buttonCooldowns[25] = 0}
       else if (i==24) {document.getElementById("fight3Button").style.display = "block"}
+      else if (i==25) {document.getElementById("StatButton3").style.display = "block"
+      game.buttonCooldowns[37] = 0}
+      else if (i==26) {document.getElementById("StatButton4").style.display = "block"
+      game.buttonCooldowns[38] = 0}
       break
     }
   }
-  game.possibleUnlocks = 26 
+  for (i=0;i<unlockTiers.length;i++) {
+    if (game.tier >= unlockTiers[i] && game.dimensionUnlocks < i+1) {
+      game.dimensionUnlocks = i+1
+    }
+  }
+  game.totalUnlocks = game.unlocks + game.extraUnlocks + game.dimensionUnlocks
+  game.possibleUnlocks = unlockLevels.length + unlockTiers.length + 3
   if (game.itemUnlocks > game.extraUnlocks) {
     game.extraUnlocks += 1
-    game.totalUnlocks = game.unlocks + game.extraUnlocks
     if (game.extraUnlocks == 1) {document.getElementById("fight2Button").style.display = "block"}
+    if (game.extraUnlocks == 2) {
+      document.getElementById("TimeTab").style.display = "block"
+      document.getElementsByClassName("themeButton")[6].style.display = "inline-block"
+    }
+    if (game.extraUnlocks == 3) {document.getElementById("fight4Button").style.display = "block"}
   }
-
-  if (game.totalUnlocks == game.possibleUnlocks) {document.getElementById("nextUnlockLevel").innerHTML = "All unlocks have been achieved! Update WIP (100%: All upgrades/Best pet/Strongest enemy beaten)"}
+  if (game.currentTab <= 4) {
+  if (game.totalUnlocks == game.possibleUnlocks) {document.getElementById("nextUnlockLevel").innerHTML = "All unlocks have been achieved! Next update coming soon"}
   else if (game.unlocks == unlockLevels.length) {document.getElementById("nextUnlockLevel").innerHTML = "All XP unlocks have been achieved! But " + (game.possibleUnlocks - game.totalUnlocks) + " unlocks are missing"}
-  else if (game.unlocks >= 22) {document.getElementById("nextUnlockLevel").innerHTML = "You will unlock something new at level " + numberShort(unlockLevels[game.unlocks]) + " or through other means!"}
+  else if (game.unlocks >= 22) {document.getElementById("nextUnlockLevel").innerHTML = "You will unlock something new at level " + numberShort(unlockLevels[game.unlocks]) + " or through shop upgrades!"}
   else {document.getElementById("nextUnlockLevel").innerHTML = "You will unlock something new at level " + unlockLevels[game.unlocks] + "!"}
+  }
+  else {
+  if (game.totalUnlocks == game.possibleUnlocks) {document.getElementById("nextUnlockLevel").innerHTML = "All unlocks have been achieved! Next update coming soon"}
+  else if (game.dimensionUnlocks == unlockTiers.length) {document.getElementById("nextUnlockLevel").innerHTML = "All dimensions have been unlocked! " + (game.possibleUnlocks - game.totalUnlocks) + " unlocks are missing"}
+  else if (game.dimensionUnlocks >= 3) {document.getElementById("nextUnlockLevel").innerHTML = "You will unlock a new dimension at tier " + numberShort(unlockTiers[game.dimensionUnlocks]) + " and Dimensional reset #" + (game.dimensionUnlocks - 2) + "!"}
+  else {document.getElementById("nextUnlockLevel").innerHTML = "You will unlock a new dimension at tier " + unlockTiers[game.dimensionUnlocks] + "!"}
+  }
 }
 
 function changeTheme(x) {
@@ -656,6 +745,7 @@ function changeTheme(x) {
   else if (x==4) {document.getElementById("themeLink").href = "themes/themeGreen.css"}
   else if (x==5) {document.getElementById("themeLink").href = "themes/themePurple.css"}
   else if (x==6) {document.getElementById("themeLink").href = "themes/themeRed.css"}
+  else if (x==7) {document.getElementById("themeLink").href = "themes/themeAlternate.css"}
 }
 
 function Stats() {
@@ -718,3 +808,11 @@ document.addEventListener("animationstart", (event) => {
     }
   }
 });
+
+function upgrade24requirement() {
+  counter = 0
+  for (let i=0;i<items.length;i++) {
+    if (game.items[i] >= items[i][1]) {counter++}
+  }
+  return counter
+}
