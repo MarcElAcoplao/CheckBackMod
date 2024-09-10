@@ -1,3 +1,8 @@
+v1.0.0.1 Tiny fixes
+-Changed the text from 3 red butterflies to 2 "it was nerfed everywhere else but not in the upgrade costs"
+-Added a little "disclaimer" on one hint as you might have unlocked something else, and since the help tips are based on total unlocks... Maybe I rewrite that section later
+-Changed the upgrade 24 from 23 maxed upgrades to 22. Since seems like some people get stuck on one specific pet (ehem red butterflies), this little margin might make the new content more accessible
+
 v1.0 CHECK BACK'S OFFICIAL RELEASE! - 08/09/24 
 -First of all, this has become the official version for Check Back. No need to call it Check Back Mod anymore.
 -All the references towards a feature coming soon... it's here! Upgrade 24 is now available and it's not really that hard to obtain.

@@ -4,7 +4,19 @@ Rebalance concept ideas:
   -Buttons will increase in amount but also cooldown [like the normal xp buttons]
   -The upgrade that makes them not reset xp will be converted to a boost to it
   -For obvious reasons, the amount given at start will be nerfed
-
+-XP buttons scaling
+Button 1 - 1 xp // 1min --> 1 xp // 1min
+Button 2 - 2 xp // 5min --> 2 xp // 5min
+Button 3 - 5 xp // 30min --> 3 xp // 10min
+Button 4 - 10 xp // 2h --> 5 xp // 20min
+Button 5 - 25 xp // 12h --> 10 xp // 1h
+Button 6 - 50 xp // 2d --> 20 xp // 4h
+Button 7 - 250 xp // 7d --> 50 xp // 12h
+Button 8 - 100 xp // 1d --> 100 xp // 1d
+Button 9 - 33 xp // 6h --> 250 xp // 3d
+Button 10 - 15 xp // 1h --> 500 xp // 7d
+-Fighting buff: After a fight ends, enemy stats get doubled [so like, if you have x4 the stats of the strongest enemy, you could kill it 3 times in a row]
+  -Loot could also get multiplied by the stat increases [maybe at a lower rate, like ^2 stats and ^1.5 rewards]
 
 v1.1 Concept ideas:
 A frozen themed crate unlocked at level 500m

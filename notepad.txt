@@ -51,3 +51,14 @@ Button 14 - 5 Stats // 1h [1 Stat: 1HP 0.1DMG 0.01DEF]
 Button 15 - 20 Stats // 6h [1 Stat: 1HP 0.1DMG 0.01DEF]
 Button 16 - 50 Stats // 12h
 Button 17 - 120 Stats // 1d
+
+Button 1 - 1 xp // 1min
+Button 2 - 2 xp // 5min
+Button 3 - 5 xp // 30min
+Button 4 - 10 xp // 2h
+Button 5 - 25 xp // 12h
+Button 6 - 50 xp // 2d
+Button 7 - 250 xp // 7d
+Button 8 - 100 xp // 1d
+Button 9 - 33 xp // 6h
+Button 10 - 15 xp // 1h
