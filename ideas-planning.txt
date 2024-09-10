@@ -1,30 +1,29 @@
-Stuff I should do before the next update [update: Stuff I should do and publish before starting to work with v1.0]
+Rebalance concept ideas:
+-XPBoost is not a prestige anymore
+  -It will simply give the multiplier straight away
+  -Buttons will increase in amount but also cooldown [like the normal xp buttons]
+  -The upgrade that makes them not reset xp will be converted to a boost to it
+  -For obvious reasons, the amount given at start will be nerfed
 
--Button display should be looped [can be done using the objects]
--Add a flickering [like daily/fighting tab] for any tab [a button is ready indicator]
-   -This is almost finished, needs some stuff to be done
-   -Make sure that the fighting tab doesn't light up because of not unlocked buttons [comes with the above thing] [it's a bug that I should fix for v0.9.2.1]
+
+v1.1 Concept ideas:
+A frozen themed crate unlocked at level 500m
+It will reset all dimensions [like a dimension reset] but the amount of crates opened increases with tiers
+1d cooldown, very big stat scaling, all dimensions multiplier stat coming from pets
+Very rare pets [into the thousands] but considering that you open many crates at once [+100]
+Big amounts of pets required
+
+v1.2 Concept ideas:
+Prestige layer that resets everything
+"Times prestiged" Milestone system for boosts/qol (Starts with x2 to XP, XPBoost, loot, stats and dimensions)
+Some sort of upgrade tiers like "Starts with pet (x) on reset" "Starts with upgrades (x-y) bought"
+Early progression will be based on speeding up everything as much as possible
 
 
-XP Sacrifice feature
-Unlock: Some high level (Maybe 1m)
-Use: Sacrifices all your xp in exchange of a good amount of XPBoost. Lost XP stat multiplies dimensions.
-Requirement to use: Your level
-
-Boss fight ideas:
--Unlockable with an upgrade [~tier 15 and level 1m]
--High stats, hp saves between fights and each kill makes it stronger
--Grants an all dimensions multiplier which increases with every kill
-
-Lantern boosts:
-x10 XP gain
-x10 XP boost gain
-x100 Daily XP
-x2 All Dimension multi
----------------------------------------------------------
 To be added ideas:
 -Push notifications when a button is ready [should take a look into it + settings]
 
-Future reference:
+---------------------------------------------------------
+Future reference for future features:
 
 for (let i=0;i<game.pets.length;i++) {if (game.pets[i] is in some form) game.pets[i] = 0}
