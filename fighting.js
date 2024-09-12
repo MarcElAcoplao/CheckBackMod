@@ -186,7 +186,7 @@ function openCloseEnemiesTab() {
      setTimeout(() => {
       if (game.enemyHP <= 0) {fightRewards(enemies[enemiesChosen][4],y=fightNumber)}
      else if (game.currentHP <= 0) {
-      alert("You died... and you stop fighting. Remaining enemy hp: " + numberShort(game.enemyHP))
+      alert("You died... and you stop fighting. Remaining enemy hp: " + numberShortAlert(game.enemyHP))
       claimRewards()
     }
      else if (game.DMG < enemies[enemiesChosen][3]) {

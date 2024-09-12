@@ -71,7 +71,7 @@
        itemChosen = x
        alert("Bought " + items[x][0])
      }
-     else {alert("Not enough items; " + numberShort(game.coins) + "/50 coins, " + game.pets[1] + "/20 Green butterflies")
+     else {alert("Not enough items; " + numberShortAlert(game.coins) + "/50 coins, " + game.pets[1] + "/20 Green butterflies")
     itemChosen = 0}
     }
   if (x==2) {
@@ -81,7 +81,7 @@
        itemChosen = x
        alert("Bought " + items[x][0])
       }
-     else {alert("Not enough items; " + numberShort(game.coins) + "/100 coins, " + game.pets[10] + "/5 Gargoyles")
+     else {alert("Not enough items; " + numberShortAlert(game.coins) + "/100 coins, " + game.pets[10] + "/5 Gargoyles")
      itemChosen = 0}
      }
   if (x==3) {
@@ -91,7 +91,7 @@
        itemChosen = x
        alert("Bought " + items[x][0])
       }
-     else {alert("Not enough items; " + numberShort(game.coins) + "/150 coins, " + game.pets[43] + "/1 Golden butterflies")
+     else {alert("Not enough items; " + numberShortAlert(game.coins) + "/150 coins, " + game.pets[43] + "/1 Golden butterflies")
      itemChosen = 0}
     }
    if (x==4) {
@@ -103,7 +103,7 @@
        itemChosen = x
        alert("Bought " + items[x][0])
       }
-    else {alert("Not enough items; " + numberShort(game.coins) + "/200 coins, " + game.pets[3] + "/20 Rats, " + game.pets[18] + "/5 Cats, " + game.pets[24] + "/5 Shiny rats")
+    else {alert("Not enough items; " + numberShortAlert(game.coins) + "/200 coins, " + game.pets[3] + "/20 Rats, " + game.pets[18] + "/5 Cats, " + game.pets[24] + "/5 Shiny rats")
     itemChosen = 0}
    }
    if (x==5) {
@@ -114,7 +114,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/250 coins, " + game.pets[5] + "/10 Glowing spiders, " + game.pets[16] + "/3 Living roses")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/250 coins, " + game.pets[5] + "/10 Glowing spiders, " + game.pets[16] + "/3 Living roses")
    itemChosen = 0}
   }
   if (x==6) {
@@ -123,7 +123,7 @@
        itemChosen = x
        alert("Unlocked a new area")
       }
-     else {alert("Not enough items; " + numberShort(game.coins) + "/500 coins, " + game.enemies[5] + "/1 Armored humans beaten")
+     else {alert("Not enough items; " + numberShortAlert(game.coins) + "/500 coins, " + game.enemies[5] + "/1 Armored humans beaten")
      itemChosen = 0}
     }
   if (x==7) {
@@ -134,7 +134,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/500 coins, " + game.pets[41] + "/5 Eyeloons, " + game.pets[42] + "/3 Glowing jellyfishes")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/500 coins, " + game.pets[41] + "/5 Eyeloons, " + game.pets[42] + "/3 Glowing jellyfishes")
    itemChosen = 0}
   }
   if (x==8) {
@@ -145,7 +145,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/500 coins, " + game.pets[4] + "/20 Purple butterflies, " + game.pets[23] + "/7 Blue butterflies")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/500 coins, " + game.pets[4] + "/20 Purple butterflies, " + game.pets[23] + "/7 Blue butterflies")
    itemChosen = 0}
   }
   if (x==9) {
@@ -156,7 +156,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/750 coins, " + game.pets[14] + "/15 Large tortoises, " + game.pets[25] + "/5 Earth snakes")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/750 coins, " + game.pets[14] + "/15 Large tortoises, " + game.pets[25] + "/5 Earth snakes")
    itemChosen = 0}
   }
   if (x==10) {
@@ -165,7 +165,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/250 coins, " + game.pets[6] + "/1 Green dragon")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/250 coins, " + game.pets[6] + "/1 Green dragon")
    itemChosen = 0}
   }
   if (x==11) {
@@ -176,7 +176,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/1000 coins, " + game.pets[33] + "/5 Poisonous eyeballs, " + game.pets[29] + "/1 Spirit")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/1000 coins, " + game.pets[33] + "/5 Poisonous eyeballs, " + game.pets[29] + "/1 Spirit")
    itemChosen = 0}
   }
   if (x==12) {
@@ -189,7 +189,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/2000 coins, " + numberShort(game.XPBoost) + "/201 XPboost, " + game.pets[9] + "/20 Eldritch eyeballs, " + game.pets[32] + "/10 Red slimes, " + game.pets[48] + "/3 Small skeletons")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/2000 coins, " + numberShortAlert(game.XPBoost) + "/201 XPboost, " + game.pets[9] + "/20 Eldritch eyeballs, " + game.pets[32] + "/10 Red slimes, " + game.pets[48] + "/3 Small skeletons")
    itemChosen = 0}
   }
   if (x==13) {
@@ -201,7 +201,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/1500 coins, " + game.pets[1] + "/50 Green butterflies, " + game.pets[12] + "/2 Red butterflies, " + game.pets[43] + "/1 Golden butterfly")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/1500 coins, " + game.pets[1] + "/50 Green butterflies, " + game.pets[12] + "/2 Red butterflies, " + game.pets[43] + "/1 Golden butterfly")
    itemChosen = 0}
   }
   if (x==14) {
@@ -213,7 +213,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/1750 coins, " + game.pets[17] + "/5 Ice golems, " + game.pets[35] + "/5 Living trees, " + game.pets[19] + "/2 Vortex monsters")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/1750 coins, " + game.pets[17] + "/5 Ice golems, " + game.pets[35] + "/5 Living trees, " + game.pets[19] + "/2 Vortex monsters")
    itemChosen = 0}
   }
   if (x==15) {
@@ -225,7 +225,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/2000 coins, " + game.pets[40] + "/25 Small elfs, " + game.enemies[1] + "/10 Small humanoids beaten, " + game.enemies[4] + "/2 Nordic grandfathers beaten")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/2000 coins, " + game.pets[40] + "/25 Small elfs, " + game.enemies[1] + "/10 Small humanoids beaten, " + game.enemies[4] + "/2 Nordic grandfathers beaten")
    itemChosen = 0}
   }
   if (x==16) {
@@ -237,7 +237,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/1750 coins, " + game.pets[2] + "/75 Green lizards, " + game.pets[7] + "/30 Snakes, " + game.pets[15] + "/10 Mutant tarantulas")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/1750 coins, " + game.pets[2] + "/75 Green lizards, " + game.pets[7] + "/30 Snakes, " + game.pets[15] + "/10 Mutant tarantulas")
    itemChosen = 0}
   }
   if (x==17) {
@@ -249,7 +249,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/2500 coins, " + game.pets[8] + "/20 Giant fireflies, " + game.pets[36] + "/1 Fire spectral, " + game.pets[28] + "/1 Lilypad")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/2500 coins, " + game.pets[8] + "/20 Giant fireflies, " + game.pets[36] + "/1 Fire spectral, " + game.pets[28] + "/1 Lilypad")
    itemChosen = 0}
   }
   if (x==18) {
@@ -261,7 +261,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/5000 coins, " + game.pets[56] + "/5 Ghost rodents, " + game.pets[49] + "/3 Skeletal dogs, " + game.pets[37] + "/1 Purple star")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/5000 coins, " + game.pets[56] + "/5 Ghost rodents, " + game.pets[49] + "/3 Skeletal dogs, " + game.pets[37] + "/1 Purple star")
    itemChosen = 0}
   }
   if (x==19) {
@@ -274,7 +274,7 @@
       itemChosen = x
       alert("Bought " + items[x][0])
      }
-   else {alert("Not enough items; " + numberShort(game.coins) + "/15000 coins, " + game.pets[64] + "/3 Infected spiders, " + game.pets[65] + "/1 Red snake")
+   else {alert("Not enough items; " + numberShortAlert(game.coins) + "/15000 coins, " + game.pets[64] + "/3 Infected spiders, " + game.pets[65] + "/1 Red snake")
    itemChosen = 0}
   }
 }
@@ -288,7 +288,7 @@ if (x==20) {
     itemChosen = x
     alert("Bought " + items[x][0])
    }
- else {alert("Not enough items; " + numberShort(game.coins) + "/25000 coins, " + game.enemies[6] + "/3 Stone boys beaten, " + game.enemies[9] + "/1 Magma boy beaten")
+ else {alert("Not enough items; " + numberShortAlert(game.coins) + "/25000 coins, " + game.enemies[6] + "/3 Stone boys beaten, " + game.enemies[9] + "/1 Magma boy beaten")
  itemChosen = 0}
  }
 }
@@ -302,7 +302,7 @@ if (x==21) {
     itemChosen = x
     alert("Bought " + items[x][0])
    }
- else {alert("Not enough items; " + numberShort(game.coins) + "/30000 coins, " + game.pets[44] + "/3 2-Headed snakes, " + game.pets[66] + "/1 Dimensional eye")
+ else {alert("Not enough items; " + numberShortAlert(game.coins) + "/30000 coins, " + game.pets[44] + "/3 2-Headed snakes, " + game.pets[66] + "/1 Dimensional eye")
  itemChosen = 0}
  }
 }
@@ -316,7 +316,7 @@ if (x==22) {
     itemChosen = x
     alert("Bought " + items[x][0])
    }
- else {alert("Not enough items; " + numberShort(game.coins) + "/50000 coins, " + game.pets[11] + "/10 Glowing eyeballs, " + game.pets[26] + "/5 Salamanders, " + numberShort(game.highestLevel) + "/75k Highest level")
+ else {alert("Not enough items; " + numberShortAlert(game.coins) + "/50000 coins, " + game.pets[11] + "/10 Glowing eyeballs, " + game.pets[26] + "/5 Salamanders, " + numberShort(game.highestLevel) + "/75k Highest level")
  itemChosen = 0}
  }
 }
@@ -330,7 +330,7 @@ if (x==23) {
     itemChosen = x
     alert("Bought " + items[x][0])
    }
- else {alert("Not enough items; " + numberShort(game.coins) + "/75000 coins, " + game.pets[34] + "/10 Eyeball spiders, " + game.pets[27] + "/3 Dark snakes, " + numberShort(game.highestLevel) + "/100k Highest level")
+ else {alert("Not enough items; " + numberShortAlert(game.coins) + "/75000 coins, " + game.pets[34] + "/10 Eyeball spiders, " + game.pets[27] + "/3 Dark snakes, " + numberShort(game.highestLevel) + "/100k Highest level")
  itemChosen = 0}
  }
 }
@@ -342,7 +342,7 @@ if (x==24) {
     alert("Bought " + items[x][0])
     itemChosen = x
    }
- else {alert("Not enough items; " + numberShort(game.coins) + "/250k coins, " + pets[game.selectedPet][1] + "/747 XP multi from pets, " + upgrade24requirement() + "/22 Upgrades maxed, " + numberShort(game.highestLevel) + "/250k Highest level")
+ else {alert("Not enough items; " + numberShortAlert(game.coins) + "/250k coins, " + pets[game.selectedPet][1] + "/747 XP multi from pets, " + upgrade24requirement() + "/22 Upgrades maxed, " + numberShort(game.highestLevel) + "/250k Highest level")
  itemChosen = 0}
  }
 }
@@ -428,7 +428,7 @@ if (x==31) {
     alert("Bought " + items[x][0])
     itemChosen = x
    }
- else {alert("Not enough items; " + numberShort(game.level) + "/500k levels, " + game.pets[13] + "/1 Blue dragon, " + game.pets[66] + "/5 Dimensional eyes, " + game.items[25] + "/1 Dimensional reset #1")
+ else {alert("Not enough items; " + numberShortAlert(game.level) + "/500k levels, " + game.pets[13] + "/1 Blue dragon, " + game.pets[66] + "/5 Dimensional eyes, " + game.items[25] + "/1 Dimensional reset #1")
  itemChosen = 0}
  }
 }
@@ -443,7 +443,7 @@ if (x==32) {
     alert("Bought " + items[x][0])
     itemChosen = x
    }
- else {alert("Not enough items; " + numberShort(game.coins) + "/500k coins, " + game.enemies[9] + "/10 Magma boys beaten, " + game.pets[36] + "/40 Fire spectrals, " + game.pets[45] + "/3 Fire lords, " + game.items[26] + "/1 Dimensional reset #2")
+ else {alert("Not enough items; " + numberShortAlert(game.coins) + "/500k coins, " + game.enemies[9] + "/10 Magma boys beaten, " + game.pets[36] + "/40 Fire spectrals, " + game.pets[45] + "/3 Fire lords, " + game.items[26] + "/1 Dimensional reset #2")
  itemChosen = 0}
  }
 }
@@ -456,7 +456,7 @@ if (x==33) {
     alert("Bought " + items[x][0])
     itemChosen = x
    }
- else {alert("Not enough items, " + numberShort(game.level) + "/2.5m levels, " + game.pets[21] + "/5 Death scorpions, " + game.pets[68] + "/5 Toxic mushrooms, " + game.items[27] + "/1 Dimensional reset #3")
+ else {alert("Not enough items, " + numberShortAlert(game.level) + "/2.5m levels, " + game.pets[21] + "/5 Death scorpions, " + game.pets[68] + "/5 Toxic mushrooms, " + game.items[27] + "/1 Dimensional reset #3")
  itemChosen = 0}
  }
 }
@@ -471,7 +471,7 @@ if (x==34) {
     alert("Bought " + items[x][0])
     itemChosen = x
    }
- else {alert("Not enough items, " + numberShort(game.coins) + "/6m coins, " + game.pets[37] + "/10 Purple stars, " + game.pets[52] + "/1 Skeletal vulture, " + game.pets[60] + "/1 Ghost dog, " + game.items[28] + "/1 Dimensional reset #4")
+ else {alert("Not enough items, " + numberShortAlert(game.coins) + "/6m coins, " + game.pets[37] + "/10 Purple stars, " + game.pets[52] + "/1 Skeletal vulture, " + game.pets[60] + "/1 Ghost dog, " + game.items[28] + "/1 Dimensional reset #4")
  itemChosen = 0}
  }
 }
@@ -486,7 +486,7 @@ if (x==35) {
     itemChosen = x
     for (i=0;i<game.buttonCooldowns.length;i++) {game.buttonCooldowns[i] = 0}
    }
- else {alert("Not enough items, " + numberShort(game.level) + "/50m levels, " + game.pets[30] + "/5 Living mushrooms, " + game.pets[38] + "/1 Holy pig, " + game.pets[69] + "/1 Universal vortex, " + game.items[29] + "/1 Dimensional reset #5")
+ else {alert("Not enough items, " + numberShortAlert(game.level) + "/50m levels, " + game.pets[30] + "/5 Living mushrooms, " + game.pets[38] + "/1 Holy pig, " + game.pets[69] + "/1 Universal vortex, " + game.items[29] + "/1 Dimensional reset #5")
  itemChosen = 0}
  }
 }
@@ -498,7 +498,7 @@ if (x==36) {
     alert("Bought " + items[x][0])
     itemChosen = x
    }
- else {alert("Not enough items, " + numberShort(game.coins) + "/50m coins, " + numberShort(game.level) + "/250m levels, " + game.petsDiscovered + "/66 Pets discovered, " + game.tier + "/40 Tiers, " + game.pets[72] + "/1 White dragons")
+ else {alert("Not enough items, " + numberShortAlert(game.coins) + "/50m coins, " + numberShortAlert(game.level) + "/250m levels, " + game.petsDiscovered + "/66 Pets discovered, " + game.tier + "/40 Tiers, " + game.pets[72] + "/1 White dragons")
  itemChosen = 0}
  }
 }

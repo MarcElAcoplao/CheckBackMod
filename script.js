@@ -572,6 +572,19 @@ else if (x <= 0) result = x
 else result = (x).toFixed(3)
 return result
 }
+function numberShortAlert(x) {
+  xCeil = Math.ceil(x)
+  exponent = Math.floor(Math.log10(xCeil))
+  result = ""
+  if (exponent >= 12) result = (xCeil / 10 ** exponent).toFixed(2) + "e" + exponent
+  else if (exponent >= 9) result = (xCeil/10 ** 9).toFixed(1) + " B"
+  else if (exponent >= 6) result = (xCeil/10 ** 6).toFixed(1) + " M"
+  else if (exponent >= 3) result = (xCeil/10 ** 3).toFixed(1) + " K"
+  else if (x >= 1) result = (x).toFixed(2)
+  else if (x <= 0) result = x
+  else result = (x).toFixed(3)
+  return result
+  }
 
 function levelShort(x) {
   xCeil = Math.ceil(x)
