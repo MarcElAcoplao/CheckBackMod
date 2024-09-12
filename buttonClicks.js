@@ -1,15 +1,17 @@
 const XPButtons = [ //The stats of every single xp button
   {name: "Test", xp: 0, cooldown: 0, cooldownID: 0, unlock: 0},
   {name: "XPbutton1", xp: 1, cooldown: 60, cooldownID: 0, unlock: 0},
-  {name: "XPbutton2", xp: 2, cooldown: 300, cooldownID: 1, unlock: 1},
-  {name: "XPbutton3", xp: 5, cooldown: 1800, cooldownID: 2, unlock: 2},
-  {name: "XPbutton4", xp: 10, cooldown: 7200, cooldownID: 3, unlock: 3},
-  {name: "XPbutton5", xp: 25, cooldown: 43200, cooldownID: 4, unlock: 5},
-  {name: "XPbutton6", xp: 50, cooldown: 172800, cooldownID: 5, unlock: 10},
-  {name: "XPbutton7", xp: 250, cooldown: 604800, cooldownID: 11, unlock: 12},
-  {name: "XPbutton8", xp: 100, cooldown: 86400, cooldownID: 14, unlock: 15},
-  {name: "XPbutton9", xp: 33, cooldown: 21600, cooldownID: 16, unlock: 17},
-  {name: "XPbutton10", xp: 15, cooldown: 3600, cooldownID: 17, unlock: 18},
+  {name: "XPbutton2", xp: 2, cooldown: 120, cooldownID: 1, unlock: 1},
+  {name: "XPbutton3", xp: 3, cooldown: 300, cooldownID: 2, unlock: 2},
+  {name: "XPbutton4", xp: 5, cooldown: 600, cooldownID: 3, unlock: 3},
+  {name: "XPbutton5", xp: 10, cooldown: 1800, cooldownID: 4, unlock: 4},
+  {name: "XPbutton6", xp: 20, cooldown: 3600, cooldownID: 5, unlock: 5},
+  {name: "XPbutton7", xp: 50, cooldown: 10800, cooldownID: 11, unlock: 8},
+  {name: "XPbutton8", xp: 100, cooldown: 21600, cooldownID: 14, unlock: 10},
+  {name: "XPbutton9", xp: 150, cooldown: 43200, cooldownID: 16, unlock: 12},
+  {name: "XPbutton10", xp: 250, cooldown: 86400, cooldownID: 17, unlock: 15},
+  {name: "XPbutton11", xp: 500, cooldown: 259200, cooldownID: 39, unlock: 17},
+  {name: "XPbutton12", xp: 1000, cooldown: 604800, cooldownID: 40, unlock: 18},
 ]
 
 //The code for any of the xp buttons
@@ -23,33 +25,22 @@ function clickButton(x) {
   }
 
 const XPBoostButtons = [ //Stats of the xpboost buttons
-  {name: "Test", level: 0, xpboost: 0, cooldown: 60, cooldownID: 0, unlock: 0},
-  {name: "XPBbutton1", level: 100, xpboost: 0.2, cooldown: 3600, cooldownID: 12, unlock: 13},
-  {name: "XPBbutton2", level: 200, xpboost: 1, cooldown: 3600, cooldownID: 15, unlock: 16},
-  {name: "XPBbutton3", level: 400, xpboost: 4, cooldown: 3600, cooldownID: 19, unlock: 20},
+  {name: "Test", xpboost: 0, cooldown: 60, cooldownID: 0, unlock: 0},
+  {name: "XPBbutton1", xpboost: 0.01, cooldown: 3600, cooldownID: 12, unlock: 13},
+  {name: "XPBbutton2", xpboost: 0.02, cooldown: 7200, cooldownID: 15, unlock: 15},
+  {name: "XPBbutton3", xpboost: 0.03, cooldown: 21600, cooldownID: 19, unlock: 16},
+  {name: "XPBbutton4", xpboost: 0.05, cooldown: 43200, cooldownID: 41, unlock: 18},
+  {name: "XPBbutton5", xpboost: 0.1, cooldown: 86400, cooldownID: 42, unlock: 20},
 ]
 
   function click2Button(x) { //Will work for any of them individually
-  if (game.XP >= levelToXP(XPBoostButtons[x].level) && game.buttonCooldowns[XPBoostButtons[x].cooldownID] == 0) { //Checks if the button is ready and got enough XP
-      if (game.items[12] == 1) { //Depends if you have the "xpboost buttons substract xp rather than resetting them"
-        game.lostXP += levelToXP(XPBoostButtons[x].level)
-        game.XP -= levelToXP(XPBoostButtons[x].level)
-        game.XPBoost += XPBoostButtons[x].xpboost * pets[game.selectedPet][4] * game.itemXPBoost
-        game.buttonCooldowns[XPBoostButtons[x].cooldownID] = XPBoostButtons[x].cooldown / (game.itemCooldown * game.tierCooldown) //1h
-      }
-      else {
-        game.lostXP += game.XP
-        game.XP = 0
-        game.XPBoost += XPBoostButtons[x].xpboost * pets[game.selectedPet][4] * game.itemXPBoost
-        game.buttonCooldowns[XPBoostButtons[x].cooldownID] = XPBoostButtons[x].cooldown / (game.itemCooldown * game.tierCooldown) //1h
-      }
+  if (game.buttonCooldowns[XPBoostButtons[x].cooldownID] == 0) { //Checks if the button is ready and got enough XP
+      game.XPBoost += XPBoostButtons[x].xpboost * pets[game.selectedPet][4] * game.itemXPBoost
+      game.buttonCooldowns[XPBoostButtons[x].cooldownID] = XPBoostButtons[x].cooldown / (game.itemCooldown * game.tierCooldown) //1h
       game.buttonClicks += 1
     }
-      else {
-        alert("Button not ready or below level of unlock")
-      }
-      updateSmall()
-    }
+    updateSmall()
+  }
   
 const StatButtons = [
   {name: "Test", stats: 0, cooldown: 60, cooldownID: 0, unlock: 0},

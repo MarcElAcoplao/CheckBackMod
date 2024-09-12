@@ -119,6 +119,7 @@ function openCloseEnemiesTab() {
 
   function startFight(x) {
     totalWeight = 0
+    fightNumber = x
     if (x==1) {
       for (i=0;i<starterEnemiesChances.length;i++) totalWeight += starterEnemiesChances[i][1]
       for (i=0;i<starterEnemiesChances.length;i++) {
@@ -168,22 +169,31 @@ function openCloseEnemiesTab() {
     }
     else {
     if (document.getElementById("dailyMessagesDiv").style.display == "block") {openCloseMessages(0)}
-    openCloseMessages(2)
-    game.currentHP = game.HP
-    game.enemyHP = enemies[enemiesChosen][1]
-    attack()
+    setTimeout(() => {
+      openCloseMessages(2)
+      game.currentHP = game.HP
+      game.enemyHP = enemies[enemiesChosen][1] * 2 ** game.ConsecutiveKills
+      attack(fightNumber)
+    }, 10)
     }
   }
 
-  function attack() {
-    game.enemyHP -= game.DMG - enemies[enemiesChosen][3]
-     game.currentHP -= enemies[enemiesChosen][2] - game.DEF
+  function attack(x) {
+     console.log(fightNumber)
+     game.enemyHP -= game.DMG - (enemies[enemiesChosen][3] * 2 ** game.ConsecutiveKills)
+     game.currentHP -= (enemies[enemiesChosen][2] * 2 ** game.ConsecutiveKills) - game.DEF
      displayStats()
      setTimeout(() => {
-      if (game.enemyHP <= 0) {fightRewards(enemies[enemiesChosen][4])}
-     else if (game.currentHP <= 0) {alert("You died... and nothing happens. Remaining enemy hp: " + numberShort(game.enemyHP))}
-     else if (game.DMG < enemies[enemiesChosen][3]) {alert("Can't deal damage to the enemy, fight ends here")}
-     else attack()
+      if (game.enemyHP <= 0) {fightRewards(enemies[enemiesChosen][4],y=fightNumber)}
+     else if (game.currentHP <= 0) {
+      alert("You died... and you stop fighting. Remaining enemy hp: " + numberShort(game.enemyHP))
+      claimRewards()
+    }
+     else if (game.DMG < enemies[enemiesChosen][3]) {
+      alert("Can't deal damage to the enemy, fight ends here")
+      claimRewards()
+    }
+     else attack(fightNumber)
      }, 100) //100ms delay
   }
 
@@ -212,47 +222,50 @@ function openCloseEnemiesTab() {
      game.enemiesDefeated += 1
   }
 
-  function fightRewards(x) {
+  function fightRewards(x,y) {
+    console.log(x + "//" + y)
      if (x==1) {
-      document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(200 * enemies[enemiesChosen][1] * game.itemLoot) + " XP"
-      document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(1 * enemies[enemiesChosen][2] * game.itemLoot) + " Coins"
-      document.getElementsByClassName("dropBox")[2].innerHTML = ""
-      game.XP += 200 * enemies[enemiesChosen][1] * game.itemLoot
-      game.coins += 1 * enemies[enemiesChosen][2] * game.itemLoot
+      game.XPCounter += 200 * enemies[enemiesChosen][1] * game.itemLoot * 1.5 ** game.ConsecutiveKills
+      game.CoinsCounter += 1 * enemies[enemiesChosen][2] * game.itemLoot * 1.5 ** game.ConsecutiveKills
      }
      if (x==2) {
-      document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(500 * enemies[enemiesChosen][1] * game.itemLoot) + " XP"
-      document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(2 * enemies[enemiesChosen][2] * game.itemLoot) + " Coins"
-      document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(0.1 * enemies[enemiesChosen][3] * game.itemLoot) + " XPBoost"
-      game.XP += 500 * enemies[enemiesChosen][1] * game.itemLoot
-      game.coins += 2 * enemies[enemiesChosen][2] * game.itemLoot
-      game.XPBoost += 0.1 * enemies[enemiesChosen][3] * game.itemLoot
+      game.XPCounter += 500 * enemies[enemiesChosen][1] * game.itemLoot * 1.5 ** game.ConsecutiveKills
+      game.CoinsCounter += 2 * enemies[enemiesChosen][2] * game.itemLoot * 1.5 ** game.ConsecutiveKills
+      game.XPBoostCounter += 0.01 * enemies[enemiesChosen][3] * game.itemLoot * 1.5 ** game.ConsecutiveKills
      }
      if (x==3) {
-      document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(550 * enemies[enemiesChosen][1] * game.itemLoot) + " XP"
-      document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(5 * enemies[enemiesChosen][2] * game.itemLoot) + " Coins"
-      document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(0.15 * enemies[enemiesChosen][3] * game.itemLoot) + " XPBoost"
-      game.XP += 550 * enemies[enemiesChosen][1] * game.itemLoot
-      game.coins += 5 * enemies[enemiesChosen][2] * game.itemLoot
-      game.XPBoost += 0.15 * enemies[enemiesChosen][3] * game.itemLoot
+      game.XPCounter += 550 * enemies[enemiesChosen][1] * game.itemLoot * 1.5 ** game.ConsecutiveKills
+      game.CoinsCounter += 5 * enemies[enemiesChosen][2] * game.itemLoot * 1.5 ** game.ConsecutiveKills
+      game.XPBoostCounter += 0.015 * enemies[enemiesChosen][3] * game.itemLoot * 1.5 ** game.ConsecutiveKills
      }
      if (x==4) {
-      document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(750 * enemies[enemiesChosen][1] * game.itemLoot) + " XP"
-      document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(10 * enemies[enemiesChosen][2] * game.itemLoot) + " Coins"
-      document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(0.2 * enemies[enemiesChosen][3] * game.itemLoot) + " XPBoost"
-      game.XP += 750 * enemies[enemiesChosen][1] * game.itemLoot
-      game.coins += 10 * enemies[enemiesChosen][2] * game.itemLoot
-      game.XPBoost += 0.2 * enemies[enemiesChosen][3] * game.itemLoot
+      game.XPCounter += 750 * enemies[enemiesChosen][1] * game.itemLoot * 1.5 ** game.ConsecutiveKills
+      game.CoinsCounter += 10 * enemies[enemiesChosen][2] * game.itemLoot * 1.5 ** game.ConsecutiveKills
+      game.XPBoostCounter += 0.02 * enemies[enemiesChosen][3] * game.itemLoot * 1.5 ** game.ConsecutiveKills
      }
      if (x==5) {
-      document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(1000 * enemies[enemiesChosen][1] * game.itemLoot) + " XP"
-      document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(2 * enemies[enemiesChosen][2] * game.itemLoot) + " Coins"
-      document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(0.15 * enemies[enemiesChosen][3] * game.itemLoot) + " XPBoost"
-      game.XP += 1000 * enemies[enemiesChosen][1] * game.itemLoot
-      game.coins += 2 * enemies[enemiesChosen][2] * game.itemLoot
-      game.XPBoost += 0.15 * enemies[enemiesChosen][3] * game.itemLoot
+      game.XPCounter += 1000 * enemies[enemiesChosen][1] * game.itemLoot * 1.5 ** game.ConsecutiveKills
+      game.CoinsCounter += 2 * enemies[enemiesChosen][2] * game.itemLoot * 1.5 ** game.ConsecutiveKills 
+      game.XPBoostCounter += 0.015 * enemies[enemiesChosen][3] * game.itemLoot* 1.5 ** game.ConsecutiveKills
      }
      if (!game.enemies[enemiesChosen]) {game.enemies[enemiesChosen] = 1}
      else {game.enemies[enemiesChosen]++}
      game.enemiesDefeated += 1
+     game.ConsecutiveKills += 1
+     startFight(fightNumber)
   }
+
+   function claimRewards() {
+    console.log(game.ConsecutiveKills)
+    document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(game.XPCounter) + " XP"
+    document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(game.CoinsCounter) + " Coins"
+    if (game.XPBoostCounter > 0) {document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(game.XPBoostCounter) + " XPBoost"}
+    else {document.getElementsByClassName("dropBox")[2].innerHTML = ""}
+    game.XP += game.XPCounter
+    game.coins += game.CoinsCounter
+    game.XPBoost += game.XPBoostCounter
+    game.XPCounter = 0
+    game.CoinsCounter = 0
+    game.XPBoostCounter = 0
+    game.ConsecutiveKills = 0
+   }

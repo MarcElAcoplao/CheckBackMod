@@ -4,17 +4,46 @@ Rebalance concept ideas:
   -Buttons will increase in amount but also cooldown [like the normal xp buttons]
   -The upgrade that makes them not reset xp will be converted to a boost to it
   -For obvious reasons, the amount given at start will be nerfed
--XP buttons scaling
-Button 1 - 1 xp // 1min --> 1 xp // 1min
-Button 2 - 2 xp // 5min --> 2 xp // 5min
-Button 3 - 5 xp // 30min --> 3 xp // 10min
-Button 4 - 10 xp // 2h --> 5 xp // 20min
-Button 5 - 25 xp // 12h --> 10 xp // 1h
-Button 6 - 50 xp // 2d --> 20 xp // 4h
-Button 7 - 250 xp // 7d --> 50 xp // 12h
-Button 8 - 100 xp // 1d --> 100 xp // 1d
-Button 9 - 33 xp // 6h --> 250 xp // 3d
-Button 10 - 15 xp // 1h --> 500 xp // 7d
+
+-XPBoost buttons (Old)
+Button 1 - 0.2 XPBoost // 1h (Level 100)
+Button 2 - 1 XPBoost // 1h (Level 200)
+Button 3 - 4 XPBoost // 1h (Level 400)
+
+-XPBoost buttons (New)
+Button 1 - 0.01 XPBoost // 1h (Level 100)
+Button 2 - 0.02 XPBoost // 2h (Level 150)
+Button 3 - 0.03 XPBoost // 6h (Level 200)
+Button 4 - 0.05 XPBoost // 12h (Level 300)
+Button 5 - 0.1 XPBoost // 1d (Level 400)
+
+-XP buttons scaling (Old)
+Button 1 - 1 xp // 1min (Level 1) (1xp/min)
+Button 2 - 2 xp // 5min (Level 2) (0.4xp/min)
+Button 3 - 5 xp // 30min (Level 3) (0.166xp/min)
+Button 4 - 10 xp // 2h (Level 4) (5xp/h)
+Button 5 - 25 xp // 12h (Level 6) (2.1xp/h)
+Button 6 - 50 xp // 2d (Level 35) (25xp/d)
+Button 7 - 250 xp // 7d (Level 70) (35xp/d)
+Button 8 - 100 xp // 1d (Level 150) (100xp/d)
+Button 9 - 33 xp // 6h (Level 250) (5.5xp/h)
+Button 10 - 15 xp // 1h (Level 300) (15xp/h)
+
+-XP buttons scaling (New)
+Button 1 - 1 xp // 1min (Level 1) (1xp/min)
+Button 2 - 2 xp // 2min (Level 2) (1xp/min)
+Button 3 - 3 xp // 5min (Level 3) (0.6xp/min)
+Button 4 - 5 xp // 10min (Level 4) (0.5xp/min)
+Button 5 - 10 xp // 30min (Level 5 - Alongside the neon theme unlock) (0.33xp/min)
+Button 6 - 20 xp // 1h (Level 6) (0.33xp/min)
+Button 7 - 50 xp // 3h (Level 15 - Alongside the 3 colored themes and moves the unlock itself to level 15) (16.6xp/h)
+Button 8 - 100 xp // 6h (Level 35) (16.6xp/h)
+Button 9 - 150 xp // 12h (Level 70) (12.5xp/h)
+Button 10 - 250 xp // 1d (Level 150) (10.5xp/h)
+Button 11 - 500 xp // 3d (Level 250) (166xp/d)
+Button 12 - 1000 xp // 7d (Level 300) (140xp/d)
+
+
 -Fighting buff: After a fight ends, enemy stats get doubled [so like, if you have x4 the stats of the strongest enemy, you could kill it 3 times in a row]
   -Loot could also get multiplied by the stat increases [maybe at a lower rate, like ^2 stats and ^1.5 rewards]
 

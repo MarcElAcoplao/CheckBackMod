@@ -14,18 +14,22 @@ function displayStuff() {
    else document.getElementById("XPbutton3").style.display = "none"
   if (game.currentTab <= 1 && game.unlocks >= 3) {document.getElementById("XPbutton4").style.display = "block" }
    else document.getElementById("XPbutton4").style.display = "none"
-  if (game.currentTab <= 1 && game.unlocks >= 5) {document.getElementById("XPbutton5").style.display = "block" }
+  if (game.currentTab <= 1 && game.unlocks >= 4) {document.getElementById("XPbutton5").style.display = "block" }
    else document.getElementById("XPbutton5").style.display = "none"
-  if (game.currentTab <= 1 && game.unlocks >= 10) {document.getElementById("XPbutton6").style.display = "block" }
+  if (game.currentTab <= 1 && game.unlocks >= 5) {document.getElementById("XPbutton6").style.display = "block" }
    else document.getElementById("XPbutton6").style.display = "none"
-  if (game.currentTab <= 1 && game.unlocks >= 12) {document.getElementById("XPbutton7").style.display = "block" }
+  if (game.currentTab <= 1 && game.unlocks >= 8) {document.getElementById("XPbutton7").style.display = "block" }
    else document.getElementById("XPbutton7").style.display = "none"
-  if (game.currentTab <= 1 && game.unlocks >= 15) {document.getElementById("XPbutton8").style.display = "block" }
+  if (game.currentTab <= 1 && game.unlocks >= 10) {document.getElementById("XPbutton8").style.display = "block" }
    else document.getElementById("XPbutton8").style.display = "none"
-  if (game.currentTab <= 1 && game.unlocks >= 17) {document.getElementById("XPbutton9").style.display = "block" }
+  if (game.currentTab <= 1 && game.unlocks >= 12) {document.getElementById("XPbutton9").style.display = "block" }
    else document.getElementById("XPbutton9").style.display = "none"
-  if (game.currentTab <= 1 && game.unlocks >= 18) {document.getElementById("XPbutton10").style.display = "block" }
+  if (game.currentTab <= 1 && game.unlocks >= 15) {document.getElementById("XPbutton10").style.display = "block" }
    else document.getElementById("XPbutton10").style.display = "none"
+   if (game.currentTab <= 1 && game.unlocks >= 17) {document.getElementById("XPbutton11").style.display = "block" }
+   else document.getElementById("XPbutton11").style.display = "none"
+   if (game.currentTab <= 1 && game.unlocks >= 18) {document.getElementById("XPbutton12").style.display = "block" }
+   else document.getElementById("XPbutton12").style.display = "none"
   if (game.currentTab == 2 && game.unlocks >= 6) {document.getElementById("unboxButton1").style.display = "block" }
    else document.getElementById("unboxButton1").style.display = "none"
   if (game.currentTab == 2 && game.unlocks >= 7) {document.getElementById("unboxButton2").style.display = "block" }
@@ -42,10 +46,14 @@ function displayStuff() {
    else document.getElementById("unboxButton7").style.display = "none"
   if (game.currentTab == 3 && game.unlocks >= 13) {document.getElementById("XPBbutton1").style.display = "block" }
    else document.getElementById("XPBbutton1").style.display = "none"
-  if (game.currentTab == 3 && game.unlocks >= 16) {document.getElementById("XPBbutton2").style.display = "block" }
+  if (game.currentTab == 3 && game.unlocks >= 15) {document.getElementById("XPBbutton2").style.display = "block" }
    else document.getElementById("XPBbutton2").style.display = "none"
-  if (game.currentTab == 3 && game.unlocks >= 20) {document.getElementById("XPBbutton3").style.display = "block" }
+  if (game.currentTab == 3 && game.unlocks >= 16) {document.getElementById("XPBbutton3").style.display = "block" }
    else document.getElementById("XPBbutton3").style.display = "none"
+   if (game.currentTab == 3 && game.unlocks >= 18) {document.getElementById("XPBbutton4").style.display = "block" }
+   else document.getElementById("XPBbutton4").style.display = "none"
+   if (game.currentTab == 3 && game.unlocks >= 20) {document.getElementById("XPBbutton5").style.display = "block" }
+   else document.getElementById("XPBbutton5").style.display = "none"
   if (game.currentTab == 4 && game.unlocks >= 21) {document.getElementById("StatButton1").style.display = "block" }
    else document.getElementById("StatButton1").style.display = "none"
   if (game.currentTab == 4 && game.unlocks >= 24) {document.getElementById("StatButton2").style.display = "block" }
