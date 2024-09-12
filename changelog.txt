@@ -9,7 +9,7 @@ v1.0.1 The rebalance update part 1
     1.6.1-Crate 5 pets go from 1.01 to 1.5
     1.6.2-Crate 6 pets go from 1.05 to 3
     1.6.3-Crate 7 pets go from 1.5 to 10
-    1.6.4-The 4 upgrades that boosted XPBoost have been buffed to be +1000% (total, x11) coming from +50% (x1.5), alongside the +^0.025 to the exponent moving to +^0.05 to the "XPBoost substracts xp rather than resetting it" upgrade
+    1.6.4-The 4 upgrades that boosted XPBoost have been buffed to be +1000% (total, x11) coming from +50% (x1.5), alongside the +^0.025 to the exponent moving to +^0.05 to the "XPBoost substracts xp rather than resetting it" upgrade (which itself has been revamped completely)
 2-XP buttons have been changed too
   2.1-Progression has been made smoother, and there's no in-betweens like buttons 8-10 that had decreasing xp and cooldowns but were way better than the big ones
   2.2-Added 2 more XP buttons, alongside moved their unlocks slightly

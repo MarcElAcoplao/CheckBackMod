@@ -279,18 +279,18 @@ const enemies = [
   ["Angry humanoid", 20, 2, 0.1, 1], //1.2 (2) - 4k XP / 2 Coins
   ["Angry wife", 50, 5, 0.2, 1], //1.3 (3) - 10k XP / 5 Coins
   ["Nordic grandfather", 150, 10, 0.5, 1], //1.4 (4) - 30k XP / 10 Coins
-  ["Armored human", 500, 25, 2, 2], //1.5 (5) - 250k XP / 50 Coins / 0.2 XPBoost
-  ["Stone boy", 750, 25, 10, 3], //2.1 (6) - 412.5k XP / 125 Coins / 1.5 XPBoost
-  ["Water boy", 800, 70, 8, 3], //2.2 (7) - 440k XP / 350 Coins / 1.2 XPBoost
-  ["Nature boy", 1000, 100, 11, 3], //2.3 (8) - 550k XP / 500 Coins / 1.65 XPBoost
-  ["Magma boy", 1500, 130, 15, 3], //2.4 (9) - 825k XP / 650 Coins / 2.25 XPBoost
-  ["Water siren", 2000, 170, 20, 3], //2.5 (10) - 1.1M XP / 850 Coins / 3 XPBoost
-  ["The siren of nature", 3000, 250, 50, 4], //2.6 (11) - 2.3M XP / 2.5k Coins / 10 XPBoost
-  ["White tailed human", 2500, 250, 25, 5], //3.1 (12) - 2.5M XP / 500 Coins / 3.75 XPBoost
-  ["Orange tailed human", 5000, 500, 50, 5], //3.2 (13) - 5M XP / 1k Coins / 7.5 XPBoost
-  ["Yellow tailed human", 10000, 1000, 100, 5], //3.3 (14) - 10M XP / 2k Coins / 15 XPBoost
-  ["Green tailed human", 20000, 2000, 200, 5], //3.4 (15) - 20M XP / 4k Coins / 30 XPBoost
-  ["Evil tailed human", 50000, 5000, 500, 5], //3.5 (16) - 50M XP / 10k Coins / 75 XPBoost
+  ["Armored human", 500, 25, 2, 2], //1.5 (5) - 250k XP / 50 Coins / 0.02 XPBoost
+  ["Stone boy", 750, 25, 10, 3], //2.1 (6) - 412.5k XP / 125 Coins / 0.15 XPBoost
+  ["Water boy", 800, 70, 8, 3], //2.2 (7) - 440k XP / 350 Coins / 0.12 XPBoost
+  ["Nature boy", 1000, 100, 11, 3], //2.3 (8) - 550k XP / 500 Coins / 0.165 XPBoost
+  ["Magma boy", 1500, 130, 15, 3], //2.4 (9) - 825k XP / 650 Coins / 0.225 XPBoost
+  ["Water siren", 2000, 170, 20, 3], //2.5 (10) - 1.1M XP / 850 Coins / 0.3 XPBoost
+  ["The siren of nature", 3000, 250, 50, 4], //2.6 (11) - 2.3M XP / 2.5k Coins / 1 XPBoost
+  ["White tailed human", 2500, 250, 25, 5], //3.1 (12) - 2.5M XP / 500 Coins / 0.375 XPBoost
+  ["Orange tailed human", 5000, 500, 50, 5], //3.2 (13) - 5M XP / 1k Coins / 0.75 XPBoost
+  ["Yellow tailed human", 10000, 1000, 100, 5], //3.3 (14) - 10M XP / 2k Coins / 1.5 XPBoost
+  ["Green tailed human", 20000, 2000, 200, 5], //3.4 (15) - 20M XP / 4k Coins / 3 XPBoost
+  ["Evil tailed human", 50000, 5000, 500, 5], //3.5 (16) - 50M XP / 10k Coins / 7.5 XPBoost
   ["Awakened Beast", 100000, 20000, 0, 0], //4.1 (17) - Scales with each kill and drops are managed separatedly. 1B XP / 1k Coins / 0.1 All Dimensions multi (/90 to compensate looting boosts). Stat scaling: 2^kills. Rewards scaling: 1.5^kill / 1.5^kill / kills
   ]
 

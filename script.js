@@ -64,7 +64,7 @@ function reset() {
     bossKills: 0,
     bossMulti: 1,
     XPCounter: 0,
-    CoinCounter: 0,
+    CoinsCounter: 0,
     XPBoostCounter: 0,
     ConsecutiveKills: 0,
   }
