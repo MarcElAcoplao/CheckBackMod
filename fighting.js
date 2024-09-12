@@ -226,26 +226,26 @@ function openCloseEnemiesTab() {
     console.log(x + "//" + y)
      if (x==1) {
       game.XPCounter += 200 * enemies[enemiesChosen][1] * game.itemLoot * 1.5 ** game.ConsecutiveKills
-      game.CoinsCounter += 1 * enemies[enemiesChosen][2] * game.itemLoot * 1.5 ** game.ConsecutiveKills
+      game.CoinsCounter += 1 * enemies[enemiesChosen][2] * game.itemLoot * (1.5 - 0.5) ** game.ConsecutiveKills
      }
      if (x==2) {
       game.XPCounter += 500 * enemies[enemiesChosen][1] * game.itemLoot * 1.5 ** game.ConsecutiveKills
-      game.CoinsCounter += 2 * enemies[enemiesChosen][2] * game.itemLoot * 1.5 ** game.ConsecutiveKills
+      game.CoinsCounter += 2 * enemies[enemiesChosen][2] * game.itemLoot * (1.5 - 0.5) ** game.ConsecutiveKills
       game.XPBoostCounter += 0.01 * enemies[enemiesChosen][3] * game.itemLoot * 1.5 ** game.ConsecutiveKills
      }
      if (x==3) {
       game.XPCounter += 550 * enemies[enemiesChosen][1] * game.itemLoot * 1.5 ** game.ConsecutiveKills
-      game.CoinsCounter += 5 * enemies[enemiesChosen][2] * game.itemLoot * 1.5 ** game.ConsecutiveKills
+      game.CoinsCounter += 5 * enemies[enemiesChosen][2] * game.itemLoot * (1.5 - 0.5) ** game.ConsecutiveKills
       game.XPBoostCounter += 0.015 * enemies[enemiesChosen][3] * game.itemLoot * 1.5 ** game.ConsecutiveKills
      }
      if (x==4) {
       game.XPCounter += 750 * enemies[enemiesChosen][1] * game.itemLoot * 1.5 ** game.ConsecutiveKills
-      game.CoinsCounter += 10 * enemies[enemiesChosen][2] * game.itemLoot * 1.5 ** game.ConsecutiveKills
+      game.CoinsCounter += 10 * enemies[enemiesChosen][2] * game.itemLoot * (1.5 - 0.5) ** game.ConsecutiveKills
       game.XPBoostCounter += 0.02 * enemies[enemiesChosen][3] * game.itemLoot * 1.5 ** game.ConsecutiveKills
      }
      if (x==5) {
       game.XPCounter += 1000 * enemies[enemiesChosen][1] * game.itemLoot * 1.5 ** game.ConsecutiveKills
-      game.CoinsCounter += 2 * enemies[enemiesChosen][2] * game.itemLoot * 1.5 ** game.ConsecutiveKills 
+      game.CoinsCounter += 2 * enemies[enemiesChosen][2] * game.itemLoot * (1.5 - 0.5) ** game.ConsecutiveKills 
       game.XPBoostCounter += 0.015 * enemies[enemiesChosen][3] * game.itemLoot* 1.5 ** game.ConsecutiveKills
      }
      if (!game.enemies[enemiesChosen]) {game.enemies[enemiesChosen] = 1}

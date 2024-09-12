@@ -1,4 +1,8 @@
-v1.0.1 The rebalance update part 1
+v1.0.1.1 Silly things
+-Coins no longer scale across consecutive kills, they just additively stack (I hope so)
+-Made the fighting text clearer that it fights consecutive enemies
+
+v1.0.1 The rebalance update part 1 - 12/09/24
 1-XPBoost core concept has been changed
   1.1-It is no longer a prestige
   1.2-XPBoost buttons now scale in both rewards and time
