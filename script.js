@@ -67,6 +67,7 @@ function reset() {
     CoinsCounter: 0,
     XPBoostCounter: 0,
     ConsecutiveKills: 0,
+    crateBulk: [1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1, 1],
   }
 }
 reset()
@@ -346,7 +347,7 @@ for (let i=1;i<Dimensions.length;i++) {
   else {
     document.getElementById("unboxButton5").disabled = false
     if (game.items[35] == 1) {document.getElementById("unboxButton5").innerHTML = "Unbox a random prestige pet. Auto: " + numberToTime(game.buttonCooldowns[23])}
-    else {document.getElementById("unboxButton5").innerHTML = "Unbox a random prestige pet for 0.1 XPBoost"}
+    else {document.getElementById("unboxButton5").innerHTML = "Unbox a random prestige pet for 0.05 XPBoost"}
   }
   if (game.buttonCooldowns[18] > 0) {
     document.getElementById("unboxButton6").disabled = true
@@ -355,7 +356,7 @@ for (let i=1;i<Dimensions.length;i++) {
   else {
     document.getElementById("unboxButton6").disabled = false
     if (game.items[35] == 1) {document.getElementById("unboxButton6").innerHTML = "Unbox a random transcendant pet. Auto: " + numberToTime(game.buttonCooldowns[23])}
-    else {document.getElementById("unboxButton6").innerHTML = "Unbox a random transcendant pet for 0.25 XPBoost"}
+    else {document.getElementById("unboxButton6").innerHTML = "Unbox a random transcendant pet for 0.1 XPBoost"}
   }
   if (game.buttonCooldowns[20] > 0) {
     document.getElementById("StatButton1").disabled = true

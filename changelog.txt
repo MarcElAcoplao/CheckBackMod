@@ -1,3 +1,9 @@
+v1.0.1.2 More silly things
+-Reduced the cost of the 2 XPBoost crates to 0.05 and 0.1 respectively
+-Remade the bulk pets system slightly to make it easier to add new logic to them
+-The "+1" upgrade now also affects the skeleton/ghost crates, many people said that these need a buff
+-I'll probably remake the display code a little bit better JUST to make it easier to make it display the bulk amount on each crate, maybe tomorrow
+
 v1.0.1.1 Silly things
 -Coins no longer scale across consecutive kills, they just additively stack (I hope so)
 -Made the fighting text clearer that it fights consecutive enemies

@@ -68,8 +68,8 @@ function openCloseDailyRewardTab() {
     displayDailyRewards()
     if (game.dailyRewards % 2 == 1) {
       game.XP += Math.min((17.5 + game.dailyRewards * 2.5) * pets[game.selectedPet][1] * game.tierXPmulti * game.itemDailyXP * (1 + game.petsDiscovered / 100), 10000 * pets[game.selectedPet][1] * game.tierXPmulti * game.itemDailyXP * (1 + game.petsDiscovered / 100))}
-    else if (dailyRewardDay % 4 == 2) {unboxPet(1)}
-    else {unboxPet(2)}
+    else if (dailyRewardDay % 4 == 2) {unboxPet(1, game.crateBulk[1])}
+    else {unboxPet(2, game.crateBulk[2])}
   }
 
   function DailyXPmultis() {

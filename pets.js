@@ -84,18 +84,20 @@ function unboxPet(x, y=1) {
       }
   }
   if (x==7) {
-    if (game.XPBoost < 1.1) {
+    if (game.items[35] == 0) {}
+    else if (game.XPBoost < 1.05) {
       alert("XPBoost has to not drop below 1 to buy this crate") 
       petChosen = 0 
+      game.XPBoost -= 0.05
     }
-    else if (game.items[35] == 0) game.XPBoost -= 0.1
   }
   if (x==8) {
-    if (game.XPBoost < 1.25) {
+    if (game.items[35] == 0) {}
+    else if (game.XPBoost < 1.1) {
       alert("XPBoost has to not drop below 1 to buy this crate") 
       petChosen = 0 
+      game.XPBoost -= 0.1
     }
-    else if (game.items[35] == 0) game.XPBoost -= 0.25
   }
   if (x==9) {
     if (game.coins < 250) {
@@ -120,34 +122,43 @@ function unboxPet(x, y=1) {
     if (document.getElementById("petsDiv").style.display == "block") displayPets()
   
     function autoPets() {
-      y = Math.ceil(1 + game.extraPetAmount)
        if (game.items[15] >= 1) {
       if (game.buttonCooldowns[6] == 0) {
-        unboxPet(3,y=y)
+        unboxPet(3, game.crateBulk[3])
       }
       if (game.buttonCooldowns[7] == 0) {
-        unboxPet(4,y=y)
+        unboxPet(4, game.crateBulk[4])
       }
       if (game.buttonCooldowns[8] == 0) {
-        unboxPet(5,y=y)
+        unboxPet(5, game.crateBulk[5])
       }
       if (game.buttonCooldowns[10] == 0) {
-        unboxPet(6,y=y)
+        unboxPet(6, game.crateBulk[6])
       }
       if (game.buttonCooldowns[13] == 0 && game.items[35] >= 1) {
-        unboxPet(7)
+        unboxPet(7, game.crateBulk[7])
       }
       if (game.buttonCooldowns[18] == 0 && game.items[35] >= 1) {
-        unboxPet(8)
+        unboxPet(8, game.crateBulk[8])
       }
       if (game.buttonCooldowns[24] == 0 && game.items[35] >= 1) {
-        unboxPet(9)
+        unboxPet(9, game.crateBulk[9])
       }
      }
      if (game.items[35] == 0) game.buttonCooldowns[23] = 1800
      else game.buttonCooldowns[23] = 300
     }
-  
+
+  function calculateBulkAmount() {
+    game.crateBulk[1] = 1 + game.items[16]
+    game.crateBulk[2] = 1 + game.items[16]
+    game.crateBulk[3] = 1 + game.items[16]
+    game.crateBulk[4] = 1 + game.items[16]
+    game.crateBulk[5] = 1 + game.items[16]
+    game.crateBulk[6] = 1 + game.items[16]
+  }
+  setInterval(calculateBulkAmount(), 50)
+
   function displayPetRarities(x) {
     if (x==0) {document.getElementById("petRarities").innerHTML = "Crate cooldown modifiers:" + CrateMultis()}
     else if (x==3) {
