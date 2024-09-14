@@ -84,7 +84,7 @@ function unboxPet(x, y=1) {
       }
   }
   if (x==7) {
-    if (game.items[35] == 0) {}
+    if (game.items[35] > 0) {}
     else if (game.XPBoost < 1.05) {
       alert("XPBoost has to not drop below 1 to buy this crate") 
       petChosen = 0 
@@ -92,7 +92,7 @@ function unboxPet(x, y=1) {
     }
   }
   if (x==8) {
-    if (game.items[35] == 0) {}
+    if (game.items[35] > 0) {}
     else if (game.XPBoost < 1.1) {
       alert("XPBoost has to not drop below 1 to buy this crate") 
       petChosen = 0 
@@ -100,11 +100,12 @@ function unboxPet(x, y=1) {
     }
   }
   if (x==9) {
-    if (game.coins < 250) {
+    if (game.items[35] > 0) {}
+    else if (game.coins < 250) {
       alert("Not enough coins") 
       petChosen = 0 
+      game.coins -= 250
     }
-    else if (game.items[35] == 0) game.coins -= 250
   }
   if (petChosen >= 1) {
     if (game.items[10] == 0 || game.pets[petChosen] < 1) {openCloseMessages(1)}

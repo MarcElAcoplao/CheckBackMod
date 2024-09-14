@@ -21,3 +21,6 @@ To be added ideas:
 Future reference for future features:
 
 for (let i=0;i<game.pets.length;i++) {if (game.pets[i] is in some form) game.pets[i] = 0}
+---------------------------------------------------------
+Will note down things here that I experiment when playing in the new save
+
