@@ -1,3 +1,8 @@
+v1.0.1.3 Fixing the previous version
+-I messed up slightly with implementing the "+1" buff/code change that it just didn't work
+-Fixed 2-3 instances where the alert still "fails" to implement the html to avoid abreviations from going into the next line
+-Added a x1.2 xp event for everyone as a reward from reaching 1k hours in galaxy.click in a single day
+
 v1.0.1.2 More silly things
 -Reduced the cost of the 2 XPBoost crates to 0.05 and 0.1 respectively
 -Remade the bulk pets system slightly to make it easier to add new logic to them

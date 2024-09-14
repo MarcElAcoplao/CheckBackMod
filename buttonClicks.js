@@ -18,7 +18,7 @@ const XPButtons = [ //The stats of every single xp button
 function clickButton(x) {
     if (game.buttonCooldowns[XPButtons[x].cooldownID] == 0) { //Checks the proper button is off cooldown
         game.buttonClicks += 1 + game.items[31]
-        game.XP += XPButtons[x].xp * (pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti) //Assigns the xp that you have to get
+        game.XP += XPButtons[x].xp * (pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti * 1.2) //Assigns the xp that you have to get
         game.buttonCooldowns[XPButtons[x].cooldownID] = XPButtons[x].cooldown / (pets[game.selectedPet][2] * game.itemCooldown * game.tierCooldown) //Selects the cooldownID and the cooldown of the button, and sets them to one
     }
     updateSmall()

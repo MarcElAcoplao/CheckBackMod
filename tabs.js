@@ -111,7 +111,8 @@ function XPmultis() {
   if (game.XPBoostEffect > 1) {result += "x" + numberShort(game.XPBoostEffect) + " From XPBoost<br>"}
   if (game.itemXP > 1) {result += "x" + numberShort(game.itemXP) + " From items<br>"}
   if (game.tierXPmulti > 1) {result += "x" + numberShort(game.tierXPmulti) + " From your tier<br>"}
-  result += "Total: x" + numberShort((pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti)) + "<br><br> Cooldown modifiers: <br>"
+  result += "x1.2 From event<br>"
+  result += "Total: x" + numberShort((pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti * 1.2)) + "<br><br> Cooldown modifiers: <br>"
   if (game.selectedPet >= 1) {result += "/" + numberShort(pets[game.selectedPet][2]) + " From pets<br>"}
   if (game.itemCooldown > 1) {result += "/" + numberShort(game.itemCooldown) + " From items<br>"}
   if (game.tierCooldown > 1) {result += "/" + numberShort(game.tierCooldown) + " From your tier<br>"}

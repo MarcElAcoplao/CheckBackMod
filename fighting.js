@@ -203,7 +203,7 @@ function openCloseEnemiesTab() {
     displayStats()
     setTimeout(() => {
      if (game.bossHP <= 0) {killBoss()}
-     else if (game.currentHP <= 0) {alert("You died... try again later. Remaining boss hp: " + numberShort(game.bossHP))}
+     else if (game.currentHP <= 0) {alert("You died... try again later. Remaining boss hp: " + numberShortAlert(game.bossHP))}
      else attackBoss()
      }, 100) //100ms delay
   }

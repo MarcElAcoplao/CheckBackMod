@@ -342,7 +342,7 @@ if (x==24) {
     alert("Bought " + items[x][0])
     itemChosen = x
    }
- else {alert("Not enough items; " + numberShortAlert(game.coins) + "/250k coins, " + pets[game.selectedPet][1] + "/747 XP multi from pets, " + upgrade24requirement() + "/22 Upgrades maxed, " + numberShort(game.highestLevel) + "/250k Highest level")
+ else {alert("Not enough items; " + numberShortAlert(game.coins) + "/250k coins, " + pets[game.selectedPet][1] + "/747 XP multi from pets, " + upgrade24requirement() + "/22 Upgrades maxed, " + numberShortAlert(game.highestLevel) + "/250k Highest level")
  itemChosen = 0}
  }
 }

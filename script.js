@@ -265,7 +265,7 @@ for (let i=1;i<XPButtons.length;i++) {
   }
   else {
     document.getElementById(XPButtons[i].name).disabled = false
-    document.getElementById(XPButtons[i].name).innerHTML = "Gain " + numberShort((XPButtons[i].xp * pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti)) + " XP"
+    document.getElementById(XPButtons[i].name).innerHTML = "Gain " + numberShort((XPButtons[i].xp * pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti * 1.2)) + " XP"
   }
 }
 

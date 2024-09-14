@@ -157,7 +157,7 @@ function unboxPet(x, y=1) {
     game.crateBulk[5] = 1 + game.items[16]
     game.crateBulk[6] = 1 + game.items[16]
   }
-  setInterval(calculateBulkAmount(), 50)
+  setInterval(calculateBulkAmount, 50)
 
   function displayPetRarities(x) {
     if (x==0) {document.getElementById("petRarities").innerHTML = "Crate cooldown modifiers:" + CrateMultis()}
