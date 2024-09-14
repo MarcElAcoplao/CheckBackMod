@@ -162,6 +162,7 @@ function DimMultis() {
   if (game.items[30] >= 1) {result += "x2 from Dimensional Sacrifice #1<br>"}
   if (game.items[34] >= 1) {result += "x2 from Lantern of Inflation<br>"}
   if (game.items[36] >= 1) {result += "x2 from The Trophy of Time<br>"}
+  if (pets[game.selectedPet][5] > 1) {result += "x" + numberShort(pets[game.selectedPet][5]) + " from Pets<br>"}
   result += "Total: x" + numberShort(game.clickToDimension * game.enemiesToDimension * game.bossMulti * 2 ** (game.items[30] + game.items[34] + game.items[36])) + "<br><br>Button cooldown modifiers:<br>"
   if (game.items[27] >= 1) {result += "/1.5 From Dimensional Reset #3<br>"}
   if (game.items[35] >= 1) {result += "/1.5 From item 35<br>"}

@@ -4,6 +4,7 @@ It will reset all dimensions [like a dimension reset] but the amount of crates o
 1d cooldown, very big stat scaling, all dimensions multiplier stat coming from pets
 Very rare pets [into the thousands] but considering that you open many crates at once [+100]
 Big amounts of pets required
+Also some sort of rebuyable upgrades
 
 v1.2 Concept ideas:
 Prestige layer that resets everything

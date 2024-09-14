@@ -68,6 +68,7 @@ function reset() {
     XPBoostCounter: 0,
     ConsecutiveKills: 0,
     crateBulk: [1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1, 1],
+    importantUnlocks: 0,
   }
 }
 reset()
@@ -623,6 +624,10 @@ setInterval(updateXPBoost, 50)
 
 //Handles unlocks (Happens 60 times a second, could definitely be optimised!) - Demonin. Reply: I believe this is better now - Marc. Reply 2: It isn't - Marc
 function handleUnlocks() {
+  for (i=0;i<importantUnlockLevels.length;i++)
+    if (game.level >= importantUnlockLevels[i] && game.importantUnlocks < i+1) {
+      game.importantUnlocks = i+1
+    }
   for (i=0;i<unlockLevels.length;i++) {
     if (game.level >= unlockLevels[i] && game.unlocks < i+1) {
       game.unlocks = i+1
@@ -713,7 +718,7 @@ function handleUnlocks() {
   if (game.totalUnlocks == game.possibleUnlocks) {document.getElementById("nextUnlockLevel").innerHTML = "All unlocks have been achieved! Next update coming soon"}
   else if (game.unlocks == unlockLevels.length) {document.getElementById("nextUnlockLevel").innerHTML = "All XP unlocks have been achieved! But " + (game.possibleUnlocks - game.totalUnlocks) + " unlocks are missing"}
   else if (game.unlocks >= 22) {document.getElementById("nextUnlockLevel").innerHTML = "You will unlock something new at level " + numberShort(unlockLevels[game.unlocks]) + " or through shop upgrades!"}
-  else {document.getElementById("nextUnlockLevel").innerHTML = "You will unlock something new at level " + unlockLevels[game.unlocks] + "!"}
+  else {document.getElementById("nextUnlockLevel").innerHTML = "You will unlock something new at level " + unlockLevels[game.unlocks] + "!<br> New feature unlocks at level " + numberShort(importantUnlockLevels[game.importantUnlocks])}
   }
   else {
   if (game.totalUnlocks == game.possibleUnlocks) {document.getElementById("nextUnlockLevel").innerHTML = "All unlocks have been achieved! Next update coming soon"}

@@ -17,11 +17,12 @@ const Dimensions = [ //Dimension stats
 function ShardToTier(x) {return Math.floor(Math.log(x+1)/Math.log(5)) + 1}
 function TierToShard(x) {return 5 ** Math.floor(x-1) - 1}
 
-function clickDimension(x) {
+function clickDimension(x, y) {
   if (x == 1) {game.timeShards += game.dimensionAmount[x-1] * game.dimensionMulti[x-1]}
   game.dimensionAmount[x-2] += game.dimensionAmount[x-1] * game.dimensionMulti[x-1]
-  game.buttonCooldowns[Dimensions[x].cooldownID] = Dimensions[x].cooldown / game.dimensionCooldown
+  if (y < 2) {game.buttonCooldowns[Dimensions[x].cooldownID] = Dimensions[x].cooldown / game.dimensionCooldown}
   game.buttonClicks += 1
+  if (x > 1) {clickDimension(x-1, 2)}
 }
 
 function dimensionalReset(x) {
@@ -35,14 +36,14 @@ function dimensionalReset(x) {
 }
 
 function calculateDimensionMultipliers() {
- game.dimensionMulti[0] = 1 * game.clickToDimension * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[25] + game.items[26] + game.items[27] + game.items[28] + game.items[29] + game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[1] = 1 * game.clickToDimension * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[26] + game.items[27] + game.items[28] + game.items[29] + game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[2] = 1 * game.clickToDimension * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[27] + game.items[28] + game.items[29] + game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[3] = 1 * game.clickToDimension * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[28] + game.items[29] + game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[4] = 1 * game.clickToDimension * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[29] + game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[5] = 1 * game.clickToDimension * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[6] = 1 * game.clickToDimension * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[7] = 1 * game.clickToDimension * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[8] = 1 * game.clickToDimension * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[30] + game.items[34] + game.items[36])
+ game.dimensionMulti[0] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[25] + game.items[26] + game.items[27] + game.items[28] + game.items[29] + game.items[30] + game.items[34] + game.items[36])
+ game.dimensionMulti[1] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[26] + game.items[27] + game.items[28] + game.items[29] + game.items[30] + game.items[34] + game.items[36])
+ game.dimensionMulti[2] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[27] + game.items[28] + game.items[29] + game.items[30] + game.items[34] + game.items[36])
+ game.dimensionMulti[3] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[28] + game.items[29] + game.items[30] + game.items[34] + game.items[36])
+ game.dimensionMulti[4] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[29] + game.items[30] + game.items[34] + game.items[36])
+ game.dimensionMulti[5] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[30] + game.items[34] + game.items[36])
+ game.dimensionMulti[6] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[30] + game.items[34] + game.items[36])
+ game.dimensionMulti[7] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[30] + game.items[34] + game.items[36])
+ game.dimensionMulti[8] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[30] + game.items[34] + game.items[36])
 }
 setInterval(calculateDimensionMultipliers, 50)
