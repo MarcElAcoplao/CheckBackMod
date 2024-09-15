@@ -88,24 +88,24 @@ function unboxPet(x, y=1) {
     else if (game.XPBoost < 1.05) {
       alert("XPBoost has to not drop below 1 to buy this crate") 
       petChosen = 0 
-      game.XPBoost -= 0.05
     }
+    else game.XPBoost -= 0.05
   }
   if (x==8) {
     if (game.items[35] > 0) {}
     else if (game.XPBoost < 1.1) {
       alert("XPBoost has to not drop below 1 to buy this crate") 
       petChosen = 0 
-      game.XPBoost -= 0.1
     }
+    else game.XPBoost -= 0.1
   }
   if (x==9) {
     if (game.items[35] > 0) {}
     else if (game.coins < 250) {
       alert("Not enough coins") 
       petChosen = 0 
-      game.coins -= 250
     }
+    game.coins -= 250
   }
   if (petChosen >= 1) {
     if (game.items[10] == 0 || game.pets[petChosen] < 1) {openCloseMessages(1)}
@@ -270,6 +270,7 @@ function unboxPet(x, y=1) {
         else if (i<=55) petBoxes[i-1].style.border = "8px outset #bbb"
         else if (i<=63) petBoxes[i-1].style.border = "8px outset #282"
         else if (i<=74) petBoxes[i-1].style.border = "8px outset #d83"
+        else if (i<=88) petBoxes[i-1].style.border = "8px outset #8cfffb"
       }
       else {
         petBoxes[i-1].innerHTML = "<img src='img/pets/" + i + ".png' style='width: 128px; filter: brightness(0)'>"

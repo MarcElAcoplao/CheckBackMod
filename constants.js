@@ -227,6 +227,20 @@ const pets = [
   ["White dragon", 5700, 4.7, 5.1, 10, 1.7], //72 [Strongest pet, but it's gonna be a huge strike of luck to get it]
   ["Armored skeleton", 2600, 3.8, 3.8, 7.5, 1.35], //73 [Day 100+, new skeleton crate]
   ["Horrifying ghost", 4800, 4.4, 4.8, 9, 1.5], //74 [Day 100+, new ghost crate]
+  /*["Frozen spider", 4800, 4.4, 4.8, 9, 1.5], //75 Frozen pet 1
+  ["Frozen bat", 4800, 4.4, 4.8, 9, 1.5], //76 Frozen pet 2
+  ["Frozen firefly", 4800, 4.4, 4.8, 9, 1.5], //77 Frozen pet 3
+  ["Frozen spider", 4800, 4.4, 4.8, 9, 1.5], //78 Frozen pet 4
+  ["Frozen 2-headed hydra", 4800, 4.4, 4.8, 9, 1.5], //79 Frozen pet 5
+  ["Frozen ghost", 4800, 4.4, 4.8, 9, 1.5], //80 Frozen pet 6
+  ["Frozen yeti", 4800, 4.4, 4.8, 9, 1.5], //81 Frozen pet 7
+  ["Frozen 3-headed hydra", 4800, 4.4, 4.8, 9, 1.5], //82 Frozen pet 8
+  ["Frozen 4-headed hydra", 4800, 4.4, 4.8, 9, 1.5], //83 Frozen pet 9
+  ["Frozen 5-headed hydra", 4800, 4.4, 4.8, 9, 1.5], //84 Frozen pet 10
+  ["Frozen gigantic snake", 4800, 4.4, 4.8, 9, 1.5], //85 Frozen pet 11
+  ["Frozen salamander", 4800, 4.4, 4.8, 9, 1.5], //86 Frozen pet 12
+  ["Frozen dragon", 4800, 4.4, 4.8, 9, 1.5], //87 Frozen pet 13 */
+
 ]
 
 const skeletalUnboxChances = [ //will be set to 1

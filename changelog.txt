@@ -1,3 +1,7 @@
+v1.0.2.1 I'm dumb ONCE AGAIN 
+-Fixed a bug where the prestige crates would take your resources IF you don't have enough rather than when you have enough
+-Oh yea since I started working on the next content update you'll see some pets if you look into the pets folder
+
 v1.0.2 Some other rebalance changes - 14/09/2024
 -Added a link in the version number that redirects to the changelog file in github.com
 -Pet displays do not show the XPBoost stat (neither any future stat) unless they have that stat
