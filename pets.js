@@ -105,7 +105,7 @@ function unboxPet(x, y=1) {
       alert("Not enough coins") 
       petChosen = 0 
     }
-    game.coins -= 250
+    else game.coins -= 250
   }
   if (petChosen >= 1) {
     if (game.items[10] == 0 || game.pets[petChosen] < 1) {openCloseMessages(1)}
