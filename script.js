@@ -98,7 +98,7 @@ function load() {
 	reset()
 	let loadgame = JSON.parse(localStorage.getItem("checkBackSave"))
 	if (loadgame != null) {loadGame(loadgame)}
-  else {loadGame(newSavefile)}
+  else {loadGame({...newSavefile})}
   updateSmall()
 }
 
@@ -114,7 +114,8 @@ function exportGame() {
 }
 
 function importGame() {
-  loadgame = JSON.parse(atob(prompt("Input your save here:")))
+  try {
+  let loadgame = JSON.parse(atob(prompt("Input your save here:")));
   if (loadgame && loadgame != null && loadgame != "") {
     reset()
     loadGame(loadgame)
@@ -123,6 +124,9 @@ function importGame() {
   }
   else {
     alert("Invalid input.")
+  }
+  } catch (err) {
+    alert(`Issue With Uploaded Data!\n${err}`);
   }
 }
 
@@ -147,7 +151,10 @@ else {alert("Congratulations! Thanks for playing Check Back and hope you had a f
 
 function loadGame(loadgame) {
   //Sets each variable in 'game' to the equivalent variable in 'loadgame' (the saved file)
+  let dataBackup = localStorage.getItem("checkBackSave");
+  try {
   let loadKeys = Object.keys(loadgame);
+  if (loadKeys.length > 1000) loadKeys = Object.keys(fixFile(loadgame));
   for (i=0; i<loadKeys.length; i++) {
     if (loadgame[loadKeys[i]] != "undefined") {
       let thisKey = loadKeys[i];
@@ -253,6 +260,12 @@ function loadGame(loadgame) {
   tab(1)
   countPets()
   game.sessionStart = Date.now()
+  } catch (err) {
+     //catch will prevent the data loading from continuing whenever a save file is incorrectly uploaded
+     if (dataBackup !== null) localStorage.setItem("checkBackSave", dataBackup);
+     window.alert(`Save Data Issues!\n${err}`); //whatever you want to say here
+     
+  }
 }
 
 
