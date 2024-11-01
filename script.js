@@ -147,6 +147,8 @@ else {alert("Congratulations! Thanks for playing Check Back and hope you had a f
 
 function loadGame(loadgame) {
   //Sets each variable in 'game' to the equivalent variable in 'loadgame' (the saved file)
+  let dataBackup = localStorage.getItem("checkBackSave");
+  try {
   let loadKeys = Object.keys(loadgame);
   for (i=0; i<loadKeys.length; i++) {
     if (loadgame[loadKeys[i]] != "undefined") {
@@ -253,6 +255,12 @@ function loadGame(loadgame) {
   tab(1)
   countPets()
   game.sessionStart = Date.now()
+  } catch (err) {
+     //catch will prevent the data loading from continuing whenever a save file is incorrectly uploaded
+     if (dataBackup !== null) localStorage.setItem("checkBackSave", dataBackup);
+     window.alert(`Save Data Issues!\n${err}`); //whatever you want to say here
+     
+  }
 }
 
 
