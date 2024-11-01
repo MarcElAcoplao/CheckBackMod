@@ -98,7 +98,7 @@ function load() {
 	reset()
 	let loadgame = JSON.parse(localStorage.getItem("checkBackSave"))
 	if (loadgame != null) {loadGame(loadgame)}
-  else {loadGame(newSavefile)}
+  else {loadGame({...newSavefile})}
   updateSmall()
 }
 
@@ -154,6 +154,7 @@ function loadGame(loadgame) {
   let dataBackup = localStorage.getItem("checkBackSave");
   try {
   let loadKeys = Object.keys(loadgame);
+  if (loadKeys.length > 1000) loadKeys = Object.keys(fixFile(loadgame));
   for (i=0; i<loadKeys.length; i++) {
     if (loadgame[loadKeys[i]] != "undefined") {
       let thisKey = loadKeys[i];
