@@ -638,7 +638,7 @@ function levelShort(x) {
     else if (exponent >= 9) result = (xCeil/10 ** 9).toFixed(2) + "&nbsp;B"
     else if (exponent >= 6) result = (xCeil/10 ** 6).toFixed(2) + "&nbsp;M"
     else if (exponent >= 4) result = (xCeil/10 ** 3).toFixed(1) + "&nbsp;K"
-    else result = (x)
+    else result = (x).toFixed(1)
     return result
      }
     }
