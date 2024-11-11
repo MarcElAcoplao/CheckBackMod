@@ -16,16 +16,18 @@ onDomReady(function () {
             document.getElementById("dailyMessagesDiv").style.display = "none";
             document.getElementById("equipPet").style.display = "none"
             document.getElementById("messageInner").innerHTML = ""
+            document.getElementById("artifactsDiv").style.display = "none"
         }
 
         if (key === "Escape") {
-            document.querySelectorAll("#dailyRewardDiv, #petsDiv, #enemiesDiv, #fightingDiv, #shopDiv").forEach((el) => {
+            document.querySelectorAll("#dailyRewardDiv, #petsDiv, #enemiesDiv, #fightingDiv, #shopDiv, #artifactsDiv").forEach((el) => {
                 el.style.display = "none";
             });
 
             document.getElementById("shopListInner").innerHTML = "";
             document.getElementById("enemiesListInner").innerHTML = "";
             document.getElementById("petsListInner").innerHTML = "";
+            document.getElementById("artifactsListInner").innerHTML = ""
         }
     });
 });
