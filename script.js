@@ -520,7 +520,7 @@ else {
   //Sets the "XP to next level" text
   if (game.level < 1500) { //Before level 1500
   XPToNextLevel = levelToXP(game.level + 1) - levelToXP(game.level)
-  ProgressToNextLevel = (game.XP - levelToXP(game.level)).toFixed(1)
+  ProgressToNextLevel = game.XP - levelToXP(game.level)
   document.getElementById("XPBarText").innerHTML = "XP to next level: " + xpShort(ProgressToNextLevel) + "/" + xpShort(XPToNextLevel)
   document.getElementById("XPBarBack").style.width = (ProgressToNextLevel / XPToNextLevel * 100) + "%"
   }
