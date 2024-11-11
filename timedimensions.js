@@ -20,7 +20,7 @@ function TierToShard(x) {return 5 ** Math.floor(x-1) - 1}
 function clickDimension(x, y) {
   if (x == 1) {game.timeShards += game.dimensionAmount[x-1] * game.dimensionMulti[x-1]}
   game.dimensionAmount[x-2] += game.dimensionAmount[x-1] * game.dimensionMulti[x-1]
-  if (y < 2) {game.buttonCooldowns[Dimensions[x].cooldownID] = Dimensions[x].cooldown / game.dimensionCooldown}
+  if (y < 2) {game.buttonCooldowns[Dimensions[x].cooldownID] = Dimensions[x].cooldown / (game.dimensionCooldown * game.artifactsCooldown)}
   game.buttonClicks += 1
   if (x > 1) {clickDimension(x-1, 2)}
 }
@@ -30,20 +30,24 @@ function dimensionalReset(x) {
   game.dimensionUnlocks = 0
   game.dimensionAmount = [1, 1, 1, 1, 1, 1, 1, 1, 1]
   for (i=1;i<Dimensions.length;i++) game.buttonCooldowns[Dimensions[i].cooldownID] = 0
-  if (x == 1) {for (i=0;i<5;i++) game.items[i + 25] = 0}
-  if (x == 1) {for (i=0;i<5;i++) game.items[i + 31] = 0}
+  if (x == 1) {
+    for (i=0;i<5;i++) game.items[i + 25] = 0
+    for (i=0;i<5;i++) game.items[i + 31] = 0
+  }
+  if (x == 2) {game.frozenBaseBulk = 1}
   calculateDimensionMultipliers()
 }
 
 function calculateDimensionMultipliers() {
- game.dimensionMulti[0] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[25] + game.items[26] + game.items[27] + game.items[28] + game.items[29] + game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[1] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[26] + game.items[27] + game.items[28] + game.items[29] + game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[2] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[27] + game.items[28] + game.items[29] + game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[3] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[28] + game.items[29] + game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[4] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[29] + game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[5] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[6] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[7] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[30] + game.items[34] + game.items[36])
- game.dimensionMulti[8] = 1 * game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * 2 ** (game.items[30] + game.items[34] + game.items[36])
+ game.allDimensionMultipliers = game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * game.artifactsDimension * game.itemDimensions
+ game.dimensionMulti[0] = 1 * game.allDimensionMultipliers * 2 ** (game.items[25] + game.items[26] + game.items[27] + game.items[28] + game.items[29])
+ game.dimensionMulti[1] = 1 * game.allDimensionMultipliers * 2 ** (game.items[26] + game.items[27] + game.items[28] + game.items[29])
+ game.dimensionMulti[2] = 1 * game.allDimensionMultipliers * 2 ** (game.items[27] + game.items[28] + game.items[29])
+ game.dimensionMulti[3] = 1 * game.allDimensionMultipliers * 2 ** (game.items[28] + game.items[29])
+ game.dimensionMulti[4] = 1 * game.allDimensionMultipliers * 2 ** (game.items[29])
+ game.dimensionMulti[5] = 1 * game.allDimensionMultipliers * 2 ** (0)
+ game.dimensionMulti[6] = 1 * game.allDimensionMultipliers * 2 ** (0)
+ game.dimensionMulti[7] = 1 * game.allDimensionMultipliers * 2 ** (0)
+ game.dimensionMulti[8] = 1 * game.allDimensionMultipliers * 2 ** (0)
 }
 setInterval(calculateDimensionMultipliers, 50)

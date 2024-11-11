@@ -37,6 +37,7 @@
       <button class="button" id="enemiesTabButton" style="display: none" onclick="openCloseEnemiesTab()">Enemies</button>
       <button class="button" id="StatsTab" style="display: none" onclick="tab(4)">Stat Buttons</button>
       <button class="button" id="fightingTabButton" style="display: none" onclick="openCloseFightingTab()">Fighting</button>
+      <button class="button" id="artifactsTabButton" style="display: none" onclick="openCloseArtifactsTab()">Artifacts</button>
       <button class="button" id="shopTabButton" style="display: none" onclick="openCloseShopTab()">Shop</button>
       <button class="button" id="TimeTab" style="display: none" onclick="tab(5)">Time dimensions</button>
     </div>
@@ -65,6 +66,8 @@
       <button class="button" id="StatButton2" style="display: none" onclick="click3Button(2)">Gain 20 Stats</button>
       <button class="button" id="StatButton3" style="display: none" onclick="click3Button(3)">Gain 50 Stats</button>
       <button class="button" id="StatButton4" style="display: none" onclick="click3Button(4)">Gain 120 Stats</button>
+      <button class="button" id="StatButton5" style="display: none" onclick="click3Button(5)">Gain 600 Stats</button>
+      <button class="button" id="StatButton6" style="display: none" onclick="click3Button(6)">Gain 1200 Stats</button>
 
       <button class="button" id="unboxButton1" style="display: none" onclick="unboxPet(3, game.crateBulk[3])" onmouseover="displayPetRarities(3)" onmouseout="displayPetRarities(0)">Unbox a random basic pet</button>
       <button class="button" id="unboxButton2" style="display: none" onclick="unboxPet(4, game.crateBulk[4])" onmouseover="displayPetRarities(4)" onmouseout="displayPetRarities(0)">Unbox a random advanced pet</button>
@@ -73,6 +76,7 @@
       <button class="button" id="unboxButton5" style="display: none" onclick="unboxPet(7, game.crateBulk[7])" onmouseover="displayPetRarities(7)" onmouseout="displayPetRarities(0)">Unbox a random prestige pet</button>
       <button class="button" id="unboxButton6" style="display: none" onclick="unboxPet(8, game.crateBulk[8])" onmouseover="displayPetRarities(8)" onmouseout="displayPetRarities(0)">Unbox a random transcendant pet</button>
       <button class="button" id="unboxButton7" style="display: none" onclick="unboxPet(9, game.crateBulk[9])" onmouseover="displayPetRarities(9)" onmouseout="displayPetRarities(0)">Unbox a random universal pet</button>
+      <button class="button" id="unboxButton8" style="display: none" onclick="unboxPet(10, game.crateBulk[10])" onmouseover="displayPetRarities(10)" onmouseout="displayPetRarities(0)">Sacrifice all dimensions to unbox 1 random frozen pet</button>
 
       <button class="button" id="TimeDim1" style="display: none" onclick="clickDimension(1, 1)">Gain 1 Time Shard</button>
       <button class="button" id="TimeDim2" style="display: none" onclick="clickDimension(2, 1)">Gain 1 D1</button>
@@ -107,9 +111,10 @@
     </div>
 
     <div id="rightFooterColumn">
-      <p id="versionText">Check Back <a href="https://github.com/MarcElAcoplao/CheckBackMod/blob/main/changelog.txt">v1.0.2.1</a> (Creator: MarcElAcoplao, <a href="https://discord.gg/YaSk8e2wFt">Discord</a>)<br>
+      <p id="versionText">Check Back <a href="https://github.com/MarcElAcoplao/CheckBackMod/blob/main/changelog.txt">v1.1 Part 1</a> (Creator: MarcElAcoplao, <a href="https://discord.gg/YaSk8e2wFt">Discord</a>)<br>
         <a href="https://demonin.com/games/checkBack/">Original</a> by Demonin (<a href="https://discord.gg/3hwM7ScH6k">Discord</a>)</p>
       <div id="settingsContainer">
+        <button class="settingsButton" id="setting7" onclick="openClosePetsUnboxTab()">Latest drops</button>
         <button class="settingsButton" id="setting6" onclick="help()">Help</button>
         <button class="settingsButton" id="setting5" onclick="tab(0)">Display stats</button>
         <button class="settingsButton" id="setting4" onclick="exportGame()">Export</button>
@@ -148,6 +153,16 @@
     <div id="petInfo"></div>
   </div>
 
+  <div id="petsUnboxDiv">
+    <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Latest drops</p>
+    <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px'>Click on a pet to equip it. Closing this will reset the pets displayed</p>
+    <button class="closeButton" onclick="openClosePetsUnboxTab()">Close</button>
+    <div id="petsUnboxList">
+      <div id="petsUnboxListInner"></div>
+    </div>
+    <div id="petUnboxInfo"></div>
+  </div>
+
   <div id="enemiesDiv">
     <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Enemies</p>
     <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px'>Hover over the enemies to see their stats</p>
@@ -170,6 +185,7 @@
       <button class="button" id="fight2Button" onclick="startFight(2)" onmouseover="displayEnemiesFightRarities(2)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 1 foe</button>
       <button class="button" id="fight3Button" onclick="startFight(3)" onmouseover="displayEnemiesFightRarities(3)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 3 foe</button>
       <button class="button" id="fight4Button" onclick="startFight(4)" onmouseover="displayEnemiesFightRarities(4)" onmouseout="displayEnemiesFightRarities(0)">Fight a level 1 mighty boss</button>
+      <button class="button" id="fight5Button" onclick="startFight(5)" onmouseover="displayEnemiesFightRarities(5)" onmouseout="displayEnemiesFightRarities(0)">Fight an area 4 foe</button>
     </div>
     <div class="modalBoxes">
       <div class="dropBox" style="left: 0; color: #bff"></div>
@@ -179,6 +195,16 @@
     </div>
     <div id="enemiesDisplayInfo"></div>
     <button class="closeButton" onclick="openCloseFightingTab()">Close</button>
+  </div>
+
+  <div id="artifactsDiv">
+    <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Artifacts</p>
+    <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px'>Artifacts drop from fighting and grant a permanent uncapped boost (Unnafected by natural extra loot bonuses)</p>
+    <button class="closeButton" onclick="openCloseArtifactsTab()">Close</button>
+    <div id="artifactsList">
+      <div id="artifactsListInner"></div>
+    </div>
+    <div id="artifactsInfo"></div>
   </div>
 
   <div id="shopDiv">
@@ -214,6 +240,7 @@
   <script src="tabs.js"></script>
   <script src="message.js"></script>
   <script src="modals.js"></script>
+  <script src="artifacts.js"></script>
   
   <script defer>setAutoSave()</script>
 </body>

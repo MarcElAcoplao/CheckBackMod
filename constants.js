@@ -1,4 +1,4 @@
-const unlockLevels = [2,3,4,5,6,8,12,15,20,35,50,70,100,125,150,200,250,300,350,400,500,1500,20000,50000,100000,1000000,5000000]
+const unlockLevels = [2,3,4,5,6,8,12,15,20,35,50,70,100,125,150,200,250,300,350,400,500,1500,20000,50000,100000,1000000,5000000,500000000,1*10**10,5*10**10,2.5*10**11]
 const importantUnlockLevels = [8,100,500,1500,250000,5000000]
 const levelBarTextures = [50,55,60,65,70,80,90,100,200]
 
@@ -114,8 +114,29 @@ const ranks = [
   [400000000, "Finality+"],
   [600000000, "Finality++"],
   [800000000, "Finality+++"],
-  [1000000000, "Alpha"],
-  [1000000000000, "Impossibly dedicated"],
+  [10**9, "Alpha"],
+  [2.5*10**9, "Alpha+"],
+  [5*10**9, "Alpha++"],
+  [7.5*10**9, "Alpha+++"],
+  [10**10, "Beta"],
+  [2.5*10**10, "Beta+"],
+  [5*10**10, "Beta++"],
+  [7.5*10**10, "Beta+++"],
+  [10**11, "Chi"],
+  [2.5*10**11, "Chi+"],
+  [5*10**11, "Chi++"],
+  [7.5*10**11, "Chi+++"],
+  [10**12, "Delta"],
+  [7.5*10**12, "Delta+"],
+  [5*10**13, "Delta++"],
+  [2.5*10**14, "Delta+++"],
+  [10**15, "Epsilon"],
+  [7.5*10**15, "Epsilon+"],
+  [5*10**16, "Epsilon++"],
+  [2.5*10**17, "Epsilon+++"],
+  [10**18, "Fabled"],
+  [10**25, "Impossibly dedicated"],
+  [10**100, "Impossibly dedicated squared"],
   [Infinity, "Error"],
 ] //space and finality, omega
 
@@ -147,6 +168,26 @@ const tierRanks = [
   [80, "Omniversal"],
   [90, "Hyperdimensional"],
   [100, "Transcendent"],
+  [120, "Transcendent+"],
+  [140, "Transcendent++"],
+  [160, "Transcendent+++"],
+  [180, "Transcendent++++"],
+  [200, "Infinite"],
+  [220, "Infinite+"],
+  [240, "Infinite++"],
+  [260, "Infinite+++"],
+  [280, "Infinite++++"],
+  [300, "Beyond infinite"],
+  [320, "Beyond infinite+"],
+  [340, "Beyond infinite++"],
+  [360, "Beyond infinite+++"],
+  [380, "Beyond infinite++++"],
+  [400, "Endless"],
+  [420, "Endless+"],
+  [440, "Endless++"], //This is around 1e308 shards so it's the theorical cap
+  [460, "Endless+++"],
+  [480, "Endless++++"],
+  [500, "Void"],
   [Infinity, "Error"],
 ]
 
@@ -227,20 +268,19 @@ const pets = [
   ["White dragon", 5700, 4.7, 5.1, 10, 1.7], //72 [Strongest pet, but it's gonna be a huge strike of luck to get it]
   ["Armored skeleton", 2600, 3.8, 3.8, 7.5, 1.35], //73 [Day 100+, new skeleton crate]
   ["Horrifying ghost", 4800, 4.4, 4.8, 9, 1.5], //74 [Day 100+, new ghost crate]
-  /*["Frozen spider", 4800, 4.4, 4.8, 9, 1.5], //75 Frozen pet 1
-  ["Frozen bat", 4800, 4.4, 4.8, 9, 1.5], //76 Frozen pet 2
-  ["Frozen firefly", 4800, 4.4, 4.8, 9, 1.5], //77 Frozen pet 3
-  ["Frozen spider", 4800, 4.4, 4.8, 9, 1.5], //78 Frozen pet 4
-  ["Frozen 2-headed hydra", 4800, 4.4, 4.8, 9, 1.5], //79 Frozen pet 5
-  ["Frozen ghost", 4800, 4.4, 4.8, 9, 1.5], //80 Frozen pet 6
-  ["Frozen yeti", 4800, 4.4, 4.8, 9, 1.5], //81 Frozen pet 7
+  ["Frozen spider", 5000, 5, 5, 5, 1.5], //75 Frozen pet 1
+  ["Frozen bat", 7500, 7, 7, 7.5, 2], //76 Frozen pet 2
+  ["Frozen firefly", 10000, 10, 10, 10, 3], //77 Frozen pet 3
+  ["Frozen tarantula", 15000, 13, 13, 15, 5], //78 Frozen pet 4
+  ["Frozen 2-headed hydra", 25000, 16, 16, 25, 8], //79 Frozen pet 5
+  ["Frozen ghost", 40000, 20, 20, 40, 12], //80 Frozen pet 6
+  ["Frozen yeti", 100000, 30, 30, 100, 15], //81 Frozen pet 7 also end of first section pets
   ["Frozen 3-headed hydra", 4800, 4.4, 4.8, 9, 1.5], //82 Frozen pet 8
   ["Frozen 4-headed hydra", 4800, 4.4, 4.8, 9, 1.5], //83 Frozen pet 9
   ["Frozen 5-headed hydra", 4800, 4.4, 4.8, 9, 1.5], //84 Frozen pet 10
   ["Frozen gigantic snake", 4800, 4.4, 4.8, 9, 1.5], //85 Frozen pet 11
   ["Frozen salamander", 4800, 4.4, 4.8, 9, 1.5], //86 Frozen pet 12
-  ["Frozen dragon", 4800, 4.4, 4.8, 9, 1.5], //87 Frozen pet 13 */
-
+  ["Frozen dragon", 4800, 4.4, 4.8, 9, 1.5], //87 Frozen pet 13
 ]
 
 const skeletalUnboxChances = [ //will be set to 1
@@ -287,6 +327,10 @@ const universalUnboxChances = [
   [64,694], [65,449], [66,258], [45,188], [67,145], [68,50], [69,20], [70,6], [71,3], [72,1], 
 ]
 
+const frozenUnboxChances1 = [
+  [75,90000], [76, 9000], [77,900], [78, 70], [79,24], [80, 5], [81,1],
+]
+
 const enemies = [
   //Name, hp, damage, defense, loot tier, numbers in the comments are the base drops [with no looting boosts]
   ["Test", 0.1, 0.1, 0.01, 1],
@@ -307,6 +351,11 @@ const enemies = [
   ["Green tailed human", 20000, 2000, 200, 5], //3.4 (15) - 20M XP / 4k Coins / 3 XPBoost
   ["Evil tailed human", 50000, 5000, 500, 5], //3.5 (16) - 50M XP / 10k Coins / 7.5 XPBoost
   ["Awakened Beast", 100000, 20000, 0, 0], //4.1 (17) - Scales with each kill and drops are managed separatedly. 1B XP / 1k Coins / 0.1 All Dimensions multi (/90 to compensate looting boosts). Stat scaling: 2^kills. Rewards scaling: 1.5^kill / 1.5^kill / kills
+  ["Cold beast", 100000, 10000, 1000, 6], //5.1 (18) - 100T XP / 40k Coins / 100 XPBoost
+  ["Human with ice armor", 300000, 30000, 6000, 6], //5.2 (19) - 300T XP / 120k Coins / 600 XPBoost
+  ["Ice wizard", 1000000, 100000, 15000, 6], //5.3 (20) - 1Qd XP / 400k Coins / 1.5k XPBoost
+  ["Frozen terminator", 5000000, 500000, 100000, 6], //5.4 (21) - 5Qd XP / 2m Coins / 10k XPBoost
+  ["Flying frozen snake", 25000000, 2500000, 500000, 7], //5.5 (22) - 100Qd XP / 100m Coins / 1m XPBoost / Also guaranteed artifacts
   ]
 
   const starterEnemiesChances = [ //45, 30, 15, 8, 2
@@ -324,6 +373,10 @@ const enemies = [
   const BossChances = [
     [17, 1],
     ]
+
+  const frozenEnemiesChances = [
+    [18, 100], [19, 50], [20, 25], [21, 5], [22, 1]
+  ]
 
   const items = [
 //Name, amount you can buy
@@ -364,4 +417,29 @@ const enemies = [
   ["Lantern of inflation", 1], //(34) Very expensive but increases many things
   ["A helping hand", 1], //(35) Helps out /shrug
   ["The trophy of time", 1], //(36) A trophy with some boosts and congratulates the player for beating check back v1.0
+  ["Ice XP soft drink", 1000], //(37) "Rebuyable for 1 of the first frozen pet, buys max up to 1k, +100% xp/level"
+  ["Permafrostical", 5], //(38) Adds +1 to the frozen crates opened (base) plus +x0.1 crate bulk for all crates, could require one of the 2nd pet
+  ["Wizard's frost resistant robes", 1], //(39) Reduces the enemy scaling to ^1.75 and adds +^0.2 to the rewards exponent, x4 Stats too
+  ["Frozen dimensions", 3], //(40) Each level doubles the cooldown of all dimensions but increases their multipliers by x5 (Not coded)
+  ["Artifact condensation", 1], //(41) Buffs artifact drops by x5
+  ["The tale of the Frozen Yeti", 1], //(42) Good boosts and also unlocks a new set of upgrades + frozen pets (Not coded)
+  ]
+
+  const artifacts = [
+    //Name
+    ["Test"], // (0)
+    ["Starter XP artifact"], // (1) Dropped from the starter enemies, +1% XP
+    ["Starter loot artifact"], // (2) Dropped from the intermediate enemies, +1% Coins
+    ["Starter+ XP artifact"], // (3) Dropped from the advanced enemies (common), +10% XP
+    ["Starter XPBoost artifact"], // (4) Dropped from the advanced enemies (rare), +10% XPBoost
+    ["Frozen XP artifact"], // (5) Dropped from the frozen area (common), +100% XP
+    ["Frozen XPBoost artifact"], // (6) Dropped from the frozen area (common), +50% XPBoost
+    ["Frozen crate bulk artifact"], // (7) Dropped from the frozen area (uncommon), +5% Crate bulk [All crates]
+    ["Frozen cooldown artifact"], // (8) Dropped from the frozen area (rare), +/0.01 All cooldowns [Additive, so 100 is /2 and 400 is /5]
+    ["Frozen stats artifact"], // (9) Dropped from the frozen area (rare), +10% Stats gain
+    ["Frozen dimensional artifact"], // (10) Dropped from the frozen area (very rare), +10% All dimensions multi
+  ]
+
+  const frozenArtifactsDropChances = [
+    [5, 115], [6, 115], [7, 48], [8, 10], [9, 10], [10, 2]
   ]

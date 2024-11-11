@@ -16,6 +16,7 @@ function reset() {
     totalUnlocks: 0,
     possibleUnlocks: 26,
     currentTheme: 2,
+    lastExport: Date.now(),
     lastSave: Date.now(),
     timeOfLastUpdate: Date.now(),
     sessionStart: Date.now(),
@@ -41,6 +42,8 @@ function reset() {
     itemXPBoostQoL: 0,
     itemLoot: 1,
     itemDailyXP: 1,
+    itemDimensions: 1,
+    itemArtifacts: 1,
     extraPetAmount: 0,
     currentTab: 1,
     timePlayed: 0,
@@ -54,6 +57,7 @@ function reset() {
     tierXPmulti: 1,
     tierCooldown: 1,
     tierStats: 1,
+    allDimensionMultipliers: 1,
     dimensionCooldown: 1,
     dimensionUnlocks: 0,
     dimensionAmount: [1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -67,8 +71,22 @@ function reset() {
     CoinsCounter: 0,
     XPBoostCounter: 0,
     ConsecutiveKills: 0,
-    crateBulk: [1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1, 1],
+    enemyScaling: 2,
+    rewardsScaling: 0,
+    crateBulk: [1, 1, 1, 1 ,1 ,1 ,1 ,1 ,1, 1, 1, 1, 1, 1],
     importantUnlocks: 0,
+    frozenBaseBulk: 1,
+    frozenCratesOpened: 0,
+    artifactsCount: 0,
+    artifacts: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    artifactsXP: 1,
+    artifactsCoins: 1,
+    artifactsXPBoost: 1,
+    artifactsCooldown: 1,
+    artifactsStats: 1,
+    artifactsBulk: 1,
+    artifactsDimension: 1,
+    unboxString: [0],
   }
 }
 reset()
@@ -89,7 +107,7 @@ function save() {
 }
 
 function setAutoSave() {
-  setInterval(save, 5000);
+  setInterval(save, 30000);
   autosaveStarted = true;
 }
 //setInterval(save, 5000)
@@ -106,24 +124,32 @@ load()
 
 function exportGame() {
   save()
+  if (Date.now() - game.lastExport >= 60000) {
   navigator.clipboard.writeText(btoa(JSON.stringify(game))).then(function() {
     alert("Copied to clipboard!")
   }, function() {
     alert("Error copying to clipboard, try again...")
   });
+  game.lastExport = Date.now()
+}
+  else alert("Less than a minute has passed since the last export/import, wait a little bit")
 }
 
 function importGame() {
+  if (Date.now() - game.lastExport >= 60000) {
   loadgame = JSON.parse(atob(prompt("Input your save here:")))
   if (loadgame && loadgame != null && loadgame != "") {
     reset()
     loadGame(loadgame)
+    game.lastExport = Date.now()
     save()
     location.reload()
   }
   else {
     alert("Invalid input.")
   }
+ }
+ else alert("Less than a minute has passed since the last export/import, wait a little bit")
 }
 
 function help() {
@@ -131,7 +157,7 @@ x = game.totalUnlocks
 console.log(x)
 if (x <= 5) {alert("Hello and welcome to Check Back! In this game your goal is simple, click buttons and gain xp to levelup and unlock new buttons. But, there's a catch! Buttons have cooldowns. This game requires minimal focus so, as suggested by the developer, open another tab and go watch some youtube. A new tip will be shown when you reach level 8")}
 else if (x <= 12) {alert("Congratulations! You unlocked pets. Pets can be obtained through a crate in a similar tab (Can be opened with the left side menus, below the next unlock text). Rarer pets have better stats. Keep progressing and you will be unlocking more pets and xp buttons. There's also daily rewards, can be found bottom-left of the screen, above the tab buttons. A new tip will be shown when you reach level 100")}
-else if (x == 13) {alert("A simple prestige feature. Resets your xp back to level 1 and, in exchange, your xp gains are increased. I suggest waiting a little bit... you'll see. A new tip will show up at level 125")}
+else if (x == 13) {alert("XPBoost is very simple, it's a resource that increases your xp gains. This used to be a prestige-like layer (Like a reset tier 0.5) but it was rebalanced to not be so complex, so don't worry about clicking the button. A new tip will show up at level 125")}
 else if (x <= 20) {alert("Now that you've unlocked a new pet crate, gonna tell you that all future crates will have a cost. This section is about unlocking new buttons and strategizing doing xpboost resets and opening crates. A new tip will show up at level 500")}
 else if (x == 21) {alert("Fighting. There's one button that will give you stats. On the fighting menu, you can see your stats. Starting a fight automatically heals you, and the combat system is very simple but long, as you will fight enemies consecutively until one defeats you. Stats increase by 2^kills and xp rewards increase by 1.5^kills (each one adds). Dying resets the consecutive kills counter to 0. A new tip will show up at level 1500")}
 else if (x <= 23) {alert("The shop. Here you buy items and unlocks. There's boosts, there's QoL and unlocks. These also require of you having opened a bunch of pet crates constantly through the playthrough. This might be a grindy section. Next tip will show up when you get 2 more unlocks")}
@@ -140,13 +166,13 @@ else if (x <= 29) {alert("Congratulations on reaching the v1.0 content. This new
 else if (x <= 32) {alert("Now that you unlocked the 4th dimension (or you reached level 1m before that), what are dimensional resets? They are kinda like the dimensional boosts from AD, they reset your dimensions to give a multiplier to some dimensions and unlock a new dimension. They also give an additional boost to resources like XP. There's also a set of additional upgrades that, if you are seeing 6 squares each line, they are below the dimensional resets. These additional upgrades are intended to help out the player progress through the time dimensions and they give good boosts. A new tip will show up at 33 total unlocks")}
 else if (x <= 34) {alert("You might have noticed that the upgrade that goes along the 3rd dimensional reset unlocks a bossfight. Go unlock it and progress through dimensions. And don't forget to keep opening crates and clicking every single button, everything contributes to progress. A new tip will show up at 35 total unlocks")}
 else if (x < 38) {alert("The boss has scaling health and damage, scaled rewards and also hp saves between fights, so you don't have to be insanely strong to beat it. Keep pushing and reach the 9th dimension. A new tip will unlock when you do so")}
-else if (game.items[30] == 0) {alert("The final push is here! At level 40 you can perform a dimensional sacrifice and re-run all the dimensions section but way quicker. A new message will show up after unlocking the 9th dimension but after doing the dimensional sacrifice.")}
+else if (game.items[30] == 0) {alert("The final push is here! At tier 40 you can perform a dimensional sacrifice and re-run all the dimensions section but way quicker. A new message will show up after unlocking the 9th dimension but after doing the dimensional sacrifice.")}
 else if (game.items[36] == 0) {alert("Before you officially complete this game, there is one final upgrade (with a little bit placeholder effects) that you might wanna get. Having that upgrade grants access to a unique role in the discord server (community chat + sneak peeks of future updates)")}
 else {alert("Congratulations! Thanks for playing Check Back and hope you had a fun experience. Push levels, bosses, tiers, find all pets or something while waiting for an update.")}
 }
 
 function loadGame(loadgame) {
-  //Sets each variable in 'game' to the equivalent variable in 'loadgame' (the saved file)
+  //Sets each variable in 'game' to the equivalent variable in 'loadgame' (the saved file) 
   let loadKeys = Object.keys(loadgame);
   for (i=0; i<loadKeys.length; i++) {
     if (loadgame[loadKeys[i]] != "undefined") {
@@ -200,16 +226,18 @@ function loadGame(loadgame) {
   if (game.unlocks >= 13) {
     document.getElementById("XPBbutton1").style.display = "block"
     document.getElementById("XPBoostTab").style.display = "block"
-  updateXPBoost()}
+  }
   if (game.unlocks >= 14) {document.getElementById("unboxButton5").style.display = "block"}
   if (game.unlocks >= 15) {
     document.getElementById("XPbutton10").style.display = "block"
-    document.getElementById("XPBbutton2").style.display = "block"}
+    document.getElementById("XPBbutton2").style.display = "block"
+  }
   if (game.unlocks >= 16) {document.getElementById("XPBbutton3").style.display = "block"}
   if (game.unlocks >= 17) {document.getElementById("XPbutton11").style.display = "block"}
   if (game.unlocks >= 18) {
     document.getElementById("XPbutton12").style.display = "block"
-    document.getElementById("XPBbutton4").style.display = "block"}
+    document.getElementById("XPBbutton4").style.display = "block"
+  }
   if (game.unlocks >= 19) {document.getElementById("unboxButton6").style.display = "block"}
   if (game.unlocks >= 20) {document.getElementById("XPBbutton5").style.display = "block"}
   if (game.unlocks >= 21) {
@@ -219,24 +247,28 @@ function loadGame(loadgame) {
     document.getElementById("StatsTab").style.display = "block"
     enemiesChosen = 1
   }
-  if (game.unlocks >= 22) {
-  document.getElementById("shopTabButton").style.display = "block"
-  updateShopBoosts()
-  }
+  if (game.unlocks >= 22) {document.getElementById("shopTabButton").style.display = "block"}
   if (game.unlocks >= 23) {document.getElementById("unboxButton7").style.display = "block"}
   if (game.unlocks >= 24) {document.getElementById("StatButton2").style.display = "block"}
   if (game.itemUnlocks >= 1) {document.getElementById("fight2Button").style.display = "block"}
   if (game.itemUnlocks >= 2) {
     document.getElementById("TimeTab").style.display = "block"
-    document.getElementsByClassName("themeButton")[6].style.display = "inline-block"}
+    document.getElementsByClassName("themeButton")[6].style.display = "inline-block"
+  }
   if (game.itemUnlocks >= 3) {document.getElementById("fight4Button").style.display = "block"}
   if (game.unlocks >= 25) {document.getElementById("fight3Button").style.display = "block"}
   if (game.unlocks >= 26) {document.getElementById("StatButton3").style.display = "block"}
   if (game.unlocks >= 27) {document.getElementById("StatButton4").style.display = "block"}
+  if (game.unlocks >= 28) {document.getElementById("unboxButton8").style.display = "block"}
+  if (game.unlocks >= 29) {document.getElementById("fight5Button").style.display = "block"}
+  if (game.unlocks >= 30) {document.getElementById("StatButton5").style.display = "block"}
+  if (game.unlocks >= 31) {document.getElementById("StatButton6").style.display = "block"}
 
+ for (let i=0;i<artifacts.length;i++) {if (game.artifacts[i] >= 1) document.getElementById("artifactsTabButton").style.display = "block"} 
  for (let i=0;i<pets.length;i++) {if (!game.pets[i]) game.pets[i] = 0}
  for (let i=0;i<enemies.length;i++) {if (!game.enemies[i]) game.enemies[i] = 0}
  for (let i=0;i<items.length;i++) {if (!game.items[i]) game.items[i] = 0}
+ for (let i=0;i<artifacts.length;i++) {if (!game.artifacts[i]) game.artifacts[i] = 0}
  for (let i =0;i<17; i++) {if (!game.specialPets[i]) game.specialPets[i] = 0}
  for (let i =0;i<17; i++) {
   if (game.specialPets[i] >= 1) {
@@ -252,7 +284,7 @@ function loadGame(loadgame) {
   displayStuff()
   tab(1)
   countPets()
-  game.sessionStart = Date.now()
+  game.sessionStart = Date.now() 
 }
 
 
@@ -266,7 +298,24 @@ for (let i=1;i<XPButtons.length;i++) {
   }
   else {
     document.getElementById(XPButtons[i].name).disabled = false
-    document.getElementById(XPButtons[i].name).innerHTML = "Gain " + numberShort((XPButtons[i].xp * pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti * 1.2)) + " XP"
+    document.getElementById(XPButtons[i].name).innerHTML = "Gain " + numberShort((XPButtons[i].xp * pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti * 1.2 * game.artifactsXP)) + " XP"
+  }
+}
+
+for (let i=3;i<PetButtons.length;i++) {
+  if (game.buttonCooldowns[PetButtons[i].cooldownID] > 0) {
+    document.getElementById(PetButtons[i].name).disabled = true
+    document.getElementById(PetButtons[i].name).innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[PetButtons[i].cooldownID])
+  }
+  else {
+    if (i == 10 && game.frozenBaseBulk == 0) {
+      document.getElementById("unboxButton8").innerHTML = "Check Back when you reach Tier 40"
+      document.getElementById("unboxButton8").disabled = true
+    }
+    else {
+    document.getElementById(PetButtons[i].name).disabled = false
+    document.getElementById(PetButtons[i].name).innerHTML = petButtonDisplayMessage(i)
+    }
   }
 }
 
@@ -277,7 +326,7 @@ for (let i=1;i<XPBoostButtons.length;i++) {
   }
   else {
     document.getElementById(XPBoostButtons[i].name).disabled = false
-    document.getElementById(XPBoostButtons[i].name).innerHTML = "Gain " + numberShort((XPBoostButtons[i].xpboost * pets[game.selectedPet][4] * game.itemXPBoost)) + " XPBoost"
+    document.getElementById(XPBoostButtons[i].name).innerHTML = "Gain " + numberShort((XPBoostButtons[i].xpboost * pets[game.selectedPet][4] * game.itemXPBoost * game.artifactsXPBoost)) + " XPBoost"
   }
 }
 
@@ -294,33 +343,6 @@ for (let i=1;i<Dimensions.length;i++) {
 }
 
   //These could definitely be condensed into one thing! - Don't worry Demonin, they will
-  if (game.buttonCooldowns[6] > 0) {
-    document.getElementById("unboxButton1").disabled = true
-    document.getElementById("unboxButton1").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[6])
-  }
-  else {
-    document.getElementById("unboxButton1").disabled = false
-    if (game.items[15] == 1) {document.getElementById("unboxButton1").innerHTML = "Unbox a random basic pet. Auto: " + numberToTime(game.buttonCooldowns[23])}
-    else {document.getElementById("unboxButton1").innerHTML = "Unbox a random basic pet"}
-  }
-  if (game.buttonCooldowns[7] > 0) {
-    document.getElementById("unboxButton2").disabled = true
-    document.getElementById("unboxButton2").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[7])
-  }
-  else {
-    document.getElementById("unboxButton2").disabled = false
-    if (game.items[15] == 1) {document.getElementById("unboxButton2").innerHTML = "Unbox a random advanced pet. Auto: " + numberToTime(game.buttonCooldowns[23])}
-    else {document.getElementById("unboxButton2").innerHTML = "Unbox a random advanced pet"}
-  }
-  if (game.buttonCooldowns[8] > 0) {
-    document.getElementById("unboxButton3").disabled = true
-    document.getElementById("unboxButton3").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[8])
-  }
-  else {
-    document.getElementById("unboxButton3").disabled = false
-    if (game.items[15] == 1) {document.getElementById("unboxButton3").innerHTML = "Unbox a random epic pet. Auto: " + numberToTime(game.buttonCooldowns[23])}
-    else {document.getElementById("unboxButton3").innerHTML = "Unbox a random epic pet"}
-  }
   if (game.buttonCooldowns[9] > 0) {
     document.getElementById("claimDailyRewardButton").disabled = true
     document.getElementById("claimDailyRewardButton").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[9])
@@ -332,40 +354,13 @@ for (let i=1;i<Dimensions.length;i++) {
     if (Date.now() % 600 < 300) {document.getElementById("dailyRewardButton").style.border = "0.3vh solid #80f"}
     else {document.getElementById("dailyRewardButton").style.border = "0.3vh solid #d9f"}
   }
-  if (game.buttonCooldowns[10] > 0) {
-    document.getElementById("unboxButton4").disabled = true
-    document.getElementById("unboxButton4").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[10])
-  }
-  else {
-    document.getElementById("unboxButton4").disabled = false
-    if (game.items[15] == 1) {document.getElementById("unboxButton4").innerHTML = "Unbox a random legendary pet. Auto: " + numberToTime(game.buttonCooldowns[23])}
-    else {document.getElementById("unboxButton4").innerHTML = "Unbox a random legendary pet"}
-  }
-  if (game.buttonCooldowns[13] > 0) {
-    document.getElementById("unboxButton5").disabled = true
-    document.getElementById("unboxButton5").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[13])
-  }
-  else {
-    document.getElementById("unboxButton5").disabled = false
-    if (game.items[35] == 1) {document.getElementById("unboxButton5").innerHTML = "Unbox a random prestige pet. Auto: " + numberToTime(game.buttonCooldowns[23])}
-    else {document.getElementById("unboxButton5").innerHTML = "Unbox a random prestige pet for 0.05 XPBoost"}
-  }
-  if (game.buttonCooldowns[18] > 0) {
-    document.getElementById("unboxButton6").disabled = true
-    document.getElementById("unboxButton6").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[18])
-  }
-  else {
-    document.getElementById("unboxButton6").disabled = false
-    if (game.items[35] == 1) {document.getElementById("unboxButton6").innerHTML = "Unbox a random transcendant pet. Auto: " + numberToTime(game.buttonCooldowns[23])}
-    else {document.getElementById("unboxButton6").innerHTML = "Unbox a random transcendant pet for 0.1 XPBoost"}
-  }
   if (game.buttonCooldowns[20] > 0) {
     document.getElementById("StatButton1").disabled = true
     document.getElementById("StatButton1").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[20])
   }
   else {
     document.getElementById("StatButton1").disabled = false
-    document.getElementById("StatButton1").innerHTML = "Gain " + numberShort(5 * game.itemStat * game.tierStats) + " HP, " + numberShort(0.5 * game.itemStat * game.tierStats) + " DMG and " + numberShort(0.05 * game.itemStat * game.tierStats) + " DEF"
+    document.getElementById("StatButton1").innerHTML = "Gain " + numberShort(5 * game.itemStat * game.tierStats * game.artifactsStats) + " HP, " + numberShort(0.5 * game.itemStat * game.tierStats * game.artifactsStats) + " DMG and " + numberShort(0.05 * game.itemStat * game.tierStats * game.artifactsStats) + " DEF"
   }
   if (game.buttonCooldowns[21] > 0) {
     document.getElementById("fight1Button").disabled = true
@@ -425,22 +420,13 @@ for (let i=1;i<Dimensions.length;i++) {
 
  if (game.buttonCooldowns[23] > 0) {}
  else {autoPets()}
- if (game.buttonCooldowns[24] > 0) {
-  document.getElementById("unboxButton7").disabled = true
-  document.getElementById("unboxButton7").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[24])
-}
-else {
-  document.getElementById("unboxButton7").disabled = false
-  if (game.items[35] == 1) {document.getElementById("unboxButton7").innerHTML = "Unbox a random universal pet. Auto: " + numberToTime(game.buttonCooldowns[23])}
-  else {document.getElementById("unboxButton7").innerHTML = "Unbox a random universal pet for 250 coins"}
-}
 if (game.buttonCooldowns[25] > 0) {
   document.getElementById("StatButton2").disabled = true
   document.getElementById("StatButton2").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[25])
 }
 else {
   document.getElementById("StatButton2").disabled = false
-  document.getElementById("StatButton2").innerHTML = "Gain " + numberShort(20 * game.itemStat * game.tierStats) + " HP, " + numberShort(2 * game.itemStat * game.tierStats) + " DMG and " + numberShort(0.2 * game.itemStat * game.tierStats) + " DEF"
+  document.getElementById("StatButton2").innerHTML = "Gain " + numberShort(20 * game.itemStat * game.tierStats * game.artifactsStats) + " HP, " + numberShort(2 * game.itemStat * game.tierStats * game.artifactsStats) + " DMG and " + numberShort(0.2 * game.itemStat * game.tierStats * game.artifactsStats) + " DEF"
 }
 if (game.buttonCooldowns[37] > 0) {
   document.getElementById("StatButton3").disabled = true
@@ -448,7 +434,7 @@ if (game.buttonCooldowns[37] > 0) {
 }
 else {
   document.getElementById("StatButton3").disabled = false
-  document.getElementById("StatButton3").innerHTML = "Gain " + numberShort(50 * game.itemStat * game.tierStats) + " HP, " + numberShort(5 * game.itemStat * game.tierStats) + " DMG and " + numberShort(0.5 * game.itemStat * game.tierStats) + " DEF"
+  document.getElementById("StatButton3").innerHTML = "Gain " + numberShort(50 * game.itemStat * game.tierStats * game.artifactsStats) + " HP, " + numberShort(5 * game.itemStat * game.tierStats * game.artifactsStats) + " DMG and " + numberShort(0.5 * game.itemStat * game.tierStats * game.artifactsStats) + " DEF"
 }
 if (game.buttonCooldowns[38] > 0) {
   document.getElementById("StatButton4").disabled = true
@@ -456,7 +442,23 @@ if (game.buttonCooldowns[38] > 0) {
 }
 else {
   document.getElementById("StatButton4").disabled = false
-  document.getElementById("StatButton4").innerHTML = "Gain " + numberShort(120 * game.itemStat * game.tierStats) + " HP, " + numberShort(12 * game.itemStat * game.tierStats) + " DMG and " + numberShort(1.2 * game.itemStat * game.tierStats) + " DEF"
+  document.getElementById("StatButton4").innerHTML = "Gain " + numberShort(120 * game.itemStat * game.tierStats * game.artifactsStats) + " HP, " + numberShort(12 * game.itemStat * game.tierStats * game.artifactsStats) + " DMG and " + numberShort(1.2 * game.itemStat * game.tierStats * game.artifactsStats) + " DEF"
+}
+if (game.buttonCooldowns[45] > 0) {
+  document.getElementById("StatButton5").disabled = true
+  document.getElementById("StatButton5").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[45])
+}
+else {
+  document.getElementById("StatButton5").disabled = false
+  document.getElementById("StatButton5").innerHTML = "Gain " + numberShort(600 * game.itemStat * game.tierStats * game.artifactsStats) + " HP, " + numberShort(60 * game.itemStat * game.tierStats * game.artifactsStats) + " DMG and " + numberShort(6 * game.itemStat * game.tierStats * game.artifactsStats) + " DEF"
+}
+if (game.buttonCooldowns[46] > 0) {
+  document.getElementById("StatButton6").disabled = true
+  document.getElementById("StatButton6").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[46])
+}
+else {
+  document.getElementById("StatButton6").disabled = false
+  document.getElementById("StatButton6").innerHTML = "Gain " + numberShort(1200 * game.itemStat * game.tierStats * game.artifactsStats) + " HP, " + numberShort(120 * game.itemStat * game.tierStats * game.artifactsStats) + " DMG and " + numberShort(12 * game.itemStat * game.tierStats * game.artifactsStats) + " DEF"
 }
 if (game.buttonCooldowns[26] > 0) {
   document.getElementById("fight3Button").disabled = true
@@ -474,6 +476,15 @@ if (game.buttonCooldowns[36] > 0) {
 else {
   document.getElementById("fight4Button").disabled = false
   document.getElementById("fight4Button").innerHTML = "Awaken a level " + (game.bossKills + 1) + " mighty boss"
+}
+
+if (game.buttonCooldowns[44] > 0) {
+  document.getElementById("fight5Button").disabled = true
+  document.getElementById("fight5Button").innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[44])
+}
+else {
+  document.getElementById("fight5Button").disabled = false
+  document.getElementById("fight5Button").innerHTML = "Fight an area 4 foe "
 }
 
   game.level = XPToLevel(Math.max(Math.floor(game.XP), 0))
@@ -531,11 +542,11 @@ else {
   handleUnlocks()
   displayStuff()
 }
-setInterval(updateSmall, 16) //Runs the update ~60 times per second
+setInterval(updateSmall, 50) //Runs the update ~20 times per second
 
 //Updates cooldowns
 function updateLarge() {
-  for (i=0;i<43;i++) {
+  for (i=0;i<50;i++) {
     if (game.buttonCooldowns[i] > 0) game.buttonCooldowns[i] -= ((Date.now() - game.timeOfLastUpdate) / (1000/game.speed))
     if (game.buttonCooldowns[i] < 0) game.buttonCooldowns[i] = 0
     if (!game.buttonCooldowns[i]) game.buttonCooldowns[i] = 0
@@ -549,6 +560,7 @@ setInterval(updateLarge, 100) //Runs the update ~10 times per second
 function XPToLevel(x) {return Math.floor((x / 5) ** 0.55) + 1}
 function levelToXP(x) {return Math.ceil((x-1) ** (1/0.55) * 5)}
 function numberToTime(x) {
+  if (typeof x === 'number' && !isNaN(x)) {
   xCeil = Math.ceil(x)
   result = ""
   if (xCeil>=172800) result += Math.floor(xCeil/86400) + " days "
@@ -560,21 +572,25 @@ function numberToTime(x) {
   if (xCeil%60 == 1) result += Math.floor(xCeil%60) + " second "
   else if (xCeil%60 != 0) result += Math.floor(xCeil%60) + " seconds "
   return result
+  }
 }
 function numberShort(x) {
+  if (typeof x === 'number' && !isNaN(x)) {
 xCeil = Math.ceil(x)
-exponent = Math.floor(Math.log10(xCeil))
+exponent = Math.floor(Math.log10(Math.abs(xCeil)))
 result = ""
 if (exponent >= 12) result = (xCeil / 10 ** exponent).toFixed(2) + "e" + exponent
 else if (exponent >= 9) result = (xCeil/10 ** 9).toFixed(1) + "&nbsp;B"
 else if (exponent >= 6) result = (xCeil/10 ** 6).toFixed(1) + "&nbsp;M"
 else if (exponent >= 3) result = (xCeil/10 ** 3).toFixed(1) + "&nbsp;K"
-else if (x >= 1) result = (x).toFixed(2)
-else if (x <= 0) result = x
-else result = (x).toFixed(3)
+else if (x == 0) result = x
+else if (x < 1 && x > -1) result = (x).toFixed(3)
+else result = (x).toFixed(2)
 return result
+  }
 }
 function numberShortAlert(x) {
+  if (typeof x === 'number' && !isNaN(x)) {
   xCeil = Math.ceil(x)
   exponent = Math.floor(Math.log10(xCeil))
   result = ""
@@ -582,13 +598,15 @@ function numberShortAlert(x) {
   else if (exponent >= 9) result = (xCeil/10 ** 9).toFixed(1) + " B"
   else if (exponent >= 6) result = (xCeil/10 ** 6).toFixed(1) + " M"
   else if (exponent >= 3) result = (xCeil/10 ** 3).toFixed(1) + " K"
-  else if (x >= 1) result = (x).toFixed(2)
-  else if (x <= 0) result = x
-  else result = (x).toFixed(3)
+  else if (x == 0) result = x
+  else if (x < 1 && x > -1) result = (x).toFixed(3)
+  else result = (x).toFixed(2)
   return result
+   }
   }
 
 function levelShort(x) {
+  if (typeof x === 'number' && !isNaN(x)) {
   xCeil = Math.ceil(x)
   exponent = Math.floor(Math.log10(xCeil))
   result = ""
@@ -599,8 +617,10 @@ function levelShort(x) {
   else result = xCeil
   return result
   }
+  }
 
   function xpShort(x) {
+    if (typeof x === 'number' && !isNaN(x)) {
     xCeil = Math.ceil(x)
     exponent = Math.floor(Math.log10(xCeil))
     result = ""
@@ -610,6 +630,7 @@ function levelShort(x) {
     else if (exponent >= 4) result = (xCeil/10 ** 3).toFixed(1) + "&nbsp;K"
     else result = (x)
     return result
+     }
     }
 
 //Handles clicking the buttons
@@ -681,20 +702,21 @@ function handleUnlocks() {
         document.getElementById("fightingTabButton").style.display = "block"
         document.getElementById("StatButton1").style.display = "block"
         document.getElementById("StatsTab").style.display = "block"
-        enemiesChosen = 1}
+        enemiesChosen = 1
+      }
       else if (i==21) {
         document.getElementById("shopTabButton").style.display = "block"
-        updateShopBoosts() }
-      else if (i==22) {document.getElementById("unboxButton7").style.display = "block"
-        game.buttonCooldowns[24] = 0
+        updateShopBoosts() 
       }
-      else if (i==23) {document.getElementById("StatButton2").style.display = "block"
-      game.buttonCooldowns[25] = 0}
+      else if (i==22) {document.getElementById("unboxButton7").style.display = "block"}
+      else if (i==23) {document.getElementById("StatButton2").style.display = "block"}
       else if (i==24) {document.getElementById("fight3Button").style.display = "block"}
-      else if (i==25) {document.getElementById("StatButton3").style.display = "block"
-      game.buttonCooldowns[37] = 0}
-      else if (i==26) {document.getElementById("StatButton4").style.display = "block"
-      game.buttonCooldowns[38] = 0}
+      else if (i==25) {document.getElementById("StatButton3").style.display = "block"}
+      else if (i==26) {document.getElementById("StatButton4").style.display = "block"}
+      else if (i==27) {document.getElementById("unboxButton8").style.display = "block"}
+      else if (i==28) {document.getElementById("fight5Button").style.display = "block"}
+      else if (i==29) {document.getElementById("StatButton5").style.display = "block"}
+      else if (i==30) {document.getElementById("StatButton6").style.display = "block"}
       break
     }
   }

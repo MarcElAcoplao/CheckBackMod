@@ -5,6 +5,8 @@ function tab(x) {
  if (x == 2) {document.getElementById("petRarities").innerHTML = "Crate cooldown modifiers:" + CrateMultis()}
 }
 
+allMultipliers = 1
+
 function displayStuff() {
   if (game.currentTab <= 1) {document.getElementById("XPbutton1").style.display = "block" }
    else document.getElementById("XPbutton1").style.display = "none"
@@ -44,6 +46,8 @@ function displayStuff() {
    else document.getElementById("unboxButton6").style.display = "none"
   if (game.currentTab == 2 && game.unlocks >= 23) {document.getElementById("unboxButton7").style.display = "block" }
    else document.getElementById("unboxButton7").style.display = "none"
+   if (game.currentTab == 2 && game.unlocks >= 28) {document.getElementById("unboxButton8").style.display = "block" }
+   else document.getElementById("unboxButton8").style.display = "none"
   if (game.currentTab == 3 && game.unlocks >= 13) {document.getElementById("XPBbutton1").style.display = "block" }
    else document.getElementById("XPBbutton1").style.display = "none"
   if (game.currentTab == 3 && game.unlocks >= 15) {document.getElementById("XPBbutton2").style.display = "block" }
@@ -62,6 +66,10 @@ function displayStuff() {
    else document.getElementById("StatButton3").style.display = "none"
   if (game.currentTab == 4 && game.unlocks >= 27) {document.getElementById("StatButton4").style.display = "block" }
    else document.getElementById("StatButton4").style.display = "none"
+  if (game.currentTab == 4 && game.unlocks >= 30) {document.getElementById("StatButton5").style.display = "block" }
+   else document.getElementById("StatButton5").style.display = "none"
+  if (game.currentTab == 4 && game.unlocks >= 31) {document.getElementById("StatButton6").style.display = "block" }
+   else document.getElementById("StatButton6").style.display = "none"
   if (game.currentTab == 5 && game.dimensionUnlocks >= 0) {document.getElementById(Dimensions[1].name).style.display = "block" }
    else document.getElementById(Dimensions[1].name).style.display = "none"
   if (game.currentTab == 5 && game.dimensionUnlocks >= 1) {document.getElementById(Dimensions[2].name).style.display = "block" }
@@ -111,12 +119,14 @@ function XPmultis() {
   if (game.XPBoostEffect > 1) {result += "x" + numberShort(game.XPBoostEffect) + " From XPBoost<br>"}
   if (game.itemXP > 1) {result += "x" + numberShort(game.itemXP) + " From items<br>"}
   if (game.tierXPmulti > 1) {result += "x" + numberShort(game.tierXPmulti) + " From your tier<br>"}
+  if (game.artifactsXP > 1) {result += "x" + numberShort(game.artifactsXP) + " From Artifacts<br>"}
   result += "x1.2 From event<br>"
-  result += "Total: x" + numberShort((pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti * 1.2)) + "<br><br> Cooldown modifiers: <br>"
+  result += "Total: x" + numberShort((pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti * 1.2 * game.artifactsXP)) + "<br><br> Cooldown modifiers: <br>"
   if (game.selectedPet >= 1) {result += "/" + numberShort(pets[game.selectedPet][2]) + " From pets<br>"}
   if (game.itemCooldown > 1) {result += "/" + numberShort(game.itemCooldown) + " From items<br>"}
   if (game.tierCooldown > 1) {result += "/" + numberShort(game.tierCooldown) + " From your tier<br>"}
-  result += "Total: /" + numberShort((pets[game.selectedPet][2] * game.itemCooldown * game.tierCooldown))
+  if (game.artifactsCooldown > 1) {result += "/" + numberShort(game.artifactsCooldown) + " From artifacts<br>"}
+  result += "Total: /" + numberShort((pets[game.selectedPet][2] * game.itemCooldown * game.tierCooldown * game.artifactsCooldown))
   return result
 }
 
@@ -125,8 +135,15 @@ function CrateMultis() {
   if (pets[game.selectedPet][3] > 1) {result += "/" + numberShort(pets[game.selectedPet][3]) + " From pets<br>"}
   if (game.itemCooldown > 1) {result += "/" + numberShort(game.itemCooldown) + " From items<br>"}
   if (game.tierCooldown > 1) {result += "/" + numberShort(game.tierCooldown) + " From your tier<br>"}
-  result += "Total: /" + numberShort((pets[game.selectedPet][3] * game.itemCooldown * game.tierCooldown)) + "<br><br>"
-  if (game.items[16] >= 1) {result += "Extra normal crates: 1 <br>"}
+  if (game.artifactsCooldown > 1) {result += "/" + numberShort(game.artifactsCooldown) + " From artifacts<br>"}
+  result += "Total: /" + numberShort((pets[game.selectedPet][3] * game.itemCooldown * game.tierCooldown * game.artifactsCooldown)) + "<br><br>"
+  if (game.crateBulk[3] >= 1) {
+    result += "Crate bulk modifiers: <br>"
+    if (game.items[16] >= 1) {result += "+1 Base for free crates<br>"}
+    if (game.items[38] >= 1) {result += "x" + numberShort(1 + game.items[38] * 0.1) + " From items<br>"}
+    if (game.artifactsBulk > 1) {result += "x" + numberShort(game.artifactsBulk) + " From Artifacts<br>"} //I should be doing my homework and not this but aaaaa coding check back is so fun
+    result += "Total: " + numberShort(game.crateBulk[3])
+  }
   return result
 }
 
@@ -136,10 +153,12 @@ function XPBoostMultis() {
   result += "<br> XPBoost gain multipliers: <br>"
   if (pets[game.selectedPet][4] > 1) {result += "x" + numberShort(pets[game.selectedPet][4]) + " From pets<br>"}
   if (game.itemXPBoost > 1) {result += "x" + numberShort(game.itemXPBoost) + " From items<br>"}
-  result += "Total: x" + numberShort((pets[game.selectedPet][4] * game.itemXPBoost)) + "<br><br>Cooldown modifiers:<br>"
+  if (game.artifactsXPBoost > 1) {result += "x" + numberShort(game.artifactsXPBoost) + " From artifacts<br>"}
+  result += "Total: x" + numberShort((pets[game.selectedPet][4] * game.itemXPBoost * game.artifactsXPBoost)) + "<br><br>Cooldown modifiers:<br>"
   if (game.itemCooldown > 1) {result += "/" + numberShort(game.itemCooldown) + " From items<br>"}
   if (game.tierCooldown > 1) {result += "/" + numberShort(game.tierCooldown) + " From your tier<br>"}
-  result += "Total: /" + numberShort(game.itemCooldown * game.tierCooldown)
+  if (game.artifactsCooldown > 1) {result += "/" + numberShort(game.artifactsCooldown) + " From artifacts<br>"}
+  result += "Total: /" + numberShort(game.itemCooldown * game.tierCooldown * game.artifactsCooldown)
   return result
 }
 
@@ -147,10 +166,12 @@ function StatMultis() {
   result = "<br>"
   if (game.itemStat > 1) {result += "x" + numberShort(game.itemStat) + " From items<br>"}
   if (game.tierStats > 1) {result += "x" + numberShort(game.tierStats) + " From your tier<br>"}
-  result += "Total: x" + numberShort(game.itemStat * game.tierStats) + "<br><br>Cooldown modifiers:<br>"
+  if (game.artifactsStats > 1) {result += "x" + numberShort(game.artifactsStats) + " From artifacts<br>"}
+  result += "Total: x" + numberShort(game.itemStat * game.tierStats * game.artifactsStats) + "<br><br>Cooldown modifiers:<br>"
   if (game.itemCooldown > 1) {result += "/" + numberShort(game.itemCooldown) + " From items<br>"}
   if (game.tierCooldown > 1) {result += "/" + numberShort(game.tierCooldown) + " From your tier<br>"}
-  result += "Total: /" + numberShort(game.itemCooldown * game.tierCooldown)
+  if (game.artifactsCooldown > 1) {result += "/" + numberShort(game.artifactsCooldown) + " From artifacts<br>"}
+  result += "Total: /" + numberShort(game.itemCooldown * game.tierCooldown * game.artifactsCooldown)
   return result
 }
 
@@ -159,14 +180,14 @@ function DimMultis() {
   if (game.clickToDimension > 1) {result += "x" + numberShort(game.clickToDimension) + " from button clicks<br>"}
   if (game.enemiesToDimension > 1) {result += "x" + numberShort(game.enemiesToDimension) + " from enemies defeated<br>"}
   if (game.bossMulti > 1) {result += "x" + numberShort(game.bossMulti) + " from " + game.bossKills + " bosses killed<br>"}
-  if (game.items[30] >= 1) {result += "x2 from Dimensional Sacrifice #1<br>"}
-  if (game.items[34] >= 1) {result += "x2 from Lantern of Inflation<br>"}
-  if (game.items[36] >= 1) {result += "x2 from The Trophy of Time<br>"}
+  if (game.itemDimensions > 1) {result += "x" + numberShort(game.itemDimensions) + " from items<br>"}
   if (pets[game.selectedPet][5] > 1) {result += "x" + numberShort(pets[game.selectedPet][5]) + " from Pets<br>"}
-  result += "Total: x" + numberShort(game.clickToDimension * game.enemiesToDimension * game.bossMulti * 2 ** (game.items[30] + game.items[34] + game.items[36])) + "<br><br>Button cooldown modifiers:<br>"
+  if (game.artifactsDimension > 1) {result += "x" + numberShort(game.artifactsDimension) + " from Artifacts<br>"}
+  result += "Total: x" + numberShort(game.allDimensionMultipliers) + "<br><br>Button cooldown modifiers:<br>"
   if (game.items[27] >= 1) {result += "/1.5 From Dimensional Reset #3<br>"}
   if (game.items[35] >= 1) {result += "/1.5 From item 35<br>"}
-  result += "Total: /" + numberShort(game.dimensionCooldown)
+  if (game.artifactsCooldown > 1) {result += "/" + numberShort(game.artifactsCooldown) + " From artifacts<br>"}
+  result += "Total: /" + numberShort(game.dimensionCooldown * game.artifactsCooldown)
   return result
 }
 
@@ -224,6 +245,7 @@ function DimTab() { //If someone wants to make this better for the dimensional r
 function FightingTab() {
     if (game.buttonCooldowns[FightingButtons[1].cooldownID] == 0 && game.unlocks >= FightingButtons[1].unlock) {return true}
     else if (game.buttonCooldowns[FightingButtons[3].cooldownID] == 0 && game.unlocks >= FightingButtons[3].unlock) {return true}
+    else if (game.buttonCooldowns[FightingButtons[5].cooldownID] == 0 && game.unlocks >= FightingButtons[5].unlock) {return true}
     else if (game.buttonCooldowns[FightingButtons[2].cooldownID] == 0 && game.items[6] >= 1) {return true}
     else if (game.buttonCooldowns[36] == 0 && game.items[33] >= 1) {return true}
     else return false

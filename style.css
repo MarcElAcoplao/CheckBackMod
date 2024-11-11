@@ -268,6 +268,19 @@ img {
   border: 0.8vh outset #555;
 }
 
+#petsUnboxDiv {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 70%;
+  height: 70%;
+  background-color: #444;
+  display: none;
+  border: 0.8vh outset #555;
+}
+
 .closeButton {
   position: fixed;
   top: 4px;
@@ -301,6 +314,34 @@ img {
 }
 
 #petInfo {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background-color: #666;
+  background-image: url('img/halftoneDots.png')
+}
+
+#petsUnboxCloseButton:hover {
+  cursor: pointer;
+}
+
+#petsUnboxList {
+  position: relative;
+  margin: 0;
+  width: 60%;
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+#petsUnboxListInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#petUnboxInfo {
   position: fixed;
   top: 0;
   right: 0;
@@ -381,6 +422,47 @@ img {
   background-image: url('img/halftoneDots.png')
 }
 
+#artifactsDiv {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 70%;
+  height: 70%;
+  background-color: #444;
+  display: none;
+  border: 0.8vh outset #555;
+}
+
+#artifactsCloseButton:hover {
+  cursor: pointer;
+}
+
+#artifactsList {
+  position: relative;
+  margin: 0;
+  width: 60%;
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+#artifactsListInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#artifactsInfo {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background-color: #666;
+  background-image: url('img/halftoneDots.png')
+}
+
 #fightingDiv {
   position: fixed;
   top: 50%;
@@ -418,6 +500,10 @@ img {
 }
 
 #fight4Button {
+  display: none;
+}
+
+#fight5Button {
   display: none;
 }
 
