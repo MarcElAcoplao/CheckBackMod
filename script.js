@@ -543,7 +543,7 @@ else {
   document.getElementById("rank").innerHTML= tierRanks[i][1] + " warper"
   document.getElementById("level").innerHTML = "Tier " + levelShort(game.tier)
   XPToNextLevel = TierToShard(game.tier + 1) - TierToShard(game.tier)
-  ProgressToNextLevel = (game.timeShards - TierToShard(game.tier)).toFixed(1)
+  ProgressToNextLevel = game.timeShards - TierToShard(game.tier)
   document.getElementById("XPBarText").innerHTML = "Shards to next tier: " + xpShort(ProgressToNextLevel) + "/" + xpShort(XPToNextLevel)
   document.getElementById("XPBarBack").style.width = (ProgressToNextLevel / XPToNextLevel * 100) + "%"
 }
