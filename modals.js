@@ -20,13 +20,14 @@ onDomReady(function () {
         }
 
         if (key === "Escape") {
-            document.querySelectorAll("#dailyRewardDiv, #petsDiv, #enemiesDiv, #fightingDiv, #shopDiv, #artifactsDiv").forEach((el) => {
+            document.querySelectorAll("#dailyRewardDiv, #petsDiv, #enemiesDiv, #fightingDiv, #shopDiv, #artifactsDiv, #petsUnboxDiv").forEach((el) => {
                 el.style.display = "none";
             });
 
             document.getElementById("shopListInner").innerHTML = "";
             document.getElementById("enemiesListInner").innerHTML = "";
             document.getElementById("petsListInner").innerHTML = "";
+            document.getElementById("petsUnboxListInner").innerHTML = "";
             document.getElementById("artifactsListInner").innerHTML = ""
         }
     });
