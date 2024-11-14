@@ -136,6 +136,7 @@ function exportGame() {
 }
 
 function importGame() {
+  if (Date.now() - game.lastExport >= 60000) {
   try {
   let loadgame = JSON.parse(atob(prompt("Input your save here:")));
   if (loadgame && loadgame != null && loadgame != "") {
@@ -151,6 +152,8 @@ function importGame() {
   } catch (err) {
     alert(`Issue With Uploaded Data!\n${err}`);
   }
+ }
+ else alert("Less than a minute has passed since the last export/import, wait a little bit")
 }
 
 function help() {
