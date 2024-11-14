@@ -98,12 +98,23 @@ function openCloseArtifactsTab() {
       }
     }
     if (x==5) {
-      if (y >= 150) for(i=0;i<frozenArtifactsDropChances.length;i++) game.artifacts[frozenArtifactsDropChances[i][0]] += Math.floor(y * frozenArtifactsDropChances[i][1] / 300)
+      let counter = 0
+      if (y >= 150) for(i=0;i<frozenArtifactsDropChances.length;i++) {
+        game.artifacts[frozenArtifactsDropChances[i][0]] += Math.floor(y * frozenArtifactsDropChances[i][1] / 300)
+        counter += Math.floor(y * frozenArtifactsDropChances[i][1] / 300)
+      }
         else for(i=0;i<frozenArtifactsDropChances.length;i++) {
         amt = y * frozenArtifactsDropChances[i][1] / 300
-        if (amt >= 1) {game.artifacts[frozenArtifactsDropChances[i][0]] += Math.floor(amt)}
-        else if (Math.random() < amt) {game.artifacts[frozenArtifactsDropChances[i][0]] += 1}
+        if (amt >= 1) {
+          game.artifacts[frozenArtifactsDropChances[i][0]] += Math.floor(amt)
+          counter += Math.floor(amt)
+        }
+        else if (Math.random() < amt) {
+          game.artifacts[frozenArtifactsDropChances[i][0]] += 1
+          counter += 1
+        }
       }
+      if (counter >= 1) document.getElementsByClassName("dropBox")[3].innerHTML = numberShort(counter) + " Artifacts"
     }
     if (document.getElementById("artifactsTabButton").style.display == "none") {document.getElementById("artifactsTabButton").style.display = "block"}
   }

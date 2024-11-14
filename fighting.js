@@ -302,7 +302,7 @@ function openCloseEnemiesTab() {
     if (game.XPBoostCounter > 0) {document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(game.XPBoostCounter) + " XPBoost"}
     else {document.getElementsByClassName("dropBox")[2].innerHTML = ""}
     if (game.artifactsCounter > 0) {
-      document.getElementsByClassName("dropBox")[3].innerHTML = numberShort(game.artifactsCounter) + " Artifacts"
+      if (fightNumber != 5) document.getElementsByClassName("dropBox")[3].innerHTML = numberShort(game.artifactsCounter) + " Artifacts"
       unboxArtifact(fightNumber,game.artifactsCounter)
     }
     else {document.getElementsByClassName("dropBox")[3].innerHTML = ""}
