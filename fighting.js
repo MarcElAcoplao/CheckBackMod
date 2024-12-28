@@ -37,12 +37,12 @@ function openCloseEnemiesTab() {
       document.getElementById("enemiesListInner").appendChild(enemyBox.cloneNode(true))
       enemyBoxes[i-1].setAttribute("id", i)
       enemyBoxes[i-1].addEventListener('mouseover', function(){
-        if (game.enemies[parseInt(this.id)] > 0) {showEnemiesInfo(parseInt(this.id))}
+        if (player.enemies[parseInt(this.id)] > 0) {showEnemiesInfo(parseInt(this.id))}
       })
       enemyBoxes[i-1].addEventListener('mouseout', function(){showEnemiesInfo(0)})
-      if (game.enemies[i] > 0) { //1st value is red, 2nd green and 3rd blue
+      if (player.enemies[i] > 0) { //1st value is red, 2nd green and 3rd blue
         enemyBoxes[i-1].innerHTML = "<img src='img/enemies/" + i + ".png' style='width: 128px'>"
-        enemyBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.enemies[i] + "</p>"
+        enemyBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + player.enemies[i] + "</p>"
         if (i<=5) enemyBoxes[i-1].style.border = "8px outset #555"
         else if (i<=11) enemyBoxes[i-1].style.border = "8px outset #447"
         else if (i<=16) enemyBoxes[i-1].style.border = "8px outset #647"
@@ -62,7 +62,7 @@ function openCloseEnemiesTab() {
 
   function showEnemiesInfo(x) {
     if (x==0) {document.getElementById("enemiesInfo").innerHTML = ""}
-    else document.getElementById("enemiesInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + enemies[x][0] + "</span><br>You killed " + game.enemies[x] + "</p><br><img src='img/enemies/" + x + ".png' style='width: 50%'><br><p style='color: white'><span style='font-size: 32px; font-weight: bold'>Stats:</span><br>" + (enemies[x][1]).toFixed(1) + " HP<br>" + (enemies[x][2]).toFixed(1) + " Damage<br>" + (enemies[x][3]).toFixed(1) + " Defense<br> Drop tier: " + (enemies[x][4]) + "</p></center>"
+    else document.getElementById("enemiesInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + enemies[x][0] + "</span><br>You killed " + player.enemies[x] + "</p><br><img src='img/enemies/" + x + ".png' style='width: 50%'><br><p style='color: white'><span style='font-size: 32px; font-weight: bold'>Stats:</span><br>" + (enemies[x][1]).toFixed(1) + " HP<br>" + (enemies[x][2]).toFixed(1) + " Damage<br>" + (enemies[x][3]).toFixed(1) + " Defense<br> Drop tier: " + (enemies[x][4]) + "</p></center>"
   }
 
   function openCloseFightingTab() {
@@ -80,7 +80,7 @@ function openCloseEnemiesTab() {
   }
 
   function displayStats() {
-    document.getElementById("statsDisplay").innerHTML = "<left><p style='color: white'><span> HP: " + numberShort(game.HP) + "<br> Current HP: " + numberShort(game.currentHP) + "<br> DMG: " + numberShort(game.DMG) + "<br> DEF: " + numberShort(game.DEF) + "<br> Coins: " + numberShort(game.coins) + "</p></center>"
+    document.getElementById("statsDisplay").innerHTML = "<left><p style='color: white'><span> HP: " + numberShort(player.HP) + "<br> Current HP: " + numberShort(player.currentHP) + "<br> DMG: " + numberShort(player.DMG) + "<br> DEF: " + numberShort(player.DEF) + "<br> Coins: " + numberShort(player.coins) + "</p></center>"
   }
 
   function displayEnemiesFightRarities(x) {
@@ -141,7 +141,7 @@ function openCloseEnemiesTab() {
           totalWeight -= starterEnemiesChances[i][1]
         }
       }
-     game.buttonCooldowns[21] = 3600 / (game.itemCooldown * game.tierCooldown * game.artifactsCooldown) //1h
+     player.buttonCooldowns[21] = 3600 / (player.itemCooldown * player.tierCooldown * player.artifactsCooldown) //1h
     }
     if (x==2) {
       for (i=0;i<intermediateEnemiesChances.length;i++) totalWeight += intermediateEnemiesChances[i][1]
@@ -154,7 +154,7 @@ function openCloseEnemiesTab() {
           totalWeight -= intermediateEnemiesChances[i][1]
         }
       }
-     game.buttonCooldowns[22] = 21600 / (game.itemCooldown * game.tierCooldown * game.artifactsCooldown) //6h
+     player.buttonCooldowns[22] = 21600 / (player.itemCooldown * player.tierCooldown * player.artifactsCooldown) //6h
     }
     if (x==3) {
       for (i=0;i<advancedEnemiesChances.length;i++) totalWeight += advancedEnemiesChances[i][1]
@@ -167,7 +167,7 @@ function openCloseEnemiesTab() {
           totalWeight -= advancedEnemiesChances[i][1]
         }
       }
-     game.buttonCooldowns[26] = 86400 / (game.itemCooldown * game.tierCooldown * game.artifactsCooldown) //24h
+     player.buttonCooldowns[26] = 86400 / (player.itemCooldown * player.tierCooldown * player.artifactsCooldown) //24h
     }
     if (x==5) {
       for (i=0;i<frozenEnemiesChances.length;i++) totalWeight += frozenEnemiesChances[i][1]
@@ -180,22 +180,22 @@ function openCloseEnemiesTab() {
           totalWeight -= frozenEnemiesChances[i][1]
         }
       }
-     game.buttonCooldowns[44] = 181850 / (game.itemCooldown * game.tierCooldown * game.artifactsCooldown) //Around 2.1d, random number lol 
+     player.buttonCooldowns[44] = 181850 / (player.itemCooldown * player.tierCooldown * player.artifactsCooldown) //Around 2.1d, random number lol 
     }
     if (x==4) {
-      game.currentHP = game.HP
+      player.currentHP = player.HP
       enemiesChosen = 17
       if (document.getElementById("dailyMessagesDiv").style.display == "block") {openCloseMessages(0)}
       openCloseMessages(3)
       attackBoss()
-    game.buttonCooldowns[36] = 43200 / (game.itemCooldown * game.tierCooldown * game.artifactsCooldown) //12h
+    player.buttonCooldowns[36] = 43200 / (player.itemCooldown * player.tierCooldown * player.artifactsCooldown) //12h
     }
     else {
     if (document.getElementById("dailyMessagesDiv").style.display == "block") {openCloseMessages(0)}
     setTimeout(() => {
       openCloseMessages(2)
-      game.currentHP = game.HP
-      game.enemyHP = enemies[enemiesChosen][1] * game.enemyScaling ** game.ConsecutiveKills
+      player.currentHP = player.HP
+      player.enemyHP = enemies[enemiesChosen][1] * player.enemyScaling ** player.ConsecutiveKills
       attack(fightNumber)
     }, 10)
     }
@@ -203,16 +203,16 @@ function openCloseEnemiesTab() {
 
   function attack(x) {
      console.log(fightNumber)
-     game.enemyHP -= game.DMG - (enemies[enemiesChosen][3] * game.enemyScaling ** game.ConsecutiveKills)
-     game.currentHP -= (enemies[enemiesChosen][2] * game.enemyScaling ** game.ConsecutiveKills) - game.DEF
+     player.enemyHP -= player.DMG - (enemies[enemiesChosen][3] * player.enemyScaling ** player.ConsecutiveKills)
+     player.currentHP -= (enemies[enemiesChosen][2] * player.enemyScaling ** player.ConsecutiveKills) - player.DEF
      displayStats()
      setTimeout(() => {
-      if (game.enemyHP <= 0) {fightRewards(enemies[enemiesChosen][4],y=fightNumber)}
-     else if (game.currentHP <= 0) {
-      alert("You died... and you stop fighting. Remaining enemy hp: " + numberShortAlert(game.enemyHP))
+      if (player.enemyHP <= 0) {fightRewards(enemies[enemiesChosen][4],y=fightNumber)}
+     else if (player.currentHP <= 0) {
+      alert("You died... and you stop fighting. Remaining enemy hp: " + numberShortAlert(player.enemyHP))
       claimRewards(fightNumber)
     }
-     else if (game.DMG < enemies[enemiesChosen][3]) {
+     else if (player.DMG < enemies[enemiesChosen][3]) {
       alert("Can't deal damage to the enemy, fight ends here")
       claimRewards(fightNumber)
     }
@@ -221,97 +221,97 @@ function openCloseEnemiesTab() {
   }
 
   function attackBoss() {
-    game.bossHP -= game.DMG
-    game.currentHP -= enemies[enemiesChosen][2] * 2 ** game.bossKills
+    player.bossHP -= player.DMG
+    player.currentHP -= enemies[enemiesChosen][2] * 3 ** player.bossKills
     displayStats()
     setTimeout(() => {
-     if (game.bossHP <= 0) {killBoss()}
-     else if (game.currentHP <= 0) {alert("You died... try again later. Remaining boss hp: " + numberShortAlert(game.bossHP))}
+     if (player.bossHP <= 0) {killBoss()}
+     else if (player.currentHP <= 0) {alert("You died... try again later. Remaining boss hp: " + numberShortAlert(player.bossHP))}
      else attackBoss()
      }, 100) //100ms delay
   }
 
   function killBoss() {
-    game.bossKills += 1
-    game.bossHP = enemies[17][1] * 2 ** game.bossKills
-    game.bossMulti += 0.1 * game.bossKills * game.itemLoot / 90
-    game.XP += 10000000000 * game.itemLoot * 1.5 ** game.bossKills
-    game.coins += 10000 * game.itemLoot * 1.5 ** game.bossKills
-    document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(10000000000 * game.itemLoot * 1.5 ** game.bossKills) + " XP"
-    document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(10000 * game.itemLoot * 1.5 ** game.bossKills) + " Coins"
-    document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(0.1 * game.bossKills * game.itemLoot / 90) + " DimMulti"
-    if (!game.enemies[enemiesChosen]) {game.enemies[enemiesChosen] = 1}
-     else {game.enemies[enemiesChosen]++}
-     game.enemiesDefeated += 1
+    player.bossKills += 1
+    player.bossHP = enemies[17][1] * 3 ** player.bossKills
+    player.bossMulti += 0.1 * player.bossKills * player.itemLoot / 90
+    player.XP += 10000000000 * player.itemLoot * 1.5 ** player.bossKills
+    player.coins += 10000 * player.itemLoot * 1.5 ** player.bossKills
+    document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(10000000000 * player.itemLoot * 1.5 ** player.bossKills) + " XP"
+    document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(10000 * player.itemLoot * 1.5 ** player.bossKills) + " Coins"
+    document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(0.1 * player.bossKills * player.itemLoot / 90) + " DimMulti"
+    if (!player.enemies[enemiesChosen]) {player.enemies[enemiesChosen] = 1}
+     else {player.enemies[enemiesChosen]++}
+     player.enemiesDefeated += 1
   }
 
   function fightRewards(x,y) {
     console.log(x + "//" + y)
      if (x==1) {
-      game.XPCounter += 200 * enemies[enemiesChosen][1] * game.itemLoot * (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
-      game.CoinsCounter += 1 * enemies[enemiesChosen][2] * game.itemLoot * game.artifactsCoins * (1 + game.rewardsScaling) ** game.ConsecutiveKills
-      if (Math.random() < 1/10 || game.ConsecutiveKills % 10 == 9) {game.artifactsCounter += 1 * (game.ConsecutiveKills + 1) * game.itemArtifacts} 
+      player.XPCounter += 200 * enemies[enemiesChosen][1] * player.itemLoot * (1.3 + player.rewardsScaling) ** player.ConsecutiveKills
+      player.CoinsCounter += 1 * enemies[enemiesChosen][2] * player.itemLoot * player.artifactsCoins * (0.8 + player.rewardsScaling) ** player.ConsecutiveKills
+      if (Math.random() < 1/10) {player.artifactsCounter += 1 * (player.ConsecutiveKills + 1) * player.itemArtifacts} 
      }
      if (x==2) {
-      game.XPCounter += 500 * enemies[enemiesChosen][1] * game.itemLoot * (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
-      game.CoinsCounter += 2 * enemies[enemiesChosen][2] * game.itemLoot * game.artifactsCoins * (1 + game.rewardsScaling) ** game.ConsecutiveKills
-      game.XPBoostCounter += 0.01 * enemies[enemiesChosen][3] * game.itemLoot * (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
-      if (Math.random() < 1/10 || game.ConsecutiveKills % 10 == 9) {game.artifactsCounter += 2 * (game.ConsecutiveKills + 1) * game.itemArtifacts}
+      player.XPCounter += 500 * enemies[enemiesChosen][1] * player.itemLoot * (1.3 + player.rewardsScaling) ** player.ConsecutiveKills
+      player.CoinsCounter += 2 * enemies[enemiesChosen][2] * player.itemLoot * player.artifactsCoins * (0.8 + player.rewardsScaling) ** player.ConsecutiveKills
+      player.XPBoostCounter += 0.01 * enemies[enemiesChosen][3] * player.itemLoot * (1.3 + player.rewardsScaling) ** player.ConsecutiveKills
+      if (Math.random() < 1/10) {player.artifactsCounter += 2 * (player.ConsecutiveKills + 1) * player.itemArtifacts}
      }
      if (x==3) {
-      game.XPCounter += 550 * enemies[enemiesChosen][1] * game.itemLoot * (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
-      game.CoinsCounter += 5 * enemies[enemiesChosen][2] * game.itemLoot * game.artifactsCoins * (1 + game.rewardsScaling) ** game.ConsecutiveKills
-      game.XPBoostCounter += 0.015 * enemies[enemiesChosen][3] * game.itemLoot * (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
-      if (Math.random() < 1/10 || game.ConsecutiveKills % 10 == 9) {game.artifactsCounter += 1 * (game.ConsecutiveKills + 1) * game.itemArtifacts}
+      player.XPCounter += 550 * enemies[enemiesChosen][1] * player.itemLoot * (1.3 + player.rewardsScaling) ** player.ConsecutiveKills
+      player.CoinsCounter += 5 * enemies[enemiesChosen][2] * player.itemLoot * player.artifactsCoins * (0.8 + player.rewardsScaling) ** player.ConsecutiveKills
+      player.XPBoostCounter += 0.015 * enemies[enemiesChosen][3] * player.itemLoot * (1.3 + player.rewardsScaling) ** player.ConsecutiveKills
+      if (Math.random() < 1/10) {player.artifactsCounter += 1 * (player.ConsecutiveKills + 1) * player.itemArtifacts}
      }
      if (x==4) {
-      game.XPCounter += 750 * enemies[enemiesChosen][1] * game.itemLoot * (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
-      game.CoinsCounter += 10 * enemies[enemiesChosen][2] * game.itemLoot * game.artifactsCoins * (1 + game.rewardsScaling) ** game.ConsecutiveKills
-      game.XPBoostCounter += 0.02 * enemies[enemiesChosen][3] * game.itemLoot * (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
-      if (Math.random() < 1/10 || game.ConsecutiveKills % 10 == 9) {game.artifactsCounter += 2 * (game.ConsecutiveKills + 1) * game.itemArtifacts}
+      player.XPCounter += 750 * enemies[enemiesChosen][1] * player.itemLoot * (1.3 + player.rewardsScaling) ** player.ConsecutiveKills
+      player.CoinsCounter += 10 * enemies[enemiesChosen][2] * player.itemLoot * player.artifactsCoins * (0.8 + player.rewardsScaling) ** player.ConsecutiveKills
+      player.XPBoostCounter += 0.02 * enemies[enemiesChosen][3] * player.itemLoot * (1.3 + player.rewardsScaling) ** player.ConsecutiveKills
+      if (Math.random() < 1/10) {player.artifactsCounter += 2 * (player.ConsecutiveKills + 1) * player.itemArtifacts}
      }
      if (x==5) {
-      game.XPCounter += 1000 * enemies[enemiesChosen][1] * game.itemLoot * (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
-      game.CoinsCounter += 2 * enemies[enemiesChosen][2] * game.itemLoot * game.artifactsCoins * (1 + game.rewardsScaling) ** game.ConsecutiveKills 
-      game.XPBoostCounter += 0.015 * enemies[enemiesChosen][3] * game.itemLoot* (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
-      if (Math.random() < 1/10 || game.ConsecutiveKills % 10 == 9) {game.artifactsCounter += 1 * (game.ConsecutiveKills + 1) * game.itemArtifacts}
+      player.XPCounter += 1000 * enemies[enemiesChosen][1] * player.itemLoot * (1.3 + player.rewardsScaling) ** player.ConsecutiveKills
+      player.CoinsCounter += 2 * enemies[enemiesChosen][2] * player.itemLoot * player.artifactsCoins * (0.8 + player.rewardsScaling) ** player.ConsecutiveKills 
+      player.XPBoostCounter += 0.015 * enemies[enemiesChosen][3] * player.itemLoot* (1.3 + player.rewardsScaling) ** player.ConsecutiveKills
+      if (Math.random() < 1/10) {player.artifactsCounter += 1 * (player.ConsecutiveKills + 1) * player.itemArtifacts}
      }
      if (x==6) {
-      game.XPCounter += 1000000000 * enemies[enemiesChosen][1] * game.itemLoot * (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
-      game.CoinsCounter += 4 * enemies[enemiesChosen][2] * game.itemLoot * game.artifactsCoins * (1 + game.rewardsScaling) ** game.ConsecutiveKills 
-      game.XPBoostCounter += 0.1 * enemies[enemiesChosen][3] * game.itemLoot * (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
-      if (Math.random() < 1/10 || game.ConsecutiveKills % 10 == 9) {game.artifactsCounter += 1 * (game.ConsecutiveKills + 1) * game.itemArtifacts}
+      player.XPCounter += 1000000000 * enemies[enemiesChosen][1] * player.itemLoot * (1.3 + player.rewardsScaling) ** player.ConsecutiveKills
+      player.CoinsCounter += 4 * enemies[enemiesChosen][2] * player.itemLoot * player.artifactsCoins * (0.8 + player.rewardsScaling) ** player.ConsecutiveKills 
+      player.XPBoostCounter += 0.1 * enemies[enemiesChosen][3] * player.itemLoot * (1.3 + player.rewardsScaling) ** player.ConsecutiveKills
+      if (Math.random() < 1/10) {player.artifactsCounter += 1 * (player.ConsecutiveKills + 1) * player.itemArtifacts}
      }
      if (x==7) {
-      game.XPCounter += 4000000000 * enemies[enemiesChosen][1] * game.itemLoot * (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
-      game.CoinsCounter += 40 * enemies[enemiesChosen][2] * game.itemLoot * game.artifactsCoins * (1 + game.rewardsScaling) ** game.ConsecutiveKills 
-      game.XPBoostCounter += 2 * enemies[enemiesChosen][3] * game.itemLoot * (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
-      game.artifactsCounter += 1 * (game.ConsecutiveKills + 1) * game.itemArtifacts
+      player.XPCounter += 4000000000 * enemies[enemiesChosen][1] * player.itemLoot * (1.3 + player.rewardsScaling) ** player.ConsecutiveKills
+      player.CoinsCounter += 40 * enemies[enemiesChosen][2] * player.itemLoot * player.artifactsCoins * (0.8 + player.rewardsScaling) ** player.ConsecutiveKills 
+      player.XPBoostCounter += 2 * enemies[enemiesChosen][3] * player.itemLoot * (1.3 + player.rewardsScaling) ** player.ConsecutiveKills
+      player.artifactsCounter += 1 * (player.ConsecutiveKills + 1) * player.itemArtifacts
      }
-     if (!game.enemies[enemiesChosen]) {game.enemies[enemiesChosen] = 1}
-     else {game.enemies[enemiesChosen]++}
-     game.enemiesDefeated += 1
-     game.ConsecutiveKills += 1
+     if (!player.enemies[enemiesChosen]) {player.enemies[enemiesChosen] = 1}
+     else {player.enemies[enemiesChosen]++}
+     player.enemiesDefeated += 1
+     player.ConsecutiveKills += 1
      startFight(fightNumber)
   }
 
    function claimRewards(x) {
-    console.log(game.ConsecutiveKills)
-    document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(game.XPCounter) + " XP"
-    document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(game.CoinsCounter) + " Coins"
-    if (game.XPBoostCounter > 0) {document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(game.XPBoostCounter) + " XPBoost"}
+    console.log(player.ConsecutiveKills)
+    document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(player.XPCounter) + " XP"
+    document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(player.CoinsCounter) + " Coins"
+    if (player.XPBoostCounter > 0) {document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(player.XPBoostCounter) + " XPBoost"}
     else {document.getElementsByClassName("dropBox")[2].innerHTML = ""}
-    if (game.artifactsCounter > 0) {
-      if (fightNumber != 5) document.getElementsByClassName("dropBox")[3].innerHTML = numberShort(game.artifactsCounter) + " Artifacts"
-      unboxArtifact(fightNumber,game.artifactsCounter)
+    if (player.artifactsCounter > 0) {
+      if (fightNumber != 5) document.getElementsByClassName("dropBox")[3].innerHTML = numberShort(player.artifactsCounter) + " Artifacts"
+      unboxArtifact(fightNumber,player.artifactsCounter)
     }
     else {document.getElementsByClassName("dropBox")[3].innerHTML = ""}
-    game.XP += game.XPCounter
-    game.coins += game.CoinsCounter
-    game.XPBoost += game.XPBoostCounter
-    game.XPCounter = 0
-    game.CoinsCounter = 0
-    game.XPBoostCounter = 0
-    game.ConsecutiveKills = 0
-    game.artifactsCounter = 0
+    player.XP += player.XPCounter
+    player.coins += player.CoinsCounter
+    player.XPBoost += player.XPBoostCounter
+    player.XPCounter = 0
+    player.CoinsCounter = 0
+    player.XPBoostCounter = 0
+    player.ConsecutiveKills = 0
+    player.artifactsCounter = 0
    }

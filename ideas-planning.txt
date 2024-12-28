@@ -25,36 +25,35 @@ Nerfed edition nerfs:
 -XP nerfs
   -XP gain moves from 1xp lowest and 1000xp highest to 0.5xp lowest and 250xp highest
   -Cooldowns go from 1min/7d to 2mins/1 month (30 days)
-  -XP required to levelup formula is buffed (leveling is harder)
+  -XP required to levelup formula is buffed slightly (leveling is harder)
 -Pet nerfs
-  -Cooldowns for the first 4 crates go from 2h/2d to 6h/7d
-  -Cooldowns for the other 4 crates go from 1h/1h/12h/7d to 2h/6h/2d/14d
-  -Costs of the 3 crates are increased (inflation go br)
+  -Cooldowns for the first 4 crates go from 2h/2d to 3h/3d
+  -Cooldowns for the other 3 crates have also been nerfed
+  -Costs of the 3 crates are increased (x2 xpboost and x4 coins)
   -The rarer pets have been made rarer
+  -Bulk is multiplied by 0.8 [does nothing when below 1]
 -XPBoost nerfs
   -Cooldowns go from 1h/1d to 2h/7d
-  -Softcap starts at 2 instead of 10 and is ^0.333 instead of ^0.5
+  -Softcap starts at 2 instead of 10 and is ^0.3 instead of ^0.5
 -Stat nerfs
-  -All stat gains /2
-  -Cooldowns yet again go from 1h/1d to 2h/7d
+  -Cooldowns go from 1h/14d to 2h/30d
 -Fighting nerfs
-  -Base rewards /2
   -Enemy stat scaling becomes 3^x instead of 2^x
   -Consecutive kills reward scaling becomes 1.3^x instead of 1.5^x (For coins it's 0.8 base)
 -Shop nerfs
-  -All cost reductions done previously have been reverted
+  -All cost reductions done previously have been reverted (this was intended to be done after shop costs were rebalanced)
   -Furthermore, costs have been increased
   -Few formula-based upgrades have been nerfed too
 -Dimensions nerfs
   -Base multiplier is x0.5
-  -Tier scaling is 7^x instead of 5^x
+  -Tier scaling is 6^x instead of 5^x
   -Removed that each dimension click simulates clicking the ones below
-  -Cooldowns go from 5min/2d to 10min/7d
+  -Cooldowns go from 5min/2d to 10min/4d
 -Bossfight nerfs
   -Base damage is now 50k
   -Scaling is now 3^x instead of 2^x
 -Artifacts nerfs
-  -Drop chances are halved (still guaranteed on x kills)
+  -Removed guarantee drop on 10th kill
   -Some effects have been nerfed
 -Frozen crate nerfs
-  -Base bulk is now 0.5 instead of 1
+  -Formula scales slightly worse

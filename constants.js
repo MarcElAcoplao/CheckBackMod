@@ -284,47 +284,47 @@ const pets = [
 ]
 
 const skeletalUnboxChances = [ //will be set to 1
-  [48,112], [49,72], [50,48], [51,32], [52,16], [53,10], [54,4], [55,2], [47,1]
+  [48,1008], [49,576], [50,336], [51,192], [52,80], [53,40], [54,12], [55,4], [47,1]
 ]
 
 const skeletalBoostUnboxChances = [ //Same thing as original one but boosted odds and day 100+
-  [48,560], [49,360], [50,240], [51,200], [52,160], [53,110], [54,80], [55,40], [47,20], [73,4]
+  [48,5600], [49,3240], [50,1920], [51,1400], [52,800], [53,550], [54,320], [55,120], [47,40], [73,4]
 ]
 
 const ghostUnboxChances = [ //will be set to 2
-  [56,56], [57,36], [58,24], [59,16], [60,8], [61,5], [62,2], [63,1]
+  [56,56*8], [57,36*7], [58,144], [59,80], [60,32], [61,15], [62,4], [63,1]
 ]
 
 const ghostBoostUnboxChances = [ //Same thing as original but boosted odds and day 100+
-  [56,560], [57,360], [58,240], [59,200], [60,160], [61,110], [62,80], [63,30], [74, 5]
+  [56,560*9], [57,360*8], [58,240*7], [59,200*6], [60,160*5], [61,110*4], [62,80*3], [63,30*2], [74,5]
 ]
 
 const basicUnboxChances = [ //this one will actually be 3
-  [1,80], [2,64], [3,20], [4,8], [5,6], [6,1]
+  [1,80*6], [2,64*5], [3,20*4], [4,8*3], [5,6*2], [6,1]
 ]
 
 const advancedUnboxChances = [
-  [4,170], [7,150], [5,108], [8,84], [9,56], [10,32], [11,22], [12,12], [13,2]
+  [4,170*9], [7,150*8], [5,108*7], [8,84*6], [9,56*5], [10,32*4], [11,22*3], [12,12*2], [13,2]
 ]
 
 const epicUnboxChances = [
-  [8,100], [14,90], [10,78], [15,68], [16,55], [17,40], [18,30], [19,17], [20,12], [21,5], [22,1]    
+  [8,100*11], [14,90*10], [10,78*9], [15,68*8], [16,55*7], [17,40*6], [18,30*5], [19,17*4], [20,12*3], [21,5*2], [22,1]    
 ]
 
 const legendaryUnboxChances = [ //4 5 and 6
-  [12, 510], [23,480], [24,440], [25,400], [26,300], [27,264], [28,120], [29,60], [30,19], [31,3]
+  [12, 510*10], [23,480*9], [24,440*8], [25,400*7], [26,300*6], [27,264*5], [28,120*4], [29,60*3], [30,19*2], [31,3]
 ]
 
 const prestigeUnboxChances = [ //now it jumps to 7 and works fine from now
-  [32,712], [28, 640], [33,562], [29, 500], [34,462], [35,456], [36,258], [37,78], [38,12], [39,3]
+  [32,712*10], [28, 640*9], [33,562*8], [29, 500*7], [34,462*6], [35,456*5], [36,258*4], [37,78*3], [38,12*2], [39,3]
 ]
 
 const trascendantUnboxChances = [ //this is 8
- [40,126], [36, 100], [41,58], [42,26], [38, 13], [43,11], [44,5], [45,2], [46,1],
+ [40,126*9], [36, 100*8], [41,58*7], [42,26*6], [38, 13*5], [43,11*4], [44,5*3], [45,2*2], [46,1],
 ]
 
 const universalUnboxChances = [
-  [64,694], [65,449], [66,258], [45,188], [67,145], [68,50], [69,20], [70,6], [71,3], [72,1], 
+  [64,694*10], [65,449*9], [66,258*8], [45,188*7], [67,145*6], [68,50*5], [69,20*4], [70,6*3], [71,3*2], [72,1], 
 ]
 
 const frozenUnboxChances1 = [
@@ -350,7 +350,7 @@ const enemies = [
   ["Yellow tailed human", 10000, 1000, 100, 5], //3.3 (14) - 10M XP / 2k Coins / 1.5 XPBoost
   ["Green tailed human", 20000, 2000, 200, 5], //3.4 (15) - 20M XP / 4k Coins / 3 XPBoost
   ["Evil tailed human", 50000, 5000, 500, 5], //3.5 (16) - 50M XP / 10k Coins / 7.5 XPBoost
-  ["Awakened Beast", 100000, 20000, 0, 0], //4.1 (17) - Scales with each kill and drops are managed separatedly. 1B XP / 1k Coins / 0.1 All Dimensions multi (/90 to compensate looting boosts). Stat scaling: 2^kills. Rewards scaling: 1.5^kill / 1.5^kill / kills
+  ["Awakened Beast", 100000, 50000, 0, 0], //4.1 (17) - Scales with each kill and drops are managed separatedly. 1B XP / 1k Coins / 0.1 All Dimensions multi (/90 to compensate looting boosts). Stat scaling: 2^kills. Rewards scaling: 1.5^kill / 1.5^kill / kills
   ["Cold beast", 100000, 10000, 1000, 6], //5.1 (18) - 100T XP / 40k Coins / 100 XPBoost
   ["Human with ice armor", 300000, 30000, 6000, 6], //5.2 (19) - 300T XP / 120k Coins / 600 XPBoost
   ["Ice wizard", 1000000, 100000, 15000, 6], //5.3 (20) - 1Qd XP / 400k Coins / 1.5k XPBoost
