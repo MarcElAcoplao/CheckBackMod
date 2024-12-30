@@ -189,23 +189,25 @@ function latestDrops(x, y) {
     }
 
   function simulatedUnboxPet(x,y) {
-    amt = 0
+    let amt = 0
+    let simulatedWeight = 0
      if (x == 10) {
-      for (i=0;i<frozenUnboxChances1.length;i++) totalWeight += frozenUnboxChances1[i][1]
-      for (i=0;i<frozenUnboxChances1.length;i++) {
-        amt = frozenUnboxChances1[i][1] / totalWeight * y
+      for (i=0;i<frozenUnboxChances1.length;i++) {simulatedWeight += frozenUnboxChances1[i][1]}
+      for (a=0;a<frozenUnboxChances1.length;a++) {
+        amt = frozenUnboxChances1[a][1] / simulatedWeight * y
+        console.log("Amount: " + amt)
         if (amt >= 1) {
-          if (!game.pets[frozenUnboxChances1[i][0]]) {game.pets[frozenUnboxChances1[i][0]] = Math.floor(amt)}
-          else {game.pets[frozenUnboxChances1[i][0]] += Math.floor(amt)}
-          latestDrops(frozenUnboxChances1[i][0], Math.floor(amt))
+          if (!game.pets[frozenUnboxChances1[a][0]]) {game.pets[frozenUnboxChances1[a][0]] = Math.floor(amt)}
+          else {game.pets[frozenUnboxChances1[a][0]] += Math.floor(amt)}
+          latestDrops(frozenUnboxChances1[a][0], Math.floor(amt))
         }
         else if (Math.random() < amt) {
-          if (!game.pets[frozenUnboxChances1[i][0]]) {game.pets[frozenUnboxChances1[i][0]] = 1}
-          else {game.pets[frozenUnboxChances1[i][0]]++}
-          latestDrops(frozenUnboxChances1[i][0], 1)
+          if (!game.pets[frozenUnboxChances1[a][0]]) {game.pets[frozenUnboxChances1[a][0]] = 1}
+          else {game.pets[frozenUnboxChances1[a][0]]++}
+          latestDrops(frozenUnboxChances1[a][0], 1)
+          console.log("Random number smaller than amount")
         }
       }
-
      }
      if (x >= 3) {game.buttonCooldowns[PetButtons[x].cooldownID] = PetButtons[x].cooldown / (pets[game.selectedPet][3] * game.itemCooldown * game.tierCooldown * game.artifactsCooldown)} //2 hours
      game.cratesOpened += y
