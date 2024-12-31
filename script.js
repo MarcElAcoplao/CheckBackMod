@@ -321,7 +321,7 @@ for (let i=3;i<PetButtons.length;i++) {
     document.getElementById(PetButtons[i].name).innerHTML = "Check back in " + numberToTime(game.buttonCooldowns[PetButtons[i].cooldownID])
   }
   else {
-    if (i == 10 && game.tier <= 40) {
+    if (i == 10 && game.tier < 40) {
       document.getElementById("unboxButton8").innerHTML = "Check Back when you reach Tier 40"
       document.getElementById("unboxButton8").disabled = true
     }
