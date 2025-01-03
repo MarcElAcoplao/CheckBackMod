@@ -17,7 +17,7 @@ const UnboxChancesArray = [0,0,0,basicUnboxChances,advancedUnboxChances,epicUnbo
 function unboxPet(x, y) {
     totalWeight = 0
     let list = UnboxChancesArray[x]
-    if (y > 1000) {simulatedUnboxPet(x, y)}
+    if (y > 1000 && x == 10) {simulatedUnboxPet(x, y)}
     else {
     //Thank you amber for this idea :3 (and Wrab with the condensing even further idea)
     //Determines the total weight, and then progressively checks random odds until a pet is found
