@@ -4,7 +4,7 @@ body {
 
 .button {
   background-color: #500049;
-  border: 0.3vh solid rgb(255, 209, 2);
+  border: 0.1em solid rgb(255, 209, 2);
   color: rgb(212, 0, 255);
 }
 
@@ -15,7 +15,7 @@ body {
 
 .button:disabled {
   background-color: #444;
-  border: 0.3vh solid #000;
+  border: 0.1em solid #000;
   color: #ddd;
 }
 
@@ -29,6 +29,6 @@ body {
 
 .tabButton { /* This, when it returns true */
   background-color: #111;
-  border: 0.3vh solid #0ff;
+  border: 0.1em solid #0ff;
   color: #0ff;
 }

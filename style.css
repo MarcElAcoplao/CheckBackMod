@@ -22,7 +22,7 @@ img {
 
 #levelBar {
   width: 100%;
-  height: 13vh;
+  height: 8em;
   background-color: #5cc;
   transition: background-color 500ms;
   z-index: 2;
@@ -34,8 +34,8 @@ img {
   text-align: center;
   color: white;
   margin: 0;
-  font-size: 6vh;
-  line-height: 8vh;
+  font-size: 4em;
+  line-height: 1.2em;
   z-index: 2;
 }
 
@@ -43,15 +43,15 @@ img {
   text-align: center;
   color: white;
   margin: 0;
-  font-size: 3vh;
-  line-height: 4vh;
+  font-size: 2em;
+  line-height: 1em;
   z-index: 2;
 }
 
 #XPBar {
   position: relative;
   width: 100%;
-  height: 5vh;
+  height: 3em;
   background-color: black;
   z-index: 2;
 }
@@ -72,8 +72,8 @@ img {
   color: white;
   text-shadow: 0.3vh 0.3vh black;
   margin: 0;
-  font-size: 3.5vh;
-  line-height: 5vh;
+  font-size: 2.2em;
+  line-height: 1.3em;
   position: relative;
   z-index: 2;
 }
@@ -87,8 +87,7 @@ img {
 
 #selectedPetText {
   text-align: right;
-  font-size: 2vh;
-  line-height: 2.5vh;
+  font-size: 1.2em;
   margin: 0;
   display: none;
   z-index: 2;
@@ -100,14 +99,13 @@ img {
 }
 
 #tabsContainer {
-  position: sticky;
   top: 19vh;
   left: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   align-self: flex-start;
-  gap: 10px;
+  gap: 5px;
   margin-left: 8px;
   flex-basis: 25%;
   z-index: 1;
@@ -117,14 +115,13 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   margin-top: 40px;
   margin-bottom: 100px;
   z-index: 1;
 }
 
 #infosContainer {
-  position: sticky;
   top: 18vh;
   left: 0;
   display: flex;
@@ -169,12 +166,12 @@ img {
 }
 
 .button {
-  min-width: 4vh;
-  padding-left: 1vh;
-  padding-right: 1vh;
-  border-radius: 2vh;
+  min-width: auto;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+  border-radius: 1em;
   font-family: Verdana, sans-serif;
-  font-size: 3vh;
+  font-size: 2rem;
   transition: background-color 300ms ease-out, color 300ms ease-out, border 300ms ease-out;
 }
 
@@ -219,18 +216,16 @@ img {
 }
 
 #dailyRewardRarities, #enemiesFightChances {
-  position: fixed;
   text-align: right;
   top: 80px;
   right: 0.5vh;
-  font-size: 2vh;
-  line-height: 2.5vh;
+  font-size: 1.1em;
   margin: 0;
   color: #ccc;
 }
 
 #claimDailyRewardButton {
-  font-size: 2vh;
+  font-size: 2rem;
 }
 
 .modalBoxes {
@@ -248,12 +243,12 @@ img {
   border: 1vh outset #777;
   text-align: center;
   color: white;
-  font-size: 3vmin;
+  font-size: 1.5em;
   z-index: 2;
 }
 
 .crateName {
-  font-size: 1.5vmin;
+  font-size: 0.5em;
 }
 
 #petsDiv {
@@ -267,6 +262,7 @@ img {
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
+  flex-direction: column;
 }
 
 #petsUnboxDiv {
@@ -357,22 +353,21 @@ img {
 }
 
 .themeButton {
-  height: 2.5vh;
-  font-size: 1.5vh;
+  height: 1.5em;
+  font-size: 1em;
   z-index: 2;
 }
 
 #versionText {
   margin: 0;
-  line-height: 2vh;
-  font-size: 2vh;
+  font-size: 1.3em;
   z-index: 2;
 }
 
 .settingsButton {
-  height: 2.2vh;
-  font-size: 1.5vh;
-  line-height: 1.5vh;
+  height: 1.4em;
+  font-size: 1em;
+  line-height: 0.8em;
   background-color: #bbb;
   border: 3px solid #666;
   z-index: 2;
@@ -393,6 +388,7 @@ img {
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
+  flex-direction: column;
 }
 
 #enemiesCloseButton:hover {
@@ -434,6 +430,7 @@ img {
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
+  flex-direction: column;
 }
 
 #artifactsCloseButton:hover {
@@ -477,6 +474,7 @@ img {
   display: none;
   border: 0.8vh outset #555;
   text-align: center;
+  grid: auto-flow dense min-content / 1fr 1fr;
 }
 
 .modalActionButtons {
@@ -510,7 +508,7 @@ img {
 
 #statsDisplay {
   text-align: left;
-  font-size: 20px;
+  font-size: 1.1em;
   font-weight: bold;
 }
 
@@ -537,6 +535,7 @@ img {
   background-color: #444;
   display: none;
   border: 0.8vh outset #555;
+  flex-direction: column;
 }
 
 #shopCloseButton:hover {
@@ -659,8 +658,7 @@ img {
   }
 
   #versionText {
-    line-height: 1vh;
-    font-size: 1vh;
+    font-size: 1.3em;
   }
 
   #buttonsContainer {

@@ -1,12 +1,12 @@
 
   //Shop features
   function openCloseShopTab() {
-    if (document.getElementById("shopDiv").style.display == "block") {
+    if (document.getElementById("shopDiv").style.display == "flex") {
       document.getElementById("shopDiv").style.display = "none"
       document.getElementById("shopListInner").innerHTML = ""
     }
     else {
-      document.getElementById("shopDiv").style.display = "block"
+      document.getElementById("shopDiv").style.display = "flex"
       displayItems()
     }
   }
@@ -35,7 +35,7 @@
     //1st red 2nd green 3rd blue
         itemBoxes[i-1].innerHTML = "<img src='img/shop/" + i + ".png' style='width: 128px' onerror=\"this.onerror=null;this.src='img/shop/0.png';\">"
         if (!game.items[i]) {itemBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>0</p>"}
-        else {itemBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.items[i] + "</p>"}
+        else {itemBoxes[i-1].innerHTML += "<p style='position: absolute; bottom: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.items[i] + "</p>"}
         if (i<=6) itemBoxes[i-1].style.border = "8px outset #555"
         else if (i<=12) itemBoxes[i-1].style.border = "8px outset #447"
         else if (i<=18) itemBoxes[i-1].style.border = "8px outset #647"
