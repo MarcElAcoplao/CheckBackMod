@@ -9,12 +9,12 @@ const FightingButtons = [ //Stats of the xpboost buttons
 
 //All of fighting stuff will be added here
 function openCloseEnemiesTab() {
-    if (document.getElementById("enemiesDiv").style.display == "block") {
-      document.getElementById("enemiesDiv").style.display = "none"
+    if (document.getElementById("enemiesDiv").style.display == "flex") {
+      document.getElementById("enemiesDiv").style.display = "flex"
       document.getElementById("enemiesListInner").innerHTML = ""
     }
     else {
-      document.getElementById("enemiesDiv").style.display = "block"
+      document.getElementById("enemiesDiv").style.display = "flex"
       displayEnemies()
     }
   }
@@ -42,7 +42,7 @@ function openCloseEnemiesTab() {
       enemyBoxes[i-1].addEventListener('mouseout', function(){showEnemiesInfo(0)})
       if (game.enemies[i] > 0) { //1st value is red, 2nd green and 3rd blue
         enemyBoxes[i-1].innerHTML = "<img src='img/enemies/" + i + ".png' style='width: 128px'>"
-        enemyBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.enemies[i] + "</p>"
+        enemyBoxes[i-1].innerHTML += "<p style='position: absolute; bottom: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.enemies[i] + "</p>"
         if (i<=5) enemyBoxes[i-1].style.border = "8px outset #555"
         else if (i<=11) enemyBoxes[i-1].style.border = "8px outset #447"
         else if (i<=16) enemyBoxes[i-1].style.border = "8px outset #647"
@@ -54,7 +54,7 @@ function openCloseEnemiesTab() {
       }
       else {
         enemyBoxes[i-1].innerHTML = "<img src='img/enemies/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
-        enemyBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>0</p>"
+        enemyBoxes[i-1].innerHTML += "<p style='position: absolute; bottom: 0; left: 0; margin: 2px; color: white; font-size: 24px'>0</p>"
       }
     }
     j=enemies.length-1
@@ -66,11 +66,11 @@ function openCloseEnemiesTab() {
   }
 
   function openCloseFightingTab() {
-    if (document.getElementById("fightingDiv").style.display == "block") {
+    if (document.getElementById("fightingDiv").style.display == "grid") {
       document.getElementById("fightingDiv").style.display = "none"
     }
     else {
-      document.getElementById("fightingDiv").style.display = "block"
+      document.getElementById("fightingDiv").style.display = "grid"
       displayStats()
       document.getElementsByClassName("dropBox")[0].innerHTML = ""
       document.getElementsByClassName("dropBox")[1].innerHTML = ""
