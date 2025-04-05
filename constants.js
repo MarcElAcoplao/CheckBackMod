@@ -1,6 +1,6 @@
-const unlockLevels = [2,3,4,5,6,8,12,15,20,35,50,70,100,125,150,200,250,300,350,400,500,1500,20000,50000,100000,1000000,5000000,500000000,1*10**10,5*10**10,2.5*10**11]
-const importantUnlockLevels = [8,100,500,1500,250000,5000000]
-const levelBarTextures = [50,55,60,65,70,80,90,100,200]
+const unlockLevels = [2, 3, 4, 5, 6, 8, 12, 15, 20, 35, 50, 70, 100, 125, 150, 200, 250, 300, 350, 400, 500, 1500, 20000, 50000, 100000, 1000000, 5000000, 500000000, 1 * 10 ** 10, 5 * 10 ** 10, 2.5 * 10 ** 11]
+const importantUnlockLevels = [8, 100, 500, 1500, 250000, 5000000]
+const levelBarTextures = [50, 55, 60, 65, 70, 80, 90, 100, 200]
 
 const levelBarColours = [
   [1, "#5cc"],
@@ -114,29 +114,29 @@ const ranks = [
   [400000000, "Finality+"],
   [600000000, "Finality++"],
   [800000000, "Finality+++"],
-  [10**9, "Alpha"],
-  [2.5*10**9, "Alpha+"],
-  [5*10**9, "Alpha++"],
-  [7.5*10**9, "Alpha+++"],
-  [10**10, "Beta"],
-  [2.5*10**10, "Beta+"],
-  [5*10**10, "Beta++"],
-  [7.5*10**10, "Beta+++"],
-  [10**11, "Chi"],
-  [2.5*10**11, "Chi+"],
-  [5*10**11, "Chi++"],
-  [7.5*10**11, "Chi+++"],
-  [10**12, "Delta"],
-  [7.5*10**12, "Delta+"],
-  [5*10**13, "Delta++"],
-  [2.5*10**14, "Delta+++"],
-  [10**15, "Epsilon"],
-  [7.5*10**15, "Epsilon+"],
-  [5*10**16, "Epsilon++"],
-  [2.5*10**17, "Epsilon+++"],
-  [10**18, "Fabled"],
-  [10**25, "Impossibly dedicated"],
-  [10**100, "Impossibly dedicated squared"],
+  [10 ** 9, "Alpha"],
+  [2.5 * 10 ** 9, "Alpha+"],
+  [5 * 10 ** 9, "Alpha++"],
+  [7.5 * 10 ** 9, "Alpha+++"],
+  [10 ** 10, "Beta"],
+  [2.5 * 10 ** 10, "Beta+"],
+  [5 * 10 ** 10, "Beta++"],
+  [7.5 * 10 ** 10, "Beta+++"],
+  [10 ** 11, "Chi"],
+  [2.5 * 10 ** 11, "Chi+"],
+  [5 * 10 ** 11, "Chi++"],
+  [7.5 * 10 ** 11, "Chi+++"],
+  [10 ** 12, "Delta"],
+  [7.5 * 10 ** 12, "Delta+"],
+  [5 * 10 ** 13, "Delta++"],
+  [2.5 * 10 ** 14, "Delta+++"],
+  [10 ** 15, "Epsilon"],
+  [7.5 * 10 ** 15, "Epsilon+"],
+  [5 * 10 ** 16, "Epsilon++"],
+  [2.5 * 10 ** 17, "Epsilon+++"],
+  [10 ** 18, "Fabled"],
+  [10 ** 25, "Impossibly dedicated"],
+  [10 ** 100, "Impossibly dedicated squared"],
   [Infinity, "Error"],
 ] //space and finality, omega
 
@@ -260,7 +260,7 @@ const pets = [
   ["Infected spider", 105, 1.75, 1.7, 1.5, 1], //64 [Around yellow dragon stats]
   ["Red snake", 180, 1.95, 1.95, 2, 1], //65
   ["Dimensional eye", 300, 2.2, 2.2, 2.5, 1], //66
-  ["Radioactive rat", 500, 2.5, 2.5, 3, 1], //67 
+  ["Radioactive rat", 500, 2.5, 2.5, 3, 1], //67
   ["Toxic mushroom", 777, 2.8, 2.9, 3.5, 1], //68 [Around dark blue dragon stats]
   ["Universal vortex", 1200, 3.2, 3.3, 5, 1.1], //69 [Starts to drop below 1%] [nice]
   ["3-Headed snake", 1900, 3.6, 3.6, 6.5, 1.2], //70
@@ -284,51 +284,51 @@ const pets = [
 ]
 
 const skeletalUnboxChances = [ //will be set to 1
-  [48,112], [49,72], [50,48], [51,32], [52,16], [53,10], [54,4], [55,2], [47,1]
+  [48, 112], [49, 72], [50, 48], [51, 32], [52, 16], [53, 10], [54, 4], [55, 2], [47, 1]
 ]
 
 const skeletalBoostUnboxChances = [ //Same thing as original one but boosted odds and day 100+
-  [48,560], [49,360], [50,240], [51,200], [52,160], [53,110], [54,80], [55,40], [47,20], [73,4]
+  [48, 560], [49, 360], [50, 240], [51, 200], [52, 160], [53, 110], [54, 80], [55, 40], [47, 20], [73, 4]
 ]
 
 const ghostUnboxChances = [ //will be set to 2
-  [56,56], [57,36], [58,24], [59,16], [60,8], [61,5], [62,2], [63,1]
+  [56, 56], [57, 36], [58, 24], [59, 16], [60, 8], [61, 5], [62, 2], [63, 1]
 ]
 
 const ghostBoostUnboxChances = [ //Same thing as original but boosted odds and day 100+
-  [56,560], [57,360], [58,240], [59,200], [60,160], [61,110], [62,80], [63,30], [74, 5]
+  [56, 560], [57, 360], [58, 240], [59, 200], [60, 160], [61, 110], [62, 80], [63, 30], [74, 5]
 ]
 
 const basicUnboxChances = [ //this one will actually be 3
-  [1,80], [2,64], [3,20], [4,8], [5,6], [6,1]
+  [1, 80], [2, 64], [3, 20], [4, 8], [5, 6], [6, 1]
 ]
 
 const advancedUnboxChances = [
-  [4,170], [7,150], [5,108], [8,84], [9,56], [10,32], [11,22], [12,12], [13,2]
+  [4, 170], [7, 150], [5, 108], [8, 84], [9, 56], [10, 32], [11, 22], [12, 12], [13, 2]
 ]
 
 const epicUnboxChances = [
-  [8,100], [14,90], [10,78], [15,68], [16,55], [17,40], [18,30], [19,17], [20,12], [21,5], [22,1]    
+  [8, 100], [14, 90], [10, 78], [15, 68], [16, 55], [17, 40], [18, 30], [19, 17], [20, 12], [21, 5], [22, 1]
 ]
 
 const legendaryUnboxChances = [ //4 5 and 6
-  [12, 510], [23,480], [24,440], [25,400], [26,300], [27,264], [28,120], [29,60], [30,19], [31,3]
+  [12, 510], [23, 480], [24, 440], [25, 400], [26, 300], [27, 264], [28, 120], [29, 60], [30, 19], [31, 3]
 ]
 
 const prestigeUnboxChances = [ //now it jumps to 7 and works fine from now
-  [32,712], [28, 640], [33,562], [29, 500], [34,462], [35,456], [36,258], [37,78], [38,12], [39,3]
+  [32, 712], [28, 640], [33, 562], [29, 500], [34, 462], [35, 456], [36, 258], [37, 78], [38, 12], [39, 3]
 ]
 
 const trascendantUnboxChances = [ //this is 8
- [40,126], [36, 100], [41,58], [42,26], [38, 13], [43,11], [44,5], [45,2], [46,1],
+  [40, 126], [36, 100], [41, 58], [42, 26], [38, 13], [43, 11], [44, 5], [45, 2], [46, 1],
 ]
 
 const universalUnboxChances = [
-  [64,694], [65,449], [66,258], [45,188], [67,145], [68,50], [69,20], [70,6], [71,3], [72,1], 
+  [64, 694], [65, 449], [66, 258], [45, 188], [67, 145], [68, 50], [69, 20], [70, 6], [71, 3], [72, 1],
 ]
 
 const frozenUnboxChances1 = [
-  [75,90000], [76, 9000], [77,900], [78, 70], [79,24], [80, 5], [81,1],
+  [75, 90000], [76, 9000], [77, 900], [78, 70], [79, 24], [80, 5], [81, 1],
 ]
 
 const enemies = [
@@ -356,30 +356,30 @@ const enemies = [
   ["Ice wizard", 1000000, 100000, 15000, 6], //5.3 (20) - 1Qd XP / 400k Coins / 1.5k XPBoost
   ["Frozen terminator", 5000000, 500000, 100000, 6], //5.4 (21) - 5Qd XP / 2m Coins / 10k XPBoost
   ["Flying frozen snake", 25000000, 2500000, 500000, 7], //5.5 (22) - 100Qd XP / 100m Coins / 1m XPBoost / Also guaranteed artifacts
-  ]
+]
 
-  const starterEnemiesChances = [ //45, 30, 15, 8, 2
+const starterEnemiesChances = [ //45, 30, 15, 8, 2
   [1, 30], [2, 25], [3, 20], [4, 15], [5, 10],
-  ]
+]
 
-  const intermediateEnemiesChances = [
+const intermediateEnemiesChances = [
   [6, 30], [7, 25], [8, 20], [9, 15], [10, 10], [11, 5],
-  ]
+]
 
-  const advancedEnemiesChances = [
+const advancedEnemiesChances = [
   [12, 13], [13, 8], [14, 5], [15, 3], [16, 2],
-  ]
+]
 
-  const BossChances = [
-    [17, 1],
-    ]
+const BossChances = [
+  [17, 1],
+]
 
-  const frozenEnemiesChances = [
-    [18, 100], [19, 50], [20, 25], [21, 5], [22, 1]
-  ]
+const frozenEnemiesChances = [
+  [18, 100], [19, 50], [20, 25], [21, 5], [22, 1]
+]
 
-  const items = [
-//Name, amount you can buy
+const items = [
+  //Name, amount you can buy
   ["Test", 100000],
   ["Starter XP orb", 2], //+50% XP gain
   ["Starter armor", 1], //+25% Stat gains
@@ -423,23 +423,23 @@ const enemies = [
   ["Frozen dimensions", 3], //(40) Each level doubles the cooldown of all dimensions but increases their multipliers by x5 (Not coded)
   ["Artifact condensation", 1], //(41) Buffs artifact drops by x5
   ["The tale of the Frozen Yeti", 1], //(42) Good boosts and also unlocks a new set of upgrades + frozen pets (Not coded)
-  ]
+]
 
-  const artifacts = [
-    //Name
-    ["Test"], // (0)
-    ["Starter XP artifact"], // (1) Dropped from the starter enemies, +1% XP
-    ["Starter loot artifact"], // (2) Dropped from the intermediate enemies, +1% Coins
-    ["Starter+ XP artifact"], // (3) Dropped from the advanced enemies (common), +10% XP
-    ["Starter XPBoost artifact"], // (4) Dropped from the advanced enemies (rare), +10% XPBoost
-    ["Frozen XP artifact"], // (5) Dropped from the frozen area (common), +100% XP
-    ["Frozen XPBoost artifact"], // (6) Dropped from the frozen area (common), +50% XPBoost
-    ["Frozen crate bulk artifact"], // (7) Dropped from the frozen area (uncommon), +5% Crate bulk [All crates]
-    ["Frozen cooldown artifact"], // (8) Dropped from the frozen area (rare), +/0.01 All cooldowns [Additive, so 100 is /2 and 400 is /5]
-    ["Frozen stats artifact"], // (9) Dropped from the frozen area (rare), +10% Stats gain
-    ["Frozen dimensional artifact"], // (10) Dropped from the frozen area (very rare), +10% All dimensions multi
-  ]
+const artifacts = [
+  //Name
+  ["Test"], // (0)
+  ["Starter XP artifact"], // (1) Dropped from the starter enemies, +1% XP
+  ["Starter loot artifact"], // (2) Dropped from the intermediate enemies, +1% Coins
+  ["Starter+ XP artifact"], // (3) Dropped from the advanced enemies (common), +10% XP
+  ["Starter XPBoost artifact"], // (4) Dropped from the advanced enemies (rare), +10% XPBoost
+  ["Frozen XP artifact"], // (5) Dropped from the frozen area (common), +100% XP
+  ["Frozen XPBoost artifact"], // (6) Dropped from the frozen area (common), +50% XPBoost
+  ["Frozen crate bulk artifact"], // (7) Dropped from the frozen area (uncommon), +5% Crate bulk [All crates]
+  ["Frozen cooldown artifact"], // (8) Dropped from the frozen area (rare), +/0.01 All cooldowns [Additive, so 100 is /2 and 400 is /5]
+  ["Frozen stats artifact"], // (9) Dropped from the frozen area (rare), +10% Stats gain
+  ["Frozen dimensional artifact"], // (10) Dropped from the frozen area (very rare), +10% All dimensions multi
+]
 
-  const frozenArtifactsDropChances = [
-    [5, 115], [6, 115], [7, 48], [8, 10], [9, 10], [10, 2]
-  ]
+const frozenArtifactsDropChances = [
+  [5, 115], [6, 115], [7, 48], [8, 10], [9, 10], [10, 2]
+]
