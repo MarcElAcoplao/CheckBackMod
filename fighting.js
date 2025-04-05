@@ -10,7 +10,7 @@ const FightingButtons = [ //Stats of the xpboost buttons
 //All of fighting stuff will be added here
 function openCloseEnemiesTab() {
     if (document.getElementById("enemiesDiv").style.display == "flex") {
-      document.getElementById("enemiesDiv").style.display = "flex"
+      document.getElementById("enemiesDiv").style.display = "none"
       document.getElementById("enemiesListInner").innerHTML = ""
     }
     else {

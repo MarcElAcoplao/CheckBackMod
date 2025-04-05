@@ -213,6 +213,7 @@ img {
 
 .modalHeader {
   margin-bottom: 20px;
+  grid-column: 1/3;
 }
 
 #dailyRewardRarities, #enemiesFightChances {
