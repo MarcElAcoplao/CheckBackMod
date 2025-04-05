@@ -89,7 +89,7 @@ function openCloseArtifactsTab() {
            game.artifacts[4] += 1
            game.artifacts[3] += y-1
          }
-        else game.artifacts[3] += 1
+        else game.artifacts[3] += y
       }
       else {
         amt = Math.floor(y/10)
