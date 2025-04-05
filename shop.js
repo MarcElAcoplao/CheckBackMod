@@ -68,186 +68,131 @@ function buyItem(x) {
   amt = 1
   if (game.items[x] >= items[x][1]) { alert("Upgrade is maxed") }
   else {
+    // List resources to buy all items
+    let itemCoins = 0
+    let itemXPBoost = 0
+    let itemPets = {}
+    let itemEnemies = {}
+    let hasPets = true
+    let hasEnemies = true
+    let newArea = false
     if (x == 1) {
-      if (game.coins >= 50 && game.pets[1] >= 20) {
-        game.coins -= 50
-        game.pets[1] -= 20
-        itemChosen = x
-        alert("Bought " + items[x][0])
+      itemCoins = 50
+      itemPets = {1: 20}
+    } else if (x == 2) {
+      itemCoins = 100
+      itemPets = {10: 5}
+    } else if (x == 3) {
+      itemCoins = 150
+      itemPets = {43: 1}
+    } else if (x == 4) {
+      itemCoins = 200
+      itemPets = {3: 20, 18: 5, 24: 5}
+    } else if (x == 5) {
+      itemCoins = 250
+      itemPets = {5: 10, 16: 3}
+    } else if (x == 6) {
+      itemCoins = 500
+      itemEnemies = {5: 1}
+      newArea = true
+    } else if (x == 7) {
+      itemCoins = 500
+      itemPets = {41: 5, 42: 3}
+    } else if (x == 8) {
+      itemCoins = 500
+      itemPets = {4: 20, 23: 7}
+    } else if (x == 9) {
+      itemCoins = 750
+      itemPets = {14: 15, 25: 5}
+    } else if (x == 10) {
+      itemCoins = 250
+      itemPets = {6: 1}
+    } else if (x == 11) {
+      itemCoins = 1000
+      if (game.items[x] > 0) {
+        itemPets = {33: 5, 29: 1} // Need Spirit only if already bought once
+      } else {
+        itemPets = {33: 5}
       }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/50 coins, " + game.pets[1] + "/20 Green butterflies")
-        itemChosen = 0
-      }
-    }
-    if (x == 2) {
-      if (game.coins >= 100 && game.pets[10] >= 5) {
-        game.coins -= 100
-        game.pets[10] -= 5
-        itemChosen = x
-        alert("Bought " + items[x][0])
-      }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/100 coins, " + game.pets[10] + "/5 Gargoyles")
-        itemChosen = 0
-      }
-    }
-    if (x == 3) {
-      if (game.coins >= 150 && game.pets[43] >= 1) {
-        game.coins -= 150
-        game.pets[43] -= 1
-        itemChosen = x
-        alert("Bought " + items[x][0])
-      }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/150 coins, " + game.pets[43] + "/1 Golden butterflies")
-        itemChosen = 0
-      }
-    }
-    if (x == 4) {
-      if (game.coins >= 200 && game.pets[3] >= 20 && game.pets[18] >= 5 && game.pets[24] >= 5) {
-        game.coins -= 200
-        game.pets[3] -= 20
-        game.pets[18] -= 5
-        game.pets[24] -= 5
-        itemChosen = x
-        alert("Bought " + items[x][0])
-      }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/200 coins, " + game.pets[3] + "/20 Rats, " + game.pets[18] + "/5 Cats, " + game.pets[24] + "/5 Shiny rats")
-        itemChosen = 0
-      }
-    }
-    if (x == 5) {
-      if (game.coins >= 250 && game.pets[5] >= 10 && game.pets[16] >= 3) {
-        game.coins -= 250
-        game.pets[5] -= 10
-        game.pets[16] -= 3
-        itemChosen = x
-        alert("Bought " + items[x][0])
-      }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/250 coins, " + game.pets[5] + "/10 Glowing spiders, " + game.pets[16] + "/3 Living roses")
-        itemChosen = 0
-      }
-    }
-    if (x == 6) {
-      if (game.coins >= 500 && game.enemies[5] >= 1) {
-        game.coins -= 500
-        itemChosen = x
-        alert("Unlocked a new area")
-      }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/500 coins, " + game.enemies[5] + "/1 Armored humans beaten")
-        itemChosen = 0
-      }
-    }
-    if (x == 7) {
-      if (game.coins >= 500 && game.pets[41] >= 5 && game.pets[42] >= 3) {
-        game.coins -= 500
-        game.pets[41] -= 5
-        game.pets[42] -= 3
-        itemChosen = x
-        alert("Bought " + items[x][0])
-      }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/500 coins, " + game.pets[41] + "/5 Eyeloons, " + game.pets[42] + "/3 Glowing jellyfishes")
-        itemChosen = 0
+    } else if (x == 12) {
+      itemCoins = 2000
+      itemXPBoost = 200
+      itemPets = {9: 20, 32: 10, 48: 3}
+    } else if (x == 13) {
+      itemCoins = 1500
+      itemPets = {1: 50, 12: 2, 43: 1}
+    } else if (x == 14) {
+      itemCoins = 1750
+      itemPets = {17: 5, 35: 5, 19: 2}
+    } else if (x == 15) {
+    } else if (x == 16) {
+    } else if (x == 17) {
+    } else if (x == 18) {
+    } else if (x == 19) {
+    } else if (x == 20) {
+    } else if (x == 21) {
+    } else if (x == 22) {
+    } else if (x == 23) {
+    } else if (x == 24) {
+    } else if (x == 25) {
+    } else if (x == 26) {
+    } else if (x == 27) {
+    } else if (x == 28) {
+    } else if (x == 29) {
+    } else if (x == 30) {
+    } else if (x == 31) {
+    } else if (x == 32) {
+    } else if (x == 33) {
+    } else if (x == 34) {
+    } else if (x == 35) {
+    } else if (x == 36) {
+    } else if (x == 37) {
+    } else if (x == 38) {
+    } else if (x == 39) {
+    } else if (x == 40) {
+    } else if (x == 41) {
+    // Check resources
+    for (let petId in itemPets) {
+      if (game.pets[petId] < itemPets[petId]) {
+        hasPets = false
+        break
       }
     }
-    if (x == 8) {
-      if (game.coins >= 500 && game.pets[4] >= 20 && game.pets[23] >= 7) {
-        game.coins -= 500
-        game.pets[4] -= 20
-        game.pets[23] -= 7
-        itemChosen = x
-        alert("Bought " + items[x][0])
-      }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/500 coins, " + game.pets[4] + "/20 Purple butterflies, " + game.pets[23] + "/7 Blue butterflies")
-        itemChosen = 0
+    for (let enemyId in itemEnemies) {
+      if (game.enemies[enemyId] < itemEnemies[enemyId]) {
+        hasEnemies = false
+        break
       }
     }
-    if (x == 9) {
-      if (game.coins >= 750 && game.pets[14] >= 15 && game.pets[25] >= 5) {
-        game.coins -= 750
-        game.pets[14] -= 15
-        game.pets[25] -= 5
-        itemChosen = x
-        alert("Bought " + items[x][0])
+    if (game.coins >= itemCoins && game.XPBoost >= itemXPBoost + 1 && hasPets && hasEnemies) {
+      itemChosen = x
+      game.coins -= itemCoins
+      game.XPBoost -= itemXPBoost
+      for (let petId in itemPets) {
+        game.pets[petId] -= itemPets[petId]
       }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/750 coins, " + game.pets[14] + "/15 Large tortoises, " + game.pets[25] + "/5 Earth snakes")
-        itemChosen = 0
+      for (let enemyId in itemEnemies) {
+        game.pets[enemyId] -= itemEnemies[enemyId]
       }
+      alert(newArea ? "Unlocked a new area" : "Bought " + items[x][0])
+    } else {
+      itemChosen = 0
+      let resources = []
+      if (itemCoins > 0) {
+        resources.push(numberShortAlert(game.coins) + "+" / numberShortAlert(itemCoins) + " coins")
+      }
+      if (itemXPBoost > 0) {
+        resources.push(numberShortAlert(game.XPBoost) + "+" / numberShortAlert(itemXPBoost + 1) + " XPBoost")
+      }
+      for (let petId in itemPets) {
+        resources.push(game.pets[petId] + "/" + itemPets[petId] + game.pets[6])
+      }
+      for (let enemyId in itemEnemies) {
+        resources.push(game.enemies[enemyId] + "/" + itemEnemies[enemyId] + " " + enemies[5] + " beaten")
+      }
+      alert(resources.join(', '))
     }
-    if (x == 10) {
-      if (game.coins >= 250 && game.pets[6] >= 1) {
-        game.coins -= 250
-        itemChosen = x
-        alert("Bought " + items[x][0])
-      }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/250 coins, " + game.pets[6] + "/1 Green dragon")
-        itemChosen = 0
-      }
-    }
-    if (x == 11) {
-      if (game.coins >= 1000 && game.pets[33] >= 5 && game.pets[29] >= 1) {
-        game.coins -= 1000
-        game.pets[33] -= 5
-        if (game.items[x] == 1) game.pets[29] -= 1
-        itemChosen = x
-        alert("Bought " + items[x][0])
-      }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/1000 coins, " + game.pets[33] + "/5 Poisonous eyeballs, " + game.pets[29] + "/1 Spirit")
-        itemChosen = 0
-      }
-    }
-    if (x == 12) {
-      if (game.coins >= 2000 && game.XPBoost >= 201 && game.pets[9] >= 20 && game.pets[32] >= 10 && game.pets[48] >= 3) {
-        game.coins -= 2000
-        game.XPBoost -= 200
-        game.pets[9] -= 20
-        game.pets[32] -= 10
-        game.pets[48] -= 3
-        itemChosen = x
-        alert("Bought " + items[x][0])
-      }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/2000 coins, " + numberShortAlert(game.XPBoost) + "/201 XPboost, " + game.pets[9] + "/20 Eldritch eyeballs, " + game.pets[32] + "/10 Red slimes, " + game.pets[48] + "/3 Small skeletons")
-        itemChosen = 0
-      }
-    }
-    if (x == 13) {
-      if (game.coins >= 1500 && game.pets[1] >= 50 && game.pets[12] >= 2 && game.pets[43] >= 1) {
-        game.coins -= 1500
-        game.pets[1] -= 50
-        game.pets[12] -= 2
-        game.pets[43] -= 1
-        itemChosen = x
-        alert("Bought " + items[x][0])
-      }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/1500 coins, " + game.pets[1] + "/50 Green butterflies, " + game.pets[12] + "/2 Red butterflies, " + game.pets[43] + "/1 Golden butterfly")
-        itemChosen = 0
-      }
-    }
-    if (x == 14) {
-      if (game.coins >= 1750 && game.pets[17] >= 5 && game.pets[35] >= 5 && game.pets[19] >= 2) {
-        game.coins -= 1750
-        game.pets[17] -= 5
-        game.pets[35] -= 5
-        game.pets[19] -= 2
-        itemChosen = x
-        alert("Bought " + items[x][0])
-      }
-      else {
-        alert("Not enough items; " + numberShortAlert(game.coins) + "/1750 coins, " + game.pets[17] + "/5 Ice golems, " + game.pets[35] + "/5 Living trees, " + game.pets[19] + "/2 Vortex monsters")
-        itemChosen = 0
-      }
-    }
+    // Old code
     if (x == 15) {
       if (game.coins >= 2000 && game.pets[40] >= 25 && game.enemies[1] >= 10 && game.enemies[4] >= 2) {
         game.coins -= 2000
