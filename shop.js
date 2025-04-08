@@ -1,12 +1,12 @@
 
   //Shop features
   function openCloseShopTab() {
-    if (document.getElementById("shopDiv").style.display == "flex") {
+    if (document.getElementById("shopDiv").style.display == "block") {
       document.getElementById("shopDiv").style.display = "none"
       document.getElementById("shopListInner").innerHTML = ""
     }
     else {
-      document.getElementById("shopDiv").style.display = "flex"
+      document.getElementById("shopDiv").style.display = "block"
       displayItems()
     }
   }

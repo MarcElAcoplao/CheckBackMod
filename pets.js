@@ -326,12 +326,12 @@ function latestDrops(x, y) {
   }
   
   function openClosePetsTab() {
-    if (document.getElementById("petsDiv").style.display == "flex") {
+    if (document.getElementById("petsDiv").style.display == "block") {
       document.getElementById("petsDiv").style.display = "none"
       document.getElementById("petsListInner").innerHTML = ""
     }
     else {
-      document.getElementById("petsDiv").style.display = "flex"
+      document.getElementById("petsDiv").style.display = "block"
       displayPets()
     }
   }
@@ -363,7 +363,7 @@ function latestDrops(x, y) {
       petBoxes[i-1].addEventListener('mouseout', function(){showPetInfo(0)})
       if (game.pets[i] > 0) { //1st value is red, 2nd green and 3rd blue
         petBoxes[i-1].innerHTML = "<img src='img/pets/" + i + ".png' style='width: 128px'>"
-        petBoxes[i-1].innerHTML += "<p style='position: absolute; bottom: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + levelShort(game.pets[i]) + "</p>"
+        petBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + levelShort(game.pets[i]) + "</p>"
         if (i<=6) petBoxes[i-1].style.border = "8px outset #555"
         else if (i<=13) petBoxes[i-1].style.border = "8px outset #447"
         else if (i<=22) petBoxes[i-1].style.border = "8px outset #647"
@@ -377,7 +377,7 @@ function latestDrops(x, y) {
       }
       else {
         petBoxes[i-1].innerHTML = "<img src='img/pets/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
-        petBoxes[i-1].innerHTML += "<p style='position: absolute; bottom: 0; left: 0; margin: 2px; color: white; font-size: 24px'>0</p>"
+        petBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>0</p>"
       }
     }
     j=pets.length-1
@@ -444,7 +444,7 @@ function latestDrops(x, y) {
       petBoxes[i-1].addEventListener('mouseout', function(){showPetUnboxInfo(0)})
       //1st value is red, 2nd green and 3rd blue
         petBoxes[i-1].innerHTML = "<img src='img/pets/" + game.unboxString[i][0] + ".png' style='width: 128px'>"
-        petBoxes[i-1].innerHTML += "<p style='position: absolute; bottom: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + levelShort(game.unboxString[i][1]) + "</p>"
+        petBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + levelShort(game.unboxString[i][1]) + "</p>"
         if (game.unboxString[i][0]<=6) petBoxes[i-1].style.border = "8px outset #555"
         else if (game.unboxString[i][0]<=13) petBoxes[i-1].style.border = "8px outset #447"
         else if (game.unboxString[i][0]<=22) petBoxes[i-1].style.border = "8px outset #647"

@@ -1,10 +1,10 @@
 function openCloseArtifactsTab() {
-    if (document.getElementById("artifactsDiv").style.display == "flex") {
+    if (document.getElementById("artifactsDiv").style.display == "block") {
       document.getElementById("artifactsDiv").style.display = "none"
       document.getElementById("artifactsListInner").innerHTML = ""
     }
     else {
-      document.getElementById("artifactsDiv").style.display = "flex"
+      document.getElementById("artifactsDiv").style.display = "block"
       displayArtifacts()
     }
   }
@@ -33,7 +33,7 @@ function openCloseArtifactsTab() {
       artifactBoxes[i-1].addEventListener('mouseout', function(){showArtifactsInfo(0)})
       if (game.artifacts[i] > 0) { //1st value is red, 2nd green and 3rd blue
         artifactBoxes[i-1].innerHTML = "<img src='img/artifacts/" + i + ".png' style='width: 128px'>"
-        artifactBoxes[i-1].innerHTML += "<p style='position: absolute; bottom: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.artifacts[i] + "</p>"
+        artifactBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.artifacts[i] + "</p>"
         if (i<=4) artifactBoxes[i-1].style.border = "8px outset #555"
         else if (i<=11) artifactBoxes[i-1].style.border = "8px outset #8cfffb"
         else if (i<=16) artifactBoxes[i-1].style.border = "8px outset #647"
@@ -45,7 +45,7 @@ function openCloseArtifactsTab() {
       }
       else {
         artifactBoxes[i-1].innerHTML = "<img src='img/artifacts/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
-        artifactBoxes[i-1].innerHTML += "<p style='position: absolute; bottom: 0; left: 0; margin: 2px; color: white; font-size: 24px'>0</p>"
+        artifactBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>0</p>"
       }
     }
     j=artifacts.length-1
