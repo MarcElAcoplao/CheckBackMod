@@ -19,7 +19,7 @@ function unboxPet(x, y) {
     let list = UnboxChancesArray[x]
     if (y > 1000) {
      if (x == 10) {simulatedUnboxPet(x, y)}
-     else y = 1000
+     else unboxPet(x, 1000)
     }
     else {
     //Thank you amber for this idea :3 (and Wrab with the condensing even further idea)
