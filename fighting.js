@@ -62,7 +62,7 @@ function openCloseEnemiesTab() {
 
   function showEnemiesInfo(x) {
     if (x==0) {document.getElementById("enemiesInfo").innerHTML = ""}
-    else document.getElementById("enemiesInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + enemies[x][0] + "</span><br>You killed " + game.enemies[x] + "</p><br><img src='img/enemies/" + x + ".png' style='width: 50%'><br><p style='color: white'><span style='font-size: 32px; font-weight: bold'>Stats:</span><br>" + (enemies[x][1]).toFixed(1) + " HP<br>" + (enemies[x][2]).toFixed(1) + " Damage<br>" + (enemies[x][3]).toFixed(1) + " Defense<br> Drop tier: " + (enemies[x][4]) + "</p></center>"
+    else document.getElementById("enemiesInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + enemies[x][0] + "</span><br>You killed " + game.enemies[x] + "</p><br><img src='img/enemies/" + x + ".png' style='width: 50%'><br><p style='color: white'><span style='font-size: 32px; font-weight: bold'>Stats:</span><br>" + numberShort(enemies[x][1]) + " HP<br>" + numberShort(enemies[x][2]) + " Damage<br>" + numberShort(enemies[x][3]) + " Defense<br> Drop tier: " + (enemies[x][4]) + "</p></center>"
   }
 
   function openCloseFightingTab() {
@@ -290,13 +290,12 @@ function openCloseEnemiesTab() {
      }
      if (!game.enemies[enemiesChosen]) {game.enemies[enemiesChosen] = 1}
      else {game.enemies[enemiesChosen]++}
-     game.enemiesDefeated += 1
+     game.enemiesDefeated += 1 + 496 * game.items[46]
      game.ConsecutiveKills += 1
      startFight(fightNumber)
   }
 
    function claimRewards(x) {
-    console.log(game.ConsecutiveKills)
     document.getElementsByClassName("dropBox")[0].innerHTML = numberShort(game.XPCounter) + " XP"
     document.getElementsByClassName("dropBox")[1].innerHTML = numberShort(game.CoinsCounter) + " Coins"
     if (game.XPBoostCounter > 0) {document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(game.XPBoostCounter) + " XPBoost"}

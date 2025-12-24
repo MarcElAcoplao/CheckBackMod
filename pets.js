@@ -186,19 +186,23 @@ function latestDrops(x, y) {
       if (game.buttonCooldowns[24] == 0 && game.items[35] >= 1) {
         unboxPet(9, game.crateBulk[9])
       }
+      if (game.buttonCooldowns[43] == 0 && game.items[45] >= 1) {
+        unboxPet(10, game.crateBulk[10])
+      }
      }
      if (game.items[35] == 0) game.buttonCooldowns[23] = 1800
-     else game.buttonCooldowns[23] = 300
+     else if (game.items[45] == 0) game.buttonCooldowns[23] = 300
+     else game.buttonCooldowns[23] = 10
     }
 
   function simulatedUnboxPet(x,y) {
     let amt = 0
     let simulatedWeight = 0
      if (x == 10) {
-      for (i=0;i<frozenUnboxChances1.length;i++) {simulatedWeight += frozenUnboxChances1[i][1]}
-      for (a=0;a<frozenUnboxChances1.length;a++) {
+      if (game.items[42] == 0) {
+        for (let i=0;i<frozenUnboxChances1.length;i++) {simulatedWeight += frozenUnboxChances1[i][1]}
+        for (let a=0;a<frozenUnboxChances1.length;a++) {
         amt = frozenUnboxChances1[a][1] / simulatedWeight * y
-        console.log("Amount: " + amt)
         if (amt >= 1) {
           if (!game.pets[frozenUnboxChances1[a][0]]) {game.pets[frozenUnboxChances1[a][0]] = Math.floor(amt)}
           else {game.pets[frozenUnboxChances1[a][0]] += Math.floor(amt)}
@@ -208,15 +212,31 @@ function latestDrops(x, y) {
           if (!game.pets[frozenUnboxChances1[a][0]]) {game.pets[frozenUnboxChances1[a][0]] = 1}
           else {game.pets[frozenUnboxChances1[a][0]]++}
           latestDrops(frozenUnboxChances1[a][0], 1)
-          console.log("Random number smaller than amount")
         }
+       }
+      }
+      else {
+        for (let i=0;i<frozenUnboxChances2.length;i++) {simulatedWeight += frozenUnboxChances2[i][1]}
+        for (let a=0;a<frozenUnboxChances2.length;a++) {
+        amt = frozenUnboxChances2[a][1] / simulatedWeight * y
+        if (amt >= 1) {
+          if (!game.pets[frozenUnboxChances2[a][0]]) {game.pets[frozenUnboxChances2[a][0]] = Math.floor(amt)}
+          else {game.pets[frozenUnboxChances2[a][0]] += Math.floor(amt)}
+          latestDrops(frozenUnboxChances2[a][0], Math.floor(amt))
+        }
+        else if (Math.random() < amt) {
+          if (!game.pets[frozenUnboxChances2[a][0]]) {game.pets[frozenUnboxChances2[a][0]] = 1}
+          else {game.pets[frozenUnboxChances2[a][0]]++}
+          latestDrops(frozenUnboxChances2[a][0], 1)
+        }
+      }
       }
      }
      if (x >= 3) {game.buttonCooldowns[PetButtons[x].cooldownID] = PetButtons[x].cooldown / (pets[game.selectedPet][3] * game.itemCooldown * game.tierCooldown * game.artifactsCooldown)} //2 hours
      game.cratesOpened += y
      if (x==10) {
       game.frozenCratesOpened += y
-      dimensionalReset(2)
+      if (game.items[45] == 0) dimensionalReset(2)
      }
      save()
   }
@@ -232,28 +252,27 @@ function latestDrops(x, y) {
     game.crateBulk[8] = (1 + game.items[16] * game.items[35]) * (1 + game.items[38] * 0.1) * game.artifactsBulk
     game.crateBulk[9] = (1 + game.items[16] * game.items[35]) * (1 + game.items[38] * 0.1) * game.artifactsBulk
     frozenBaseBulk(game.tier)
-    game.crateBulk[10] = (game.frozenBaseBulk + game.items[38]) * (1 + game.items[38] * 0.1) * game.artifactsBulk
+    game.crateBulk[10] = (game.frozenBaseBulk) * (1 + game.items[38] * 0.1) * game.artifactsBulk
   }
   setInterval(calculateBulkAmount, 50)
 
   function frozenBaseBulk(x) {
     let a = x-40
-    game.frozenBaseBulk = Math.max((a ** 2)/20 + a + 1, 1)
+    game.frozenBaseBulk = Math.max((a ** 2)/20 + (1 + 0.25 * game.items[38]) * a + 1 + game.frozenTokens * game.items[45], 1)
   }
 
   function petButtonDisplayMessage(x) {
     result = ""
-    if (x < 10) {
+    if (x == 10 && game.items[45] == 0) {result = "Sacrifice all your dimensions to unbox " + numberShort(game.crateBulk[x]) + " frozen crates"}
+    else {
     if (game.crateBulk[x] == 1) result += "Unbox a random " + PetButtons[x].name2 + " crate"
     else result += "Unbox " + numberShort(game.crateBulk[x]) + " random " + PetButtons[x].name2 + " crates"
     if (x <= 8 && x >= 7 && game.items[35] == 0) result += ". Cost: " + numberShort(0.05 * (x - 6) * game.crateBulk[x]) + " XPBoost"
     if (x == 9 && game.items[35] == 0) result += ". Cost: " + numberShort(250 * game.crateBulk[x]) + " Coins"
     if (x <= 6 && game.items[15] >= 1) result += ". Auto: " + numberToTime(game.buttonCooldowns[23])
     if (x <= 9 && game.items[35] >= 1 && x >= 7) result += ". Auto: " + numberToTime(game.buttonCooldowns[23])
+    if (x == 10 && game.items[45] >= 1) result += ". Auto: " + numberToTime(game.buttonCooldowns[23])
      }
-    else {
-      result = "Sacrifice all your dimensions to unbox " + numberShort(game.crateBulk[x]) + " frozen crates"
-    }
     return result
   }
 
@@ -317,6 +336,7 @@ function latestDrops(x, y) {
     }
   }
   else if (x==10) {
+    if (game.items[42] == 0) {
     document.getElementById("petRarities").innerHTML = "<img src='img/crateFrozen.png' style='width:6vh'><br><b>Rarities for this crate:</b><br>"
     totalWeight = 0
     for (i=0;i<frozenUnboxChances1.length;i++) totalWeight += frozenUnboxChances1[i][1]
@@ -324,6 +344,16 @@ function latestDrops(x, y) {
       if ((frozenUnboxChances1[i][1] / totalWeight * 100) < 0.01) document.getElementById("petRarities").innerHTML += pets[frozenUnboxChances1[i][0]][0] + ": 1/" + numberShort(totalWeight / frozenUnboxChances1[i][1]) + "<br>"
       else document.getElementById("petRarities").innerHTML += pets[frozenUnboxChances1[i][0]][0] + ": " + (frozenUnboxChances1[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
     }
+   }
+   else {
+    document.getElementById("petRarities").innerHTML = "<img src='img/crateFrozen2.png' style='width:6vh'><br><b>Rarities for this crate:</b><br>"
+    totalWeight = 0
+    for (i=0;i<frozenUnboxChances2.length;i++) totalWeight += frozenUnboxChances2[i][1]
+    for(i=0;i<frozenUnboxChances2.length;i++) {
+      if ((frozenUnboxChances2[i][1] / totalWeight * 100) < 0.01) document.getElementById("petRarities").innerHTML += pets[frozenUnboxChances2[i][0]][0] + ": 1/" + numberShort(totalWeight / frozenUnboxChances2[i][1]) + "<br>"
+      else document.getElementById("petRarities").innerHTML += pets[frozenUnboxChances2[i][0]][0] + ": " + (frozenUnboxChances2[i][1] / totalWeight * 100).toFixed(2) + "%<br>"
+    }
+   }
   }
   
   }
@@ -372,11 +402,12 @@ function latestDrops(x, y) {
         else if (i<=22) petBoxes[i-1].style.border = "8px outset #647"
         else if (i<=31) petBoxes[i-1].style.border = "8px outset #500"
         else if (i<=39) petBoxes[i-1].style.border = "8px outset #990"
-        else if (i<=46) petBoxes[i-1].style.border = "8px outset #229"
+        else if (i<=46) petBoxes[i-1].style.border = "8px outset rgba(171, 6, 173, 1)"
         else if (i<=55) petBoxes[i-1].style.border = "8px outset #bbb"
         else if (i<=63) petBoxes[i-1].style.border = "8px outset #282"
         else if (i<=74) petBoxes[i-1].style.border = "8px outset #d83"
-        else if (i<=88) petBoxes[i-1].style.border = "8px outset #8cfffb"
+        else if (i<=81) petBoxes[i-1].style.border = "8px outset #8cfffb"
+        else if (i<=88) petBoxes[i-1].style.border = "8px outset rgba(21, 21, 136, 1)"
       }
       else {
         petBoxes[i-1].innerHTML = "<img src='img/pets/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
@@ -453,11 +484,12 @@ function latestDrops(x, y) {
         else if (game.unboxString[i][0]<=22) petBoxes[i-1].style.border = "8px outset #647"
         else if (game.unboxString[i][0]<=31) petBoxes[i-1].style.border = "8px outset #500"
         else if (game.unboxString[i][0]<=39) petBoxes[i-1].style.border = "8px outset #990"
-        else if (game.unboxString[i][0]<=46) petBoxes[i-1].style.border = "8px outset #229"
+        else if (game.unboxString[i][0]<=46) petBoxes[i-1].style.border = "8px outset rgba(171, 6, 173, 1)"
         else if (game.unboxString[i][0]<=55) petBoxes[i-1].style.border = "8px outset #bbb"
         else if (game.unboxString[i][0]<=63) petBoxes[i-1].style.border = "8px outset #282"
         else if (game.unboxString[i][0]<=74) petBoxes[i-1].style.border = "8px outset #d83"
-        else if (game.unboxString[i][0]<=88) petBoxes[i-1].style.border = "8px outset #8cfffb"
+        else if (game.unboxString[i][0]<=81) petBoxes[i-1].style.border = "8px outset #8cfffb"
+        else if (game.unboxString[i][0]<=88) petBoxes[i-1].style.border = "8px outset rgba(21, 21, 136, 1)"
     }
     j=pets.length-1
   }

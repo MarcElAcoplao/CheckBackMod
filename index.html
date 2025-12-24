@@ -40,6 +40,7 @@
       <button class="button" id="artifactsTabButton" style="display: none" onclick="openCloseArtifactsTab()">Artifacts</button>
       <button class="button" id="shopTabButton" style="display: none" onclick="openCloseShopTab()">Shop</button>
       <button class="button" id="TimeTab" style="display: none" onclick="tab(5)">Time dimensions</button>
+      <button class="button" id="tokenTab" style="display: none" onclick="tab(6)">Frozen tokens</button>
     </div>
 
     <div id="buttonsContainer">
@@ -55,12 +56,14 @@
       <button class="button" id="XPbutton10" style="display: none" onclick="clickButton(10)">Gain 250 XP</button>
       <button class="button" id="XPbutton11" style="display: none" onclick="clickButton(11)">Gain 500 XP</button>
       <button class="button" id="XPbutton12" style="display: none" onclick="clickButton(12)">Gain 1000 XP</button>
+      <button class="button" id="XPbutton13" style="display: none" onclick="clickButton(13)">Gain 10000 XP</button>
 
       <button class="button" id="XPBbutton1" style="display: none" onclick="click2Button(1)">Gain 0.01 XPBoost</button>
       <button class="button" id="XPBbutton2" style="display: none" onclick="click2Button(2)">Gain 0.02 XPBoost</button>
       <button class="button" id="XPBbutton3" style="display: none" onclick="click2Button(3)">Gain 0.03 XPBoost</button>
       <button class="button" id="XPBbutton4" style="display: none" onclick="click2Button(4)">Gain 0.05 XPBoost</button>
       <button class="button" id="XPBbutton5" style="display: none" onclick="click2Button(5)">Gain 0.1 XPBoost</button>
+      <button class="button" id="XPBbutton6" style="display: none" onclick="click2Button(6)">Gain 10 XPBoost</button>
 
       <button class="button" id="StatButton1" style="display: none" onclick="click3Button(1)">Gain 5 Stats</button>
       <button class="button" id="StatButton2" style="display: none" onclick="click3Button(2)">Gain 20 Stats</button>
@@ -68,6 +71,7 @@
       <button class="button" id="StatButton4" style="display: none" onclick="click3Button(4)">Gain 120 Stats</button>
       <button class="button" id="StatButton5" style="display: none" onclick="click3Button(5)">Gain 600 Stats</button>
       <button class="button" id="StatButton6" style="display: none" onclick="click3Button(6)">Gain 1200 Stats</button>
+      <button class="button" id="StatButton7" style="display: none" onclick="click3Button(7)">Gain 12000 Stats</button>
 
       <button class="button" id="unboxButton1" style="display: none" onclick="unboxPet(3, game.crateBulk[3])" onmouseover="displayPetRarities(3)" onmouseout="displayPetRarities(0)">Unbox a random basic pet</button>
       <button class="button" id="unboxButton2" style="display: none" onclick="unboxPet(4, game.crateBulk[4])" onmouseover="displayPetRarities(4)" onmouseout="displayPetRarities(0)">Unbox a random advanced pet</button>
@@ -87,6 +91,21 @@
       <button class="button" id="TimeDim7" style="display: none" onclick="clickDimension(7, 1)">Gain 1 D6</button>
       <button class="button" id="TimeDim8" style="display: none" onclick="clickDimension(8, 1)">Gain 1 D7</button>
       <button class="button" id="TimeDim9" style="display: none" onclick="clickDimension(9, 1)">Gain 1 D8</button>
+      <button class="button" id="TimeDim10" style="display: none" onclick="clickDimension(10, 1)">Gain 1 D9</button>
+      <button class="button" id="TimeDim11" style="display: none" onclick="clickDimension(11, 1)">Gain 1 D10</button>
+
+      <button class="button" id="TokenButton1" style="display: none" onclick="click4Button(1)">Gain 1 Frozen tokens</button>
+      <button class="button" id="TokenButton2" style="display: none" onclick="click4Button(2)">Gain 2 Frozen tokens</button>
+      <button class="button" id="TokenButton3" style="display: none" onclick="click4Button(3)">Gain 3 Frozen tokens</button>
+      <button class="button" id="TokenButton4" style="display: none" onclick="click4Button(4)">Gain 4 Frozen tokens</button>
+      <button class="button" id="TokenButton5" style="display: none" onclick="click4Button(5)">Gain 5 Frozen tokens</button>
+      <button class="button" id="TokenButton6" style="display: none" onclick="click4Button(6)">Gain 6 Frozen tokens</button>
+      <button class="button" id="TokenButton7" style="display: none" onclick="click4Button(7)">Gain 7 Frozen tokens</button>
+      <button class="button" id="TokenButton8" style="display: none" onclick="click4Button(8)">Gain 8 Frozen tokens</button>
+      <button class="button" id="TokenButton9" style="display: none" onclick="click4Button(9)">Gain 9 Frozen tokens</button>
+      <button class="button" id="TokenButton10" style="display: none" onclick="click4Button(10)">Gain 10 Frozen tokens</button>
+      <button class="button" id="TokenButton11" style="display: none" onclick="click4Button(11)">Gain 11 Frozen tokens</button>
+      <button class="button" id="TokenButton12" style="display: none" onclick="click4Button(12)">Gain 12 Frozen tokens</button>
     </div>
 
     <div id="infosContainer">
@@ -105,13 +124,14 @@
         <button class="themeButton" style="background-color: #96a; border: 0.3vh solid #424; color: #424; display: none" onclick="changeTheme(5)">Purple</button>
         <button class="themeButton" style="background-color: #d75; border: 0.3vh solid #422; color: #422; display: none" onclick="changeTheme(6)">Red</button>
         <button class="themeButton" style="background-color: rgb(204, 0, 255); border: 0.3vh solid rgb(255, 196, 0); color: #422; display: none" onclick="changeTheme(7)">Dimensional</button>
+        <button class="themeButton" style="background-color: #8cfffb; border: 0.3vh solid rgb(23, 40, 228); color: rgb(25, 27, 151); display: none" onclick="changeTheme(8)">Frozen</button>
       </div>
 
       <button class="button" id="dailyRewardButton" onclick="openCloseDailyRewardTab()">Daily reward</button>
     </div>
 
     <div id="rightFooterColumn">
-      <p id="versionText">Check Back <a href="https://github.com/MarcElAcoplao/CheckBackMod/blob/main/changelog.txt" target="_blank">v1.1 Part 1</a> (Creator: MarcElAcoplao, <a href="https://discord.gg/YaSk8e2wFt" target="_blank">Discord</a>)<br>
+      <p id="versionText">Check Back <a href="https://github.com/MarcElAcoplao/CheckBackMod/blob/main/changelog.txt" target="_blank">v1.1 Part 2</a> (Creator: MarcElAcoplao, <a href="https://discord.gg/YaSk8e2wFt" target="_blank">Discord</a>)<br>
         <a href="https://demonin.com/games/checkBack/" target="_blank">Original</a> by Demonin (<a href="https://discord.gg/3hwM7ScH6k" target="_blank">Discord</a>)</p>
       <div id="settingsContainer">
         <button class="settingsButton" id="setting7" onclick="openClosePetsUnboxTab()">Latest drops</button>
@@ -199,7 +219,7 @@
 
   <div id="artifactsDiv">
     <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Artifacts</p>
-    <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px'>Artifacts drop from fighting and grant a permanent uncapped boost (Unnafected by natural extra loot bonuses)</p>
+    <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px'>Artifacts drop from fighting and grant boosts (Not affected by normal looting bonuses)</p>
     <button class="closeButton" onclick="openCloseArtifactsTab()">Close</button>
     <div id="artifactsList">
       <div id="artifactsListInner"></div>

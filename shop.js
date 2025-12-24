@@ -35,14 +35,14 @@
     //1st red 2nd green 3rd blue
         itemBoxes[i-1].innerHTML = "<img src='img/shop/" + i + ".png' style='width: 128px' onerror=\"this.onerror=null;this.src='img/shop/0.png';\">"
         if (!game.items[i]) {itemBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>0</p>"}
-        else {itemBoxes[i-1].innerHTML += "<p style='position: absolute; bottom: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.items[i] + "</p>"}
+        else {itemBoxes[i-1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.items[i] + "</p>"}
         if (i<=6) itemBoxes[i-1].style.border = "8px outset #555"
         else if (i<=12) itemBoxes[i-1].style.border = "8px outset #447"
         else if (i<=18) itemBoxes[i-1].style.border = "8px outset #647"
         else if (i<=24) itemBoxes[i-1].style.border = "8px outset #500"
         else if (i<=36) itemBoxes[i-1].style.border = "8px outset #990"
-        else if (i<=46) itemBoxes[i-1].style.border = "8px outset #8cfffb"
-        else if (i<=55) itemBoxes[i-1].style.border = "8px outset #bbb"
+        else if (i<=42) itemBoxes[i-1].style.border = "8px outset #8cfffb"
+        else if (i<=55) itemBoxes[i-1].style.border = "8px outset rgba(21, 21, 136, 1)"
         else if (i<=63) itemBoxes[i-1].style.border = "8px outset #282"
         if (i > 18 && game.highestLevel <= 20000) {
           itemBoxes[i-1].innerHTML = "<img src='img/shop/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
@@ -56,6 +56,10 @@
               itemBoxes[i-1].innerHTML = "<img src='img/shop/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
               itemBoxes[i-1].addEventListener('mouseover', function(){showItemHiddenInfo(parseInt(this.id))})
               itemBoxes[i-1].addEventListener('mouseout', function(){showItemHiddenInfo(0)})}
+              if (i > 42 && game.items[42] < 1) {
+              itemBoxes[i-1].innerHTML = "<img src='img/shop/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
+              itemBoxes[i-1].addEventListener('mouseover', function(){showItemHiddenInfo(parseInt(this.id))})
+              itemBoxes[i-1].addEventListener('mouseout', function(){showItemHiddenInfo(0)})}
     }
     
     j=items.length-1
@@ -63,7 +67,10 @@
 
   function buyItem(x) {
     amt = 1
-  if (game.items[x] >= items[x][1]) {alert("Upgrade is maxed")}
+  if (game.items[x] >= items[x][1]) {
+    if (x==51) {alert("Well, this is the end. There will be no more check back updates. Thank you for playing and see you in the future. Stay tuned for the rewrite (will have bigger numbers)")}
+    else alert("Upgrade is maxed")
+  }
   else {
   if (x==1) {
     if (game.coins >= 50 && game.pets[1] >= 20) {
@@ -451,28 +458,28 @@ if (x==32) {
 if (x==33) {
   if (game.items[24] < 1) {alert("Not unlocked yet")}
   else {
-  if (game.level >= 2500000 && game.items[27] >= 1 && game.pets[21] >= 5 && game.pets[68] >= 5) {
-    game.pets[21] -= 5
-    game.pets[68] -= 5
+  if (game.level >= 2500000 && game.items[27] >= 1 && game.pets[21] >= 3 && game.pets[68] >= 3) {
+    game.pets[21] -= 3
+    game.pets[68] -= 3
     alert("Bought " + items[x][0])
     itemChosen = x
    }
- else {alert("Not enough items, " + numberShortAlert(game.level) + "/2.5m levels, " + game.pets[21] + "/5 Death scorpions, " + game.pets[68] + "/5 Toxic mushrooms, " + game.items[27] + "/1 Dimensional reset #3")
+ else {alert("Not enough items, " + numberShortAlert(game.level) + "/2.5m levels, " + game.pets[21] + "/3 Death scorpions, " + game.pets[68] + "/3 Toxic mushrooms, " + game.items[27] + "/1 Dimensional reset #3")
  itemChosen = 0}
  }
 }
 if (x==34) {
   if (game.items[24] < 1) {alert("Not unlocked yet")}
   else {
-  if (game.coins >= 6000000 && game.items[28] >= 1 && game.pets[37] >= 10 && game.pets[52] >= 1 && game.pets[60] >= 1) {
+  if (game.coins >= 6000000 && game.items[28] >= 1 && game.pets[37] >= 5 && game.pets[52] >= 1 && game.pets[60] >= 1) {
     game.coins -= 6000000
-    game.pets[37] -= 10
+    game.pets[37] -= 5
     game.pets[52] -= 1
     game.pets[60] -= 1
     alert("Bought " + items[x][0])
     itemChosen = x
    }
- else {alert("Not enough items, " + numberShortAlert(game.coins) + "/6m coins, " + game.pets[37] + "/10 Purple stars, " + game.pets[52] + "/1 Skeletal vulture, " + game.pets[60] + "/1 Ghost dog, " + game.items[28] + "/1 Dimensional reset #4")
+ else {alert("Not enough items, " + numberShortAlert(game.coins) + "/6m coins, " + game.pets[37] + "/5 Purple stars, " + game.pets[52] + "/1 Skeletal vulture, " + game.pets[60] + "/1 Ghost dog, " + game.items[28] + "/1 Dimensional reset #4")
  itemChosen = 0}
  }
 }
@@ -504,7 +511,7 @@ if (x==36) {
  }
 }
 if (x==37) {
-  if (game.pets[75] >= 1) {
+  if (game.pets[75] >= 1 && game.items[30] == 0) {
      if (game.pets[75] + game.items[37] >= 1000) {
       amt = 1000 - game.items[37]
      }
@@ -513,11 +520,12 @@ if (x==37) {
      itemChosen = x
      alert("Bought " + items[x][0] + " " + numberShortAlert(amt) + " times")
    }
+   else if (game.items[30] == 0) {alert("Not unlocked yet")}
    else {alert("You don't have any frozen spider")
   itemChosen = 0}
   }
 if (x==38) {
-    if (game.level < 5*10**8) {alert("Not unlocked yet")}
+    if (game.items[30] == 0) {alert("Not unlocked yet")}
     else {
     if (game.coins >= 50000000 && game.pets[75] >= 50 && game.pets[76] >= 5 && game.pets[77] >= 1) {
       game.coins -= 50000000
@@ -532,7 +540,7 @@ if (x==38) {
    }
   }
 if (x==39) {
-    if (game.level < 5*10**8) {alert("Not unlocked yet")}
+    if (game.items[30] == 0) {alert("Not unlocked yet")}
     else {
     if (game.pets[76] >= 100 && game.pets[77] >= 10 && game.pets[78] >= 1 && game.enemies[20] >= 1) {
       game.pets[76] -= 100
@@ -546,7 +554,7 @@ if (x==39) {
    }
   }
   if (x==40) {
-    if (game.level < 5*10**8) {alert("Not unlocked yet")}
+    if (game.items[30] == 0) {alert("Not unlocked yet")}
     else {
     if (game.coins >= 10**9 && game.pets[77] >= 50 && game.pets[78] >= 5 && game.pets[79] >= 1) {
       game.coins -= 10**9
@@ -561,7 +569,7 @@ if (x==39) {
    }
   }
   if (x==41) {
-    if (game.level < 5*10**8) {alert("Not unlocked yet")}
+    if (game.items[30] == 0) {alert("Not unlocked yet")}
     else {
     if (game.pets[78] >= 20 && game.pets[79] >= 6 && game.pets[80] >= 1 && game.artifacts[8] >= 1 && game.artifacts[9] >= 1) {
       game.pets[78] -= 20
@@ -575,6 +583,159 @@ if (x==39) {
    else {alert("Not enough items, " + numberShortAlert(game.pets[78]) + "/20 Frozen tarantulas, " + numberShortAlert(game.pets[79]) + "/6 Frozen 2-headed hydras, " + numberShortAlert(game.pets[80]) + "/1 Frozen ghost, " + numberShortAlert(game.artifacts[8]) + "/1 Frozen cooldown artifact"  + numberShortAlert(game.artifacts[9]) + "/1 Frozen stats artifact")
    itemChosen = 0}
    }
+  }
+  if (x==42) {
+    if (game.items[30] == 0) {alert("Not unlocked yet")}
+    else {
+    if (game.highestLevel >= 10**16 && game.pets[80] >= 5 && game.pets[81] >= 1) {
+      game.pets[80] -= 5
+      game.pets[81] -= 1
+      alert("Bought " + items[x][0])
+      itemChosen = x
+      document.getElementsByClassName("themeButton")[7].style.display = "inline-block"
+     }
+   else {alert("Not enough items, " + numberShortAlert(game.highestLevel) + "/1e16 Levels, " + numberShortAlert(game.pets[81]) + "/1 Frozen yeti, " + numberShortAlert(game.pets[80]) + "/5 Frozen ghosts")
+   itemChosen = 0}
+   }
+  }
+  if (x==43) {
+    if (game.items[42] == 0) {alert("Not unlocked yet")}
+    else {
+      if (game.frozenTokens >= 10 && game.pets[82] >= 1 && game.pets[81] >= 5) {
+        game.pets[82] -= 1
+        game.pets[81] -= 5
+        alert("Bought " + items[x][0])
+        itemChosen = x
+      }
+      else {
+        alert("Not enough items, " + numberShortAlert(game.pets[82]) + "/1 Frozen 3-headed hydra, " + numberShortAlert(game.pets[81]) + "/5 Frozen yeti, " + numberShortAlert(game.frozenTokens) + "/10 Frozen tokens")
+        itemChosen = 0
+      }
+    }
+  }
+  if (x==44) {
+    if (game.items[42] == 0) {alert("Not unlocked yet")}
+    else {
+      if (game.frozenTokens >= 40 && game.pets[82] >= 8 && game.pets[83] >= 1 && game.pets[79] >= 1000) {
+        game.pets[83] -= 1
+        game.pets[82] -= 8
+        game.pets[79] -= 1000
+        alert("Bought " + items[x][0])
+        itemChosen = x
+      }
+      else {
+        alert("Not enough items, " + numberShortAlert(game.pets[83]) + "/1 Frozen 4-headed hydra, " + numberShortAlert(game.pets[82]) + "/8 Frozen 3-headed hydras, " + numberShortAlert(game.pets[79]) + "/1000 Frozen 2-headed hydras, " + numberShortAlert(game.frozenTokens) + "/4  0 Frozen tokens")
+        itemChosen = 0
+      }
+    }
+  }
+  if (x==45) {
+    if (game.items[42] == 0) {alert("Not unlocked yet")}
+    else {
+      if (game.frozenTokens >= 2000 && game.pets[81] >= 350 && game.pets[83] >= 4) {
+        game.pets[83] -= 4
+        game.pets[81] -= 350
+        alert("Bought " + items[x][0])
+        itemChosen = x
+      }
+      else {
+        alert("Not enough items, " + numberShortAlert(game.pets[83]) + "/4 Frozen 4-headed hydra, " + numberShortAlert(game.pets[81]) + "/350 Frozen yetis, " + numberShortAlert(game.frozenTokens) + "/2000 Frozen tokens")
+        itemChosen = 0
+      }
+    }
+  }
+  if (x==46) {
+    if (game.items[42] == 0) {alert("Not unlocked yet")}
+    else {
+      if (game.frozenTokens >= 10000 && game.pets[82] >= 80 && game.pets[84] >= 1) {
+        game.pets[84] -= 1
+        game.pets[82] -= 80
+        alert("Bought " + items[x][0])
+        itemChosen = x
+      }
+      else {
+        alert("Not enough items, " + numberShortAlert(game.pets[84]) + "/1 Frozen 5-headed hydra, " + numberShortAlert(game.pets[82]) + "/80 Frozen 3-headed hydras, " + numberShortAlert(game.frozenTokens) + "/10k Frozen tokens")
+        itemChosen = 0
+      }
+    }
+  }
+  if (x==47) {
+    if (game.items[42] == 0) {alert("Not unlocked yet")}
+    else {
+      if (game.items[x] == items[x][1]) {alert("Upgrade maxed")}
+      else if (game.frozenTokens >= 100000 && game.pets[84] >= 5) {
+        let purchasableAmount = Math.floor(game.pets[84]/5)
+        amt = purchasableAmount
+        if (purchasableAmount + game.items[x] >= items[x][1]) {
+          amt = items[x][1] - game.items[x]
+        }
+        game.pets[84] -= 5 * amt
+        itemChosen = x
+        alert("Bought " + items[x][0] + " " + numberShortAlert(amt) + " times")
+      }
+      else {alert("Not enough items, " + numberShortAlert(game.pets[84]) + "/1 Frozen 5-headed hydra, " + numberShortAlert(game.frozenTokens) + "/100k Frozen Tokens")}
+    }
+  }
+  if (x==48) {
+    if (game.items[42] == 0) {alert("Not unlocked yet")}
+    else {
+      if (game.frozenTokens >= 1000000*10**game.items[49] && game.pets[85] >= 1*10**game.items[49] && game.pets[83] >= 1000*10**game.items[49]) {
+        game.pets[85] -= 1*10**game.items[49]
+        game.pets[83] -= 1000*10**game.items[49]
+        alert("Bought " + items[x][0])
+        itemChosen = x
+      }
+      else {
+        alert("Not enough items, " + numberShortAlert(game.pets[85]) + "/" + numberShortAlert(10**game.items[49]) + " Frozen gigantic snake, " + numberShortAlert(game.pets[83]) + "/" + numberShortAlert(1000*10**game.items[49]) + " Frozen 4-headed hydras, " + numberShortAlert(game.frozenTokens) + "/" + numberShortAlert(1000000*10**game.items[49]) + " Frozen tokens")
+        itemChosen = 0
+      }
+    }
+  }
+  if (x==49) {
+    if (game.items[42] == 0) {alert("Not unlocked yet")}
+    else {
+      if (game.frozenTokens >= 1000000*10**game.items[48] && game.pets[85] >= 1*10**game.items[48] && game.pets[83] >= 1000*10**game.items[48]) {
+        game.pets[85] -= 1*10**game.items[48]
+        game.pets[83] -= 1000*10**game.items[48]
+        alert("Bought " + items[x][0])
+        itemChosen = x
+      }
+      else {
+        alert("Not enough items, " + numberShortAlert(game.pets[85]) + "/" + numberShortAlert(10**game.items[48]) + " Frozen gigantic snake, " + numberShortAlert(game.pets[83]) + "/" + numberShortAlert(1000*10**game.items[48]) + " Frozen 4-headed hydras, " + numberShortAlert(game.frozenTokens) + "/" + numberShortAlert(1000000*10**game.items[48]) + " Frozen tokens")
+        itemChosen = 0
+      }
+    }
+  }
+  if (x==50) {
+    if (game.items[42] == 0) {alert("Not unlocked yet")}
+    else {
+      if (game.frozenTokens >= 150*10**6 && game.pets[84] >= 1000 && game.pets[86] >= 1) {
+        game.pets[86] -= 1
+        game.pets[84] -= 1000
+        alert("Bought " + items[x][0])
+        itemChosen = x
+      }
+      else {
+        alert("Not enough items, " + numberShortAlert(game.pets[84]) + "/1000 Frozen 5-headed hydras, " + numberShortAlert(game.pets[86]) + "/1 Frozen salamander, " + numberShortAlert(game.frozenTokens) + "/150m Frozen tokens")
+        itemChosen = 0
+      }
+    }
+  }
+  if (x==51) {
+    if (game.items[42] == 0) {alert("Not unlocked yet")}
+    else {
+      if (game.frozenTokens >= 10**9 && game.pets[87] >= 1 && game.pets[86] >= 30 && game.enemies[22] >= 1) {
+        game.pets[87] -= 1
+        game.pets[86] -= 30
+        game.enemies[22] -= 1
+        alert("Bought " + items[x][0] + ", Thanks for playing, click again for a special message <3")
+        itemChosen = x
+      }
+      else {
+        alert("Not enough items, " + numberShortAlert(game.pets[87]) + "/1 Frozen dragon, " + numberShortAlert(game.pets[86]) + "/30 Frozen salamanders, " + numberShortAlert(game.frozenTokens) + "/1b Frozen tokens, " + numberShortAlert(game.enemies[22]) + "/1 Flying frozen snake")
+        itemChosen = 0
+      }
+    }
   }
 
 if (itemChosen == x) {
@@ -612,72 +773,62 @@ else itemChosen = 0
  if (x==21) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-30000 Coins<br>-3 2-Headed snakes<br>-1 Dimensional eye<br><br>Effects:<br>+700% XPBoost</p></center>"}
  if (x==22) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-50000 Coins<br>-10 Glowing eyeballs<br>-5 Salamanders<br>-Reach level 75k<br><br>Effects:<br>/1.1 All button cooldowns</p></center>"}
  if (x==23) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-75000 Coins<br>-10 Eyeball spiders<br>-3 Dark snakes<br>-Reach level 100k<br><br>Effects:<br>x2 Fighting rewards (Additive with itself, stacks with others)</p></center>"}
- if (x==24) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-250k Coins<br>-Equip a pet stronger than Dark Blue Dragon<br>-Reach level 250k<br>-Have maxed 22 shop upgrades<br><br><br>After collecting some of the strongest pets in this dimension and controlling time to our level needs, the space-time continuum is breaking. In panic, you spot a portal ahead, but there's some writings on the frame. It tells you what do you need to own to proceed, else everything will collapse into oblivion. You do some preparations and activate the portal. Where could this lead?<br>(Unlocks a new feature)</p></center>"}
+ if (x==24) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-250k Coins<br>-Equip a pet stronger than Dark Blue Dragon<br>-Reach level 250k<br>-Have maxed 22 shop upgrades<br><br><br>After collecting some of the strongest pets in this dimension and controlling time to our level needs, the space-time continuum is breaking. In panic, you spot a portal ahead, but there's some writings on the frame. It tells you what do you need to own to proceed, else everything will collapse into oblivion. You do some preparations and activate the portal. Where could this lead?<br>(Unlocks a new feature)<br>-Unlocks a new theme</p></center>"}
  if (x==25) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-Tier 5<br><br>Effects:<br>-Your tier, shards and dimension amounts are reset<br>-Shard gain is doubled<br>-The 5th dimension is unlocked at a certain tier<br>-XP gain is multiplied by your tier (^1.5 if upgrade 30 is bought)</p></center>"}
  if (x==26) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-Tier 8<br>-The previous dimensional reset<br><br>Effects:<br>-Your tier, shards and dimension amounts are reset<br>-Multipliers for D1-D2 are doubled<br>-The 6th dimension is unlocked at a certain tier<br>-Button cooldowns are reduced based on your tier (like items do)<br>Formula: 1 + 0.01 * tier (0.025 if upgrade 30 is bought)</p></center>"}
  if (x==27) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-Tier 12<br>-The previous dimensional reset<br><br>Effects:<br>-Your tier, shards and dimension amounts are reset<br>-Multipliers for D1-D3 are doubled<br>-The 7th dimension is unlocked at a certain tier<br>-All dimensions cooldowns /1.5</p></center>"}
  if (x==28) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-Tier 18<br>-The previous dimensional reset<br><br>Effects:<br>-Your tier, shards and dimension amounts are reset<br>-Multipliers for D1-D4 are doubled<br>-The 8th dimension is unlocked at a certain tier<br>-XPBoost softcap ^(+0.001) for each tier (+0.0025 if upgrade 30 is bought)</p></center>"}
  if (x==29) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-Tier 28<br>-The previous dimensional reset<br><br>Effects:<br>-Your tier, shards and dimension amounts are reset<br>-Multipliers for D1-D5 are doubled<br>-The 9th dimension is unlocked at a certain tier<br>-Stats gain +0.01 for each tier (+0.025 if upgrade 30 is bought)</p></center>"}
- if (x==30) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-Tier 40<br>-All 5 Dimensional resets<br><br>Effects:<br>-Your tier, shards, dimension amounts, dimensional resets and upgrades 31-35 are reset<br>-Dimensional resets extra effects are stronger<br>-All dimension multipliers x2</p></center>"}
+ if (x==30) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-Tier 40<br>-All 5 Dimensional resets<br><br>Effects:<br>-Your tier, shards, dimension amounts<br>-Upgrades 31-35 disabled if their corresponding upgrade requirement isn't bought<br>-Dimensional resets extra effects are stronger<br>-All dimension multipliers x2</p></center>"}
  if (x==31) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-Level 500k<br>-Perform the first dimensional reset<br>-5 Dimensional Eyes<br>-1 Blue Dragon<br><br>Effects:<br>+5000 Button Clicks<br>-XP buttons count as clicked twice<br>-Buttons clicked stat gets converted to an all dimensions multiplier</p></center>"}
  if (x==32) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-500k Coins<br>-Perform the second dimensional reset<br>-10 Magma boys beaten<br>-40 Fire spectral<br>-3 Fire lord<br><br>Effects:<br>x2 Stats gain<br>x3 Fighting rewards<br>-Enemies killed provides a multiplier to all dimensions<br><br>(Disclaimer: This is a reference to an item in the game Elden Ring of the same name, and the texture was simply found in a free textures pack that could maybe be found in internet. There's no intent of copy-ing Elden Ring, and if any verified dev wants me to change it, feel free to text me)</p></center>"}
- if (x==33) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-Level 2.5m<br>-Perform the third dimensional reset<br>-5 Death scorpions<br>-5 Toxic mushrooms<br><br>Effects:<br>-Unlocks a bossfight where hp saves after dying and rewards increase with each kill<br>-Rewards include an all dimensions multiplier<br><br>Lore:<br>In a desperate need of speeding up these dimensions, the shopkeeper offers you a necklace. He says that evil powers cursed the previous wielder centuries ago as he tried to enhance his powers... -I don't know what might happen when you wear it but be ready for a tough fight- He said while showing you the cost.</p></center>"}
- if (x==34) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-6m coins<br>-Perform the fourth dimensional reset<br>-1 Skeletal vulture<br>-1 Ghost dog<br>-10 Purple stars<br><br>Effects:<br>x10 XP gain<br>x100 XPBoost<br>x100 Daily XP<br>x2 All dimension multipliers</p></center>"}
+ if (x==33) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-Level 2.5m<br>-Perform the third dimensional reset<br>-3 Death scorpions<br>-3 Toxic mushrooms<br><br>Effects:<br>-Unlocks a bossfight where hp saves after dying and rewards increase with each kill<br>-Rewards include an all dimensions multiplier<br><br>Lore:<br>In a desperate need of speeding up these dimensions, the shopkeeper offers you a necklace. He says that evil powers cursed the previous wielder centuries ago as he tried to enhance his powers... -I don't know what might happen when you wear it but be ready for a tough fight- He said while showing you the cost.</p></center>"}
+ if (x==34) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-6m coins<br>-Perform the fourth dimensional reset<br>-1 Skeletal vulture<br>-1 Ghost dog<br>-5 Purple stars<br><br>Effects:<br>x10 XP gain<br>x100 XPBoost<br>x100 Daily XP<br>x2 All dimension multipliers</p></center>"}
  if (x==35) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-Level 50m<br>-Perform the fifth dimensional reset<br>-3 Living mushrooms<br>-1 Holy pig<br>-1 Universal Vortex<br><br>Effects:<br>/1.5 Button Cooldowns<br>/1.5 Dimension Cooldowns<br>-Pet automation triggers every 5 minutes, opens the other 3 crates and they are free to open<br>-All cooldowns are reset when the upgrade is bought<br><br>Lore:<br>Hey, feeling like you are caught somewhere in time? If you give me some of your interesting goodies I will accelerate everything and even help you out with some manual labour. Deal? You stare for a while at this floating talking hand with some sort of incorporated sand clock meanwhile you think of an answer. Doubtful? Every single button cooldown on purchase will be set to 0. *heavy breathing* Deal.<br>(Developer warning: This will not work if for some absurd reason the previous automation upgrade is not bought)</p></center>"}
  if (x==36) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-50m coins<br>-Level 250m<br>-Tier 40<br>-Discover 66 pets<br>-Own a White dragon<br><br>Effects:<br>x2 All Dimensions multiplier<br>x2 XP gain<br>x2 Stat gain<br>-Allows you to claim a role for beating Check Back on the discord server<br><br><br>After killing the strongest entities on earth, after collecting pets from all around the world and travelling to other dimensions just to satisfy your levelup needs, the shopkeeper offers you a final item. A trophy given to those who managed to sacrifice all the dimensions in their path to fixing the space-time continuum. Proudly, you raise it up into the air as a sign of victory, when you spot on the bottom side this text:<br>Congratulations for beating Check Back v1.0. More content coming soon, stay tuned. -Marc <3</p></center>"}
  if (x==37) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1 Frozen spider<br><br>Effects:<br>+100% XP each level (Warning: Will buy max when clicked. This is multiplicative to the other +% XP upgrades)</p></center>"}
- if (x==38) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-50m coins<br>-50 Frozen spiders<br>-5 Frozen bats<br>-1 Frozen firefly<br><br>Effects:<br>+1 Frozen crate bulk (base)<br>+x0.1 All crates bulk amount</p></center>"}
+ if (x==38) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-50m coins<br>-50 Frozen spiders<br>-5 Frozen bats<br>-1 Frozen firefly<br><br>Effects:<br>-Adds 0.25 to the linear frozen crate bulk scaling<br>+x0.1 All crates bulk amount</p></center>"}
  if (x==39) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-100 Frozen bats<br>-10 Frozen fireflies<br>-1 Frozen tarantula<br>-1 Ice wizard defeated<br><br>Effects:<br>-0.25^x Enemy stats scaling (Base: 2^x)<br>+0.2^x Enemy rewards scaling (Base, 1^x for coins, 1.5^x for rest)<br>x4 Stats gain</p></center>"}
  if (x==40) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1b coins<br>-50 Frozen fireflies<br>-5 Frozen tarantulas<br>-1 Frozen 2-headed hydra<br><br>Effects:<br>x2 All dimension cooldown each level (yes, makes dimensions slower)<br>x5 All dimension multipliers each level</p></center>"}
  if (x==41) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-20 Frozen tarantulas<br>-6 Frozen 2-headed hydras<br>-1 Frozen ghost<br>-1 Frozen cooldown artifact<br>-1 Frozen stats artifact<br><br>Effects:<br>x5 Artifact drop amount</p></center>"}
- if (x==42) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>At least 1 Frozen Yeti<br><br>Effects:<br>-Some cool effects<br>-Unlocks some new frozen pets and some new frozen upgrades</p></center>"}
+ if (x==42) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1 Frozen yeti<br>-5 Frozen ghosts<br>-Level 1e16<br><br>Effects:<br>-Unlocks frozen tokens, gained through buttons and give bonuses unlocked through upgrades<br>-Unlocks new frozen pets and new frozen upgrades<br>-New frozen theme</p></center>"}
+ if (x==43) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-A singular smith (free)<br>-10 Frozen tokens (All upgrades REQUIRE tokens, not spend)<br>-1 Frozen 3-headed hydra<br>-5 Frozen yeti<br><br>Effects:<br>'Messiah smith offers you to join a cult. Lock XP cooldowns to /60 and multiply XP gain to the difference' Wait, wrong game. But it still works<br>-Frozen tokens raise that multiplier according to the formula: ln(x/2 + e)<br>Expo: " + numberShort(game.oneSmithExpo) + "</p></center>"}
+ if (x==44) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-40 Frozen tokens<br>-1 Frozen 4-headed hydras<br>-8 Frozen 3-headed hydras<br>-1000 Frozen 2-headed hydras<br><br>Effects:<br>x1.5 XP, XPBoost and Stats<br>These buffs apply every frozen hydra head you discover (2-headed counts as 2, 4-headed as 4)<br>Total heads: " + levelShort(game.frozenHydraHeads) + "<br>Multiplier: x" + numberShort(1.5**game.frozenHydraHeads) + "</p></center>"}
+ if (x==45) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-2k Frozen tokens<br>-4 Frozen 4-headed hydras<br>-350 Frozen yetis<br><br>Effects:<br>-Frozen crate does not reset dimensions anymore<br>-Removes upgrade 40's dimension cooldown multiplier<br>-Each token adds +1 to the frozen crate base bulk<br>Frozen crate is now automated, new automation time is 10 seconds</p></center>"}
+ if (x==46) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-10k Frozen tokens<br>-1 Frozen 5-headed hydra<br>-80 Frozen 3-headed hydras<br><br>Effects:<br>x825 button clicks<br>x497 enemies defeated<br>x1.765 frozen tokens<br>+log100(x/77559 + 1)^0.5 fighting rewards scaling based on frozen tokens<br>Effect: +" + numberShort((Math.log(game.frozenTokens/77559 + 1) ** 0.5) / Math.log(100)) + "</p></center>"}
+ if (x==47) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-100k Frozen tokens<br>-5 Frozen 5-headed hydras<br><br>Effects:<br>+x0.01 Artifacts<br>+x1 XP<br>+x0.001 Tokens<br>Buys max when clicked</p></center>"}
+ if (x==48) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-" + levelShort(1000000 * 10**game.items[49]) + " Frozen Tokens<br>-" + levelShort(1 * 10**game.items[49]) + " Frozen gigantic snakes<br>-" + levelShort(1000 * 10**game.items[49]) + " Frozen 4-headed hydras<br><br>Effects:<br>x4 Frozen tokens<br>x2 tokens cooldown (slower)<br>-Makes 'The Demon' 10 times more expensive<br>-Having both grants an extra x5 frozen tokens<br><br>The path of heaven rewards your patience</p></center>"}
+ if (x==49) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-" + levelShort(1000000 * 10**game.items[48]) + " Frozen Tokens<br>-" + levelShort(1 * 10**game.items[48]) + " Frozen gigantic snakes<br>-" + levelShort(1000 * 10**game.items[48]) + " Frozen 4-headed hydras<br><br>Effects:<br>/6 Frozen tokens cooldown<br>/2 tokens (smaller)<br>-Makes 'The Angel' 10 times more expensive<br>-Having both grants an extra x5 frozen tokens<br><br>The path of hell offers quick pleasure</p></center>"}
+ if (x==50) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-150m Frozen tokens<br>-1 Frozen salamander<br>-1000 Frozen 5-headed hydras<br><br>Effects:<br>x8 All dimensions multipliers<br>+x0.01 Frozen tokens/Tier<br></p></center>"}
+ if (x==51) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1b Frozen tokens<br>-1 Frozen dragon<br>-1 Flying frozen snake<br>-30 Frozen salamanders<br><br>Effects:<br>()<br>A god shows up and gives you a blessing (Grants a role)</p></center>"}
 }
 }
 
 function showItemHiddenInfo(x) {
   if (x==0) {document.getElementById("shopInfo").innerHTML = ""}
   else {
-   if (x==19) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 20k to Unlock"}
-   if (x==20) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 20k to Unlock"}
-   if (x==21) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 20k to Unlock"}
-   if (x==22) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 20k to Unlock"}
-   if (x==23) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 20k to Unlock"}
-   if (x==24) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 20k to Unlock"}
-   if (x==25) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Buy the portal to Unlock"}
-   if (x==26) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Buy the portal to Unlock"}
-   if (x==27) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Buy the portal to Unlock"}
-   if (x==28) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Buy the portal to Unlock"}
-   if (x==29) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Buy the portal to Unlock"}
-   if (x==30) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Buy the portal to Unlock"}
-   if (x==31) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Buy the portal to Unlock"}
-   if (x==32) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Buy the portal to Unlock"}
-   if (x==33) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Buy the portal to Unlock"}
-   if (x==34) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Buy the portal to Unlock"}
-   if (x==35) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Buy the portal to Unlock"}
-   if (x==36) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Perform a dimensional sacrifice to Unlock"}
-   if (x==37) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 500m to Unlock"}
-   if (x==38) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 500m to Unlock"}
-   if (x==39) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 500m to Unlock"}
-   if (x==40) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 500m to Unlock"}
-   if (x==41) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 500m to Unlock"}
-   if (x==42) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 500m to Unlock"}
+   if (x>=19 && x<=24) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Reach level 20k to Unlock"}
+   if (x>=25 && x<=35) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Buy the portal to Unlock"}
+   if (x>=36 && x<=42) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Perform a dimensional sacrifice to Unlock"}
+   if (x>=43) {document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'> Purchase 'The tale of the Frozen Yeti' to unlock"}
  }
 }
 
 function updateShopBoosts() {
-  game.itemXP = (1 + (game.items[1] * 0.5) + (game.items[8] * 1) + (game.items[13] * 2)) * (game.items[19] + 1) * (9 * game.items[34] + 1) * (game.items[36] + 1) * (game.items[37] + 1)
-  game.itemStat = (1 + (game.items[2] * 0.25) + (game.items[9] * 0.75) + (game.items[14] * 1.5)) * (2 ** (game.items[20] + game.items[32] + game.items[36] + game.items[39] * 2))
-  game.itemXPBoost = (1 + (game.items[3] * 0.25)+ (game.items[7] * 0.75) + (game.items[12] * 2) + (game.items[21] * 7)) * (99 * game.items[34] + 1) 
+  game.frozenHydraHeads = 0 + 2 * Math.min(game.pets[79], 1) + 3 * Math.min(game.pets[82], 1) + 4 * Math.min(game.pets[83], 1) + 5 * Math.min(game.pets[84], 1)
+  game.itemXP = (1 + (game.items[1] * 0.5) + (game.items[8] * 1) + (game.items[13] * 2)) * (game.items[19] + 1) * (9 * game.items[34] + 1) * (game.items[36] + 1) * (game.items[37] + 1) * (1.5 ** game.frozenHydraHeads) * (1 + game.items[47])
+  game.itemStat = (1 + (game.items[2] * 0.25) + (game.items[9] * 0.75) + (game.items[14] * 1.5)) * (2 ** (game.items[20] + game.items[32] + game.items[36] + game.items[39] * 2)) * (1.5 ** game.frozenHydraHeads)
+  game.itemXPBoost = (1 + (game.items[3] * 0.25)+ (game.items[7] * 0.75) + (game.items[12] * 2) + (game.items[21] * 7)) * (99 * game.items[34] + 1) * (1.5 ** game.frozenHydraHeads)
   game.itemCooldown = 1 + (game.items[4] * 0.02) + (game.items[22] * 0.1) + (game.items[35] * 0.5)
   game.itemLoot = (1 + (game.items[5] * 0.3) + (game.items[11] * 0.9) + (game.items[17] * 2.2)) * (game.items[23] + 1) * (2 * game.items[32] + 1)
-  game.itemArtifacts = 1 + (game.items[41] * 4)
+  game.itemArtifacts = Math.ceil((1 + game.items[41] * 4) * (1 + game.items[47] * 0.01))
   game.itemXPBoostEffectSoftcap = 0 + (game.items[12] * 0.05) + (game.items[28] * game.tier * 2.5 ** Math.min(game.items[30], 1))/1000
   game.itemUnlocks = 0 + (Math.min(game.items[6], 1)) + (Math.min(game.items[24], 1)) + (Math.min(game.items[33], 1))
   game.extraPetAmount = 0 + (game.items[16])
-  game.itemDimensions = 1 * 2 ** (game.items[30] + game.items[34] + game.items[36]) * 5 ** game.items[40]
-  game.dimensionCooldown = 1 * 1.5 ** (game.items[27] + game.items[35]) / (2 ** game.items[40])
+  game.itemDimensions = 1 * 2 ** (game.items[30] + game.items[34] * game.items[28] + game.items[36]) * 5 ** game.items[40]
+  game.dimensionCooldown = 1 * 1.5 ** (game.items[27] + game.items[35] * game.items[29]) / (2 ** (game.items[40] * (1 - game.items[45]) ))
   game.enemyScaling = 2 - (game.items[39] * 0.25)
-  game.rewardsScaling = 0 + (game.items[39] * 0.2)
+  game.rewardsScaling = 0 + (game.items[39] * 0.2) + ((Math.log(game.frozenTokens/77559 + 1) ** 0.5) / Math.log(100) * game.items[46])
   if (game.items[18] >= 1) game.itemDailyXP = ((game.XPBoostEffect ** 0.5) * game.itemXP * (9 * game.items[34] + 1))
   else game.itemDailyXP = 1
   if (game.items[25] >= 1) game.tierXPmulti = game.tier ** (Math.min(game.items[30], 0.5) + 1)
@@ -690,19 +841,17 @@ function updateShopBoosts() {
   else game.clickToDimension = 1
   if (game.items[32] >= 1) game.enemiesToDimension = Math.log(Math.E + game.enemiesDefeated/250)
   else game.enemiesToDimension = 1
-  
+  if (game.items[43] >= 1) {
+    game.oneSmithMulti = Math.max((pets[game.selectedPet][2] * game.itemCooldown * game.tierCooldown * game.artifactsCooldown) / 60, 1)
+    game.oneSmithExpo = Math.log(game.frozenTokens/2 + Math.E)
+  }
+  else {
+    game.oneSmithMulti = 1
+    game.oneSmithExpo = 1
+  }
+  let bothPathsComplete = 1
+  if (game.items[48] == 1 && game.items[49] == 1) {bothPathsComplete = 5}
+  game.tokenMulti = 1 * (1 + game.items[46] * 0.765) * (1 + game.items[47] * 0.001) * (1 + game.items[48] * 3) * (1 - game.items[49] * 0.5) * (1 + game.tier * 0.01 * game.items[50]) * bothPathsComplete
+  game.tokenCooldown = 1 * (1 + game.items[49] * 5) * (1 - game.items[48] * 0.5)
 }
 setInterval(updateShopBoosts, 50)
-
-function itemBoosts() {
-  result = ""
-  if (game.itemXP > 1) {result += "XP gain x" + numberShort(game.itemXP) + "<br>"}
-  if (game.itemStat > 1) {result += "Stat gain x" + numberShort(game.itemStat) + "<br>"}
-  if (game.itemXPBoost > 1) {result += "XPBoost gain x" + numberShort(game.itemXPBoost) + "<br>"}
-  if (game.itemCooldown > 1) {result += "All button cooldown /" + numberShort(game.itemCooldown) + "<br>"}
-  if (game.itemLoot > 1) {result += "Fighting loot x" + numberShort(game.itemLoot) + "<br>"}
-  if (game.itemXPBoostEffectSoftcap > 0) {result += "XPBoost effect exponent +" + numberShort(game.itemXPBoostEffectSoftcap) + "<br>"}
-  if (game.itemDailyXP > 1) {result += "Daily XP x" + numberShort(game.itemDailyXP) + "<br>"}
-  if (game.extraPetAmount > 0) {result += "Extra pets: " + levelShort(game.extraPetAmount) + " <br>"}
-  return result
-}

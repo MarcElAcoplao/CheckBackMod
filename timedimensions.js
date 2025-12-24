@@ -1,5 +1,5 @@
 //v1.0 feature content
-const unlockTiers = [2,3,4,6,10,15,23,33]
+const unlockTiers = [2,3,4,6,10,15,23,33,70,130]
 
 const Dimensions = [ //Dimension stats
   {name: "Shards", dimensionArray: 0, cooldown: 0, cooldownID: 0},
@@ -12,6 +12,8 @@ const Dimensions = [ //Dimension stats
   {name: "TimeDim7", dimensionArray: 6, cooldown: 86400, cooldownID: 33}, //1d
   {name: "TimeDim8", dimensionArray: 7, cooldown: 129600, cooldownID: 34}, //1d 12h
   {name: "TimeDim9", dimensionArray: 8, cooldown: 172800, cooldownID: 35}, //2d
+  {name: "TimeDim10", dimensionArray: 9, cooldown: 345600, cooldownID: 56}, //4d
+  {name: "TimeDim11", dimensionArray: 10, cooldown: 604800, cooldownID: 57}, //7d
 ]
 //Shards for a tier: 5^x -1 basically
 function ShardToTier(x) {return Math.floor(Math.log(x+1)/Math.log(5)) + 1}
@@ -28,18 +30,17 @@ function clickDimension(x, y) {
 function dimensionalReset(x) {
   game.timeShards = 0
   game.dimensionUnlocks = 0
-  game.dimensionAmount = [1, 1, 1, 1, 1, 1, 1, 1, 1]
+  game.dimensionAmount = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   for (i=1;i<Dimensions.length;i++) game.buttonCooldowns[Dimensions[i].cooldownID] = 0
   if (x == 1) {
     for (i=0;i<5;i++) game.items[i + 25] = 0
-    for (i=0;i<5;i++) game.items[i + 31] = 0
   }
   if (x == 2) {game.frozenBaseBulk = 1}
   calculateDimensionMultipliers()
 }
 
 function calculateDimensionMultipliers() {
- game.allDimensionMultipliers = game.clickToDimension * pets[game.selectedPet][5] * game.bossMulti * game.enemiesToDimension * game.artifactsDimension * game.itemDimensions
+ game.allDimensionMultipliers = 1 * (1 + (game.clickToDimension - 1) * game.items[25]) * pets[game.selectedPet][5] * (1 + (game.bossMulti - 1) * game.items[27]) * (1 + (game.enemiesToDimension - 1) * game.items[26]) * game.artifactsDimension * game.itemDimensions * (1 + game.items[50] * 7)
  game.dimensionMulti[0] = 1 * game.allDimensionMultipliers * 2 ** (game.items[25] + game.items[26] + game.items[27] + game.items[28] + game.items[29])
  game.dimensionMulti[1] = 1 * game.allDimensionMultipliers * 2 ** (game.items[26] + game.items[27] + game.items[28] + game.items[29])
  game.dimensionMulti[2] = 1 * game.allDimensionMultipliers * 2 ** (game.items[27] + game.items[28] + game.items[29])
@@ -49,5 +50,7 @@ function calculateDimensionMultipliers() {
  game.dimensionMulti[6] = 1 * game.allDimensionMultipliers * 2 ** (0)
  game.dimensionMulti[7] = 1 * game.allDimensionMultipliers * 2 ** (0)
  game.dimensionMulti[8] = 1 * game.allDimensionMultipliers * 2 ** (0)
+ game.dimensionMulti[9] = 1 * game.allDimensionMultipliers * 2 ** (0)
+ game.dimensionMulti[10] = 1 * game.allDimensionMultipliers * 2 ** (0)
 }
 setInterval(calculateDimensionMultipliers, 50)

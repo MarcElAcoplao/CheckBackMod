@@ -1,4 +1,4 @@
-const unlockLevels = [2,3,4,5,6,8,12,15,20,35,50,70,100,125,150,200,250,300,350,400,500,1500,20000,50000,100000,1000000,5000000,500000000,1*10**10,5*10**10,2.5*10**11]
+const unlockLevels = [2,3,4,5,6,8,12,15,20,35,50,70,100,125,150,200,250,300,350,400,500,1500,20000,50000,100000,1000000,5000000,500000000,1*10**10,5*10**10,2.5*10**11,2*10**17,10**18,10**19,10**21,10**23,4*10**23,3*10**24,7*10**25,10**27,10**29,10**31,10**33,5*10**35,5*10**37]
 const importantUnlockLevels = [8,100,500,1500,250000,5000000]
 const levelBarTextures = [50,55,60,65,70,80,90,100,200]
 
@@ -135,8 +135,18 @@ const ranks = [
   [5*10**16, "Epsilon++"],
   [2.5*10**17, "Epsilon+++"],
   [10**18, "Fabled"],
-  [10**25, "Impossibly dedicated"],
-  [10**100, "Impossibly dedicated squared"],
+  [10**19, "Fabled+"],
+  [10**20, "Fabled++"],
+  [10**21, "Gamma"],
+  [10**24, "Gamma+"],
+  [10**27, "Gamma++"],
+  [10**30, "Heroic"], //I will put as many as you can obtain through the update legitimately
+  [10**35, "Heroic 2"],
+  [10**40, "Heroic 3"],
+  [10**45, "Heroic 4"], //Probably lategame
+  [10**50, "Heroic 5"], //Can be grinded in a reasonable amount of time I guess
+  [10**82, "Impossibly dedicated"], //e150xp
+  [10**165, "Impossibly dedicated squared"], //e300 xp
   [Infinity, "Error"],
 ] //space and finality, omega
 
@@ -275,12 +285,12 @@ const pets = [
   ["Frozen 2-headed hydra", 25000, 16, 16, 25, 8], //79 Frozen pet 5
   ["Frozen ghost", 40000, 20, 20, 40, 12], //80 Frozen pet 6
   ["Frozen yeti", 100000, 30, 30, 100, 15], //81 Frozen pet 7 also end of first section pets
-  ["Frozen 3-headed hydra", 4800, 4.4, 4.8, 9, 1.5], //82 Frozen pet 8
-  ["Frozen 4-headed hydra", 4800, 4.4, 4.8, 9, 1.5], //83 Frozen pet 9
-  ["Frozen 5-headed hydra", 4800, 4.4, 4.8, 9, 1.5], //84 Frozen pet 10
-  ["Frozen gigantic snake", 4800, 4.4, 4.8, 9, 1.5], //85 Frozen pet 11
-  ["Frozen salamander", 4800, 4.4, 4.8, 9, 1.5], //86 Frozen pet 12
-  ["Frozen dragon", 4800, 4.4, 4.8, 9, 1.5], //87 Frozen pet 13
+  ["Frozen 3-headed hydra", 200000, 32, 35, 250, 25], //82 Frozen pet^2 1
+  ["Frozen 4-headed hydra", 10**6, 35, 40, 600, 35], //83 Frozen pet^2 2
+  ["Frozen 5-headed hydra", 10**7, 40, 50, 1400, 45], //84 Frozen pet^2 3
+  ["Frozen gigantic snake", 10**8, 47, 60, 3800, 60], //85 Frozen pet^2 4
+  ["Frozen salamander", 10**10, 55, 75, 12300, 80], //86 Frozen pet^2 5
+  ["Frozen dragon", 10**12, 70, 100, 25000, 100], //87 Frozen pet^2 6
 ]
 
 const skeletalUnboxChances = [ //will be set to 1
@@ -329,6 +339,10 @@ const universalUnboxChances = [
 
 const frozenUnboxChances1 = [
   [75,90000], [76, 9000], [77,900], [78, 70], [79,24], [80, 5], [81,1],
+]
+
+const frozenUnboxChances2 = [
+  [75,7000], [76, 2000], [77,700], [78, 230], [79,63], [80, 6], [81,1], [82,0.1], [83,0.01], [84,0.001], [85, 0.00001], [86, 0.0000004], [87, 0.00000001],
 ]
 
 const enemies = [
@@ -423,6 +437,15 @@ const enemies = [
   ["Frozen dimensions", 3], //(40) Each level doubles the cooldown of all dimensions but increases their multipliers by x5 (Not coded)
   ["Artifact condensation", 1], //(41) Buffs artifact drops by x5
   ["The tale of the Frozen Yeti", 1], //(42) Good boosts and also unlocks a new set of upgrades + frozen pets (Not coded)
+  ["The ONE-SMITH", 1], //(43) Holy shit is that a motherfucking SYNERGISM reference!!!!
+  ["Frozen hydra egg", 1], //(44) Something about frozen hydras giving buffs
+  ["Dimensional blizzard", 1], //(45) Makes frozen dimensions not get reset and also removes the cooldown nerf
+  ["Scroll of random boosts", 1], //(46) Gives a bunch of "random" bonuses
+  ["Rune-ificator", 1000], //(47) Rebuyable
+  ["The Angel", 1], //(48) kinda like a pick a path with 49
+  ["The Demon", 1], //(49) kinda like a pick a path with 48
+  ["Token vortex", 1], //(50) OP Upgrade
+  ["Amulet of omnipresence", 1], //(51) Final final upgrade
   ]
 
   const artifacts = [

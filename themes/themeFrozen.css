@@ -1,0 +1,34 @@
+body {
+  background-color: #012b38;
+}
+
+.button {
+  background-color: #75d8d5;
+  border: 0.1em solid rgb(23, 40, 228);
+  color: rgb(25, 27, 151);
+}
+
+@keyframes flickering {
+  from {border-color: rgb(0, 255, 242);}
+  to {border-color: rgb(0, 14, 136);}
+}
+
+.button:disabled {
+  background-color: #444;
+  border: 0.1em solid #000;
+  color: #a0a3d5;
+}
+
+#dailyRewardButton {
+  color: rgb(66, 6, 140);
+}
+
+#nextUnlockLevel, #selectedPetText, #themeText, #versionText, #XPBoostDisplay, #ItemBoostDisplay {
+  color: #8cfffb;
+}
+
+.tabButton { /* This, when it returns true */
+  background-color: #111;
+  border: 0.1em solid #0ff;
+  color: #0ff;
+}

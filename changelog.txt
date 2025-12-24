@@ -1,3 +1,16 @@
+v1.1 The Frozen Update Part 2 - Christmas Edition
+1- New shop upgrades that will make your numbers go big, including the long awaited "The tale of the frozen yeti"
+2- New pets with op stats, you will no longer see unobtainable pets in the list
+3- New sub-feature: Frozen tokens. ||Unlocked with "The tale of the frozen yeti", this resource will only grow stronger as you buy more upgrades||
+4- More buttons across tabs...
+5- Artifact nerfs, they now have a ^ factor going from 0 to 1, with one exception. XP/XPBoost artifacts now scale multiplicatively with each other
+6- More rank messages, including a "final" at e150 xp and a "final final" at e300 xp
+7- Changes to some v1.0/v1.1 content balancing, to make progression smoother (includes upgrade costs tweaks)
+8- Maybe a bugfix or 2, idk.
+9- Holy shit! Is that a motherfucking synergism reference (Thanks Platonic)
+10- New special frozen theme unlocked with "The tale of the frozen yeti"
+This will be the final-final check back update, expect it to take more than a month to beat. Thank you all for playing and I'll try to make 2026 be better. Also, I might be pushing some tiny changes soon after this update releases, maybe some extra bugfixes or tweaks
+
 v1.1 The frozen update part 1
 1-New crate. This one is different from the others, since it will reset your dimensions to open more crates. The pets are very rare but also drop in lots.
 2-New pets. Coming from the new crate, those pets are extremely, EXTREMELY powerful and are required to reach high levels to unlock new stuff. [The unobtainable pets will come in the 2nd part]

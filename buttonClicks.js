@@ -11,15 +11,21 @@ const XPButtons = [ //The stats of every single xp button
   {name: "XPbutton9", xp: 150, cooldown: 43200, cooldownID: 16, unlock: 12},
   {name: "XPbutton10", xp: 250, cooldown: 86400, cooldownID: 17, unlock: 15},
   {name: "XPbutton11", xp: 500, cooldown: 259200, cooldownID: 39, unlock: 17},
-  {name: "XPbutton12", xp: 1000, cooldown: 604800, cooldownID: 40, unlock: 18},
+  {name: "XPbutton12", xp: 1000, cooldown: 604800, cooldownID: 40, unlock: 18}, //7d
+  {name: "XPbutton13", xp: 10000, cooldown: 2592000, cooldownID: 60, unlock: 39}, //30d, make for 60d and 120d, these with the max /60 will be ~2 days max
 ]
 
 //The code for any of the xp buttons
 function clickButton(x) {
     if (game.buttonCooldowns[XPButtons[x].cooldownID] == 0) { //Checks the proper button is off cooldown
-        game.buttonClicks += 1 + game.items[31]
-        game.XP += XPButtons[x].xp * (pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti * 1.2 * game.artifactsXP) //Assigns the xp that you have to get
+        game.buttonClicks += (1 + game.items[31]) * (1 + game.items[46] * 824)
+        game.XP += XPButtons[x].xp * (pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti * game.artifactsXP * game.oneSmithMulti ** game.oneSmithExpo) //Assigns the xp that you have to get
+        if (game.items[43] == 0) {
         game.buttonCooldowns[XPButtons[x].cooldownID] = XPButtons[x].cooldown / (pets[game.selectedPet][2] * game.itemCooldown * game.tierCooldown * game.artifactsCooldown) //Selects the cooldownID and the cooldown of the button, and sets them to one
+        }
+        else {
+        game.buttonCooldowns[XPButtons[x].cooldownID] = XPButtons[x].cooldown / 60 //This item looks the modifier to 60 but converts the excess to an xp multi
+        }
     }
     updateSmall()
   }
@@ -31,13 +37,14 @@ const XPBoostButtons = [ //Stats of the xpboost buttons
   {name: "XPBbutton3", xpboost: 0.03, cooldown: 21600, cooldownID: 19, unlock: 16},
   {name: "XPBbutton4", xpboost: 0.05, cooldown: 43200, cooldownID: 41, unlock: 18},
   {name: "XPBbutton5", xpboost: 0.1, cooldown: 86400, cooldownID: 42, unlock: 20},
+  {name: "XPBbutton6", xpboost: 10, cooldown: 604800, cooldownID: 59, unlock: 38},
 ]
 
   function click2Button(x) { //Will work for any of them individually
   if (game.buttonCooldowns[XPBoostButtons[x].cooldownID] == 0) { //Checks if the button is ready and got enough XP
       game.XPBoost += XPBoostButtons[x].xpboost * pets[game.selectedPet][4] * game.itemXPBoost * game.artifactsXPBoost
       game.buttonCooldowns[XPBoostButtons[x].cooldownID] = XPBoostButtons[x].cooldown / (game.itemCooldown * game.tierCooldown * game.artifactsCooldown) //1h
-      game.buttonClicks += 1
+      game.buttonClicks += (1 + game.items[31]) * (1 + game.items[46] * 824)
     }
     updateSmall()
   }
@@ -50,6 +57,7 @@ const StatButtons = [
   {name: "StatButton4", stats: 120, cooldown: 86400, cooldownID: 38, unlock: 27},
   {name: "StatButton5", stats: 600, cooldown: 604800, cooldownID: 45, unlock: 30},
   {name: "StatButton6", stats: 1200, cooldown: 1209600, cooldownID: 46, unlock: 31},
+  {name: "StatButton7", stats: 12000, cooldown: 2419200, cooldownID: 58, unlock: 37},
 ]
 
   function click3Button(x) {
@@ -58,7 +66,31 @@ const StatButtons = [
       game.DMG += 0.1 * StatButtons[x].stats * game.itemStat * game.tierStats * game.artifactsStats
       game.DEF += 0.01 * StatButtons[x].stats * game.itemStat * game.tierStats * game.artifactsStats
       game.buttonCooldowns[StatButtons[x].cooldownID] = StatButtons[x].cooldown / (game.itemCooldown * game.tierCooldown * game.artifactsCooldown) //1h
-      game.buttonClicks += 1
+      game.buttonClicks += (1 + game.items[31]) * (1 + game.items[46] * 824)
   }
   updateSmall()
+}
+
+const tokenButtons = [
+  {name: "Test", gain: 0, cooldown: 60, cooldownID: 0, unlock: 0},
+  {name: "TokenButton1", gain: 1, cooldown: 600, cooldownID: 50, unlock: 0},
+  {name: "TokenButton2", gain: 2, cooldown: 900, cooldownID: 51, unlock: 32},
+  {name: "TokenButton3", gain: 5, cooldown: 1800, cooldownID: 52, unlock: 33},
+  {name: "TokenButton4", gain: 15, cooldown: 3600, cooldownID: 53, unlock: 34},
+  {name: "TokenButton5", gain: 40, cooldown: 7200, cooldownID: 54, unlock: 35},
+  {name: "TokenButton6", gain: 200, cooldown: 18000, cooldownID: 55, unlock: 36},
+  {name: "TokenButton7", gain: 1000, cooldown: 43200, cooldownID: 61, unlock: 40},
+  {name: "TokenButton8", gain: 3333, cooldown: 86400, cooldownID: 62, unlock: 41},
+  {name: "TokenButton9", gain: 20000, cooldown: 172800, cooldownID: 63, unlock: 42},
+  {name: "TokenButton10", gain: 100000, cooldown: 302400, cooldownID: 64, unlock: 43},
+  {name: "TokenButton11", gain: 250000, cooldown: 604800, cooldownID: 65, unlock: 44},
+  {name: "TokenButton12", gain: 1000000, cooldown: 1209600, cooldownID: 66, unlock: 45},
+]
+
+function click4Button(x) {
+  if (game.buttonCooldowns[tokenButtons[x].cooldownID] == 0) {
+    game.frozenTokens += tokenButtons[x].gain * game.tokenMulti
+    game.buttonClicks += (1 + game.items[31]) * (1 + game.items[46] * 824)
+    game.buttonCooldowns[tokenButtons[x].cooldownID] = tokenButtons[x].cooldown / game.tokenCooldown
+  }
 }

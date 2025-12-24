@@ -32,6 +32,8 @@ function displayStuff() {
    else document.getElementById("XPbutton11").style.display = "none"
    if (game.currentTab <= 1 && game.unlocks >= 18) {document.getElementById("XPbutton12").style.display = "block" }
    else document.getElementById("XPbutton12").style.display = "none"
+   if (game.currentTab <= 1 && game.unlocks >= 39) {document.getElementById("XPbutton13").style.display = "block" }
+   else document.getElementById("XPbutton13").style.display = "none"
   if (game.currentTab == 2 && game.unlocks >= 6) {document.getElementById("unboxButton1").style.display = "block" }
    else document.getElementById("unboxButton1").style.display = "none"
   if (game.currentTab == 2 && game.unlocks >= 7) {document.getElementById("unboxButton2").style.display = "block" }
@@ -58,6 +60,8 @@ function displayStuff() {
    else document.getElementById("XPBbutton4").style.display = "none"
    if (game.currentTab == 3 && game.unlocks >= 20) {document.getElementById("XPBbutton5").style.display = "block" }
    else document.getElementById("XPBbutton5").style.display = "none"
+   if (game.currentTab == 3 && game.unlocks >= 38) {document.getElementById("XPBbutton6").style.display = "block" }
+   else document.getElementById("XPBbutton6").style.display = "none"
   if (game.currentTab == 4 && game.unlocks >= 21) {document.getElementById("StatButton1").style.display = "block" }
    else document.getElementById("StatButton1").style.display = "none"
   if (game.currentTab == 4 && game.unlocks >= 24) {document.getElementById("StatButton2").style.display = "block" }
@@ -70,6 +74,8 @@ function displayStuff() {
    else document.getElementById("StatButton5").style.display = "none"
   if (game.currentTab == 4 && game.unlocks >= 31) {document.getElementById("StatButton6").style.display = "block" }
    else document.getElementById("StatButton6").style.display = "none"
+  if (game.currentTab == 4 && game.unlocks >= 37) {document.getElementById("StatButton7").style.display = "block" }
+   else document.getElementById("StatButton7").style.display = "none"
   if (game.currentTab == 5 && game.dimensionUnlocks >= 0) {document.getElementById(Dimensions[1].name).style.display = "block" }
    else document.getElementById(Dimensions[1].name).style.display = "none"
   if (game.currentTab == 5 && game.dimensionUnlocks >= 1) {document.getElementById(Dimensions[2].name).style.display = "block" }
@@ -88,6 +94,14 @@ function displayStuff() {
    else document.getElementById(Dimensions[8].name).style.display = "none"
    if (game.currentTab == 5 && game.dimensionUnlocks >= 8 && game.items[29] >= 1) {document.getElementById(Dimensions[9].name).style.display = "block" }
    else document.getElementById(Dimensions[9].name).style.display = "none"
+   if (game.currentTab == 5 && game.dimensionUnlocks >= 9) {document.getElementById(Dimensions[10].name).style.display = "block" }
+   else document.getElementById(Dimensions[10].name).style.display = "none"
+   if (game.currentTab == 5 && game.dimensionUnlocks >= 10) {document.getElementById(Dimensions[11].name).style.display = "block" }
+   else document.getElementById(Dimensions[11].name).style.display = "none"
+   for (let i=1; i<tokenButtons.length; i++) {
+    if (game.currentTab == 6 && game.unlocks >= tokenButtons[i].unlock) {document.getElementById(tokenButtons[i].name).style.display = "block"}
+    else {document.getElementById(tokenButtons[i].name).style.display = "none"}
+   }
   displayTabStats(game.currentTab)
 }
 
@@ -110,6 +124,9 @@ function displayTabStats(x) {
    if (x == 5) {
     document.getElementById("petRarities").innerHTML = "All Dimension multipliers: "+ DimMultis()
    }
+   if (x == 6) {
+    document.getElementById("petRarities").innerHTML = "Token multipliers: "+ TokenMultis()
+   }
 }
 
 function XPmultis() {
@@ -120,13 +137,14 @@ function XPmultis() {
   if (game.itemXP > 1) {result += "x" + numberShort(game.itemXP) + " From items<br>"}
   if (game.tierXPmulti > 1) {result += "x" + numberShort(game.tierXPmulti) + " From your tier<br>"}
   if (game.artifactsXP > 1) {result += "x" + numberShort(game.artifactsXP) + " From Artifacts<br>"}
-  result += "x1.2 From event<br>"
-  result += "Total: x" + numberShort((pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti * 1.2 * game.artifactsXP)) + "<br><br> Cooldown modifiers: <br>"
+  if (game.oneSmithMulti > 1) {result += "x" + numberShort(game.oneSmithMulti ** game.oneSmithExpo) + " From one-smith<br>"}
+  result += "Total: x" + numberShort((pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti * game.artifactsXP * game.oneSmithMulti ** game.oneSmithExpo)) + "<br><br> Cooldown modifiers: <br>"
   if (game.selectedPet >= 1) {result += "/" + numberShort(pets[game.selectedPet][2]) + " From pets<br>"}
   if (game.itemCooldown > 1) {result += "/" + numberShort(game.itemCooldown) + " From items<br>"}
   if (game.tierCooldown > 1) {result += "/" + numberShort(game.tierCooldown) + " From your tier<br>"}
   if (game.artifactsCooldown > 1) {result += "/" + numberShort(game.artifactsCooldown) + " From artifacts<br>"}
-  result += "Total: /" + numberShort((pets[game.selectedPet][2] * game.itemCooldown * game.tierCooldown * game.artifactsCooldown))
+  if (game.items[43] == 1) {result += "Total: /60*, difference: "  + numberShort((pets[game.selectedPet][2] * game.itemCooldown * game.tierCooldown * game.artifactsCooldown / 60))}
+  else {result += "Total: /" + numberShort((pets[game.selectedPet][2] * game.itemCooldown * game.tierCooldown * game.artifactsCooldown))}
   return result
 }
 
@@ -191,6 +209,18 @@ function DimMultis() {
   return result
 }
 
+function TokenMultis() {
+  result = "<br>"
+  if (game.items[46] >= 1) {result += "x1.765 from Scroll of Random Boosts<br>"}
+  if (game.items[47] >= 1) {result += "x" + numberShort(1 + game.items[47] * 0.001) + " from Rune-ificator<br>"}
+  if (game.items[48] >= 1 && game.items[49] == 0) {result += "x4 from Angels/Demons<br>"}
+  if (game.items[48] == 0 && game.items[49] >= 1) {result += "/2 from Angels/Demons<br>"}
+  if (game.items[48] >= 1 && game.items[49] >= 1) {result += "x10 from Angels/Demons<br>"}
+  if (game.items[50] >= 1) {result += "x" + numberShort(1 + game.tier * 0.01) + " from Tiers<br>"}
+  result += "Total: x" + numberShort(game.tokenMulti) + "<br><br>Cooldowns: /" + numberShort(game.tokenCooldown)
+  return result
+}
+
 
 function XPTab() {
   for (let i=1;i<XPButtons.length;i++) {
@@ -224,7 +254,7 @@ function StatTab() {
 
 function CratesTab() {
   for (let i=1;i<PetButtons.length;i++) {
-    if (game.buttonCooldowns[PetButtons[i].cooldownID] == 0 && game.unlocks >= PetButtons[i].unlock) {
+    if (game.buttonCooldowns[PetButtons[i].cooldownID] == 0 && game.unlocks >= PetButtons[i].unlock && game.items[45] == 0) {
       return true
       break
     }
@@ -241,6 +271,17 @@ function DimTab() { //If someone wants to make this better for the dimensional r
   }
   return false
 }
+
+function TokensTab() {
+  for (let i=1;i<tokenButtons.length;i++) {
+    if (game.buttonCooldowns[tokenButtons[i].cooldownID] == 0 && game.unlocks >= tokenButtons[i].unlock) {
+      return true
+      break
+    }
+  }
+  return false
+}
+
 
 function FightingTab() {
     if (game.buttonCooldowns[FightingButtons[1].cooldownID] == 0 && game.unlocks >= FightingButtons[1].unlock) {return true}
