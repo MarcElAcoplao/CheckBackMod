@@ -511,7 +511,7 @@ if (x==36) {
  }
 }
 if (x==37) {
-  if (game.pets[75] >= 1 && game.items[30] == 0) {
+  if (game.pets[75] >= 1 && game.items[30] >= 1) {
      if (game.pets[75] + game.items[37] >= 1000) {
       amt = 1000 - game.items[37]
      }
