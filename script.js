@@ -93,6 +93,7 @@ function reset() {
     oneSmithExpo: 1,
     oneSmithMulti: 1,
     frozenHydraHeads: 0,
+    fightNumber: 0,
   }
 }
 reset()

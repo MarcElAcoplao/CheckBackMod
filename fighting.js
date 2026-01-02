@@ -129,7 +129,7 @@ function openCloseEnemiesTab() {
 
   function startFight(x) {
     totalWeight = 0
-    fightNumber = x
+    game.fightNumber = x
     if (x==1) {
       for (i=0;i<starterEnemiesChances.length;i++) totalWeight += starterEnemiesChances[i][1]
       for (i=0;i<starterEnemiesChances.length;i++) {
@@ -196,27 +196,27 @@ function openCloseEnemiesTab() {
       openCloseMessages(2)
       game.currentHP = game.HP
       game.enemyHP = enemies[enemiesChosen][1] * game.enemyScaling ** game.ConsecutiveKills
-      attack(fightNumber)
+      attack(game.fightNumber)
     }, 10)
     }
   }
 
   function attack(x) {
-     console.log(fightNumber)
+     console.log(game.fightNumber)
      game.enemyHP -= game.DMG - (enemies[enemiesChosen][3] * game.enemyScaling ** game.ConsecutiveKills)
      game.currentHP -= (enemies[enemiesChosen][2] * game.enemyScaling ** game.ConsecutiveKills) - game.DEF
      displayStats()
      setTimeout(() => {
-      if (game.enemyHP <= 0) {fightRewards(enemies[enemiesChosen][4],y=fightNumber)}
+      if (game.enemyHP <= 0) {fightRewards(enemies[enemiesChosen][4],game.fightNumber)}
      else if (game.currentHP <= 0) {
       alert("You died... and you stop fighting. Remaining enemy hp: " + numberShortAlert(game.enemyHP))
-      claimRewards(fightNumber)
+      claimRewards(game.fightNumber)
     }
      else if (game.DMG < enemies[enemiesChosen][3]) {
       alert("Can't deal damage to the enemy, fight ends here")
-      claimRewards(fightNumber)
+      claimRewards(game.fightNumber)
     }
-     else attack(fightNumber)
+     else attack(game.fightNumber)
      }, 100) //100ms delay
   }
 
@@ -246,7 +246,6 @@ function openCloseEnemiesTab() {
   }
 
   function fightRewards(x,y) {
-    console.log(x + "//" + y)
      if (x==1) {
       game.XPCounter += 200 * enemies[enemiesChosen][1] * game.itemLoot * (1.5 + game.rewardsScaling) ** game.ConsecutiveKills
       game.CoinsCounter += 1 * enemies[enemiesChosen][2] * game.itemLoot * game.artifactsCoins * (1 + game.rewardsScaling) ** game.ConsecutiveKills
@@ -292,7 +291,7 @@ function openCloseEnemiesTab() {
      else {game.enemies[enemiesChosen]++}
      game.enemiesDefeated += 1 + 496 * game.items[46]
      game.ConsecutiveKills += 1
-     startFight(fightNumber)
+     startFight(game.fightNumber)
   }
 
    function claimRewards(x) {
@@ -301,8 +300,8 @@ function openCloseEnemiesTab() {
     if (game.XPBoostCounter > 0) {document.getElementsByClassName("dropBox")[2].innerHTML = numberShort(game.XPBoostCounter) + " XPBoost"}
     else {document.getElementsByClassName("dropBox")[2].innerHTML = ""}
     if (game.artifactsCounter > 0) {
-      if (fightNumber != 5) document.getElementsByClassName("dropBox")[3].innerHTML = numberShort(game.artifactsCounter) + " Artifacts"
-      unboxArtifact(fightNumber,game.artifactsCounter)
+      if (game.fightNumber != 5) document.getElementsByClassName("dropBox")[3].innerHTML = numberShort(game.artifactsCounter) + " Artifacts"
+      unboxArtifact(game.fightNumber,game.artifactsCounter)
     }
     else {document.getElementsByClassName("dropBox")[3].innerHTML = ""}
     game.XP += game.XPCounter

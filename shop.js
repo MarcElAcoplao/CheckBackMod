@@ -673,7 +673,10 @@ if (x==39) {
         itemChosen = x
         alert("Bought " + items[x][0] + " " + numberShortAlert(amt) + " times")
       }
-      else {alert("Not enough items, " + numberShortAlert(game.pets[84]) + "/1 Frozen 5-headed hydra, " + numberShortAlert(game.frozenTokens) + "/100k Frozen Tokens")}
+      else {
+        alert("Not enough items, " + numberShortAlert(game.pets[84]) + "/5 Frozen 5-headed hydra, " + numberShortAlert(game.frozenTokens) + "/100k Frozen Tokens")
+        itemChosen = 0
+      }
     }
   }
   if (x==48) {
@@ -815,7 +818,7 @@ function showItemHiddenInfo(x) {
 }
 
 function updateShopBoosts() {
-  game.frozenHydraHeads = 0 + 2 * Math.min(game.pets[79], 1) + 3 * Math.min(game.pets[82], 1) + 4 * Math.min(game.pets[83], 1) + 5 * Math.min(game.pets[84], 1)
+  game.frozenHydraHeads = (0 + 2 * Math.min(game.pets[79], 1) + 3 * Math.min(game.pets[82], 1) + 4 * Math.min(game.pets[83], 1) + 5 * Math.min(game.pets[84], 1)) * game.items[44]
   game.itemXP = (1 + (game.items[1] * 0.5) + (game.items[8] * 1) + (game.items[13] * 2)) * (game.items[19] + 1) * (9 * game.items[34] + 1) * (game.items[36] + 1) * (game.items[37] + 1) * (1.5 ** game.frozenHydraHeads) * (1 + game.items[47])
   game.itemStat = (1 + (game.items[2] * 0.25) + (game.items[9] * 0.75) + (game.items[14] * 1.5)) * (2 ** (game.items[20] + game.items[32] + game.items[36] + game.items[39] * 2)) * (1.5 ** game.frozenHydraHeads)
   game.itemXPBoost = (1 + (game.items[3] * 0.25)+ (game.items[7] * 0.75) + (game.items[12] * 2) + (game.items[21] * 7)) * (99 * game.items[34] + 1) * (1.5 ** game.frozenHydraHeads)

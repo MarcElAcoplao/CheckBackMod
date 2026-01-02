@@ -129,3 +129,10 @@ function openCloseArtifactsTab() {
     game.artifactsDimension = 1 + 0.1 * game.artifacts[10] ** 0.5
   }
   setInterval(calculateArtifactMulti, 50)
+
+  function endFight() {
+  if (game.ConsecutiveKills >= 0) {
+    claimRewards(game.fightNumber)
+  }
+}
+endFight() //This is here because it was causing issues to run a code that works on artifacts instantly when loading the game, before artifacts
