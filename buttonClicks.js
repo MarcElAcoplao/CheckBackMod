@@ -30,6 +30,14 @@ function clickButton(x) {
     updateSmall()
   }
 
+function clickAll() {
+  for (let i=1;i<XPButtons.length;i++) {
+    if ((game.buttonCooldowns[XPButtons[i].cooldownID] == 0) && game.unlocks >= XPButtons[i].unlock) {
+      clickButton(i)
+    }
+  }
+}
+
 const XPBoostButtons = [ //Stats of the xpboost buttons
   {name: "Test", xpboost: 0, cooldown: 60, cooldownID: 0, unlock: 0},
   {name: "XPBbutton1", xpboost: 0.01, cooldown: 3600, cooldownID: 12, unlock: 13},
