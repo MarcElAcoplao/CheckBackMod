@@ -575,7 +575,7 @@ else if (game.currentTab == 5) {
 else {
   document.getElementById("level").innerHTML = "Frozen tokens"
   document.getElementById("rank").innerHTML = "they give bonuses, like artifacts, but intended to be op"
-  document.getElementById("XPBarText").innerHTML = numberShort(game.frozenTokens)
+  document.getElementById("XPBarText").innerHTML = tokenShort(game.frozenTokens)
   document.getElementById("XPBarBack").style.width = (Math.log10(game.frozenTokens + 1) / 3) + "%"
 }
   if (game.level > game.highestLevel) {game.highestLevel = game.level}
@@ -669,6 +669,22 @@ function levelShort(x) {
     return result
      }
     }
+
+  function tokenShort(x) {
+  if (typeof x === 'number' && !isNaN(x)) {
+    xCeil = Math.ceil(x)
+    exponent = Math.floor(Math.log10(Math.abs(xCeil)))
+    result = ""
+    if (exponent >= 12) result = (Math.floor(xCeil * 100 / 10 ** exponent)/100).toFixed(2) + "e" + exponent
+    else if (exponent >= 9) result = (Math.floor(xCeil * 100 / 10 ** 9)/100).toFixed(2) + "&nbsp;B"
+    else if (exponent >= 6) result = (Math.floor(xCeil * 100 / 10 ** 6)/100).toFixed(2) + "&nbsp;M"
+    else if (exponent >= 3) result = (Math.floor(xCeil * 100 / 10 ** 3)/100).toFixed(2) + "&nbsp;K"
+    else if (x == 0) result = x
+    else if (x < 1 && x > -1) result = (x).toFixed(3)
+    else result = (x).toFixed(2)
+    return result
+    }
+  }
 
 //Handles clicking the buttons
 

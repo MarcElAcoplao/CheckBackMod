@@ -217,6 +217,7 @@ function TokenMultis() {
   if (game.items[48] == 0 && game.items[49] >= 1) {result += "/2 from Angels/Demons<br>"}
   if (game.items[48] >= 1 && game.items[49] >= 1) {result += "x10 from Angels/Demons<br>"}
   if (game.items[50] >= 1) {result += "x" + numberShort(1 + game.tier * 0.01) + " from Tiers<br>"}
+  if (game.items[51] >= 1) {result += "x2 from Amulet of Omnipresence<br>"}
   result += "Total: x" + numberShort(game.tokenMulti) + "<br><br>Cooldowns: /" + numberShort(game.tokenCooldown)
   return result
 }
