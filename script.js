@@ -93,8 +93,8 @@ function reset() {
     oneSmithMulti: 1,
     frozenHydraHeads: 0,
     fightNumber: 0,
-    isNormalMode: true,
-    isHellMode: false,
+    quasar: true,
+    hypernova: false,
   }
 }
 reset()
@@ -143,20 +143,20 @@ function importGame() {
   try {
     let loadgame = JSON.parse(atob(prompt("Input your save here:")));
     if (loadgame && loadgame != null && loadgame != "") {
-      let hellDetected = false
-      let normalDetected = false
+      let h = false
+      let q = false
       let loadKeys = Object.keys(loadgame);
       if (loadKeys.length > 1000) loadKeys = Object.keys(fixFile(loadgame));
       for (i = 0; i < loadKeys.length; i++) {
         let thisKey = loadKeys[i]
-        if (thisKey == "isHellMode" && loadgame[thisKey] == true) {
-          hellDetected = true
+        if (thisKey == "hypernova" && loadgame[thisKey] == true) {
+          h = true
         }
-        if (thisKey == "isNormalMode" && loadgame[thisKey] == true) {
-          normalDetected = true
+        if (thisKey == "quasar" && loadgame[thisKey] == true) {
+          q = true
         }
       }
-      if (hellDetected == false && normalDetected == true) {
+      if (h == false && q == true) {
         reset()
         loadGame(loadgame)
         save()
@@ -181,8 +181,8 @@ function help() {
 function loadGame(loadgame) {
   //Sets each variable in 'game' to the equivalent variable in 'loadgame' (the saved file)
   let dataBackup = localStorage.getItem("checkBackSave");
-  if (!game.isNormalMode) { game.isNormalMode = true }
-  if (!game.isHellMode) { game.isHellMode = false }
+  if (!game.quasar) { game.quasar = true }
+  if (!game.hypernova) { game.hypernova = false }
   try {
     let loadKeys = Object.keys(loadgame);
     if (loadKeys.length > 1000) loadKeys = Object.keys(fixFile(loadgame));
