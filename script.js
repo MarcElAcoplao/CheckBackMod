@@ -144,7 +144,7 @@ function importGame() {
     let loadgame = JSON.parse(atob(prompt("Input your save here:")));
     if (loadgame && loadgame != null && loadgame != "") {
       let h = false
-      let q = false
+      let q = true
       let loadKeys = Object.keys(loadgame);
       if (loadKeys.length > 1000) loadKeys = Object.keys(fixFile(loadgame));
       for (i = 0; i < loadKeys.length; i++) {
@@ -152,8 +152,8 @@ function importGame() {
         if (thisKey == "hypernova" && loadgame[thisKey] == true) {
           h = true
         }
-        if (thisKey == "quasar" && loadgame[thisKey] == true) {
-          q = true
+        if (thisKey == "quasar" && loadgame[thisKey] == false) {
+          q = false
         }
       }
       if (h == false && q == true) {

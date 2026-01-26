@@ -854,7 +854,11 @@ function updateShopBoosts() {
   }
   let bothPathsComplete = 1
   if (game.items[48] == 1 && game.items[49] == 1) {bothPathsComplete = 5}
-  game.tokenMulti = 1 * (1 + game.items[46] * 0.765) * (1 + game.items[47] * 0.001) * (1 + game.items[48] * 3) * (1 - game.items[49] * 0.5) * (1 + game.tier * 0.01 * game.items[50]) * bothPathsComplete * (1 + game.items[51])
+  let petMulti = 1
+  if (!!pets[game.selectedPet][6]) {
+    petMulti = pets[game.selectedPet][6]
+  }
+  game.tokenMulti = 1 * (1 + game.items[46] * 0.765) * (1 + game.items[47] * 0.001) * (1 + game.items[48] * 3) * (1 - game.items[49] * 0.5) * (1 + game.tier * 0.01 * game.items[50]) * bothPathsComplete * (1 + game.items[51]) * petMulti
   game.tokenCooldown = 1 * (1 + game.items[49] * 5) * (1 - game.items[48] * 0.5)
 }
 setInterval(updateShopBoosts, 50)

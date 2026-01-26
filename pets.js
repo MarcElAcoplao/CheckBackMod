@@ -426,6 +426,7 @@ function latestDrops(x, y) {
     result = "x" + numberShort(pets[x][1]) + " XP from buttons and Daily<br>-" + ((1 - (1 / pets[x][2])) * 100).toFixed(1) + "% XP button cooldown<br>-" + ((1 - (1 / pets[x][3])) * 100).toFixed(1) + "% pet button cooldown<br>"
     if (pets[x][4] > 1) result += "x" + numberShort(pets[x][4]) + " XPBoost<br>"
     if (pets[x][5] > 1) result += "x" + numberShort(pets[x][5]) + " All Dimensions Multi<br>"
+    if (!!pets[x][6]) result += "x" + numberShort(pets[x][6]) + " Frozen Tokens<br>"
     return result
   }
   

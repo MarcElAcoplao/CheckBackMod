@@ -211,6 +211,7 @@ function DimMultis() {
 
 function TokenMultis() {
   result = "<br>"
+  if (!!pets[game.selectedPet][6]) {result += "x" + numberShort(pets[game.selectedPet][6]) + " from Pets<br>"}
   if (game.items[46] >= 1) {result += "x1.765 from Scroll of Random Boosts<br>"}
   if (game.items[47] >= 1) {result += "x" + numberShort(1 + game.items[47] * 0.001) + " from Rune-ificator<br>"}
   if (game.items[48] >= 1 && game.items[49] == 0) {result += "x4 from Angels/Demons<br>"}

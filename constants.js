@@ -285,12 +285,12 @@ const pets = [
   ["Frozen 2-headed hydra", 25000, 16, 16, 25, 8], //79 Frozen pet 5
   ["Frozen ghost", 40000, 20, 20, 40, 12], //80 Frozen pet 6
   ["Frozen yeti", 100000, 30, 30, 100, 15], //81 Frozen pet 7 also end of first section pets
-  ["Frozen 3-headed hydra", 200000, 32, 35, 250, 25], //82 Frozen pet^2 1
-  ["Frozen 4-headed hydra", 10**6, 35, 40, 600, 35], //83 Frozen pet^2 2
-  ["Frozen 5-headed hydra", 10**7, 40, 50, 1400, 45], //84 Frozen pet^2 3
-  ["Frozen gigantic snake", 10**8, 47, 60, 3800, 60], //85 Frozen pet^2 4
-  ["Frozen salamander", 10**10, 55, 75, 12300, 80], //86 Frozen pet^2 5
-  ["Frozen dragon", 10**12, 70, 100, 25000, 100], //87 Frozen pet^2 6
+  ["Frozen 3-headed hydra", 200000, 32, 35, 250, 25, 1.1], //82 Frozen pet^2 1
+  ["Frozen 4-headed hydra", 10**6, 35, 40, 600, 35, 1.3], //83 Frozen pet^2 2
+  ["Frozen 5-headed hydra", 10**7, 40, 50, 1400, 45, 1.6], //84 Frozen pet^2 3
+  ["Frozen gigantic snake", 10**8, 47, 60, 3800, 60, 2], //85 Frozen pet^2 4
+  ["Frozen salamander", 10**10, 55, 75, 12300, 80, 2.5], //86 Frozen pet^2 5
+  ["Frozen dragon", 10**12, 70, 100, 25000, 100, 3], //87 Frozen pet^2 6
 ]
 
 const skeletalUnboxChances = [ //will be set to 1
