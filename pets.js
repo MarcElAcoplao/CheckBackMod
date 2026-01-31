@@ -7,7 +7,7 @@ const PetButtons = [ //Pet crates
   {name: "unboxButton3", name2: "Epic", cooldown: 64800, cooldownID: 8, unlock: 9},
   {name: "unboxButton4", name2: "Legendary", cooldown: 172800, cooldownID: 10, unlock: 11},
   {name: "unboxButton5", name2: "Prestige", cooldown: 3600, cooldownID: 13, unlock: 14},
-  {name: "unboxButton6", name2: "Transcendant", cooldown: 3600, cooldownID: 18, unlock: 19},
+  {name: "unboxButton6", name2: "Transcendent", cooldown: 3600, cooldownID: 18, unlock: 19},
   {name: "unboxButton7", name2: "Universal", cooldown: 43200, cooldownID: 24, unlock: 23},
   {name: "unboxButton8", name2: "Frozen", cooldown: 604800, cooldownID: 43, unlock: 28},
 ]
