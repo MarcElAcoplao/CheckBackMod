@@ -258,7 +258,7 @@ function latestDrops(x, y) {
 
   function frozenBaseBulk(x) {
     let a = x-40
-    game.frozenBaseBulk = Math.max((a ** 2)/20 + (1 + 0.25 * game.items[38]) * a + 1 + game.frozenTokens * game.items[45], 1)
+    game.frozenBaseBulk = Math.max((a ** 2)/20 + (1 + 0.25 * game.items[38]) * a + 1 + game.frozenTokens * (0.1 + 0.9 * game.items[45]), 1)
   }
 
   function petButtonDisplayMessage(x) {
