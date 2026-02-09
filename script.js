@@ -163,7 +163,7 @@ function importGame() {
         location.reload()
       }
       else {
-        alert("Error: properties about mode are broken, imported save will not load")
+        alert("Invalid input.")
       }
     }
     else {
