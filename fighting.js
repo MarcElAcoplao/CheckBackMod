@@ -136,6 +136,7 @@ function openCloseEnemiesTab() {
         if (Math.random() * totalWeight < starterEnemiesChances[i][1]) {
           enemiesChosen = starterEnemiesChances[i][0]
           i = starterEnemiesChances.length
+          if (game.loopUpgrades[9] >= 1 && game.DMG >= (enemies[starterEnemiesChances[i-1][0]][1] * game.enemyScaling ** game.ConsecutiveKills)) {enemiesChosen = starterEnemiesChances[i-1][0]}
         }
         else {
           totalWeight -= starterEnemiesChances[i][1]
@@ -149,6 +150,7 @@ function openCloseEnemiesTab() {
         if (Math.random() * totalWeight < intermediateEnemiesChances[i][1]) {
           enemiesChosen = intermediateEnemiesChances[i][0]
           i = intermediateEnemiesChances.length
+          if (game.loopUpgrades[9] >= 1 && game.DMG >= (enemies[intermediateEnemiesChances[i-1][0]][1] * game.enemyScaling ** game.ConsecutiveKills)) {enemiesChosen = intermediateEnemiesChances[i-1][0]}
         }
         else {
           totalWeight -= intermediateEnemiesChances[i][1]
@@ -162,6 +164,7 @@ function openCloseEnemiesTab() {
         if (Math.random() * totalWeight < advancedEnemiesChances[i][1]) {
           enemiesChosen = advancedEnemiesChances[i][0]
           i = advancedEnemiesChances.length
+          if (game.loopUpgrades[9] >= 1 && game.DMG >= (enemies[advancedEnemiesChances[i-1][0]][1] * game.enemyScaling ** game.ConsecutiveKills)) {enemiesChosen = advancedEnemiesChances[i-1][0]}
         }
         else {
           totalWeight -= advancedEnemiesChances[i][1]
@@ -175,6 +178,7 @@ function openCloseEnemiesTab() {
         if (Math.random() * totalWeight < frozenEnemiesChances[i][1]) {
           enemiesChosen = frozenEnemiesChances[i][0]
           i = frozenEnemiesChances.length
+          if (game.loopUpgrades[9] >= 1 && game.DMG >= (enemies[frozenEnemiesChances[i-1][0]][1] * game.enemyScaling ** game.ConsecutiveKills)) {enemiesChosen = frozenEnemiesChances[i-1][0]}
         }
         else {
           totalWeight -= frozenEnemiesChances[i][1]
@@ -243,6 +247,7 @@ function openCloseEnemiesTab() {
     if (!game.enemies[enemiesChosen]) {game.enemies[enemiesChosen] = 1}
      else {game.enemies[enemiesChosen]++}
      game.enemiesDefeated += 1
+    if (game.loopUpgrades[8] >= 1) {startFight(4)}
   }
 
   function fightRewards(x,y) {

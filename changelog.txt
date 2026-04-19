@@ -1,3 +1,9 @@
+v1.2 Loops Update - FINAL FINAL
+-Added loops at level 1e50. Resets progress for a game speed multi
+-Each loop gives 1 looplet which is used for many qol upgrades
+-WARNING: Can infinity'd. That is the true ending and it will break your savefile. Play with caution
+-With this, it's the FINAL^3 update. Make sure to try out Check Back Reclocked for considerably better pacing
+
 v1.1 The Frozen Update Part 2 - Christmas Edition
 1- New shop upgrades that will make your numbers go big, including the long awaited "The tale of the frozen yeti"
 2- New pets with op stats, you will no longer see unobtainable pets in the list

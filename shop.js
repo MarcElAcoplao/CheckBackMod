@@ -44,22 +44,22 @@ function displayItems() {
     else if (i <= 42) itemBoxes[i - 1].style.border = "8px outset #8cfffb"
     else if (i <= 55) itemBoxes[i - 1].style.border = "8px outset rgba(21, 21, 136, 1)"
     else if (i <= 63) itemBoxes[i - 1].style.border = "8px outset #282"
-    if (i > 18 && game.highestLevel <= 20000) {
+    if ((i > 18 && game.highestLevel <= 20000) && game.loops == 0) {
       itemBoxes[i - 1].innerHTML = "<img src='img/shop/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
       itemBoxes[i - 1].addEventListener('mouseover', function () { showItemHiddenInfo(parseInt(this.id)) })
       itemBoxes[i - 1].addEventListener('mouseout', function () { showItemHiddenInfo(0) })
     }
-    if (i > 24 && game.items[24] < 1) {
+    if ((i > 24 && game.items[24] < 1) && game.loops == 0) {
       itemBoxes[i - 1].innerHTML = "<img src='img/shop/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
       itemBoxes[i - 1].addEventListener('mouseover', function () { showItemHiddenInfo(parseInt(this.id)) })
       itemBoxes[i - 1].addEventListener('mouseout', function () { showItemHiddenInfo(0) })
     }
-    if (i > 35 && game.items[30] < 1) {
+    if ((i > 35 && game.items[30] < 1) && game.loops == 0) {
       itemBoxes[i - 1].innerHTML = "<img src='img/shop/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
       itemBoxes[i - 1].addEventListener('mouseover', function () { showItemHiddenInfo(parseInt(this.id)) })
       itemBoxes[i - 1].addEventListener('mouseout', function () { showItemHiddenInfo(0) })
     }
-    if (i > 42 && game.items[42] < 1) {
+    if ((i > 42 && game.items[42] < 1) && game.loops == 0) {
       itemBoxes[i - 1].innerHTML = "<img src='img/shop/" + i + ".png' style='width: 128px; filter: brightness(0)'>"
       itemBoxes[i - 1].addEventListener('mouseover', function () { showItemHiddenInfo(parseInt(this.id)) })
       itemBoxes[i - 1].addEventListener('mouseout', function () { showItemHiddenInfo(0) })
@@ -72,7 +72,7 @@ function displayItems() {
 function buyItem(x) {
   amt = 1
   if (game.items[x] >= items[x][1]) {
-    if (x == 51) { alert("Well, this is the end. There will be no more check back updates. Thank you for playing and see you in the future. Stay tuned for the rewrite (will have bigger numbers)") }
+    if (x == 51) { alert("Well, this is the end. There will be no more check back updates. Thank you for playing and see you in the future. Make sure to try out Check Back Reclocked (It's released, get to level 1e50 and you'll see a link)") }
     else alert("Upgrade is maxed")
   }
   else {
@@ -673,7 +673,7 @@ function buyItem(x) {
     if (x == 42) {
       if (game.items[30] == 0) { alert("Not unlocked yet") }
       else {
-        if (game.highestLevel >= 10 ** 16 && game.pets[80] >= 5 && game.pets[81] >= 1) {
+        if (game.highestLevel >= 10 ** 15 && game.pets[80] >= 5 && game.pets[81] >= 1) {
           game.pets[80] -= 5
           game.pets[81] -= 1
           alert("Bought " + items[x][0])
@@ -681,7 +681,7 @@ function buyItem(x) {
           document.getElementsByClassName("themeButton")[7].style.display = "inline-block"
         }
         else {
-          alert("Not enough items, " + numberShortAlert(game.highestLevel) + "/1e16 Levels, " + numberShortAlert(game.pets[81]) + "/1 Frozen yeti, " + numberShortAlert(game.pets[80]) + "/5 Frozen ghosts")
+          alert("Not enough items, " + numberShortAlert(game.highestLevel) + "/1e15 Levels, " + numberShortAlert(game.pets[81]) + "/1 Frozen yeti, " + numberShortAlert(game.pets[80]) + "/5 Frozen ghosts")
           itemChosen = 0
         }
       }
@@ -885,7 +885,7 @@ function showItemInfo(x) {
     if (x == 39) { document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-100 Frozen bats<br>-10 Frozen fireflies<br>-1 Frozen tarantula<br>-1 Ice wizard defeated<br><br>Effects:<br>-0.25^x Enemy stats scaling (Base: 2^x)<br>+0.2^x Enemy rewards scaling (Base, 1^x for coins, 1.5^x for rest)<br>x4 Stats gain</p></center>" }
     if (x == 40) { document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1b coins<br>-50 Frozen fireflies<br>-5 Frozen tarantulas<br>-1 Frozen 2-headed hydra<br><br>Effects:<br>x2 All dimension cooldown each level (yes, makes dimensions slower)<br>x5 All dimension multipliers each level</p></center>" }
     if (x == 41) { document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-20 Frozen tarantulas<br>-6 Frozen 2-headed hydras<br>-1 Frozen ghost<br>-1 Frozen cooldown artifact<br>-1 Frozen stats artifact<br><br>Effects:<br>x5 Artifact drop amount</p></center>" }
-    if (x == 42) { document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1 Frozen yeti<br>-5 Frozen ghosts<br>-Level 1e16<br><br>Effects:<br>-Unlocks frozen tokens, gained through buttons and give bonuses unlocked through upgrades<br>-Each frozen token grants +0.1 base frozen crate bulk<br>-Unlocks new frozen pets and new frozen upgrades<br>-New frozen theme</p></center>" }
+    if (x == 42) { document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1 Frozen yeti<br>-5 Frozen ghosts<br>-Level 1e15<br><br>Effects:<br>-Unlocks frozen tokens, gained through buttons and give bonuses unlocked through upgrades<br>-Each frozen token grants +0.1 base frozen crate bulk<br>-Unlocks new frozen pets and new frozen upgrades<br>-New frozen theme</p></center>" }
     if (x == 43) { document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-A singular smith (free)<br>-10 Frozen tokens (All upgrades REQUIRE tokens, not spend)<br>-1 Frozen 3-headed hydra<br>-5 Frozen yeti<br><br>Effects:<br>'Messiah smith offers you to join a cult. Lock XP cooldowns to /60 and multiply XP gain to the difference' Wait, wrong game. But it still works<br>-Frozen tokens raise that multiplier according to the formula: ln(x/2 + e)<br>Expo: " + numberShort(game.oneSmithExpo) + "</p></center>" }
     if (x == 44) { document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-40 Frozen tokens<br>-1 Frozen 4-headed hydras<br>-8 Frozen 3-headed hydras<br>-1000 Frozen 2-headed hydras<br><br>Effects:<br>x1.5 XP, XPBoost and Stats<br>These buffs apply every frozen hydra head you discover (2-headed counts as 2, 4-headed as 4)<br>Total heads: " + levelShort(game.frozenHydraHeads) + "<br>Multiplier: x" + numberShort(1.5 ** game.frozenHydraHeads) + "</p></center>" }
     if (x == 45) { document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-2k Frozen tokens<br>-4 Frozen 4-headed hydras<br>-350 Frozen yetis<br><br>Effects:<br>-Frozen crate does not reset dimensions anymore<br>-Removes upgrade 40's dimension cooldown multiplier<br>-Frozen tokens now give *10 the amount of frozen crates bulk (+1/token)<br>Frozen crate is now automated, new automation time is 10 seconds<br>-Sets all dimension cooldowns to 0</p></center>" }
@@ -894,7 +894,7 @@ function showItemInfo(x) {
     if (x == 48) { document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-" + levelShort(1000000 * 10 ** game.items[49]) + " Frozen Tokens<br>-" + levelShort(1 * 10 ** game.items[49]) + " Frozen gigantic snakes<br>-" + levelShort(1000 * 10 ** game.items[49]) + " Frozen 4-headed hydras<br><br>Effects:<br>x4 Frozen tokens<br>x2 tokens cooldown (slower)<br>-Makes 'The Demon' 10 times more expensive<br>-Having both grants an extra x5 frozen tokens<br><br>The path of heaven rewards your patience</p></center>" }
     if (x == 49) { document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-" + levelShort(1000000 * 10 ** game.items[48]) + " Frozen Tokens<br>-" + levelShort(1 * 10 ** game.items[48]) + " Frozen gigantic snakes<br>-" + levelShort(1000 * 10 ** game.items[48]) + " Frozen 4-headed hydras<br><br>Effects:<br>/6 Frozen tokens cooldown<br>/2 tokens (smaller)<br>-Makes 'The Angel' 10 times more expensive<br>-Having both grants an extra x5 frozen tokens<br><br>The path of hell offers quick pleasure</p></center>" }
     if (x == 50) { document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-150m Frozen tokens<br>-1 Frozen salamander<br>-1000 Frozen 5-headed hydras<br><br>Effects:<br>x8 All dimensions multipliers<br>+x0.01 Frozen tokens/Tier<br></p></center>" }
-    if (x == 51) { document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1b Frozen tokens<br>-1 Frozen dragon<br>-1 Flying frozen snake<br>-30 Frozen salamanders<br><br>Effects:<br>x10 XP, XPBoost, Stats<br>x2 All dimensions/Frozen tokens<br>A god shows up and gives you a blessing (Grants a role)</p></center>" }
+    if (x == 51) { document.getElementById("shopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + items[x][0] + "</span><br>You got " + game.items[x] + "/" + items[x][1] + "</p><br><img src='img/shop/" + x + ".png' style='width: 50%'><br><p style='color: white'></span>Cost:<br>-1b Frozen tokens<br>-1 Frozen dragon<br>-1 Flying frozen snake<br>-30 Frozen salamanders<br><br>Effects:<br>x100 XP<br>x10 XPBoost and Stats<br>x2 All dimensions/Frozen tokens<br>A god shows up and gives you a blessing (Grants a role)</p></center>" }
   }
 }
 
@@ -910,12 +910,12 @@ function showItemHiddenInfo(x) {
 
 function updateShopBoosts() {
   game.frozenHydraHeads = (0 + 2 * Math.min(game.pets[79], 1) + 3 * Math.min(game.pets[82], 1) + 4 * Math.min(game.pets[83], 1) + 5 * Math.min(game.pets[84], 1)) * game.items[44]
-  game.itemXP = (1 + (game.items[1] * 0.5) + (game.items[8] * 1) + (game.items[13] * 2)) * (game.items[19] + 1) * (9 * game.items[34] + 1) * (game.items[36] + 1) * (game.items[37] + 1) * (1.5 ** game.frozenHydraHeads) * (1 + game.items[47]) * (1 + game.items[51] * 9)
+  game.itemXP = (1 + (game.items[1] * 0.5) + (game.items[8] * 1) + (game.items[13] * 2)) * (game.items[19] + 1) * (9 * game.items[34] + 1) * (game.items[36] + 1) * (game.items[37] + 1) * (1.5 ** game.frozenHydraHeads) * (1 + game.items[47]) * (1 + game.items[51] * 99)
   game.itemStat = (1 + (game.items[2] * 0.25) + (game.items[9] * 0.75) + (game.items[14] * 1.5)) * (2 ** (game.items[20] + game.items[32] + game.items[36] + game.items[39] * 2)) * (1.5 ** game.frozenHydraHeads) * (1 + game.items[51] * 9)
   game.itemXPBoost = (1 + (game.items[3] * 0.25) + (game.items[7] * 0.75) + (game.items[12] * 2) + (game.items[21] * 7)) * (99 * game.items[34] + 1) * (1.5 ** game.frozenHydraHeads) * (1 + game.items[51] * 9)
   game.itemCooldown = 1 + (game.items[4] * 0.02) + (game.items[22] * 0.1) + (game.items[35] * 0.5)
-  game.itemLoot = (1 + (game.items[5] * 0.3) + (game.items[11] * 0.9) + (game.items[17] * 2.2)) * (game.items[23] + 1) * (2 * game.items[32] + 1)
-  game.itemArtifacts = Math.ceil((1 + game.items[41] * 4) * (1 + game.items[47] * 0.01))
+  game.itemLoot = (1 + (game.items[5] * 0.3) + (game.items[11] * 0.9) + (game.items[17] * 2.2)) * (game.items[23] + 1) * (2 * game.items[32] + 1) * game.loopMulti
+  game.itemArtifacts = Math.ceil((1 + game.items[41] * 4) * (1 + game.items[47] * 0.01)) * game.loopMulti
   game.itemXPBoostEffectSoftcap = 0 + (game.items[12] * 0.05) + (game.items[28] * game.tier * 2.5 ** Math.min(game.items[30], 1)) / 1000
   game.itemUnlocks = 0 + (Math.min(game.items[6], 1)) + (Math.min(game.items[24], 1)) + (Math.min(game.items[33], 1))
   game.extraPetAmount = 0 + (game.items[16])
@@ -953,3 +953,9 @@ function updateShopBoosts() {
   game.tokenCooldown = 1 * (1 + game.items[49] * 5) * (1 - game.items[48] * 0.5)
 }
 setInterval(updateShopBoosts, 50)
+
+function giveItems(x, y) {
+  for (let i = x; i <= y; i++) {
+    game.items[i] = items[i][1]
+  }
+}

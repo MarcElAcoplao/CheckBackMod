@@ -41,6 +41,7 @@
       <button class="button" id="shopTabButton" style="display: none" onclick="openCloseShopTab()">Shop</button>
       <button class="button" id="TimeTab" style="display: none" onclick="tab(5)">Time dimensions</button>
       <button class="button" id="tokenTab" style="display: none" onclick="tab(6)">Frozen tokens</button>
+      <button class="button" id="loopsTab" style="display: none" onclick="tab(7)">Loops</button>
     </div>
 
     <div id="buttonsContainer">
@@ -106,6 +107,9 @@
       <button class="button" id="TokenButton10" style="display: none" onclick="click4Button(10)">Gain 10 Frozen tokens</button>
       <button class="button" id="TokenButton11" style="display: none" onclick="click4Button(11)">Gain 11 Frozen tokens</button>
       <button class="button" id="TokenButton12" style="display: none" onclick="click4Button(12)">Gain 12 Frozen tokens</button>
+
+      <button class="button" id="loopReset" style="display: none" onclick="loopReset()">Resets all your progress but gain permanent speed buffs + qol upgrades</button>
+      <button class="button" id="loopUpgrades" style="display: none" onclick="openCloseLoopTab()">Spend looplets for automation/qol upgrades</button>
     </div>
 
     <div id="infosContainer">
@@ -131,7 +135,7 @@
     </div>
 
     <div id="rightFooterColumn">
-      <p id="versionText">Check Back <a href="https://github.com/MarcElAcoplao/CheckBackMod/blob/main/changelog.txt" target="_blank">v1.1 Part 2</a> (Creator: MarcElAcoplao, <a href="https://discord.gg/YaSk8e2wFt" target="_blank">Discord</a>)<br>
+      <p id="versionText">Check Back <a href="https://github.com/MarcElAcoplao/CheckBackMod/blob/main/changelog.txt" target="_blank">v1.2 Final</a> (Creator: MarcElAcoplao, <a href="https://discord.gg/YaSk8e2wFt" target="_blank">Discord</a>)<br>
         <a href="https://demonin.com/games/checkBack/" target="_blank">Original</a> by Demonin (<a href="https://discord.gg/3hwM7ScH6k" target="_blank">Discord</a>)</p>
       <div id="settingsContainer">
         <button class="settingsButton" id="setting8" onclick="clickAll()">Collect All XP Buttons</button>
@@ -236,6 +240,16 @@
       <div id="shopListInner"></div>
     </div>
     <div id="shopInfo"></div>
+  </div>
+
+  <div id="loopDiv">
+    <p style='font-size: 5vh; font-weight: bold; color: #ccc; margin: 0; margin-left: 6px'>Loops shop</p>
+    <p style='font-size: 1.6vh; color: #ccc; margin: 0; margin-bottom: 6px; margin-left: 6px'>Spend looplets for insane qol upgrades</p>
+    <button class="closeButton" onclick="openCloseLoopTab()">Close</button>
+    <div id="loopList">
+      <div id="loopListInner"></div>
+    </div>
+    <div id="loopInfo"></div>
   </div>
 
   <div id="dailyMessagesDiv">

@@ -95,6 +95,10 @@ function reset() {
     fightNumber: 0,
     quasar: true,
     hypernova: false,
+    loops: 0,
+    looplets: 0,
+    loopMulti: 1,
+    loopUpgrades: [0, 0, 0],
   }
 }
 reset()
@@ -202,113 +206,117 @@ function loadGame(loadgame) {
     window.alert(`Save Data Issues!\n${err}`); //whatever you want to say here
   }
 }
-if (game.selectedPet == 0) {
-  document.getElementById("selectedPet").innerHTML = "None"
-  document.getElementById("selectedPetImg").style.display = "none"
-}
-else {
-  document.getElementById("selectedPet").innerHTML = pets[game.selectedPet][0]
-  document.getElementById("selectedPetImg").style.display = "inline-block"
-  document.getElementById("selectedPetImg").src = "img/pets/" + game.selectedPet + ".png"
-}
 
-changeTheme(game.currentTheme)
-if (game.unlocks >= 1) { document.getElementById("XPbutton2").style.display = "block" }
-if (game.unlocks >= 2) { document.getElementById("XPbutton3").style.display = "block" }
-if (game.unlocks >= 3) { document.getElementById("XPbutton4").style.display = "block" }
-if (game.unlocks >= 4) {
-  document.getElementsByClassName("themeButton")[2].style.display = "inline-block"
-  document.getElementById("XPbutton5").style.display = "block"
-}
-if (game.unlocks >= 5) { document.getElementById("XPbutton6").style.display = "block" }
-if (game.unlocks >= 6) {
-  document.getElementById("XPTab").style.display = "block"
-  document.getElementById("CratesTab").style.display = "block"
-  document.getElementById("unboxButton1").style.display = "block"
-  document.getElementById("selectedPetText").style.display = "block"
-  document.getElementById("petsTabButton").style.display = "block"
-  document.getElementById("dailyRewardButton").style.display = "block"
-}
-if (game.unlocks >= 7) { document.getElementById("unboxButton2").style.display = "block" }
-if (game.unlocks >= 8) {
-  document.getElementsByClassName("themeButton")[3].style.display = "inline-block"
-  document.getElementsByClassName("themeButton")[4].style.display = "inline-block"
-  document.getElementsByClassName("themeButton")[5].style.display = "inline-block"
-  document.getElementById("XPbutton7").style.display = "block"
-}
-if (game.unlocks >= 9) { document.getElementById("unboxButton3").style.display = "block" }
-if (game.unlocks >= 10) { document.getElementById("XPbutton8").style.display = "block" }
-if (game.unlocks >= 11) { document.getElementById("unboxButton4").style.display = "block" }
-if (game.unlocks >= 12) { document.getElementById("XPbutton9").style.display = "block" }
-if (game.unlocks >= 13) {
-  document.getElementById("XPBbutton1").style.display = "block"
-  document.getElementById("XPBoostTab").style.display = "block"
-}
-if (game.unlocks >= 14) { document.getElementById("unboxButton5").style.display = "block" }
-if (game.unlocks >= 15) {
-  document.getElementById("XPbutton10").style.display = "block"
-  document.getElementById("XPBbutton2").style.display = "block"
-}
-if (game.unlocks >= 16) { document.getElementById("XPBbutton3").style.display = "block" }
-if (game.unlocks >= 17) { document.getElementById("XPbutton11").style.display = "block" }
-if (game.unlocks >= 18) {
-  document.getElementById("XPbutton12").style.display = "block"
-  document.getElementById("XPBbutton4").style.display = "block"
-}
-if (game.unlocks >= 19) { document.getElementById("unboxButton6").style.display = "block" }
-if (game.unlocks >= 20) { document.getElementById("XPBbutton5").style.display = "block" }
-if (game.unlocks >= 21) {
-  document.getElementById("enemiesTabButton").style.display = "block"
-  document.getElementById("fightingTabButton").style.display = "block"
-  document.getElementById("StatButton1").style.display = "block"
-  document.getElementById("StatsTab").style.display = "block"
-  enemiesChosen = 1
-}
-if (game.unlocks >= 22) { document.getElementById("shopTabButton").style.display = "block" }
-if (game.unlocks >= 23) { document.getElementById("unboxButton7").style.display = "block" }
-if (game.unlocks >= 24) { document.getElementById("StatButton2").style.display = "block" }
-if (game.itemUnlocks >= 1) { document.getElementById("fight2Button").style.display = "block" }
-if (game.itemUnlocks >= 2) {
-  document.getElementById("TimeTab").style.display = "block"
-  document.getElementsByClassName("themeButton")[6].style.display = "inline-block"
-}
-if (game.itemUnlocks >= 3) { document.getElementById("fight4Button").style.display = "block" }
-if (game.unlocks >= 25) { document.getElementById("fight3Button").style.display = "block" }
-if (game.unlocks >= 26) { document.getElementById("StatButton3").style.display = "block" }
-if (game.unlocks >= 27) { document.getElementById("StatButton4").style.display = "block" }
-if (game.unlocks >= 28) { document.getElementById("unboxButton8").style.display = "block" }
-if (game.unlocks >= 29) { document.getElementById("fight5Button").style.display = "block" }
-if (game.unlocks >= 30) { document.getElementById("StatButton5").style.display = "block" }
-if (game.unlocks >= 31) { document.getElementById("StatButton6").style.display = "block" }
-if (game.items[42] >= 1) {
-  document.getElementById("tokenTab").style.display = "block"
-  document.getElementsByClassName("themeButton")[7].style.display = "inline-block"
-}
-
-for (let i = 0; i < artifacts.length; i++) { if (game.artifacts[i] >= 1) document.getElementById("artifactsTabButton").style.display = "block" }
-for (let i = 0; i < pets.length; i++) { if (!game.pets[i]) game.pets[i] = 0 }
-for (let i = 0; i < enemies.length; i++) { if (!game.enemies[i]) game.enemies[i] = 0 }
-for (let i = 0; i < items.length; i++) { if (!game.items[i]) game.items[i] = 0 }
-for (let i = 0; i < artifacts.length; i++) { if (!game.artifacts[i]) game.artifacts[i] = 0 }
-for (let i = 0; i < 17; i++) { if (!game.specialPets[i]) game.specialPets[i] = 0 }
-for (let i = 0; i < Dimensions.length; i++) { if (!game.dimensionAmount[i]) game.dimensionAmount[i] = 1 }
-for (let i = 0; i < 17; i++) {
-  if (game.specialPets[i] >= 1) {
-    game.pets[i + 47] += game.specialPets[i]
-    if (game.pets[i + 47] >= game.specialPets[i]) {
-      game.specialPets[i] = 0
-      if (game.selectedPet >= 23 && game.selectedPet <= 39) game.selectedPet = i + 47
-    }
+function updateStuff() {
+  if (game.selectedPet == 0) {
+    document.getElementById("selectedPet").innerHTML = "None"
+    document.getElementById("selectedPetImg").style.display = "none"
   }
-  if (game.level < game.highestLevel && game.items[12] == 0) { game.XP = levelToXP(game.highestLevel) }
-  //This section of the special pets is here in case you load your save coming from the original Check Back version by demonin. This other part is if you played when xpboost was resetting your levels so you go back to your highest 
-  displayStuff()
-  tab(1)
-  countPets()
-  game.sessionStart = Date.now()
+  else {
+    document.getElementById("selectedPet").innerHTML = pets[game.selectedPet][0]
+    document.getElementById("selectedPetImg").style.display = "inline-block"
+    document.getElementById("selectedPetImg").src = "img/pets/" + game.selectedPet + ".png"
+  }
+
+  changeTheme(game.currentTheme)
+  if (game.unlocks >= 1) { document.getElementById("XPbutton2").style.display = "block" }
+  if (game.unlocks >= 2) { document.getElementById("XPbutton3").style.display = "block" }
+  if (game.unlocks >= 3) { document.getElementById("XPbutton4").style.display = "block" }
+  if (game.unlocks >= 4) {
+    document.getElementsByClassName("themeButton")[2].style.display = "inline-block"
+    document.getElementById("XPbutton5").style.display = "block"
+  }
+  if (game.unlocks >= 5) { document.getElementById("XPbutton6").style.display = "block" }
+  if (game.unlocks >= 6 || game.loops >= 1) {
+    document.getElementById("XPTab").style.display = "block"
+    document.getElementById("CratesTab").style.display = "block"
+    document.getElementById("unboxButton1").style.display = "block"
+    document.getElementById("selectedPetText").style.display = "block"
+    document.getElementById("petsTabButton").style.display = "block"
+    document.getElementById("dailyRewardButton").style.display = "block"
+  }
+  if (game.unlocks >= 7) { document.getElementById("unboxButton2").style.display = "block" }
+  if (game.unlocks >= 8) {
+    document.getElementsByClassName("themeButton")[3].style.display = "inline-block"
+    document.getElementsByClassName("themeButton")[4].style.display = "inline-block"
+    document.getElementsByClassName("themeButton")[5].style.display = "inline-block"
+    document.getElementById("XPbutton7").style.display = "block"
+  }
+  if (game.unlocks >= 9) { document.getElementById("unboxButton3").style.display = "block" }
+  if (game.unlocks >= 10) { document.getElementById("XPbutton8").style.display = "block" }
+  if (game.unlocks >= 11) { document.getElementById("unboxButton4").style.display = "block" }
+  if (game.unlocks >= 12) { document.getElementById("XPbutton9").style.display = "block" }
+  if (game.unlocks >= 13) {
+    document.getElementById("XPBbutton1").style.display = "block"
+    document.getElementById("XPBoostTab").style.display = "block"
+  }
+  if (game.unlocks >= 14) { document.getElementById("unboxButton5").style.display = "block" }
+  if (game.unlocks >= 15) {
+    document.getElementById("XPbutton10").style.display = "block"
+    document.getElementById("XPBbutton2").style.display = "block"
+  }
+  if (game.unlocks >= 16) { document.getElementById("XPBbutton3").style.display = "block" }
+  if (game.unlocks >= 17) { document.getElementById("XPbutton11").style.display = "block" }
+  if (game.unlocks >= 18) {
+    document.getElementById("XPbutton12").style.display = "block"
+    document.getElementById("XPBbutton4").style.display = "block"
+  }
+  if (game.unlocks >= 19) { document.getElementById("unboxButton6").style.display = "block" }
+  if (game.unlocks >= 20) { document.getElementById("XPBbutton5").style.display = "block" }
+  if (game.unlocks >= 21) {
+    document.getElementById("enemiesTabButton").style.display = "block"
+    document.getElementById("fightingTabButton").style.display = "block"
+    document.getElementById("StatButton1").style.display = "block"
+    document.getElementById("StatsTab").style.display = "block"
+    enemiesChosen = 1
+  }
+  if (game.unlocks >= 22) { document.getElementById("shopTabButton").style.display = "block" }
+  if (game.unlocks >= 23) { document.getElementById("unboxButton7").style.display = "block" }
+  if (game.unlocks >= 24) { document.getElementById("StatButton2").style.display = "block" }
+  if (game.itemUnlocks >= 1) { document.getElementById("fight2Button").style.display = "block" }
+  if (game.itemUnlocks >= 2) {
+    document.getElementById("TimeTab").style.display = "block"
+    document.getElementsByClassName("themeButton")[6].style.display = "inline-block"
+  }
+  if (game.itemUnlocks >= 3) { document.getElementById("fight4Button").style.display = "block" }
+  if (game.unlocks >= 25) { document.getElementById("fight3Button").style.display = "block" }
+  if (game.unlocks >= 26) { document.getElementById("StatButton3").style.display = "block" }
+  if (game.unlocks >= 27) { document.getElementById("StatButton4").style.display = "block" }
+  if (game.unlocks >= 28) { document.getElementById("unboxButton8").style.display = "block" }
+  if (game.unlocks >= 29) { document.getElementById("fight5Button").style.display = "block" }
+  if (game.unlocks >= 30) { document.getElementById("StatButton5").style.display = "block" }
+  if (game.unlocks >= 31) { document.getElementById("StatButton6").style.display = "block" }
+  if (game.items[42] >= 1) {
+    document.getElementById("tokenTab").style.display = "block"
+    document.getElementsByClassName("themeButton")[7].style.display = "inline-block"
+  }
+  if (game.unlocks >= 46 || game.loops >= 1) { document.getElementById("loopsTab").style.display = "block" }
+
+  for (let i = 0; i < artifacts.length; i++) { if (game.artifacts[i] >= 1) document.getElementById("artifactsTabButton").style.display = "block" }
+  for (let i = 0; i < pets.length; i++) { if (!game.pets[i]) game.pets[i] = 0 }
+  for (let i = 0; i < enemies.length; i++) { if (!game.enemies[i]) game.enemies[i] = 0 }
+  for (let i = 0; i < items.length; i++) { if (!game.items[i]) game.items[i] = 0 }
+  for (let i = 0; i < artifacts.length; i++) { if (!game.artifacts[i]) game.artifacts[i] = 0 }
+  for (let i = 0; i < loopUpgrades.length; i++) { if (!game.loopUpgrades[i]) game.loopUpgrades[i] = 0 }
+  for (let i = 0; i < 17; i++) { if (!game.specialPets[i]) game.specialPets[i] = 0 }
+  for (let i = 0; i < Dimensions.length; i++) { if (!game.dimensionAmount[i]) game.dimensionAmount[i] = 1 }
+  for (let i = 0; i < 17; i++) {
+    if (game.specialPets[i] >= 1) {
+      game.pets[i + 47] += game.specialPets[i]
+      if (game.pets[i + 47] >= game.specialPets[i]) {
+        game.specialPets[i] = 0
+        if (game.selectedPet >= 23 && game.selectedPet <= 39) game.selectedPet = i + 47
+      }
+    }
+    if (!game.loops) { game.loops = 0 }
+    if (!game.looplets) { game.looplets = 0 }
+    //This section of the special pets is here in case you load your save coming from the original Check Back version by demonin. This other part is if you played when xpboost was resetting your levels so you go back to your highest 
+    displayStuff()
+    countPets()
+    game.sessionStart = Date.now()
+  }
 }
-
-
+updateStuff()
 
 //Updates variables and text
 function updateSmall() {
@@ -320,7 +328,7 @@ function updateSmall() {
     }
     else {
       document.getElementById(XPButtons[i].name).disabled = false
-      document.getElementById(XPButtons[i].name).innerHTML = "Gain " + numberShort((XPButtons[i].xp * pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti * game.artifactsXP * game.oneSmithMulti ** game.oneSmithExpo)) + " XP"
+      document.getElementById(XPButtons[i].name).innerHTML = "Gain " + numberShort((XPButtons[i].xp * pets[game.selectedPet][1] * game.XPBoostEffect * game.itemXP * (1 + game.petsDiscovered / 100) * game.tierXPmulti * game.artifactsXP * game.loopMulti * game.oneSmithMulti ** game.oneSmithExpo)) + " XP"
     }
   }
 
@@ -348,7 +356,7 @@ function updateSmall() {
     }
     else {
       document.getElementById(XPBoostButtons[i].name).disabled = false
-      document.getElementById(XPBoostButtons[i].name).innerHTML = "Gain " + numberShort((XPBoostButtons[i].xpboost * pets[game.selectedPet][4] * game.itemXPBoost * game.artifactsXPBoost)) + " XPBoost"
+      document.getElementById(XPBoostButtons[i].name).innerHTML = "Gain " + numberShort((XPBoostButtons[i].xpboost * pets[game.selectedPet][4] * game.itemXPBoost * game.artifactsXPBoost * game.loopMulti)) + " XPBoost"
     }
   }
 
@@ -359,7 +367,7 @@ function updateSmall() {
     }
     else {
       document.getElementById(tokenButtons[i].name).disabled = false
-      document.getElementById(tokenButtons[i].name).innerHTML = "Gain " + numberShort(tokenButtons[i].gain * game.tokenMulti) + " frozen tokens"
+      document.getElementById(tokenButtons[i].name).innerHTML = "Gain " + numberShort(tokenButtons[i].gain * game.tokenMulti * game.loopMulti) + " frozen tokens"
     }
   }
 
@@ -533,26 +541,36 @@ function updateSmall() {
     document.getElementById("fight5Button").disabled = false
     document.getElementById("fight5Button").innerHTML = "Fight an area 4 foe "
   }
+  if (game.level < 10 ** Math.max(30 + game.loops, 50) && game.unlocks < 46) {
+    document.getElementById("loopReset").disabled = true
+    document.getElementById("loopReset").innerHTML = "Reach level " + levelShort(10 ** Math.max(30 + game.loops, 50)) + " to loop again (Increases by x10 per loop, past 20 loops)"
+  }
+  else {
+    document.getElementById("loopReset").disabled = false
+    document.getElementById("loopReset").innerHTML = "Congratulations on reaching the official end of Check Back<br>You can loop for x2 global speed + x2 global multi (past loop 20)<br>Also, gain +1 looplet which can be used for incredible qol<br>(Warning: Unbalanced, can infinity'd everything and permanently break your save)<br>(Reloads the page to apply proper changes)"
+  }
+  document.getElementById("loopUpgrades").innerHTML = "Spend looplets for automation/qol upgrades<br>Loops done: " + levelShort(game.loops) + "<br>Speed: x" + levelShort(game.speed) + "<br>Multi: x" + levelShort(game.loopMulti) + "<br>(Buffs XP, XPBoost, Stats, Pets and Artifacts)"
 
   game.level = XPToLevel(Math.max(Math.floor(game.XP), 0))
   game.tier = ShardToTier(Math.max(Math.floor(game.timeShards), 0))
+  i = 0
+  while (game.level >= levelBarColours[i + 1][0]) i++
+  document.getElementById("levelBar").style.backgroundColor = levelBarColours[i][1]
+  if (game.level >= levelBarTextures[0]) {
+    i = 0
+    while (game.level >= levelBarTextures[i]) i++
+    document.getElementById("levelBar").style.backgroundImage = "url('img/texture" + i + ".png')"
+    document.getElementById("levelBarText").style.textShadow = "0.3vh 0.3vh rgba(0,0,0,0.6)"
+    document.getElementById("levelBarRankText").style.textShadow = "0.3vh 0.3vh rgba(0,0,0,0.6)"
+  }
+  i = 0
+  while (game.level >= ranks[i + 1][0]) i++
+  game.ranks = i
   if (game.currentTab <= 4) {
     document.getElementById("level").innerHTML = "Level " + levelShort(game.level)
     //This bit is weird and gross
     //Sets the colour of the level bar, the texture of the level bar (if you're a high enough level), and your rank name
-    i = 0
-    while (game.level >= levelBarColours[i + 1][0]) i++
-    document.getElementById("levelBar").style.backgroundColor = levelBarColours[i][1]
-    if (game.level >= levelBarTextures[0]) {
-      i = 0
-      while (game.level >= levelBarTextures[i]) i++
-      document.getElementById("levelBar").style.backgroundImage = "url('img/texture" + i + ".png')"
-      document.getElementById("levelBarText").style.textShadow = "0.3vh 0.3vh rgba(0,0,0,0.6)"
-      document.getElementById("levelBarRankText").style.textShadow = "0.3vh 0.3vh rgba(0,0,0,0.6)"
-    }
-    i = 0
-    while (game.level >= ranks[i + 1][0]) i++
-    game.ranks = i
+
     document.getElementById("rank").innerHTML = ranks[i][1] + " clicker"
     //Sets the "XP to next level" text
     if (game.level < 1500) { //Before level 1500
@@ -594,6 +612,8 @@ function updateSmall() {
   if (game.tier > game.highestTier) { game.highestTier = game.tier }
   handleUnlocks()
   displayStuff()
+  game.speed = 2 ** game.loops
+  game.loopMulti = 2 ** (Math.max(0, game.loops - 20))
 }
 setInterval(updateSmall, 50) //Runs the update ~20 times per second
 
@@ -614,7 +634,7 @@ function XPToLevel(x) { return Math.floor((x / 5) ** 0.55) + 1 }
 function levelToXP(x) { return Math.ceil((x - 1) ** (1 / 0.55) * 5) }
 function numberToTime(x) {
   if (typeof x === 'number' && !isNaN(x)) {
-    xCeil = Math.ceil(x)
+    xCeil = Math.ceil(x / game.speed)
     result = ""
     if (xCeil >= 86400) result += Math.floor(xCeil / 86400) + "d "
     if (Math.floor(xCeil / 3600) % 24 != 0) result += (Math.floor(xCeil / 3600) % 24) + "h "
@@ -783,6 +803,7 @@ function handleUnlocks() {
       else if (i == 29) { document.getElementById("StatButton5").style.display = "block" }
       else if (i == 30) { document.getElementById("StatButton6").style.display = "block" }
       else if (i == 31) { document.getElementById("tokenTab").style.display = "block" }
+      else if (i == 45) { document.getElementById("loopsTab").style.display = "block" }
       break
     }
   }
@@ -803,13 +824,13 @@ function handleUnlocks() {
     if (game.extraUnlocks == 3) { document.getElementById("fight4Button").style.display = "block" }
   }
   if (game.currentTab <= 4) {
-    if (game.totalUnlocks == game.possibleUnlocks) { document.getElementById("nextUnlockLevel").innerHTML = "All unlocks have been achieved! Next update coming soon" }
+    if (game.totalUnlocks == game.possibleUnlocks) { document.getElementById("nextUnlockLevel").innerHTML = "All unlocks have been achieved! Thanks for playing and try <a href=\"https://marcelacoplao.github.io/CheckBackReclocked/\" target=\"_blank\">CB Reclocked</a> (Remake)" }
     else if (game.unlocks == unlockLevels.length) { document.getElementById("nextUnlockLevel").innerHTML = "All XP unlocks have been achieved! But " + (game.possibleUnlocks - game.totalUnlocks) + " unlocks are missing" }
     else if (game.unlocks >= 22) { document.getElementById("nextUnlockLevel").innerHTML = "You will unlock something new at level " + numberShort(unlockLevels[game.unlocks]) + " or through shop upgrades!" }
     else { document.getElementById("nextUnlockLevel").innerHTML = "You will unlock something new at level " + unlockLevels[game.unlocks] + "!<br> New feature unlocks at level " + numberShort(importantUnlockLevels[game.importantUnlocks]) }
   }
   else {
-    if (game.totalUnlocks == game.possibleUnlocks) { document.getElementById("nextUnlockLevel").innerHTML = "All unlocks have been achieved! Next update coming soon" }
+    if (game.totalUnlocks == game.possibleUnlocks) { document.getElementById("nextUnlockLevel").innerHTML = "All unlocks have been achieved! Thanks for playing and try <a href=\"https://marcelacoplao.github.io/CheckBackReclocked/\" target=\"_blank\">CB Reclocked</a> (Remake)" }
     else if (game.dimensionUnlocks == unlockTiers.length) { document.getElementById("nextUnlockLevel").innerHTML = "All dimensions have been unlocked! " + (game.possibleUnlocks - game.totalUnlocks) + " unlocks are missing" }
     else if (game.dimensionUnlocks >= 3 && game.dimensionUnlocks <= 7) { document.getElementById("nextUnlockLevel").innerHTML = "You will unlock a new dimension at tier " + numberShort(unlockTiers[game.dimensionUnlocks]) + " and Dimensional reset #" + (game.dimensionUnlocks - 2) + "!" }
     else { document.getElementById("nextUnlockLevel").innerHTML = "You will unlock a new dimension at tier " + unlockTiers[game.dimensionUnlocks] + "!" }
@@ -893,4 +914,120 @@ function upgrade24requirement() {
     if (game.items[i] >= items[i][1]) { counter++ }
   }
   return counter
+}
+
+function loopReset() {
+  game.XP = 0
+  game.level = 0
+  if (game.loopUpgrades[7] == 0) { game.coins = 0 }
+  game.XPBoost = 1
+  game.buttonCooldowns = [0]
+  game.unlocks = 0
+  game.timeUnlocks = 0
+  game.itemUnlocks = 0
+  game.totalUnlocks = 0
+  game.importantUnlocks = 0
+  game.pets = [0]
+  game.selectedPet = 0
+  game.HP = 0
+  game.DMG = 0
+  game.DEF = 0
+  game.items = [0]
+  game.timeShards = 0
+  game.dimensionUnlocks = 0
+  game.dimensionAmount = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  game.dimensionMulti = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  game.bossHP = 100000
+  game.bossKills = 0
+  if (game.loopUpgrades[8] == 0) { game.bossMulti = 1 }
+  if (game.loopUpgrades[9] == 0) { game.artifacts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] }
+  game.unboxString = [0]
+  game.frozenTokens = 0
+  game.loops++
+  game.looplets++
+  updateStuff()
+  //This part below is for restoration stuff ig
+  if (game.loopUpgrades[11] >= 1) { giveItems(1, 18) }
+  if (game.loopUpgrades[12] >= 1) { giveItems(19, 24) }
+  if (game.loopUpgrades[13] >= 1) { giveItems(25, 30) }
+  if (game.loopUpgrades[14] >= 1) { giveItems(31, 36) }
+  if (game.loopUpgrades[15] >= 1) { giveItems(37, 42) }
+  if (game.loopUpgrades[16] >= 1) { giveItems(43, 47) }
+  if (game.loopUpgrades[17] >= 1) { giveItems(48, 49) }
+  if (game.loopUpgrades[18] >= 1) { giveItems(50, 51) }
+  if (game.loopUpgrades[10] >= 1) {
+    game.selectedPet = keepPets[game.loopUpgrades[10]]
+    game.pets[keepPets[game.loopUpgrades[10]]] = 1
+  }
+  save()
+  location.reload()
+}
+
+function openCloseLoopTab() {
+  if (document.getElementById("loopDiv").style.display == "block") {
+    document.getElementById("loopDiv").style.display = "none"
+    document.getElementById("loopListInner").innerHTML = ""
+  }
+  else {
+    document.getElementById("loopDiv").style.display = "block"
+    displayLoopShop()
+  }
+}
+
+function displayLoopShop() {
+  document.getElementById("loopListInner").innerHTML = ""
+  let itemBox = document.createElement("div")
+  itemBox.style.display = "inline-block"
+  itemBox.style.position = "relative"
+  itemBox.style.width = "128px"
+  itemBox.style.height = "128px"
+  itemBox.style.margin = "8px 0 0 8px"
+  itemBox.style.border = "8px solid black"
+  itemBox.style.cursor = "pointer"
+  itemBox.style.backgroundColor = "#888"
+  itemBox.style.backgroundImage = "url('img/halftoneDots.png')"
+  itemBox.className += "itemBox"
+  itemBoxes = document.getElementsByClassName("itemBox");
+  for (i = 1; i < loopUpgrades.length; i++) {
+    document.getElementById("loopListInner").appendChild(itemBox.cloneNode(true))
+    itemBoxes[i - 1].setAttribute("id", i)
+    itemBoxes[i - 1].addEventListener('click', function () { buyLoopUpgrade(parseInt(this.id)) })
+    itemBoxes[i - 1].addEventListener('mouseover', function () { showLoopInfo(parseInt(this.id)) })
+    itemBoxes[i - 1].addEventListener('mouseout', function () { showLoopInfo(0) })
+    if (game.loopUpgrades[i] >= loopUpgrades[i].cap) itemBoxes[i - 1].style.backgroundColor = "#282"
+    //1st red 2nd green 3rd blue
+    itemBoxes[i - 1].innerHTML = "<img src='img/shop/0.png' style='width: 128px' onerror=\"this.onerror=null;this.src='img/shop/0.png';\">"
+    if (i == 10) { itemBoxes[i - 1].innerHTML = "<img src='img/pets/" + keepPets[game.loopUpgrades[i] + 1] + ".png' style='width: 128px' onerror=\"this.onerror=null;this.src='img/shop/0.png';\">" }
+    if (!game.loopUpgrades[i]) { itemBoxes[i - 1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>0</p>" }
+    else { itemBoxes[i - 1].innerHTML += "<p style='position: absolute; top: 0; left: 0; margin: 2px; color: white; font-size: 24px'>" + game.loopUpgrades[i] + "</p>" }
+    itemBoxes[i - 1].style.border = "8px outset #382C1E"
+  }
+  j = loopUpgrades.length - 1
+}
+
+function buyLoopUpgrade(x) {
+  if (game.loopUpgrades[x] >= loopUpgrades[x].cap) { alert("Upgrade maxed") }
+  else {
+    if (game.looplets >= loopUpgrades[x].cost) {
+      game.looplets -= loopUpgrades[x].cost
+      game.loopUpgrades[x]++
+      openCloseLoopTab()
+      openCloseLoopTab()
+      if (x == 10) { game.pets[keepPets[game.loopUpgrades[10]]]++}
+      if (x == 11) { giveItems(1, 18) }
+      if (x == 12) { giveItems(19, 24) }
+      if (x == 13) { giveItems(25, 30) }
+      if (x == 14) { giveItems(31, 36) }
+      if (x == 15) { giveItems(37, 42) }
+      if (x == 16) { giveItems(43, 47) }
+      if (x == 17) { giveItems(48, 49) }
+      if (x == 18) { giveItems(50, 51) }
+    }
+  }
+}
+
+function showLoopInfo(x) {
+  if (x == 0) { document.getElementById("loopInfo").innerHTML = "" }
+  else if (x == 10) { document.getElementById("loopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + loopUpgrades[x].name + "</span><br>You have " + levelShort(game.loopUpgrades[x]) + " / " + levelShort(loopUpgrades[x].cap) + "</p><br><img src='img/pets/" + keepPets[game.loopUpgrades[x] + 1] + ".png' style='width: 50%'><br><p style='color: white'><span style='font-size: 32px; font-weight: bold'>Cost:</span><br> " + levelShort(game.looplets) + " / " + levelShort(loopUpgrades[x].cost) + "<br><br><span style='font-size: 32px; font-weight: bold'>Effects:</span><br>" + loopUpgrades[x].effect + "</p></center>" }
+  else document.getElementById("loopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + loopUpgrades[x].name + "</span><br>You have " + levelShort(game.loopUpgrades[x]) + " / " + levelShort(loopUpgrades[x].cap) + "</p><br><img src='img/pets/0.png' style='width: 50%'><br><p style='color: white'><span style='font-size: 32px; font-weight: bold'>Cost:</span><br> " + levelShort(game.looplets) + " / " + levelShort(loopUpgrades[x].cost) + "<br><br><span style='font-size: 32px; font-weight: bold'>Effects:</span><br>" + loopUpgrades[x].effect + "</p></center>"
 }

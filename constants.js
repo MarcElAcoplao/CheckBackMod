@@ -1,4 +1,4 @@
-const unlockLevels = [2,3,4,5,6,8,12,15,20,35,50,70,100,125,150,200,250,300,350,400,500,1500,20000,50000,100000,1000000,5000000,500000000,1*10**10,5*10**10,2.5*10**11,2*10**17,10**18,10**19,10**21,10**23,4*10**23,3*10**24,7*10**25,10**27,10**29,10**31,10**33,5*10**35,5*10**37]
+const unlockLevels = [2,3,4,5,6,8,12,15,20,35,50,70,100,125,150,200,250,300,350,400,500,1500,20000,50000,100000,1000000,5000000,500000000,1*10**10,5*10**10,2.5*10**11,2*10**16,10**17,10**18,10**20,10**22,4*10**23,3*10**24,7*10**25,10**27,10**29,10**31,10**33,5*10**35,5*10**37, 10**50]
 const importantUnlockLevels = [8,100,500,1500,250000,5000000]
 const levelBarTextures = [50,55,60,65,70,80,90,100,200]
 
@@ -291,6 +291,7 @@ const pets = [
   ["Frozen gigantic snake", 10**8, 47, 60, 3800, 60, 2], //85 Frozen pet^2 4
   ["Frozen salamander", 10**10, 55, 75, 12300, 80, 2.5], //86 Frozen pet^2 5
   ["Frozen dragon", 10**12, 70, 100, 25000, 100, 3], //87 Frozen pet^2 6
+  ["The ultimate clock", 10**15, 100, 100, 100000, 200, 5], //88 Secret, congratulations if you get this
 ]
 
 const skeletalUnboxChances = [ //will be set to 1
@@ -466,3 +467,27 @@ const enemies = [
   const frozenArtifactsDropChances = [
     [5, 115], [6, 115], [7, 48], [8, 10], [9, 10], [10, 2]
   ]
+
+  const loopUpgrades = [
+    {name: "test", cost: 1, cap: 1, effect: "x3 codereading damage"},
+    {name: "Auto XP Buttons", cost: 1, cap: 1, effect: "Every 50ms tries to collect all xp buttons"},
+    {name: "Auto XPBoost Buttons", cost: 1, cap: 1, effect: "Every 50ms tries to collect all xpboost buttons"},
+    {name: "Auto Stat Buttons", cost: 1, cap: 1, effect: "Every 50ms tries to collect all stat buttons"},
+    {name: "Auto Dimension Buttons", cost: 1, cap: 1, effect: "Every 50ms tries to collect all dimension buttons. Warning: Bypasses dimensional reset locks (but still requires tier x)"},
+    {name: "Auto Frozen Token Buttons", cost: 1, cap: 1, effect: "Every 50ms tries to collect all frozen token buttons"},
+    {name: "Auto Daily Rewards", cost: 1, cap: 1, effect: "Same thing as all previous autos, for daily rewards"},
+    {name: "Keep coins", cost: 1, cap: 1, effect: "Coins are kept on loops"},
+    {name: "Keep boss progress", cost: 3, cap: 1, effect: "Boss dimension multi is kept, but kills are reset so the buff can grow stronger. Will start a new boss fight once a boss is killed"},
+    {name: "Keep artifacts", cost: 3, cap: 1, effect: "Keeps artifacts on loop reset (Warning: Certified op). Also, will fight the strongest enemy of a zone if you can one-shot it"},
+    {name: "Keep pets on reset", cost: 1, cap: 10, effect: "Each level makes you keep a higher pet<br>Order by numbers: 6, 13, 22, 31, 39, 46, 72, 81, 87, 88<br>Also changes unbox to only show pets with higher xp multi than equipped"},
+    {name: "Keep items 1-18", cost: 1, cap: 1, effect: "For all of the (Keep items x-y) upgrades, they will automatically be maxed on purchase + not reset on loops"},
+    {name: "Keep items 19-24", cost: 1, cap: 1, effect: "Read upgrade 11 effect (1 previous). Without these, you will still need the requirements to buy an upgrade, but not to see their effects"},
+    {name: "Keep items 25-30", cost: 2, cap: 1, effect: "Read upgrade 11 effect (2 previous). They will also be more expensive from here on now"},
+    {name: "Keep items 31-36", cost: 2, cap: 1, effect: "Read upgrade 11 effect (3 previous)"},
+    {name: "Keep items 37-42", cost: 2, cap: 1, effect: "Read upgrade 11 effect (4 previous)"},
+    {name: "Keep items 43-47", cost: 2, cap: 1, effect: "Read upgrade 11 effect (5 previous)"},
+    {name: "Keep items 48-49", cost: 2, cap: 1, effect: "Read upgrade 11 effect (6 previous)"},
+    {name: "Keep items 50-51", cost: 2, cap: 1, effect: "Read upgrade 11 effect (7 previous)"},
+  ]
+
+  const keepPets = [0, 6, 13, 22, 31, 39, 46, 72, 81, 87, 88, 88]

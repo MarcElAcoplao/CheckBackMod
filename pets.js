@@ -127,16 +127,15 @@ function unboxPet(x, y) {
     }
     if (x == 10 && y < 2) dimensionalReset(2)
     if (petChosen >= 1) {
-      if (game.items[10] == 0) { openCloseMessages(1) }
       latestDrops(petChosen, 1)
-      if (!game.pets[petChosen]) { game.pets[petChosen] = 1 }
-      else { game.pets[petChosen]++ }
+      if (!game.pets[petChosen]) { game.pets[petChosen] = game.loopMulti }
+      else { game.pets[petChosen] += game.loopMulti }
       game.cratesOpened += 1
       if (x == 10) game.frozenCratesOpened += 1
       if (x >= 3) { game.buttonCooldowns[PetButtons[x].cooldownID] = PetButtons[x].cooldown / (pets[game.selectedPet][3] * game.itemCooldown * game.tierCooldown * game.artifactsCooldown) } //2 hours
       y -= 1
-      if (Math.random() < y) {unboxPet(x, y)}
-      else if (game.items[45] == 0) {save()}
+      if (Math.random() < y) { unboxPet(x, y) }
+      else if (game.items[45] == 0) { save() }
     }
     countPets()
   }
@@ -153,7 +152,12 @@ function latestDrops(x, y) {
     }
   }
   if (added == 0) { game.unboxString[game.unboxString.length] = [x, y] } //If after all the attempts, no pet has been added, it will create a new entry up next with the system [pet id, amount]
-  if (game.pets[x] < 1) { openCloseMessages(1) } //If the pet is a discovery, it will show up the popup anyways
+  if (game.loopUpgrades[10] == 0) {
+    if (game.pets[x] < 1 || game.items[10] == 0) { openCloseMessages(1) } //If the pet is a discovery, it will show up the popup anyways
+  }
+  else {
+    if (pets[x][1] > pets[game.selectedPet][1]) { openCloseMessages(1)}
+  }
 }
 
 function autoPets() {
@@ -197,13 +201,13 @@ function simulatedUnboxPet(x, y) {
       for (let a = 0; a < frozenUnboxChances1.length; a++) {
         amt = frozenUnboxChances1[a][1] / simulatedWeight * y
         if (amt >= 1) {
-          if (!game.pets[frozenUnboxChances1[a][0]]) { game.pets[frozenUnboxChances1[a][0]] = Math.floor(amt) }
-          else { game.pets[frozenUnboxChances1[a][0]] += Math.floor(amt) }
+          if (!game.pets[frozenUnboxChances1[a][0]]) { game.pets[frozenUnboxChances1[a][0]] = Math.floor(amt * game.loopMulti) }
+          else { game.pets[frozenUnboxChances1[a][0]] += Math.floor(amt * game.loopMulti) }
           latestDrops(frozenUnboxChances1[a][0], Math.floor(amt))
         }
         else if (Math.random() < amt) {
-          if (!game.pets[frozenUnboxChances1[a][0]]) { game.pets[frozenUnboxChances1[a][0]] = 1 }
-          else { game.pets[frozenUnboxChances1[a][0]]++ }
+          if (!game.pets[frozenUnboxChances1[a][0]]) { game.pets[frozenUnboxChances1[a][0]] = game.loopMulti }
+          else { game.pets[frozenUnboxChances1[a][0]] += game.loopMulti }
           latestDrops(frozenUnboxChances1[a][0], 1)
         }
       }
@@ -213,13 +217,13 @@ function simulatedUnboxPet(x, y) {
       for (let a = 0; a < frozenUnboxChances2.length; a++) {
         amt = frozenUnboxChances2[a][1] / simulatedWeight * y
         if (amt >= 1) {
-          if (!game.pets[frozenUnboxChances2[a][0]]) { game.pets[frozenUnboxChances2[a][0]] = Math.floor(amt) }
-          else { game.pets[frozenUnboxChances2[a][0]] += Math.floor(amt) }
+          if (!game.pets[frozenUnboxChances2[a][0]]) { game.pets[frozenUnboxChances2[a][0]] = Math.floor(amt  * game.loopMulti) }
+          else { game.pets[frozenUnboxChances2[a][0]] += Math.floor(amt  * game.loopMulti) }
           latestDrops(frozenUnboxChances2[a][0], Math.floor(amt))
         }
         else if (Math.random() < amt) {
-          if (!game.pets[frozenUnboxChances2[a][0]]) { game.pets[frozenUnboxChances2[a][0]] = 1 }
-          else { game.pets[frozenUnboxChances2[a][0]]++ }
+          if (!game.pets[frozenUnboxChances2[a][0]]) { game.pets[frozenUnboxChances2[a][0]] = game.loopMulti }
+          else { game.pets[frozenUnboxChances2[a][0]] += game.loopMulti }
           latestDrops(frozenUnboxChances2[a][0], 1)
         }
       }

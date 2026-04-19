@@ -3,17 +3,17 @@ const unlockTiers = [2,3,4,6,10,15,23,33,70,130]
 
 const Dimensions = [ //Dimension stats
   {name: "Shards", dimensionArray: 0, cooldown: 0, cooldownID: 0},
-  {name: "TimeDim1", dimensionArray: 0, cooldown: 300, cooldownID: 27}, //5mins
-  {name: "TimeDim2", dimensionArray: 1, cooldown: 900, cooldownID: 28}, //15mins
-  {name: "TimeDim3", dimensionArray: 2, cooldown: 3600, cooldownID: 29}, //1h
-  {name: "TimeDim4", dimensionArray: 3, cooldown: 7200, cooldownID: 30}, //2h
-  {name: "TimeDim5", dimensionArray: 4, cooldown: 21600, cooldownID: 31}, //6h
-  {name: "TimeDim6", dimensionArray: 5, cooldown: 43200, cooldownID: 32}, //12h
-  {name: "TimeDim7", dimensionArray: 6, cooldown: 86400, cooldownID: 33}, //1d
-  {name: "TimeDim8", dimensionArray: 7, cooldown: 129600, cooldownID: 34}, //1d 12h
-  {name: "TimeDim9", dimensionArray: 8, cooldown: 172800, cooldownID: 35}, //2d
-  {name: "TimeDim10", dimensionArray: 9, cooldown: 345600, cooldownID: 56}, //4d
-  {name: "TimeDim11", dimensionArray: 10, cooldown: 604800, cooldownID: 57}, //7d
+  {name: "TimeDim1", dimensionArray: 0, cooldown: 300, cooldownID: 27, tier: 1}, //5mins
+  {name: "TimeDim2", dimensionArray: 1, cooldown: 900, cooldownID: 28, tier: 2}, //15mins
+  {name: "TimeDim3", dimensionArray: 2, cooldown: 3600, cooldownID: 29, tier: 3}, //1h
+  {name: "TimeDim4", dimensionArray: 3, cooldown: 7200, cooldownID: 30, tier: 4}, //2h
+  {name: "TimeDim5", dimensionArray: 4, cooldown: 21600, cooldownID: 31, tier: 6}, //6h
+  {name: "TimeDim6", dimensionArray: 5, cooldown: 43200, cooldownID: 32, tier: 10}, //12h
+  {name: "TimeDim7", dimensionArray: 6, cooldown: 86400, cooldownID: 33, tier: 15}, //1d
+  {name: "TimeDim8", dimensionArray: 7, cooldown: 129600, cooldownID: 34, tier: 23}, //1d 12h
+  {name: "TimeDim9", dimensionArray: 8, cooldown: 172800, cooldownID: 35, tier: 33}, //2d
+  {name: "TimeDim10", dimensionArray: 9, cooldown: 345600, cooldownID: 56, tier: 70}, //4d
+  {name: "TimeDim11", dimensionArray: 10, cooldown: 604800, cooldownID: 57, tier: 130}, //7d
 ]
 //Shards for a tier: 5^x -1 basically
 function ShardToTier(x) {return Math.floor(Math.log(x+1)/Math.log(5)) + 1}
@@ -54,3 +54,12 @@ function calculateDimensionMultipliers() {
  game.dimensionMulti[10] = 1 * game.allDimensionMultipliers * 2 ** (0)
 }
 setInterval(calculateDimensionMultipliers, 50)
+
+function autoDimensions() {
+  if (game.loopUpgrades[4] >= 1) {
+    for (let i = Dimensions.length - 1; i > 0; i -= 1) {
+      if (game.tier >= Dimensions[i].tier && game.buttonCooldowns[Dimensions[i].cooldownID] == 0) {clickDimension(i, 1)}
+    }
+  }
+}
+setInterval(autoDimensions, 50)
