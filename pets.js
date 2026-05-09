@@ -200,10 +200,12 @@ function simulatedUnboxPet(x, y) {
       for (let i = 0; i < frozenUnboxChances1.length; i++) { simulatedWeight += frozenUnboxChances1[i][1] }
       for (let a = 0; a < frozenUnboxChances1.length; a++) {
         amt = frozenUnboxChances1[a][1] / simulatedWeight * y
+        if (Math.random() <= amt % 1) {amt = Math.ceil(amt)}
+        else {amt = Math.floor(amt)}
         if (amt >= 1) {
-          if (!game.pets[frozenUnboxChances1[a][0]]) { game.pets[frozenUnboxChances1[a][0]] = Math.floor(amt * game.loopMulti) }
-          else { game.pets[frozenUnboxChances1[a][0]] += Math.floor(amt * game.loopMulti) }
-          latestDrops(frozenUnboxChances1[a][0], Math.floor(amt))
+          if (!game.pets[frozenUnboxChances1[a][0]]) { game.pets[frozenUnboxChances1[a][0]] = amt * game.loopMulti }
+          else { game.pets[frozenUnboxChances1[a][0]] += amt * game.loopMulti }
+          latestDrops(frozenUnboxChances1[a][0], amt)
         }
         else if (Math.random() < amt) {
           if (!game.pets[frozenUnboxChances1[a][0]]) { game.pets[frozenUnboxChances1[a][0]] = game.loopMulti }
@@ -216,10 +218,12 @@ function simulatedUnboxPet(x, y) {
       for (let i = 0; i < frozenUnboxChances2.length; i++) { simulatedWeight += frozenUnboxChances2[i][1] }
       for (let a = 0; a < frozenUnboxChances2.length; a++) {
         amt = frozenUnboxChances2[a][1] / simulatedWeight * y
+        if (Math.random() <= amt % 1) {amt = Math.ceil(amt)}
+        else {amt = Math.floor(amt)}
         if (amt >= 1) {
-          if (!game.pets[frozenUnboxChances2[a][0]]) { game.pets[frozenUnboxChances2[a][0]] = Math.floor(amt  * game.loopMulti) }
-          else { game.pets[frozenUnboxChances2[a][0]] += Math.floor(amt  * game.loopMulti) }
-          latestDrops(frozenUnboxChances2[a][0], Math.floor(amt))
+          if (!game.pets[frozenUnboxChances2[a][0]]) { game.pets[frozenUnboxChances2[a][0]] = amt  * game.loopMulti }
+          else { game.pets[frozenUnboxChances2[a][0]] += amt  * game.loopMulti }
+          latestDrops(frozenUnboxChances2[a][0], amt)
         }
         else if (Math.random() < amt) {
           if (!game.pets[frozenUnboxChances2[a][0]]) { game.pets[frozenUnboxChances2[a][0]] = game.loopMulti }
