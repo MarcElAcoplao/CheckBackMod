@@ -643,6 +643,17 @@ function numberToTime(x) {
     return result
   }
 }
+function numberToTimeNoSpeed(x) {
+  if (typeof x === 'number' && !isNaN(x)) {
+    xCeil = Math.ceil(x)
+    result = ""
+    if (xCeil >= 86400) result += Math.floor(xCeil / 86400) + "d "
+    if (Math.floor(xCeil / 3600) % 24 != 0) result += (Math.floor(xCeil / 3600) % 24) + "h "
+    if (Math.floor(xCeil / 60) % 60 != 0) result += (Math.floor(xCeil / 60) % 60) + "m "
+    if (xCeil % 60 != 0) result += Math.floor(xCeil % 60) + "s "
+    return result
+  }
+}
 function numberShort(x) {
   if (typeof x === 'number' && !isNaN(x)) {
     xCeil = Math.ceil(x)
@@ -851,7 +862,7 @@ function changeTheme(x) {
 
 function Stats() {
   result = "Player stats: <br>"
-  result += "Time played: " + numberToTime(game.timePlayed) + "<br>"
+  result += "Time played: " + numberToTimeNoSpeed(game.timePlayed) + "<br>"
   result += "Buttons clicked: " + numberShort(game.buttonClicks) + "<br>"
   if (game.cratesOpened >= 1) result += "Crates opened: " + numberShort(game.cratesOpened) + "<br>"
   if (game.enemiesDefeated >= 1) result += "Enemies defeated: " + numberShort(game.enemiesDefeated) + "<br>"
