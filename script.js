@@ -1042,3 +1042,43 @@ function showLoopInfo(x) {
   else if (x == 10) { document.getElementById("loopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + loopUpgrades[x].name + "</span><br>You have " + levelShort(game.loopUpgrades[x]) + " / " + levelShort(loopUpgrades[x].cap) + "</p><br><img src='img/pets/" + keepPets[game.loopUpgrades[x] + 1] + ".png' style='width: 50%'><br><p style='color: white'><span style='font-size: 32px; font-weight: bold'>Cost:</span><br> " + levelShort(game.looplets) + " / " + levelShort(loopUpgrades[x].cost) + "<br><br><span style='font-size: 32px; font-weight: bold'>Effects:</span><br>" + loopUpgrades[x].effect + "</p></center>" }
   else document.getElementById("loopInfo").innerHTML = "<br><br><center><p style='color: white'><span style='font-size: 32px; font-weight: bold'>" + loopUpgrades[x].name + "</span><br>You have " + levelShort(game.loopUpgrades[x]) + " / " + levelShort(loopUpgrades[x].cap) + "</p><br><img src='img/pets/0.png' style='width: 50%'><br><p style='color: white'><span style='font-size: 32px; font-weight: bold'>Cost:</span><br> " + levelShort(game.looplets) + " / " + levelShort(loopUpgrades[x].cost) + "<br><br><span style='font-size: 32px; font-weight: bold'>Effects:</span><br>" + loopUpgrades[x].effect + "</p></center>"
 }
+
+function resetLoopUpgrades() {
+  if (confirm("Are you sure you want to reset loop upgrades? Maybe you'd like to wait to loop first to reset nothing")) {
+    if (confirm("Are you REALLY SURE???? There is no going back from here. You will not get a new loop even if you can actually loop. And will lose anything that would be kept if you have loop upgrade x")) {
+      for (let i = 0; i < loopUpgrades.length; i++) {
+        game.loopUpgrades[i] = 0
+      }
+      game.looplets = game.loops
+      game.XP = 0
+      game.level = 0
+      if (game.loopUpgrades[7] == 0) { game.coins = 0 }
+      game.XPBoost = 1
+      game.buttonCooldowns = [0]
+      game.unlocks = 0
+      game.timeUnlocks = 0
+      game.itemUnlocks = 0
+      game.totalUnlocks = 0
+      game.importantUnlocks = 0
+      game.pets = [0]
+      game.selectedPet = 0
+      game.HP = 0
+      game.DMG = 0
+      game.DEF = 0
+      game.items = [0]
+      game.timeShards = 0
+      game.dimensionUnlocks = 0
+      game.dimensionAmount = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      game.dimensionMulti = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      game.bossHP = 100000
+      game.bossKills = 0
+      if (game.loopUpgrades[8] == 0) { game.bossMulti = 1 }
+      if (game.loopUpgrades[9] == 0) { game.artifacts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] }
+      game.unboxString = [0]
+      game.frozenTokens = 0
+      updateStuff()
+      save()
+      location.reload()
+    }
+  }
+}

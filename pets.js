@@ -123,9 +123,9 @@ function unboxPet(x, y) {
         alert("Not enough coins")
         petChosen = 0
       }
-      else game.coins -= 250
+      else game.coins -= 250 
     }
-    if (x == 10 && y < 2) dimensionalReset(2)
+    if (x == 10 && y < 2 && game.items[45] == 0) dimensionalReset(2)
     if (petChosen >= 1) {
       latestDrops(petChosen, 1)
       if (!game.pets[petChosen]) { game.pets[petChosen] = game.loopMulti }

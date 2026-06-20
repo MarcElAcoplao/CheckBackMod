@@ -105,10 +105,12 @@ function displayStuff() {
    if (game.currentTab == 7) {
     document.getElementById("loopReset").style.display = "block"
     document.getElementById("loopUpgrades").style.display = "block"
+    document.getElementById("resetLoopUpgrades").style.display = "block"
   }
    else {
     document.getElementById("loopReset").style.display = "none"
     document.getElementById("loopUpgrades").style.display = "none"
+    document.getElementById("resetLoopUpgrades").style.display = "none"
   }
   displayTabStats(game.currentTab)
 }
